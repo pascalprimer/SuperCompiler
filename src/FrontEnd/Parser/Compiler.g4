@@ -45,8 +45,8 @@ expression  :   constant                                                        
 			|   expression '[' expression ']'                                   #arrayExpression
 			|   'this' '.' expression                                           #thisExpression
 			|   operator = ('+' | '-' | '~' | '!' | '++' | '--') expression     #unaryExpression
-			|   expression operator = ('+' | '-') expression                    #additiveExpression
 			|   expression operator = ('*' | '/' | '%') expression              #multiplicativeExpression
+			|   expression operator = ('+' | '-') expression                    #additiveExpression
 			|   expression operator = ('==' | '!=') expression                  #equalityExpression
 			|   expression operator = ('<' | '<=' | '>' | '>=') expression      #inequalityExpression
 			|   expression operator = ('<<' | '>>') expression                  #shiftExpression

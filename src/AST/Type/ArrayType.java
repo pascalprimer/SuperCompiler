@@ -12,7 +12,7 @@ public class ArrayType extends Type {
 	public ArrayType(Type arrayType, Expression subscript) {
 		this.arrayType = arrayType;
 		this.subscript = subscript;
-		if (subscript.getReturnType() != IntType.getInstance()) {
+		if (subscript.returnType != IntType.getInstance()) {
 			throw new CompilerError("Subscript of array must be integers");
 		}
 	}

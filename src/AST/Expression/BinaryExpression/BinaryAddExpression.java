@@ -10,7 +10,7 @@ import Utility.CompilerError;
 
 public class BinaryAddExpression extends BinaryExpression {
 
-	public BinaryAddExpression(Type type, Expression leftExp, Expression rightExp) {
+	private BinaryAddExpression(Type type, Expression leftExp, Expression rightExp) {
 		super("+", type, leftExp, rightExp);
 	}
 

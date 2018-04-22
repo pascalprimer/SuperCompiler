@@ -10,7 +10,7 @@ import Utility.CompilerError;
 
 public class BinarySubTractExpression  extends BinaryExpression {
 
-	public BinarySubTractExpression(Type type, Expression leftExp, Expression rightExp) {
+	private BinarySubTractExpression(Type type, Expression leftExp, Expression rightExp) {
 		super("-", type, leftExp, rightExp);
 	}
 

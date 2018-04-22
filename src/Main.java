@@ -5,13 +5,11 @@ import Test.*;
 
 public class Main {
 	public static void main(String[] args) throws Exception{
-		A a = new A();
-		B b = new B();
-		C c = new C();
-		System.out.println(a == a);
+		String a = new String("asdfasdf");
+		String b = new String("asdfasdf");
 
-		a = c;
-		System.out.println(a == b);
-		System.out.println((B)a == b);
+		int t = 123;
+		int tt = ++(t);
+		System.out.println(tt);
 	}
 }

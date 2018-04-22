@@ -13,4 +13,9 @@ public class BoolConstant extends Constant {
 	public boolean getValue() {
 		return value;
 	}
+
+	@Override
+	public boolean constantCompatibleWith(Constant obj) {
+		return obj instanceof BoolConstant || obj instanceof NullConstant;
+	}
 }

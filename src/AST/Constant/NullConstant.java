@@ -6,4 +6,9 @@ public class NullConstant extends Constant {
 	public NullConstant() {
 		super(NullType.getInstance());
 	}
+
+	@Override
+	public boolean constantCompatibleWith(Constant obj) {
+		return true;
+	}
 }

@@ -13,4 +13,9 @@ public class IntConstant extends Constant {
 	public int getValue() {
 		return value;
 	}
+
+	@Override
+	public boolean constantCompatibleWith(Constant obj) {
+		return obj instanceof IntConstant || obj instanceof NullConstant;
+	}
 }

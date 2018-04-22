@@ -9,7 +9,7 @@ import Utility.CompilerError;
 
 public class BinaryMultiplyExpression extends BinaryExpression {
 
-	public BinaryMultiplyExpression(Type type, Expression leftExp, Expression rightExp) {
+	private BinaryMultiplyExpression(Type type, Expression leftExp, Expression rightExp) {
 		super("*", type, leftExp, rightExp);
 	}
 

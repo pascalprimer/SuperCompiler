@@ -316,6 +316,18 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitInequalityExpression(CompilerParser.InequalityExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code fieldExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFieldExpression(CompilerParser.FieldExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code fieldExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFieldExpression(CompilerParser.FieldExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code equalityExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
 	 * @param ctx the parse tree
@@ -339,18 +351,6 @@ public interface CompilerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLogicalAndExpression(CompilerParser.LogicalAndExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code fieldExpression}
-	 * labeled alternative in {@link CompilerParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterFieldExpression(CompilerParser.FieldExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code fieldExpression}
-	 * labeled alternative in {@link CompilerParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitFieldExpression(CompilerParser.FieldExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code functionCallExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.

@@ -14,4 +14,9 @@ public class StringConstant extends Constant {
 	public String getValue() {
 		return value;
 	}
+
+	@Override
+	public boolean constantCompatibleWith(Constant obj) {
+		return obj instanceof StringConstant || obj instanceof NullConstant;
+	}
 }

@@ -13,6 +13,10 @@ public abstract class Expression {
 		this.returnType = type;
 	}
 
+	public boolean getLeftValue() {
+		return leftValue;
+	}
+
 	/*public Type getReturnType() {
 		return returnType;
 	}*/
