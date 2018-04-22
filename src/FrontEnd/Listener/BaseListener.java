@@ -7,10 +7,16 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 public class BaseListener extends CompilerBaseListener {
 	public static int row, column;
-	public ParseTreeProperty<Type> returnValue = new ParseTreeProperty();
+	public ParseTreeProperty<Object> returnValue = new ParseTreeProperty();
 
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {
+		row = ctx.getStart().getLine();
+		column = ctx.getStart().getCharPositionInLine();
+	}
+
+	@Override
+	public void exitEveryRule(ParserRuleContext ctx) {
 		row = ctx.getStart().getLine();
 		column = ctx.getStart().getCharPositionInLine();
 	}

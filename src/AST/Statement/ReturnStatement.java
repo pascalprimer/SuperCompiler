@@ -1,4 +1,6 @@
 package AST.Statement;
 
-public class ReturnStatement {
+import AST.Symbol.Scope;
+
+public class ReturnStatement extends Statement {
 }

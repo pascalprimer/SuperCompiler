@@ -1,4 +1,6 @@
 package AST.Statement;
 
-public class BreakStatement {
+import AST.Symbol.Scope;
+
+public class BreakStatement extends Statement {
 }

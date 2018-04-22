@@ -13,7 +13,7 @@ public class StringType extends Type {
 		return this == obj;
 	}
 
-	public StringType getInstance() {
+	public static StringType getInstance() {
 		return instance;
 	}
 }

@@ -1,4 +1,6 @@
 package AST.Statement;
 
-public class BlockStatement {
+import AST.Symbol.Scope;
+
+public class BlockStatement extends Statement {
 }

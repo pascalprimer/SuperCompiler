@@ -1,11 +1,12 @@
 package AST.Type;
 
 import AST.Statement.VariableDeclarationStatement;
+import AST.Symbol.Scope;
 import AST.Symbol.Type;
 
 import java.lang.*;
 
-public class ClassType extends Type {
+public class ClassType extends Type implements Scope {
 	private String className;
 	private FunctionTable memberFunction;
 	private VariableTable memberVariable;

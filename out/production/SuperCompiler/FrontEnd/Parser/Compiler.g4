@@ -40,7 +40,7 @@ expression  :   constant                                                        
 			|   '(' expression ')'                                              #subExpression
 			|   expression operator = ('++' | '--')                             #postfixExpression
 			|   expression '(' (expression (',' expression)*)? ')'              #functionCallExpression
-			|   expression '.' IDENTIFIER                                       #fieldExpression
+			|   expression '.' expression                                       #fieldExpression
 			|   'new' nonArrayType ('[' expression? ']' | '[]')+                #newExpression
 			|   expression '[' expression ']'                                   #arrayExpression
 			|   'this' '.' expression                                           #thisExpression

@@ -1,4 +1,6 @@
 package AST.Statement;
 
-public class ExpressionStatement {
+import AST.Symbol.Scope;
+
+public class ExpressionStatement extends Statement {
 }

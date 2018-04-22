@@ -2,5 +2,7 @@
 
 package AST.Statement;
 
-public class IterationStatement {
+import AST.Symbol.Scope;
+
+public class IterationStatement extends Statement {
 }

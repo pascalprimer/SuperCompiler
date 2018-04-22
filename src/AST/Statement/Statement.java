@@ -2,5 +2,5 @@ package AST.Statement;
 
 import AST.Symbol.Scope;
 
-public class ContinueStatement extends Statement {
+public abstract class Statement implements Scope {
 }

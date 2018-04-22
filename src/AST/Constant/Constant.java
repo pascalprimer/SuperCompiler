@@ -3,5 +3,9 @@ package AST.Constant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 
-public class Constant extends Expression {
+public abstract class Constant extends Expression {
+
+	public Constant(Type type) {
+		super("const", false, type);
+	}
 }

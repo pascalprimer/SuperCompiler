@@ -1,4 +1,6 @@
 package AST.Statement;
 
-public class VariableDeclarationStatement {
+import AST.Symbol.Scope;
+
+public class VariableDeclarationStatement extends Statement {
 }

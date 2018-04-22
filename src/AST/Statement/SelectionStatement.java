@@ -1,4 +1,6 @@
 package AST.Statement;
 
-public class SelectionStatement {
+import AST.Symbol.Scope;
+
+public class SelectionStatement extends Statement {
 }

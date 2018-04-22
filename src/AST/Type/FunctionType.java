@@ -1,13 +1,14 @@
 package AST.Type;
 
 import AST.Statement.BlockStatement;
+import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FunctionType extends Type {
+public class FunctionType extends Type implements Scope {
 	private Type returnType;
 	private String functionName;
 	private List<Symbol> parameterList;
@@ -41,6 +42,13 @@ public class FunctionType extends Type {
 
 	public String getName() {
 		return functionName;
+	}
+
+	public String getFullName() {
+		if (classScope == null) {
+			return functionName;
+		}
+		return classScope.getName() + "." + functionName;
 	}
 
 	@Override
