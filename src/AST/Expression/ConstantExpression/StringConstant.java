@@ -1,6 +1,5 @@
-package AST.Constant;
+package AST.Expression.ConstantExpression;
 
-import AST.Type.BoolType;
 import AST.Type.StringType;
 
 public class StringConstant extends Constant {

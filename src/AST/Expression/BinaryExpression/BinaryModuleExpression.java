@@ -1,13 +1,13 @@
 package AST.Expression.BinaryExpression;
 
-import AST.Constant.IntConstant;
+import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.IntType;
 import Utility.CompilerError;
 
-public class BinaryModuloExp extends BinaryExpression {
-	private BinaryModuloExp(Type type, Expression leftExp, Expression rightExp) {
+public class BinaryModuleExpression extends BinaryExpression {
+	private BinaryModuleExpression(Type type, Expression leftExp, Expression rightExp) {
 		super("%", type, leftExp, rightExp);
 	}
 
@@ -20,7 +20,7 @@ public class BinaryModuloExp extends BinaryExpression {
 				return new IntConstant(((IntConstant) leftExp).getValue() %
 						((IntConstant) rightExp).getValue());
 			}
-			return new BinaryModuloExp(IntType.getInstance(), leftExp, rightExp);
+			return new BinaryModuleExpression(IntType.getInstance(), leftExp, rightExp);
 		}
 		throw new CompilerError("Expressions cannot be divided");
 	}

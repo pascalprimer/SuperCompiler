@@ -1,8 +1,8 @@
 package AST.Expression.BinaryExpression;
 
-import AST.Constant.BoolConstant;
-import AST.Constant.IntConstant;
-import AST.Constant.StringConstant;
+import AST.Expression.ConstantExpression.BoolConstant;
+import AST.Expression.ConstantExpression.IntConstant;
+import AST.Expression.ConstantExpression.StringConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;

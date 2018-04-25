@@ -7,18 +7,39 @@ import Utility.CompilerError;
 public class ArrayType extends Type {
 
 	private Type arrayType;
-	private Expression subscript;
+	private int dimension;
 
-	public ArrayType(Type arrayType, Expression subscript) {
+	public ArrayType(Type arrayType, int dimension) {
 		this.arrayType = arrayType;
-		this.subscript = subscript;
-		if (subscript.returnType != IntType.getInstance()) {
-			throw new CompilerError("Subscript of array must be integers");
+		this.dimension = dimension;
+	}
+
+	public int getDimension() {
+		return dimension;
+	}
+
+	public Type getArrayType() {
+		return arrayType;
+	}
+
+	public Type prefixArray() {
+		if (dimension == 1) {
+			return arrayType;
+			//throw new CompilerError("1-dim array to reduce dim!!!???!!!\nWhether of importance");
 		}
+		return new ArrayType(arrayType, dimension - 1);
 	}
 
 	@Override
 	public boolean compatibleWith(Type obj) {
+		if (obj instanceof NullType) {
+			return true;
+		}
+		if (obj instanceof ArrayType
+				&& arrayType == ((ArrayType) obj).arrayType
+				&& dimension == ((ArrayType) obj).dimension) {
+			return true;
+		}
 		return false;
 	}
 }

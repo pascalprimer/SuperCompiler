@@ -13,7 +13,7 @@ public class VoidType extends Type {
 		return false;
 	}
 
-	public VoidType getInstance() {
+	public static VoidType getInstance() {
 		return instance;
 	}
 }

@@ -208,18 +208,6 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitXorExpression(CompilerParser.XorExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code newExpression}
-	 * labeled alternative in {@link CompilerParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterNewExpression(CompilerParser.NewExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code newExpression}
-	 * labeled alternative in {@link CompilerParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitNewExpression(CompilerParser.NewExpressionContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code assignExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
 	 * @param ctx the parse tree
@@ -231,6 +219,18 @@ public interface CompilerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignExpression(CompilerParser.AssignExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code identifierExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentifierExpression(CompilerParser.IdentifierExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code identifierExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentifierExpression(CompilerParser.IdentifierExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code multiplicativeExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
@@ -256,17 +256,17 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitLogicalOrExpression(CompilerParser.LogicalOrExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code variableExpression}
+	 * Enter a parse tree produced by the {@code newClassExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableExpression(CompilerParser.VariableExpressionContext ctx);
+	void enterNewClassExpression(CompilerParser.NewClassExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code variableExpression}
+	 * Exit a parse tree produced by the {@code newClassExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableExpression(CompilerParser.VariableExpressionContext ctx);
+	void exitNewClassExpression(CompilerParser.NewClassExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code orExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
@@ -316,18 +316,6 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitInequalityExpression(CompilerParser.InequalityExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code fieldExpression}
-	 * labeled alternative in {@link CompilerParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterFieldExpression(CompilerParser.FieldExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code fieldExpression}
-	 * labeled alternative in {@link CompilerParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitFieldExpression(CompilerParser.FieldExpressionContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code equalityExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
 	 * @param ctx the parse tree
@@ -352,6 +340,18 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitLogicalAndExpression(CompilerParser.LogicalAndExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code fieldExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFieldExpression(CompilerParser.FieldExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code fieldExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFieldExpression(CompilerParser.FieldExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code functionCallExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
 	 * @param ctx the parse tree
@@ -363,6 +363,18 @@ public interface CompilerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionCallExpression(CompilerParser.FunctionCallExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code newArrayExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNewArrayExpression(CompilerParser.NewArrayExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code newArrayExpression}
+	 * labeled alternative in {@link CompilerParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNewArrayExpression(CompilerParser.NewArrayExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code unaryExpression}
 	 * labeled alternative in {@link CompilerParser#expression}.
@@ -400,85 +412,77 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitPostfixExpression(CompilerParser.PostfixExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#type}.
+	 * Enter a parse tree produced by the {@code arrayType}
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void enterType(CompilerParser.TypeContext ctx);
+	void enterArrayType(CompilerParser.ArrayTypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#type}.
+	 * Exit a parse tree produced by the {@code arrayType}
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void exitType(CompilerParser.TypeContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code voidType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterVoidType(CompilerParser.VoidTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code voidType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitVoidType(CompilerParser.VoidTypeContext ctx);
+	void exitArrayType(CompilerParser.ArrayTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code intType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
 	void enterIntType(CompilerParser.IntTypeContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code intType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
 	void exitIntType(CompilerParser.IntTypeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code boolType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterBoolType(CompilerParser.BoolTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code boolType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitBoolType(CompilerParser.BoolTypeContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code stringType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
 	void enterStringType(CompilerParser.StringTypeContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code stringType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
 	void exitStringType(CompilerParser.StringTypeContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code voidType}
+	 * labeled alternative in {@link CompilerParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterVoidType(CompilerParser.VoidTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code voidType}
+	 * labeled alternative in {@link CompilerParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitVoidType(CompilerParser.VoidTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code boolType}
+	 * labeled alternative in {@link CompilerParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolType(CompilerParser.BoolTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code boolType}
+	 * labeled alternative in {@link CompilerParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolType(CompilerParser.BoolTypeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code classType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
 	void enterClassType(CompilerParser.ClassTypeContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code classType}
-	 * labeled alternative in {@link CompilerParser#nonArrayType}.
+	 * labeled alternative in {@link CompilerParser#type}.
 	 * @param ctx the parse tree
 	 */
 	void exitClassType(CompilerParser.ClassTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayType(CompilerParser.ArrayTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayType(CompilerParser.ArrayTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code boolConstant}
 	 * labeled alternative in {@link CompilerParser#constant}.

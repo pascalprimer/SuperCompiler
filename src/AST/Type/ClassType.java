@@ -3,16 +3,18 @@ package AST.Type;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.Scope;
 import AST.Symbol.Type;
+import Utility.CompilerError;
 
 import java.lang.*;
 
 public class ClassType extends Type implements Scope {
 	private String className;
 	private FunctionTable memberFunction;
-	private VariableTable memberVariable;
+	private VariableTable memberVariable;//'this' included
 	private FunctionType constructionFunction;
 
-	public ClassType() {
+	public ClassType(String name) {
+		className = name;
 		memberFunction = new FunctionTable();
 		memberVariable = new VariableTable();
 	}
@@ -21,19 +23,39 @@ public class ClassType extends Type implements Scope {
 		return className;
 	}
 
+	public VariableTable getMemberVariable() {
+		return memberVariable;
+	}
+
+	public FunctionTable getMemberFunction() {
+		return memberFunction;
+	}
+
+	public FunctionType getConstructionFunction() {
+		return constructionFunction;
+	}
+
 	public void addName(String className) {
 		this.className = className;
 	}
 
 	public void addFunction(FunctionType member) {
+		if (memberVariable.checkIn(member.getName())) {
+			throw new CompilerError("Member function and variable share the same name: "
+					+ member.getName());
+		}
 		this.memberFunction.addFunction(member);
 	}
 
-	public void addVariable(String name, VariableDeclarationStatement stat) {
-		this.memberVariable.addMember(name, stat);
+	public void addVariable(VariableDeclarationStatement stat) {
+		if (memberFunction.checkIn(stat.getSymbol().getName())) {
+			throw new CompilerError("Member function and variable share the same name: "
+					+ stat.getSymbol().getName());
+		}
+		this.memberVariable.addDeclaration(stat);
 	}
 
-	public void addConstruction(FunctionType constructionFunction) {
+	public void setConstructionFunction(FunctionType constructionFunction) {
 		this.constructionFunction = constructionFunction;
 	}
 

@@ -13,10 +13,22 @@ public class VariableTable {
 		variableTable = new HashMap<>();
 	}
 
-	public void addMember(String name, VariableDeclarationStatement vds) {
+	public void addDeclaration(VariableDeclarationStatement vds) {
+		String name = vds.getSymbol().getName();
 		if (variableTable.containsKey(name)) {
 			throw new CompilerError("identical variable names");
 		}
 		variableTable.put(name, vds);
+	}
+
+	public boolean checkIn(String variable) {
+		return variableTable.containsKey(variable);
+	}
+
+	public VariableDeclarationStatement getDeclaration(String variable) {
+		//if (variableTable.containsKey(variable)) {
+			return variableTable.get(variable);
+		//}
+		//throw new CompilerError("Member not exist in class");
 	}
 }

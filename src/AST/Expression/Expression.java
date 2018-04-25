@@ -17,6 +17,10 @@ public abstract class Expression {
 		return leftValue;
 	}
 
+	public String getOper() {
+		return oper;
+	}
+
 	/*public Type getReturnType() {
 		return returnType;
 	}*/

@@ -1,6 +1,6 @@
 package AST.Expression.BinaryExpression;
 
-import AST.Constant.*;
+import AST.Expression.ConstantExpression.*;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;

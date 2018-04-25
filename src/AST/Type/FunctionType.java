@@ -15,20 +15,25 @@ public class FunctionType extends Type implements Scope {
 	private ClassType classScope;
 	private BlockStatement body;
 
+	public FunctionType(String functionName) {
+		this.functionName = functionName;
+		this.parameterList = new ArrayList<>();
+	}
+
 	public FunctionType(Type returnType, String functionName,
-	                    ClassType classScope, BlockStatement body) {
+	                    ClassType classScope) {
 		this.returnType = returnType;
 		this.functionName = functionName;
-		parameterList = new ArrayList<Symbol>();
+		parameterList = new ArrayList<>();
 		this.classScope = classScope;
-		this.body = body;
+		this.body = null;
 	}
 
-	public void addReturnType(Type returnType) {
+	public void setReturnType(Type returnType) {
 		this.returnType = returnType;
 	}
 
-	public void addName(String functionName) {
+	public void setName(String functionName) {
 		this.functionName = functionName;
 	}
 
@@ -36,19 +41,50 @@ public class FunctionType extends Type implements Scope {
 		this.parameterList.add(obj);
 	}
 
-	public void addClassScope(ClassType classScope) {
+	public void addParameter(int idx, Symbol obj) {
+		this.parameterList.add(idx, obj);
+	}
+
+	public void setParameterList(List<Symbol> parameterList) {
+		this.parameterList = parameterList;
+	}
+
+	public void setClassScope(ClassType classScope) {
 		this.classScope = classScope;
 	}
 
+	public void setBody(BlockStatement body) {
+		this.body = body;
+	}
+
+	public Type getReturnType() {
+		return returnType;
+	}
+
+	public ClassType getClassScope() {
+		return classScope;
+	}
+
+	public List<Symbol> getParameterList() {
+		return parameterList;
+	}
+
+	public BlockStatement getBody() {
+		return body;
+	}
+
 	public String getName() {
+		if (functionName == null) {
+			return "";
+		}
 		return functionName;
 	}
 
 	public String getFullName() {
 		if (classScope == null) {
-			return functionName;
+			return getName();
 		}
-		return classScope.getName() + "." + functionName;
+		return classScope.getName() + "." + getName();
 	}
 
 	@Override

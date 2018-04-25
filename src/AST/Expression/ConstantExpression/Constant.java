@@ -1,4 +1,4 @@
-package AST.Constant;
+package AST.Expression.ConstantExpression;
 
 import AST.Expression.Expression;
 import AST.Symbol.Type;

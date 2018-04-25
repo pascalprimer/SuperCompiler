@@ -1,9 +1,8 @@
 package AST.Expression.UnaryExpression;
 
-import AST.Constant.BoolConstant;
+import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
-import AST.Type.IntType;
 import Utility.CompilerError;
 
 public class UnaryNotExpression extends UnaryExpression {

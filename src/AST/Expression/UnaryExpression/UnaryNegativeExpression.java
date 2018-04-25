@@ -1,6 +1,6 @@
 package AST.Expression.UnaryExpression;
 
-import AST.Constant.IntConstant;
+import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.IntType;
 import Utility.CompilerError;

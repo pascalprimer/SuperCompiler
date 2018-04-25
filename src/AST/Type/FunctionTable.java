@@ -21,4 +21,16 @@ public class FunctionTable {
 	public boolean checkIn(String name) {
 		return functionTable.containsKey(name);
 	}
+
+	public Map<String, FunctionType> getFunctionTable() {
+		return functionTable;
+	}
+
+	public FunctionType getFunctionType(String name) {
+		//if (functionTable.containsKey(name)) {
+		return functionTable.get(name);
+		//} else {
+		//	throw new CompilerError("Function not found");
+		//}
+	}
 }

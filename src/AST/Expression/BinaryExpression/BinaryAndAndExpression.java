@@ -1,11 +1,9 @@
 package AST.Expression.BinaryExpression;
 
-import AST.Constant.BoolConstant;
-import AST.Constant.IntConstant;
+import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
-import AST.Type.IntType;
 import Utility.CompilerError;
 
 public class BinaryAndAndExpression extends BinaryExpression {

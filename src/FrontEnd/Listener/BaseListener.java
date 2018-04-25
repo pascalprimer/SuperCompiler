@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 public class BaseListener extends CompilerBaseListener {
 	public static int row, column;
-	public ParseTreeProperty<Object> returnValue = new ParseTreeProperty();
+	public ParseTreeProperty<Object> nodes = new ParseTreeProperty();
 
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {

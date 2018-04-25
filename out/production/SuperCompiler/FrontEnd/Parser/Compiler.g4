@@ -22,9 +22,9 @@ blockStatement  :   '{' statement* '}';
 
 expressionStatement :   expression? ';';
 
-selectionStatement  :   'if' '(' statement ')' statement ('else' statement)?;
+selectionStatement  :   'if' '(' expression ')' statement ('else' statement)?;
 
-iterationStatement  :   'while' '(' statement ')' statement #whileStatement
+iterationStatement  :   'while' '(' expression ')' statement #whileStatement
 					|   'for' '(' expression? ';' expression? ';' expression? ')'
 							statement   #forStatement
 					;
@@ -32,18 +32,19 @@ iterationStatement  :   'while' '(' statement ')' statement #whileStatement
 
 jumpStatement   :   'continue' ';'  #continueStatement
                 |   'break' ';'     #breakStatement
-                |   'return' ';'    #returnStatement
+                |   'return' expression ';'    #returnStatement
                 ;
 
 expression  :   constant                                                        #constantExpression
-			|   IDENTIFIER                                                      #variableExpression
+			|   IDENTIFIER                                                      #identifierExpression
 			|   '(' expression ')'                                              #subExpression
-			|   expression operator = ('++' | '--')                             #postfixExpression
 			|   expression '(' (expression (',' expression)*)? ')'              #functionCallExpression
-			|   expression '.' expression                                       #fieldExpression
-			|   'new' nonArrayType ('[' expression? ']' | '[]')+                #newExpression
+			|   expression '.' IDENTIFIER                                       #fieldExpression
+			|   'new' type ('[' expression? ']')+                               #newArrayExpression
+			|   'new' type                                                      #newClassExpression
 			|   expression '[' expression ']'                                   #arrayExpression
 			|   'this' '.' expression                                           #thisExpression
+			|   expression operator = ('++' | '--')                             #postfixExpression
 			|   operator = ('+' | '-' | '~' | '!' | '++' | '--') expression     #unaryExpression
 			|   expression operator = ('*' | '/' | '%') expression              #multiplicativeExpression
 			|   expression operator = ('+' | '-') expression                    #additiveExpression
@@ -58,16 +59,24 @@ expression  :   constant                                                        
 			|   <assoc = right> expression '=' expression                       #assignExpression
 			;
 
-type    :   nonArrayType | arrayType;
+//type    :   nonArrayType | arrayType;
+//
+//nonArrayType    :   'void'      #voidType
+//				|	'int'       #intType
+//				|	'bool'      #boolType
+//				|	'string'    #stringType
+//				|	IDENTIFIER  #classType
+//				;
+//
+//arrayType   :   nonArrayType ('['']' | '[]') | arrayType ('['']' | '[]');
 
-nonArrayType    :   'void'      #voidType
-				|	'int'       #intType
-				|	'bool'      #boolType
-				|	'string'    #stringType
-				|	IDENTIFIER  #classType
-				;
-
-arrayType   :   nonArrayType ('['']' | '[]') | arrayType ('['']' | '[]');
+type:   'void'                  #voidType
+    |	'int'                   #intType
+    |	'bool'                  #boolType
+    |	'string'                #stringType
+    |	IDENTIFIER              #classType
+    |   type('['']')            #arrayType
+    ;
 
 constant    :   ('true'| 'false')   #boolConstant
 			|	INTEGER	            #intConstant

@@ -1,10 +1,9 @@
 package AST.Expression.BinaryExpression;
 
-import AST.Constant.*;
+import AST.Expression.ConstantExpression.*;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
-import AST.Type.IntType;
 import Utility.CompilerError;
 
 public class BinaryEqualExpression extends BinaryExpression {

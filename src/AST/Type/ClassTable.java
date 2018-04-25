@@ -11,14 +11,21 @@ public class ClassTable {
 		classTable = new HashMap<>();
 	}
 
-	public void addClass(ClassType obj) {
-		if (classTable.containsKey(obj.getName())) {
+	public void addClass(String name, ClassType obj) {
+		if (classTable.containsKey(name)) {
 			throw new CompilerError("identical class names");
 		}
-		classTable.put(obj.getName(), obj);
+		classTable.put(name, obj);
 	}
 
 	public boolean checkIn(String name) {
 		return classTable.containsKey(name);
+	}
+
+	public ClassType getClass(String name) {
+		if (classTable.containsKey(name)) {
+			return classTable.get(name);
+		}
+		throw new CompilerError("No class called " + name);
 	}
 }
