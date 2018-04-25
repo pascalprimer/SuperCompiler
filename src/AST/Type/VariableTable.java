@@ -13,6 +13,10 @@ public class VariableTable {
 		variableTable = new HashMap<>();
 	}
 
+	public void addSymbolDeclaration(String name, VariableDeclarationStatement vds) {
+		variableTable.put(name, vds);
+	}
+
 	public void addDeclaration(VariableDeclarationStatement vds) {
 		String name = vds.getSymbol().getName();
 		if (variableTable.containsKey(name)) {

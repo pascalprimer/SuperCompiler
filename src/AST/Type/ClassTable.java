@@ -28,4 +28,13 @@ public class ClassTable {
 		}
 		throw new CompilerError("No class called " + name);
 	}
+
+	public String toString() {
+		String str = "classTable:";
+		for (Map.Entry<String, ClassType> u: classTable.entrySet()) {
+			str = str.concat(" ").concat(u.getValue().toString());
+		}
+		return str;
+	}
+
 }

@@ -20,16 +20,17 @@ public class AST {
 	public static void init() {
 		classTable = new ClassTable();
 		globalFunctionTable = new FunctionTable();
+		symbolTable = new SymbolTable();
 		//loading basic functions
-		loadPrint();
-		loadPrintln();
-		loadGetString();
-		loadGetInt();
-		loadToString();
-		load__Length__();
-		load__SubString__();
-		load__ParseInt__();
-		load__Ord__();
+//		loadPrint();
+//		loadPrintln();
+//		loadGetString();
+//		loadGetInt();
+//		loadToString();
+//		load__Length__();
+//		load__SubString__();
+//		load__ParseInt__();
+//		load__Ord__();
 	}
 
 	public static void loadGlobalFunction() {

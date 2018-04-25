@@ -31,6 +31,11 @@ public class ArrayType extends Type {
 	}
 
 	@Override
+	public String toString() {
+		return arrayType.toString() + "[] * " + String.valueOf(dimension);
+	}
+
+	@Override
 	public boolean compatibleWith(Type obj) {
 		if (obj instanceof NullType) {
 			return true;

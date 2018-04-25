@@ -30,4 +30,8 @@ public class Symbol {
 	public void setBuilt() {
 		built = true;
 	}
+
+	public String toString() {
+		return "Symbol(" + name + type.toString() + ")";
+	}
 }

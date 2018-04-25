@@ -16,4 +16,9 @@ public class StringType extends Type {
 	public static StringType getInstance() {
 		return instance;
 	}
+
+	@Override
+	public String toString() {
+		return "string";
+	}
 }

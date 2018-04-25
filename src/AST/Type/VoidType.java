@@ -16,4 +16,9 @@ public class VoidType extends Type {
 	public static VoidType getInstance() {
 		return instance;
 	}
+
+	@Override
+	public String toString() {
+		return "void";
+	}
 }

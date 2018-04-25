@@ -47,6 +47,10 @@ public class ClassType extends Type implements Scope {
 		this.memberFunction.addFunction(member);
 	}
 
+	public void addSymbolVariable(VariableDeclarationStatement stat) {
+		this.memberVariable.addSymbolDeclaration(stat.getSymbol().getName(), stat);
+	}
+
 	public void addVariable(VariableDeclarationStatement stat) {
 		if (memberFunction.checkIn(stat.getSymbol().getName())) {
 			throw new CompilerError("Member function and variable share the same name: "
@@ -62,5 +66,13 @@ public class ClassType extends Type implements Scope {
 	@Override
 	public boolean compatibleWith(Type obj) {
 		return this == obj;
+	}
+
+	@Override
+	public String toString() {
+		return "class(" + className + ")" +
+				memberFunction.toString() +
+				constructionFunction.toString() +
+				memberVariable.toString();
 	}
 }

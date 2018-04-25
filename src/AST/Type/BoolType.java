@@ -15,4 +15,9 @@ public class BoolType extends Type {
 	public static BoolType getInstance() {
 		return instance;
 	}
+
+	@Override
+	public String toString() {
+		return "bool";
+	}
 }

@@ -58,11 +58,15 @@ public class SymbolTable {
 //	}
 
 	public void addFunction(FunctionType functionType) {
+		System.out.println("add a function");
 		Symbol symbol = new Symbol(
 				functionType.getName(), functionType,
 				functionType.getClassScope(), false, false
 		);
 		Map<String, Symbol> temporaryMap = temporarySymbol.get(topNumber.intValue() - 1);
+		for (Map.Entry u: temporaryMap.entrySet()) {
+			System.out.println("map entry: " + u.getKey() + " " + u.getValue());
+		}
 		if (temporaryMap.containsKey(functionType.getName())) {
 			throw new CompilerError("Symbol already exists: " + functionType.getName());
 		}
@@ -77,6 +81,7 @@ public class SymbolTable {
 	}
 
 	public void addSymbol(Symbol symbol) {
+		System.out.println(symbol.toString() + " Symbol added!!!");
 		Map<String, Symbol> temporaryMap = temporarySymbol.get(topNumber.intValue() - 1);
 		if (temporaryMap.containsKey(symbol.getName())) {
 			throw new CompilerError("Symbol already exists: " + symbol.getName());

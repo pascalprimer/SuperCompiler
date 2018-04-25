@@ -1,5 +1,6 @@
 package AST.Type;
 
+import AST.Expression.Expression;
 import AST.Statement.BlockStatement;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
@@ -90,5 +91,29 @@ public class FunctionType extends Type implements Scope {
 	@Override
 	public boolean compatibleWith(Type obj) {
 		return this == obj;
+	}
+
+	@Override
+	public String toString() {
+		String str;
+		if (functionName != null) {
+			str = new String(functionName);
+		} else {
+			str = "";
+		}
+		str = str + "(";
+		str = str + "return: " + returnType.toString();
+		if (classScope == null) {
+			str = str + "; global func! ";
+		} else {
+			str = str + "; classScope: " + classScope.getName();
+		}
+		//return str;
+		str = str + "; para:";
+		for (Symbol u: parameterList) {
+			str = str + " " + u.toString();
+		}
+		str = str + ")";
+		return str;
 	}
 }

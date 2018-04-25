@@ -25,9 +25,15 @@ import java.util.List;
 
 public class StatementListener extends BaseListener {
 
+	public void print(String string) {
+		System.err.println(string);
+	}
+
 	@Override
 	public void enterProgram(CompilerParser.ProgramContext ctx) {
-		AST.loadGlobalFunction();
+		//print("enterProgram");
+		//AST.loadGlobalFunction();
+		//print("enterProgram successfully");
 	}
 
 	@Override
@@ -36,13 +42,14 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void enterClassDeclaration(CompilerParser.ClassDeclarationContext ctx) {
+
 		ClassType classType = (ClassType) nodes.get(ctx);
 		AST.symbolTable.enterScope(classType);
-		//classType.addVariable();
 		//AST.symbolTable.addThis();
 		Symbol symbol = new Symbol(
 				"this", classType, classType, false, false
 		);
+		//System.out.println("我要加symbol " + symbol.toString());
 		AST.symbolTable.addSymbol(symbol);
 		if (ctx.variableDeclarationStatement().size() == 0) {
 			return;
@@ -67,15 +74,18 @@ public class StatementListener extends BaseListener {
 		for (ParseTree u: ctx.variableDeclarationStatement()) {
 			VariableDeclarationStatement variableDeclarationStatement
 					= (VariableDeclarationStatement)nodes.get(u);
-			classType.addVariable(variableDeclarationStatement);
+			classType.addSymbolVariable(variableDeclarationStatement);
 		}
 		AST.symbolTable.exitScope();
 	}
 
 	@Override
 	public void enterFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
+		//System.out.println("now ok");
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
+		//System.out.println("now ok");
 		AST.symbolTable.enterScope(functionType);
+		//System.out.println("now ok");
 	}
 
 	@Override

@@ -36,11 +36,13 @@ public class Main {
 		} catch (CompilerError compilerError) {
 			System.out.println(compilerError.getMessage());
 			System.exit(1);
+			return;
 		}
+		System.out.println("okokok Gogogo!!!");
 	}
 
 	public static void main(String[] args) throws Exception{
-		File file = new File("./Test/program");
+		File file = new File("program.txt");
 		InputStream fin = new FileInputStream(file);
 		buildAST(fin);
 	}

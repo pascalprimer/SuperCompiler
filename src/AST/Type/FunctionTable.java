@@ -12,6 +12,7 @@ public class FunctionTable {
 	}
 
 	public void addFunction(FunctionType obj) {
+System.out.println(obj.toString());
 		if (functionTable.containsKey(obj.getName())) {
 			throw new CompilerError("identical function names");
 		}
@@ -32,5 +33,13 @@ public class FunctionTable {
 		//} else {
 		//	throw new CompilerError("Function not found");
 		//}
+	}
+
+	public String toString() {
+		String str = "funcTable:";
+		for (Map.Entry<String, FunctionType> u: functionTable.entrySet()) {
+			str = str.concat(" ").concat(u.getValue().toString());
+		}
+		return str;
 	}
 }

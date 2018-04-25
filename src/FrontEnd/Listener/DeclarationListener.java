@@ -1,6 +1,7 @@
 package FrontEnd.Listener;
 
 import AST.AST;
+import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.GlobalScope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
@@ -11,6 +12,10 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 //second
 public class DeclarationListener extends BaseListener {
+
+	public void print(String string) {
+		System.err.println(string);
+	}
 
 	@Override
 	public void enterProgram(CompilerParser.ProgramContext ctx) {
@@ -53,14 +58,25 @@ public class DeclarationListener extends BaseListener {
 			if (memberFunction.getName() == null) {
 				classType.setConstructionFunction(memberFunction);
 			} else {
+				//System.out.println("adsfafdf");
 				classType.addFunction(memberFunction);
 			}
 		}
-		/*for (ParseTree u: ctx.variableDeclarationStatement()) {
+		for (ParseTree u: ctx.variableDeclarationStatement()) {
+			CompilerParser.VariableDeclarationStatementContext tmp
+					= (CompilerParser.VariableDeclarationStatementContext) u;
 			VariableDeclarationStatement variableDeclarationStatement
-					= (VariableDeclarationStatement)nodes.get(u);
+					= new VariableDeclarationStatement(
+							new Symbol(
+									tmp.IDENTIFIER().getText(),
+									(Type) nodes.get(tmp.type()),
+									classType,
+									false,
+									false
+							)
+			);
 			classType.addVariable(variableDeclarationStatement);
-		}*/
+		}
 		AST.symbolTable.exitScope();
 	}
 
@@ -75,7 +91,7 @@ public class DeclarationListener extends BaseListener {
 		if (AST.symbolTable.getScope() instanceof ClassType) {
 			functionType.setClassScope((ClassType) AST.symbolTable.getScope());
 		}
-		AST.symbolTable.enterScope(functionType);
+		//AST.symbolTable.enterScope(functionType);
 		nodes.put(ctx, functionType);
 	}
 
@@ -105,10 +121,11 @@ public class DeclarationListener extends BaseListener {
 					)
 			);
 		}
-		if (functionType.getClassScope() == null) {
-			AST.globalFunctionTable.addFunction(functionType);
-		}
-		AST.symbolTable.exitScope();
+//		if (functionType.getClassScope() == null) {
+//			System.out.println("DecListener add function called: " + functionType.toString());
+//			AST.globalFunctionTable.addFunction(functionType);
+//		}
+		//AST.symbolTable.exitScope();
 	}
 
 	@Override

@@ -8,6 +8,10 @@ import FrontEnd.Parser.CompilerParser;
 //first
 public class ClassListener extends BaseListener {
 
+	public void print(String string) {
+		System.err.println(string);
+	}
+
 	@Override
 	public void enterClassDeclaration(CompilerParser.ClassDeclarationContext ctx) {
 		String name = ctx.IDENTIFIER().getText();

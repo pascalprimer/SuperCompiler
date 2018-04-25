@@ -16,4 +16,9 @@ public class NullType extends Type {
 	public static NullType getInstance() {
 		return instance;
 	}
+
+	@Override
+	public String toString() {
+		return "null";
+	}
 }
