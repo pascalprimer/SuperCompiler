@@ -37,8 +37,8 @@ public class CompilerParser extends Parser {
 		null, "'class'", "'{'", "'}'", "'('", "','", "')'", "'='", "';'", "'if'", 
 		"'else'", "'while'", "'for'", "'continue'", "'break'", "'return'", "'.'", 
 		"'new'", "'['", "']'", "'this'", "'++'", "'--'", "'+'", "'-'", "'~'", 
-		"'!'", "'*'", "'/'", "'%'", "'=='", "'!='", "'<'", "'<='", "'>'", "'>='", 
-		"'<<'", "'>>'", "'&'", "'|'", "'^'", "'&&'", "'||'", "'void'", "'int'", 
+		"'!'", "'*'", "'/'", "'%'", "'=='", "'!='", "'<<'", "'>>'", "'<'", "'<='", 
+		"'>'", "'>='", "'&'", "'|'", "'^'", "'&&'", "'||'", "'void'", "'int'", 
 		"'bool'", "'string'", "'true'", "'false'", "'null'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
@@ -1530,15 +1530,15 @@ public class CompilerParser extends Parser {
 						break;
 					case 4:
 						{
-						_localctx = new InequalityExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new ShiftExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(177);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
 						setState(178);
-						((InequalityExpressionContext)_localctx).operator = _input.LT(1);
+						((ShiftExpressionContext)_localctx).operator = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << T__34))) != 0)) ) {
-							((InequalityExpressionContext)_localctx).operator = (Token)_errHandler.recoverInline(this);
+						if ( !(_la==T__31 || _la==T__32) ) {
+							((ShiftExpressionContext)_localctx).operator = (Token)_errHandler.recoverInline(this);
 						}
 						else {
 							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
@@ -1551,15 +1551,15 @@ public class CompilerParser extends Parser {
 						break;
 					case 5:
 						{
-						_localctx = new ShiftExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new InequalityExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(180);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 						setState(181);
-						((ShiftExpressionContext)_localctx).operator = _input.LT(1);
+						((InequalityExpressionContext)_localctx).operator = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(_la==T__35 || _la==T__36) ) {
-							((ShiftExpressionContext)_localctx).operator = (Token)_errHandler.recoverInline(this);
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__33) | (1L << T__34) | (1L << T__35) | (1L << T__36))) != 0)) ) {
+							((InequalityExpressionContext)_localctx).operator = (Token)_errHandler.recoverInline(this);
 						}
 						else {
 							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
@@ -2127,7 +2127,7 @@ public class CompilerParser extends Parser {
 		"\3\f\3\f\3\f\3\f\3\f\7\f\u00e3\n\f\f\f\16\f\u00e6\13\f\3\r\3\r\3\r\3\r"+
 		"\3\r\3\r\5\r\u00ee\n\r\3\r\3\r\3\r\7\r\u00f3\n\r\f\r\16\r\u00f6\13\r\3"+
 		"\16\3\16\3\16\3\16\5\16\u00fc\n\16\3\16\2\4\26\30\17\2\4\6\b\n\f\16\20"+
-		"\22\24\26\30\32\2\n\3\2\27\34\3\2\35\37\3\2\31\32\3\2 !\3\2\"%\3\2&\'"+
+		"\22\24\26\30\32\2\n\3\2\27\34\3\2\35\37\3\2\31\32\3\2 !\3\2\"#\3\2$\'"+
 		"\3\2\27\30\3\2\61\62\2\u012a\2\37\3\2\2\2\4#\3\2\2\2\6/\3\2\2\2\bD\3\2"+
 		"\2\2\nR\3\2\2\2\fT\3\2\2\2\16^\3\2\2\2\20b\3\2\2\2\22\u0080\3\2\2\2\24"+
 		"\u008b\3\2\2\2\26\u00a8\3\2\2\2\30\u00ed\3\2\2\2\32\u00fb\3\2\2\2\34 "+

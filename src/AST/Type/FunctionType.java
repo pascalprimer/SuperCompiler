@@ -15,10 +15,12 @@ public class FunctionType extends Type implements Scope {
 	private List<Symbol> parameterList;
 	private ClassType classScope;
 	private BlockStatement body;
+	private boolean isConstruction;
 
 	public FunctionType(String functionName) {
 		this.functionName = functionName;
 		this.parameterList = new ArrayList<>();
+		isConstruction = false;
 	}
 
 	public FunctionType(Type returnType, String functionName,
@@ -28,6 +30,11 @@ public class FunctionType extends Type implements Scope {
 		parameterList = new ArrayList<>();
 		this.classScope = classScope;
 		this.body = null;
+	}
+
+	public void setConstruction() {
+		isConstruction = true;
+		returnType = VoidType.getInstance();
 	}
 
 	public void setReturnType(Type returnType) {
@@ -62,6 +69,10 @@ public class FunctionType extends Type implements Scope {
 		return returnType;
 	}
 
+	public boolean isConstruction() {
+		return isConstruction;
+	}
+
 	public ClassType getClassScope() {
 		return classScope;
 	}
@@ -76,7 +87,7 @@ public class FunctionType extends Type implements Scope {
 
 	public String getName() {
 		if (functionName == null) {
-			return "NoName()";
+			return "";
 		}
 		return new String(functionName);
 	}

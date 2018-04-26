@@ -49,8 +49,8 @@ expression  :   constant                                                        
 			|   expression operator = ('*' | '/' | '%') expression              #multiplicativeExpression
 			|   expression operator = ('+' | '-') expression                    #additiveExpression
 			|   expression operator = ('==' | '!=') expression                  #equalityExpression
-			|   expression operator = ('<' | '<=' | '>' | '>=') expression      #inequalityExpression
 			|   expression operator = ('<<' | '>>') expression                  #shiftExpression
+			|   expression operator = ('<' | '<=' | '>' | '>=') expression      #inequalityExpression
 			|   expression '&' expression                                       #andExpression
 			|   expression '|' expression                                       #orExpression
 			|   expression '^' expression                                       #xorExpression

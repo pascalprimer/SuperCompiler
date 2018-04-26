@@ -1,8 +1,24 @@
-int[] f() {
-    return new int[20];
+A get() { return new A; } // this is valid
+
+class A {
+    A() {
+        return get(); // cannot return any value in a constructor
+    }
 }
 
-int main() {
-    f() = new int[16];
-}
+int main() { return 0; }
 
+
+
+/*!! metadata:
+=== comment ===
+test return in constructor
+class-7-515030910117-zhenglianmin.mx
+=== assert ===
+failure_compile
+=== phase ===
+semantic extended
+=== is_public ===
+True
+
+!!*/

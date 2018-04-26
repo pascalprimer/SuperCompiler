@@ -55,7 +55,7 @@ public class StatementListener extends BaseListener {
 
 		for (ParseTree u: ctx.functionDeclaration()) {
 			FunctionType memberFunction = (FunctionType) nodes.get(u);
-			if (memberFunction.getName() == null) {
+			if (memberFunction.getName().length() == 0) {
 				//classType.setConstructionFunction(memberFunction);
 			} else {
 				//System.out.println("adsfafdf");
@@ -114,6 +114,7 @@ public class StatementListener extends BaseListener {
 	@Override
 	public void enterFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
 		//System.out.println("now ok");
+		print(ctx.getText());
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
 		//System.out.println("now ok");
 		AST.symbolTable.enterScope(functionType);
@@ -138,6 +139,7 @@ public class StatementListener extends BaseListener {
 			AST.symbolTable.addSymbol(symbol);
 		}
 		//System.out.println("now ok");
+		print(ctx.getText());
 	}
 
 	@Override
@@ -272,6 +274,7 @@ public class StatementListener extends BaseListener {
 	@Override
 	public void exitReturnStatement(CompilerParser.ReturnStatementContext ctx) {
 
+		print(ctx.getText());
 		ReturnStatement returnStatement;
 		if (ctx.expression() != null) {
 			returnStatement = new ReturnStatement(

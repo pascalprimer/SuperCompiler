@@ -55,7 +55,12 @@ public class DeclarationListener extends BaseListener {
 
 		for (ParseTree u: ctx.functionDeclaration()) {
 			FunctionType memberFunction = (FunctionType) nodes.get(u);
-			if (memberFunction.getName() == null) {
+			//print(memberFunction.getName());
+			if (memberFunction.getName().length() == 0) {
+				//print(classType.getName() + " " + memberFunction.getFullName());
+				if (classType != memberFunction.getClassScope()) {
+					throw new CompilerError("Not the construction");
+				}
 				classType.setConstructionFunction(memberFunction);
 			} else {
 				classType.addFunction(memberFunction);
@@ -96,7 +101,11 @@ public class DeclarationListener extends BaseListener {
 	@Override
 	public void exitFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
-		functionType.setReturnType((Type) nodes.get(ctx.type(0)));
+		if (ctx.IDENTIFIER().size() < ctx.type().size()) {
+			functionType.setConstruction();
+		} else {
+			functionType.setReturnType((Type) nodes.get(ctx.type(0)));
+		}
 		int delta = 0;
 		if (functionType.getName().length() == 0) {
 			delta = 1;

@@ -16,9 +16,9 @@ public class FunctionTable {
 		if (functionTable.containsKey(obj.getName())) {
 			throw new CompilerError("identical function names");
 		}
-		System.out.println("fcasdfasdf: ->  " + obj.getName());
+		//System.out.println("fcasdfasdf: ->  " + obj.getName());
 		functionTable.put(obj.getName(), obj);
-		System.out.println(obj.toString());
+		//System.out.println(obj.toString());
 	}
 
 	public boolean checkIn(String name) {
