@@ -458,11 +458,16 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitThisExpression(CompilerParser.ThisExpressionContext ctx) {
-		Expression identifierExpression = IdentifierExpression.getExpression("this");
-		Expression fieldExpression = FieldExpression.getExpression(
-				identifierExpression, ctx.IDENTIFIER().getText()
-		);
-		nodes.put(ctx, fieldExpression);
+		Expression expression;
+		if (ctx.children.size() > 2) {
+			Expression identifierExpression = IdentifierExpression.getExpression("this");
+			expression = FieldExpression.getExpression(
+					identifierExpression, ctx.IDENTIFIER().getText()
+			);
+		} else {
+			expression = IdentifierExpression.getExpression("this");
+		}
+		nodes.put(ctx, expression);
 	}
 
 	@Override

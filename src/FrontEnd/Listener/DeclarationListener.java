@@ -2,15 +2,12 @@ package FrontEnd.Listener;
 
 import AST.AST;
 import AST.Statement.VariableDeclarationStatement;
-import AST.Symbol.GlobalScope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
 import AST.Type.*;
 import FrontEnd.Parser.CompilerParser;
 import Utility.CompilerError;
 import org.antlr.v4.runtime.tree.ParseTree;
-
-import java.util.Map;
 
 //second
 public class DeclarationListener extends BaseListener {

@@ -43,7 +43,7 @@ expression  :   constant                                                        
 			|   'new' type ('[' expression? ']')+                               #newArrayExpression
 			|   'new' type                                                      #newClassExpression
 			|   expression '[' expression ']'                                   #arrayExpression
-			|   'this' '.' IDENTIFIER                                           #thisExpression
+			|   'this' ('.' IDENTIFIER)?                                        #thisExpression
 			|   expression operator = ('++' | '--')                             #postfixExpression
 			|   operator = ('+' | '-' | '~' | '!' | '++' | '--') expression     #unaryExpression
 			|   expression operator = ('*' | '/' | '%') expression              #multiplicativeExpression
