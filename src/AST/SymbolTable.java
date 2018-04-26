@@ -58,15 +58,15 @@ public class SymbolTable {
 //	}
 
 	public void addFunction(FunctionType functionType) {
-		System.err.println("add a function");
+		//System.err.println("add a function");
 		Symbol symbol = new Symbol(
 				functionType.getName(), functionType,
 				functionType.getClassScope(), false, false
 		);
 		Map<String, Symbol> temporaryMap = temporarySymbol.get(topNumber.intValue() - 1);
-		for (Map.Entry u: temporaryMap.entrySet()) {
+		/*for (Map.Entry u: temporaryMap.entrySet()) {
 			System.err.println("map entry: " + u.getKey() + " " + u.getValue());
-		}
+		}*/
 		if (temporaryMap.containsKey(functionType.getName())) {
 			throw new CompilerError("Symbol already exists: " + functionType.getName());
 		}
@@ -81,7 +81,7 @@ public class SymbolTable {
 	}
 
 	public void addSymbol(Symbol symbol) {
-		System.err.println(symbol.toString() + " Symbol added!!!");
+		//System.err.println(symbol.toString() + " Symbol added!!!");
 		Map<String, Symbol> temporaryMap = temporarySymbol.get(topNumber.intValue() - 1);
 		if (temporaryMap.containsKey(symbol.getName())) {
 			throw new CompilerError("Symbol already exists: " + symbol.getName());
@@ -106,7 +106,7 @@ public class SymbolTable {
 		int now = temporarySymbol.size();
 		Map<String, Symbol> topMap = temporarySymbol.get(now - 1);
 		for (Map.Entry<String, Symbol> entry: topMap.entrySet()) {
-System.err.println(symbolWhere.get(entry.getKey()) == null);
+//System.err.println(symbolWhere.get(entry.getKey()) == null);
 			symbolWhere.get(entry.getKey()).pop();
 		}
 		temporarySymbol.remove(now - 1);
@@ -119,7 +119,7 @@ System.err.println(symbolWhere.get(entry.getKey()) == null);
 	}
 
 	public Symbol getSymbol(String name) {
-		if (!symbolWhere.containsKey(name)) {
+		if (!symbolWhere.containsKey(name) || symbolWhere.get(name).size() == 0) {
 			throw new CompilerError("No symbol called " + name);
 		}
 		return symbolWhere.get(name).peek().getValue();

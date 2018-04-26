@@ -1,5 +1,6 @@
 package AST;
 
+import AST.Symbol.GlobalScope;
 import AST.Symbol.Symbol;
 import AST.Type.*;
 
@@ -21,16 +22,18 @@ public class AST {
 		classTable = new ClassTable();
 		globalFunctionTable = new FunctionTable();
 		symbolTable = new SymbolTable();
+		AST.symbolTable.enterScope(new GlobalScope());
 		//loading basic functions
 //		loadPrint();
 //		loadPrintln();
 //		loadGetString();
 //		loadGetInt();
 //		loadToString();
-//		load__Length__();
+		load__Length__();
 //		load__SubString__();
 //		load__ParseInt__();
 //		load__Ord__();
+		//loadGlobalFunction();
 	}
 
 	public static void loadGlobalFunction() {
@@ -45,6 +48,7 @@ public class AST {
 		func.addParameter(new Symbol("str", StringType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void loadPrintln() {
@@ -53,18 +57,21 @@ public class AST {
 		func.addParameter(new Symbol("str", StringType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void loadGetString() {
 		FunctionType func = new FunctionType(StringType.getInstance(),
 				"getString", null);
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void loadGetInt() {
 		FunctionType func = new FunctionType(IntType.getInstance(),
 				"getInt", null);
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void loadToString() {
@@ -73,6 +80,7 @@ public class AST {
 		func.addParameter(new Symbol("i", IntType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void load__Length__() {
@@ -81,6 +89,7 @@ public class AST {
 		func.addParameter(new Symbol("str", StringType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void load__SubString__() {
@@ -93,6 +102,7 @@ public class AST {
 		func.addParameter(new Symbol("right", IntType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void load__ParseInt__() {
@@ -101,6 +111,7 @@ public class AST {
 		func.addParameter(new Symbol("str", StringType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void load__Ord__() {
@@ -111,6 +122,7 @@ public class AST {
 		func.addParameter(new Symbol("pos", IntType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 	public static void load__Size__() {
@@ -119,6 +131,7 @@ public class AST {
 		func.addParameter(new Symbol("array", NullType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);
+		symbolTable.addFunction(func);
 	}
 
 }

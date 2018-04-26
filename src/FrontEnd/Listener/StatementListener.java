@@ -217,6 +217,18 @@ public class StatementListener extends BaseListener {
 	}
 
 	@Override
+	public void enterReturnStatement(CompilerParser.ReturnStatementContext ctx) {
+	}
+
+	@Override
+	public void exitReturnStatement(CompilerParser.ReturnStatementContext ctx) {
+		ReturnStatement returnStatement = new ReturnStatement(
+				(Expression) nodes.get(ctx.expression())
+		);
+		nodes.put(ctx, returnStatement);
+	}
+
+	@Override
 	public void enterVariableDeclarationStatement(CompilerParser.VariableDeclarationStatementContext ctx) {
 		Symbol symbol = new Symbol(
 			ctx.IDENTIFIER().getText(),
@@ -235,6 +247,7 @@ public class StatementListener extends BaseListener {
 		VariableDeclarationStatement variableDeclarationStatement
 				= (VariableDeclarationStatement) nodes.get(ctx);
 		if (ctx.expression() != null) {
+			print(nodes.get(ctx.expression()).toString());
 			variableDeclarationStatement.setDeclarationExpression(
 					(Expression) nodes.get(ctx.expression())
 			);
@@ -293,7 +306,9 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitIdentifierExpression(CompilerParser.IdentifierExpressionContext ctx) {
+		print("want to build a ID: " + ctx.getText());
 		nodes.put(ctx, IdentifierExpression.getExpression(ctx.IDENTIFIER().getText()));
+		print("want to build a ID: " + ctx.getText());
 	}
 
 	@Override
@@ -354,6 +369,7 @@ public class StatementListener extends BaseListener {
 			flag = u.getText().equals("[");
 		}
 		nodes.put(ctx, NewExpression.getExpression(type, parameter));
+		print("new array: " + NewExpression.getExpression(type, parameter).returnType.toString());
 	}
 
 	@Override
@@ -659,6 +675,7 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitIntConstant(CompilerParser.IntConstantContext ctx) {
+		print("exit int: " + ctx.INTEGER().toString());
 		IntConstant intConstant = new IntConstant(Integer.valueOf(ctx.getText()).intValue());
 		nodes.put(ctx, intConstant);
 	}

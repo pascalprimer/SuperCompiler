@@ -21,7 +21,6 @@ public class DeclarationListener extends BaseListener {
 
 	@Override
 	public void enterProgram(CompilerParser.ProgramContext ctx) {
-		AST.symbolTable.enterScope(new GlobalScope());
 	}
 
 	@Override
@@ -145,9 +144,9 @@ public class DeclarationListener extends BaseListener {
 
 	@Override
 	public void exitIntType(CompilerParser.IntTypeContext ctx) {
-		System.err.println(ctx.parent + "-----------" + ctx.parent.getText());
+		//System.err.println(ctx.parent + "-----------" + ctx.parent.getText());
 		nodes.put(ctx, IntType.getInstance());
-		print(ctx + ">>>>> " + String.valueOf(nodes.get(ctx) == null));
+		//print(ctx + ">>>>> " + String.valueOf(nodes.get(ctx) == null));
 	}
 
 	@Override

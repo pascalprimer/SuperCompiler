@@ -1,20 +1,13 @@
-int a = 1;
-int main()
-{
-   // int[] b = new int[4];
-  //  a=b;
+int f(){
+	for (;;) int a = 1;
+	return a;
 }
 
+int g(){
+	while(true) int b = 1;
+	return b;
+}
 
-
-/*!! metadata:
-=== comment ===
-lvalue2-5110379024-wuhang.mx
-=== assert ===
-success_compile
-=== phase ===
-semantic pretest
-=== is_public ===
-True
-
-!!*/
+int main(){
+	return 0;
+}

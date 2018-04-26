@@ -39,7 +39,7 @@ public class NewExpression extends Expression {
 					}
 				}
 			}
-			return new NewExpression(type, list, type);
+			return new NewExpression(type, list, new ArrayType(type, list.size()));
 		} else {
 			return new NewExpression(type, list, type);
 		}

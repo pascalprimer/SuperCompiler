@@ -1,12 +1,13 @@
 package AST.Expression.ConstantExpression;
 
 import AST.Type.BoolType;
+import AST.Type.IntType;
 
 public class IntConstant extends Constant {
 	private int value;
 
 	public IntConstant(int value) {
-		super(BoolType.getInstance());
+		super(IntType.getInstance());
 		this.value = value;
 	}
 

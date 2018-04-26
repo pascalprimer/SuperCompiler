@@ -17,7 +17,7 @@ public class VariableDeclarationStatement extends Statement {
 	}
 
 	public VariableDeclarationStatement(Symbol symbol, Expression declarationExpression) {
-		if (declarationExpression.returnType != symbol.getType()) {
+		if (!symbol.getType().compatibleWith(declarationExpression.returnType)) {
 			throw new CompilerError("Type not match when variable declaring");
 		}
 		this.symbol = symbol;
@@ -25,7 +25,8 @@ public class VariableDeclarationStatement extends Statement {
 	}
 
 	public void setDeclarationExpression(Expression declarationExpression) {
-		if (declarationExpression.returnType != symbol.getType()) {
+		System.err.println(symbol.toString() + " to -> " + declarationExpression.returnType.toString());
+		if (!symbol.getType().compatibleWith(declarationExpression.returnType)) {
 			throw new CompilerError("Type not match when variable declaring");
 		}
 		this.declarationExpression = declarationExpression;
