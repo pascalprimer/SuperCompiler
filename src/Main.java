@@ -5,9 +5,7 @@ import FrontEnd.Listener.StatementListener;
 import FrontEnd.Parser.CompilerLexer;
 import FrontEnd.Parser.CompilerParser;
 import Utility.CompilerError;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.BailErrorStrategy;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -19,7 +17,7 @@ import java.lang.*;
 public class Main {
 
 	public static void buildAST(InputStream fin) throws Exception {
-		ANTLRInputStream input = new ANTLRInputStream(fin);
+		CharStream input = CharStreams.fromStream(fin);
 		CompilerLexer lexer = new CompilerLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		CompilerParser parser = new CompilerParser(tokens);
