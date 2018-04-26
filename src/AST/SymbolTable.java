@@ -115,7 +115,7 @@ public class SymbolTable {
 		}
 		temporarySymbol.remove(now - 1);
 		scopeStack.remove(now - 1);
-		topNumber = topNumber - 1;
+		topNumber = new Integer(topNumber.intValue() - 1);
 	}
 
 	public Scope getScope() {

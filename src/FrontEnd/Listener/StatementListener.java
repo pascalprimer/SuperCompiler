@@ -271,14 +271,21 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitReturnStatement(CompilerParser.ReturnStatementContext ctx) {
-		ReturnStatement returnStatement = new ReturnStatement(
-				(Expression) nodes.get(ctx.expression())
-		);
+
+		ReturnStatement returnStatement;
+		if (ctx.expression() != null) {
+			returnStatement = new ReturnStatement(
+					(Expression) nodes.get(ctx.expression()));
+		} else {
+			returnStatement = new ReturnStatement(new VoidConstant());
+		}
 		nodes.put(ctx, returnStatement);
 	}
 
 	@Override
 	public void enterVariableDeclarationStatement(CompilerParser.VariableDeclarationStatementContext ctx) {
+		print("Asdf" + ctx.getText());
+		//print(AST.symbolTable);
 		Symbol symbol = new Symbol(
 			ctx.IDENTIFIER().getText(),
 			(Type) nodes.get(ctx.type()),
@@ -295,7 +302,7 @@ public class StatementListener extends BaseListener {
 	public void exitVariableDeclarationStatement(CompilerParser.VariableDeclarationStatementContext ctx) {
 		VariableDeclarationStatement variableDeclarationStatement
 				= (VariableDeclarationStatement) nodes.get(ctx);
-		print(ctx.getText());
+		//print(ctx.getText());
 		if (ctx.expression() != null) {
 			//print(nodes.get(ctx.expression()).toString());
 			variableDeclarationStatement.setDeclarationExpression(

@@ -65,19 +65,20 @@ public class ClassType extends Type implements Scope {
 
 	@Override
 	public boolean compatibleWith(Type obj) {
-		return this == obj;
+		return obj == NullType.getInstance()
+				|| this == obj;
 	}
 
 	@Override
 	public String toString() {
 		String str =  "class(" + className + ")";
-		str = str + "memberFunction: " + memberFunction.toString();
-		if (constructionFunction == null) {
-			str = str + "no construction";
-		} else {
-			str = str + "construct: " + constructionFunction.toString();
-		}
-		str = str + "memberVariable: " + memberVariable.toString();
+//		str = str + "memberFunction: " + memberFunction.toString();
+//		if (constructionFunction == null) {
+//			str = str + "no construction";
+//		} else {
+//			str = str + "construct: " + constructionFunction.toString();
+//		}
+//		str = str + "memberVariable: " + memberVariable.toString();
 		return str;
 	}
 }

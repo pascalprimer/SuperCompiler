@@ -76,9 +76,9 @@ public class FunctionType extends Type implements Scope {
 
 	public String getName() {
 		if (functionName == null) {
-			return "";
+			return "NoName()";
 		}
-		return functionName;
+		return new String(functionName);
 	}
 
 	public String getFullName() {
@@ -95,25 +95,29 @@ public class FunctionType extends Type implements Scope {
 
 	@Override
 	public String toString() {
-		String str;
-		if (functionName != null) {
-			str = new String(functionName);
-		} else {
-			str = "";
-		}
-		str = str + "(";
-		str = str + "return: " + returnType.toString();
-		if (classScope == null) {
-			str = str + "; global func! ";
-		} else {
-			str = str + "; classScope: " + classScope.getName();
-		}
+		return getFullName();
+//		String str;
+//		if (functionName != null) {
+//			str = new String(functionName);
+//		} else {
+//			str = "";
+//		}
+//
+//		str = str + "(";
+////System.out.println(getFullName() + " " + String.valueOf(returnType instanceof ClassType));
+//		return str;
+		//str = str + "return: " + returnType.toString();
+//		if (classScope == null) {
+//			str = str + "; global func! ";
+//		} else {
+//			str = str + "; classScope: " + classScope.getName();
+//		}
 		//return str;
-		str = str + "; para:";
+		/*str = str + "; para:";
 		for (Symbol u: parameterList) {
 			str = str + " " + u.toString();
 		}
 		str = str + ")";
-		return str;
+		return str;*/
 	}
 }

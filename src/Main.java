@@ -35,10 +35,10 @@ public class Main {
 			System.err.println(compilerError.getMessage());
 			System.exit(1);
 			return;
-		} catch (Throwable obj) {
+		} /*catch (Throwable obj) {
 			System.err.println("dangerous program!!!");
 			System.exit(1);
-		}
+		}*/
 		System.err.println("okokok Gogogo!!!");
 	}
 

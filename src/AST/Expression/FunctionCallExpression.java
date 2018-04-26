@@ -98,6 +98,8 @@ public class FunctionCallExpression extends Expression {
 			throw new CompilerError("Parameter numbers don't match when function call");
 		}
 		for (int i = 0; i < para.size(); ++i) {
+			//System.out.println(fpara.get(i + thisExist).getType());
+			//System.out.println(para.get(i) == null);
 			if (!fpara.get(i + thisExist).getType().compatibleWith(para.get(i).returnType)) {
 				throw new CompilerError("Parameter types don't match when function call");
 			}

@@ -32,7 +32,7 @@ iterationStatement  :   'while' '(' expression ')' statement #whileStatement
 
 jumpStatement   :   'continue' ';'  #continueStatement
                 |   'break' ';'     #breakStatement
-                |   'return' expression ';'    #returnStatement
+                |   'return' expression? ';'    #returnStatement
                 ;
 
 expression  :   constant                                                        #constantExpression

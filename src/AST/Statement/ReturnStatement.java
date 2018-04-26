@@ -13,7 +13,7 @@ public class ReturnStatement extends Statement {
 	public ReturnStatement(Expression returnValue) {
 		Scope scope = AST.symbolTable.getFunctionScope();
 		if (scope instanceof FunctionType) {
-			if (returnValue.returnType == ((FunctionType) scope).getReturnType()) {
+			if (((FunctionType) scope).getReturnType().compatibleWith(returnValue.returnType)) {
 				this.returnValue = returnValue;
 			} else {
 				throw new CompilerError("Return type not match");

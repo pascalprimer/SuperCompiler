@@ -34,7 +34,7 @@ public class BinaryUnequalExpression extends BinaryExpression {
 			return new BoolConstant(!((StringConstant) leftExp).getValue().
 					equals(((StringConstant) rightExp).getValue()));
 		}
-		if (leftExp.returnType != rightExp.returnType) {
+		if (!leftExp.returnType.compatibleWith(rightExp.returnType)) {
 			throw new CompilerError(leftExp.returnType.toString() + ", "
 					+ rightExp.returnType.toString() + " cannot be compared");
 		}

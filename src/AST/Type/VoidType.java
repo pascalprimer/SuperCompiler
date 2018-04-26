@@ -10,7 +10,7 @@ public class VoidType extends Type {
 
 	@Override
 	public boolean compatibleWith(Type obj) {
-		return false;
+		return obj == instance;
 	}
 
 	public static VoidType getInstance() {

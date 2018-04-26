@@ -163,6 +163,7 @@ public class DeclarationListener extends BaseListener {
 
 	@Override
 	public void exitClassType(CompilerParser.ClassTypeContext ctx) {
+		//print("adsf  " + AST.classTable.getClass(ctx.getText()).toString());
 		nodes.put(ctx, AST.classTable.getClass(ctx.getText()));
 	}
 
