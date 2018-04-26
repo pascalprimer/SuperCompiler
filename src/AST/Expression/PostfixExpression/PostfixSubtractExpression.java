@@ -9,7 +9,7 @@ public class PostfixSubtractExpression extends Expression {
 	private Expression expression;
 
 	private PostfixSubtractExpression(Expression exp) {
-		super("--", true, IntType.getInstance());
+		super("--", false, IntType.getInstance());
 	}
 
 	public static Expression getExpression(Expression exp) {

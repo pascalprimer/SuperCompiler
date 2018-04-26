@@ -1,4 +1,9 @@
-int main() {
-	int []c  = new int [123];
-	c.size();
+int a(int x) {
+	int x = 0;
+	return x;
 }
+
+int main() {
+	return 0;
+}
+

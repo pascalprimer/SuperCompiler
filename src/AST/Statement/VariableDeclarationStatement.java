@@ -4,6 +4,8 @@ import AST.Expression.Expression;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
+import AST.Type.NullType;
+import AST.Type.VoidType;
 import Utility.CompilerError;
 
 public class VariableDeclarationStatement extends Statement {
@@ -12,6 +14,10 @@ public class VariableDeclarationStatement extends Statement {
 	private Expression declarationExpression;
 
 	public VariableDeclarationStatement(Symbol symbol) {
+		if (symbol.getType() == NullType.getInstance()
+				|| symbol.getType() == VoidType.getInstance()) {
+			throw new CompilerError("null, void cannot be declared");
+		}
 		this.symbol = symbol;
 		this.declarationExpression = null;
 	}

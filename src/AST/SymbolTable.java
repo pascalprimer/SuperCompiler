@@ -86,6 +86,10 @@ public class SymbolTable {
 		if (temporaryMap.containsKey(symbol.getName())) {
 			throw new CompilerError("Symbol already exists: " + symbol.getName());
 		}
+		if (topNumber > 1 && scopeStack.get(topNumber.intValue() - 2) instanceof FunctionType
+			&& temporarySymbol.get(topNumber.intValue() - 2).containsKey(symbol.getName())) {
+			throw new CompilerError("Symbol already exists: " + symbol.getName());
+		}
 		temporaryMap.put(symbol.getName(), symbol);
 		if (symbolWhere.containsKey(symbol.getName())) {
 			symbolWhere.get(symbol.getName()).push(new Pair<>(topNumber, symbol));

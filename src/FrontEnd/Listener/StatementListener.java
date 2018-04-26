@@ -88,6 +88,27 @@ public class StatementListener extends BaseListener {
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
 		//System.out.println("now ok");
 		AST.symbolTable.enterScope(functionType);
+		int delta = 0;
+		if (functionType.getClassScope() != null) {
+			delta = 1;
+			AST.symbolTable.addSymbol(
+					new Symbol("this",
+							functionType.getClassScope(),
+							functionType.getClassScope(),
+							false, false
+					)
+			);
+		}
+		for (int i = 1; i < ctx.type().size(); ++i) {
+			AST.symbolTable.addSymbol(
+					new Symbol(
+							ctx.IDENTIFIER(i - delta).getText(),
+							(Type) nodes.get(ctx.type(i)),
+							functionType.getClassScope(),
+							false, false
+					)
+			);
+		}
 		//System.out.println("now ok");
 	}
 

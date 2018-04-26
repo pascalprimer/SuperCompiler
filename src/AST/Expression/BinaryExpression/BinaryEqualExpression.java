@@ -33,6 +33,10 @@ public class BinaryEqualExpression extends BinaryExpression {
 			return new BoolConstant(((StringConstant) leftExp).getValue().
 					equals(((StringConstant) rightExp).getValue()));
 		}
+		if (leftExp.returnType != rightExp.returnType) {
+			throw new CompilerError(leftExp.returnType.toString() + ", "
+					+ rightExp.returnType.toString() + " cannot be compared");
+		}
 		return new BinaryEqualExpression(BoolType.getInstance(), leftExp, rightExp);
 	}
 }

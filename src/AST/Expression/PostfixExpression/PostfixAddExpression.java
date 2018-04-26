@@ -11,7 +11,7 @@ public class PostfixAddExpression extends Expression {
 	private Expression expression;
 
 	private PostfixAddExpression(Expression exp) {
-		super("++", true, IntType.getInstance());
+		super("++", false, IntType.getInstance());
 	}
 
 	public static Expression getExpression(Expression exp) {
