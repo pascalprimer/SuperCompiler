@@ -1,24 +1,12 @@
-A get() { return new A; } // this is valid
-
 class A {
-    A() {
-        return get(); // cannot return any value in a constructor
-    }
+  B() {}
 }
 
-int main() { return 0; }
+class B {
+  A() {}
+}
 
-
-
-/*!! metadata:
-=== comment ===
-test return in constructor
-class-7-515030910117-zhenglianmin.mx
-=== assert ===
-failure_compile
-=== phase ===
-semantic extended
-=== is_public ===
-True
-
-!!*/
+int main() {
+  A b = new A;
+  B a = new B;
+}

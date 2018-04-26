@@ -58,9 +58,9 @@ public class DeclarationListener extends BaseListener {
 			//print(memberFunction.getName());
 			if (memberFunction.getName().length() == 0) {
 				//print(classType.getName() + " " + memberFunction.getFullName());
-				if (classType != memberFunction.getClassScope()) {
+				/*if (classType != memberFunction.getClassScope()) {
 					throw new CompilerError("Not the construction");
-				}
+				}*/
 				classType.setConstructionFunction(memberFunction);
 			} else {
 				classType.addFunction(memberFunction);
@@ -102,7 +102,7 @@ public class DeclarationListener extends BaseListener {
 	public void exitFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
 		if (ctx.IDENTIFIER().size() < ctx.type().size()) {
-			functionType.setConstruction();
+			functionType.setConstruction(ctx.type(0).getText());
 		} else {
 			functionType.setReturnType((Type) nodes.get(ctx.type(0)));
 		}

@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperCompiler/FrontEnd/Parser/Compiler.g4" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperCompiler/FrontEnd/Parser/Compiler.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperCompiler/FrontEnd/Parser/Compiler.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperCompiler/FrontEnd/Parser/Compiler.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperCompiler/FrontEnd/Parser/CompilerLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperCompiler/FrontEnd/Parser/CompilerLexer.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/Compiler.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/Compiler.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/Compiler.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/CompilerBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/CompilerLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/CompilerLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/CompilerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/CompilerParser.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,34 +32,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeclarationListener.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DeclarationListener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
+            <state relative-caret-position="115">
+              <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReturnStatement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseTreeProperty.class" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/local/lib/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeProperty.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="e#427#428#0" expanded="true" />
+                <element signature="e#4037#4038#0" expanded="true" />
+                <element signature="e#4082#4083#0" expanded="true" />
+                <element signature="e#4577#4578#0" expanded="true" />
+                <element signature="e#4622#4623#0" expanded="true" />
+                <element signature="e#4786#4787#0" expanded="true" />
+                <element signature="e#4833#4834#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,33 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParserRuleContext.class" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/local/lib/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="190" selection-start-line="190" selection-end-line="190" />
-              <folding>
-                <element signature="e#6496#6497#0" expanded="true" />
-                <element signature="e#6567#6568#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Compiler.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/Compiler.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="76">
+              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -136,7 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>return</find>
       <find>type</find>
       <find>dec</find>
       <find>Dec</find>
@@ -166,6 +113,7 @@
       <find>Return</find>
       <find>NewC</find>
       <find>Re</find>
+      <find>throw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -223,13 +171,13 @@
         <option value="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" />
         <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="352" />
+    <option name="x" value="221" />
     <option name="y" value="87" />
     <option name="width" value="1161" />
     <option name="height" value="585" />
@@ -436,12 +384,12 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.26797387" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.26797387" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32948422" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.28483447" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.28483447" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.58006537" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -449,7 +397,7 @@
       <window_info id="UI Designer" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.49346405" />
+      <window_info active="true" anchor="bottom" id="Debug" order="9" visible="true" weight="0.58986926" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
@@ -514,15 +462,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java</url>
-          <line>104</line>
+          <line>60</line>
           <properties />
-          <option name="timeStamp" value="101" />
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="102" />
+      <option name="time" value="103" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -967,16 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/local/lib/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeProperty.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#427#428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1001,27 +939,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/local/lib/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeProperty.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#427#428#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
+        <state relative-caret-position="132">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
+        <state relative-caret-position="115">
+          <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4037#4038#0" expanded="true" />
+            <element signature="e#4082#4083#0" expanded="true" />
+            <element signature="e#4577#4578#0" expanded="true" />
+            <element signature="e#4622#4623#0" expanded="true" />
+            <element signature="e#4786#4787#0" expanded="true" />
+            <element signature="e#4833#4834#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

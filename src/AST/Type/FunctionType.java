@@ -5,6 +5,7 @@ import AST.Statement.BlockStatement;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
+import Utility.CompilerError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,12 @@ public class FunctionType extends Type implements Scope {
 		this.body = null;
 	}
 
-	public void setConstruction() {
+	public void setConstruction(String name) {
+		if (classScope == null
+				|| !(classScope instanceof ClassType)
+				|| !name.equals(classScope.getName())) {
+			throw new CompilerError("Not the construction");
+		}
 		isConstruction = true;
 		returnType = VoidType.getInstance();
 	}
