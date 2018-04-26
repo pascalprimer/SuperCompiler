@@ -51,9 +51,38 @@ public class StatementListener extends BaseListener {
 				"this", classType, classType, false, false
 		);
 		AST.symbolTable.addSymbol(symbol);
-		if (ctx.variableDeclarationStatement().size() == 0) {
-			return;
+
+
+		for (ParseTree u: ctx.functionDeclaration()) {
+			FunctionType memberFunction = (FunctionType) nodes.get(u);
+			AST.symbolTable.addFunction(memberFunction);
+			if (memberFunction.getName() == null) {
+				classType.setConstructionFunction(memberFunction);
+			} else {
+				//System.out.println("adsfafdf");
+				classType.addFunction(memberFunction);
+			}
 		}
+		for (ParseTree u: ctx.variableDeclarationStatement()) {
+			CompilerParser.VariableDeclarationStatementContext tmp
+					= (CompilerParser.VariableDeclarationStatementContext) u;
+			VariableDeclarationStatement variableDeclarationStatement
+					= new VariableDeclarationStatement(
+					new Symbol(
+							tmp.IDENTIFIER().getText(),
+							(Type) nodes.get(tmp.type()),
+							classType,
+							false,
+							false
+					)
+			);
+			classType.addVariable(variableDeclarationStatement);
+			AST.symbolTable.addSymbol(variableDeclarationStatement.getSymbol());
+		}
+
+//		if (ctx.variableDeclarationStatement().size() == 0) {
+//			return;
+//		}
 //		for (ParseTree u: ctx.variableDeclarationStatement()) {
 //			CompilerParser.VariableDeclarationStatementContext t =
 //					(CompilerParser.VariableDeclarationStatementContext) u;
@@ -89,7 +118,7 @@ public class StatementListener extends BaseListener {
 		//System.out.println("now ok");
 		AST.symbolTable.enterScope(functionType);
 		int delta = 0;
-		if (functionType.getClassScope() != null) {
+		if (functionType.getName().length() == 0) {
 			delta = 1;
 			AST.symbolTable.addSymbol(
 					new Symbol("this",
@@ -100,14 +129,14 @@ public class StatementListener extends BaseListener {
 			);
 		}
 		for (int i = 1; i < ctx.type().size(); ++i) {
-			AST.symbolTable.addSymbol(
-					new Symbol(
-							ctx.IDENTIFIER(i - delta).getText(),
-							(Type) nodes.get(ctx.type(i)),
-							functionType.getClassScope(),
-							false, false
-					)
+			Symbol symbol = new Symbol(
+					ctx.IDENTIFIER(i - delta).getText(),
+					(Type) nodes.get(ctx.type(i)),
+					functionType.getClassScope(),
+					false, false
 			);
+			AST.symbolTable.addSymbol(symbol);
+			functionType.addParameter(symbol);
 		}
 		//System.out.println("now ok");
 	}
@@ -267,8 +296,9 @@ public class StatementListener extends BaseListener {
 	public void exitVariableDeclarationStatement(CompilerParser.VariableDeclarationStatementContext ctx) {
 		VariableDeclarationStatement variableDeclarationStatement
 				= (VariableDeclarationStatement) nodes.get(ctx);
+		print(ctx.getText());
 		if (ctx.expression() != null) {
-			print(nodes.get(ctx.expression()).toString());
+			//print(nodes.get(ctx.expression()).toString());
 			variableDeclarationStatement.setDeclarationExpression(
 					(Expression) nodes.get(ctx.expression())
 			);
@@ -276,6 +306,9 @@ public class StatementListener extends BaseListener {
 		if (AST.symbolTable.getScope() instanceof GlobalScope) {
 			AST.symbolTable.addGlobalVariable(variableDeclarationStatement);
 		} else {
+			if (AST.symbolTable.getScope() instanceof ClassType) {
+				return;
+			}
 			AST.symbolTable.addSymbol(variableDeclarationStatement.getSymbol());
 		}
 	}
@@ -375,6 +408,7 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitNewArrayExpression(CompilerParser.NewArrayExpressionContext ctx) {
+		//print("array: " + ctx.getText());
 		Type type = (Type) nodes.get(ctx.type());
 		List<Expression> parameter = new ArrayList<>();
 		boolean flag = false;
@@ -382,6 +416,7 @@ public class StatementListener extends BaseListener {
 			if (flag) {
 				flag = false;
 				if (u.getText().equals("]")) {
+					parameter.add(null);
 					continue;
 				}
 				parameter.add((Expression) nodes.get(u));
@@ -389,8 +424,9 @@ public class StatementListener extends BaseListener {
 			}
 			flag = u.getText().equals("[");
 		}
+		//print(String.valueOf(parameter.size()));
 		nodes.put(ctx, NewExpression.getExpression(type, parameter));
-		print("new array: " + NewExpression.getExpression(type, parameter).returnType.toString());
+		//print("new array: " + NewExpression.getExpression(type, parameter).returnType.toString());
 	}
 
 	@Override
@@ -696,7 +732,7 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitIntConstant(CompilerParser.IntConstantContext ctx) {
-		print("exit int: " + ctx.INTEGER().toString());
+		//print("exit int: " + ctx.INTEGER().toString());
 		IntConstant intConstant = new IntConstant(Integer.valueOf(ctx.getText()).intValue());
 		nodes.put(ctx, intConstant);
 	}
