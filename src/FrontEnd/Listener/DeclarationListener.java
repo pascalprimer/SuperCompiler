@@ -185,10 +185,11 @@ public class DeclarationListener extends BaseListener {
 		Type baseType = (Type) nodes.get(ctx.type()), arrayType;
 		if (baseType instanceof ArrayType) {
 			arrayType = new ArrayType(((ArrayType) baseType).getArrayType(),
-					((ArrayType) baseType).getDimension());
+					((ArrayType) baseType).getDimension() + 1);
 		} else {
 			arrayType = new ArrayType(baseType, 1);
 		}
+		//print(ctx.getText() + "  finally   " + arrayType.toString());
 		nodes.put(ctx, arrayType);
 	}
 

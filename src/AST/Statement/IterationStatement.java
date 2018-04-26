@@ -40,6 +40,9 @@ public class IterationStatement extends Statement implements Scope {
 	}
 
 	public void setTermination(Expression termination) {
+		if (!(termination.returnType instanceof BoolType)) {
+			throw new CompilerError("Termination in for () must be boolean");
+		}
 		this.termination = termination;
 	}
 
