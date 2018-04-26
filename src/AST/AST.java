@@ -24,15 +24,15 @@ public class AST {
 		symbolTable = new SymbolTable();
 		AST.symbolTable.enterScope(new GlobalScope());
 		//loading basic functions
-//		loadPrint();
-//		loadPrintln();
-//		loadGetString();
-//		loadGetInt();
-//		loadToString();
+		loadPrint();
+		loadPrintln();
+		loadGetString();
+		loadGetInt();
+		loadToString();
 		load__Length__();
-//		load__SubString__();
-//		load__ParseInt__();
-//		load__Ord__();
+		load__SubString__();
+		load__ParseInt__();
+		load__Ord__();
 		//loadGlobalFunction();
 	}
 

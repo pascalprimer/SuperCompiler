@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AST/AST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/AST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/IntConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/IntConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Expression/NewExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/NewExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Symbol/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Symbol/Symbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
@@ -96,11 +83,20 @@
       <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AST/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
+            <state relative-caret-position="557">
               <caret line="121" column="77" selection-start-line="121" selection-start-column="77" selection-end-line="121" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AST.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AST/AST.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -190,12 +186,12 @@
         <option value="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/Listener/DeclarationListener.java" />
-        <option value="$PROJECT_DIR$/src/AST/AST.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/Listener/StatementListener.java" />
         <option value="$PROJECT_DIR$/src/AST/SymbolTable.java" />
         <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/AST/AST.java" />
       </list>
     </option>
   </component>
@@ -422,12 +418,12 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.28267974" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.28267974" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32948422" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.18552732" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.18552732" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.5375817" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -923,13 +919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/AST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/FieldExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -995,9 +984,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="557">
           <caret line="121" column="77" selection-start-line="121" selection-start-column="77" selection-end-line="121" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1005,10 +1001,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
+    <entry file="file://$PROJECT_DIR$/src/AST/AST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        <state relative-caret-position="114">
+          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
         </state>
       </provider>
     </entry>
