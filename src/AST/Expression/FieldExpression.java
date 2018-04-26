@@ -18,10 +18,14 @@ public class FieldExpression extends Expression {
 	private Expression field;
 	private Symbol memberSymbol;
 
-	private FieldExpression(boolean leftValue, Type type, Expression field, Symbol member) {
-		super(".", leftValue, type);
+	private FieldExpression(boolean leftValue, Type returnType, Expression field, Symbol member) {
+		super(".", leftValue, returnType);
 		this.field = field;
 		this.memberSymbol = member;
+	}
+
+	public Symbol getMemberSymbol() {
+		return memberSymbol;
 	}
 
 	public static Expression getExpression(Expression field, String member) {
@@ -32,7 +36,7 @@ public class FieldExpression extends Expression {
 //			}
 			if (fieldClass.getMemberFunction().checkIn(member)) {
 				FunctionType who = fieldClass.getMemberFunction().getFunctionType(member);
-				return new FieldExpression(false, who.getReturnType(), field,
+				return new FieldExpression(false, who, field,
 						new Symbol(member, who, fieldClass, false, true));
 			}
 			if (fieldClass.getMemberVariable().checkIn(member)) {

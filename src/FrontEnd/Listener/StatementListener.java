@@ -306,9 +306,9 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void exitIdentifierExpression(CompilerParser.IdentifierExpressionContext ctx) {
-		print("want to build a ID: " + ctx.getText());
+		//print("want to build a ID: " + ctx.getText());
 		nodes.put(ctx, IdentifierExpression.getExpression(ctx.IDENTIFIER().getText()));
-		print("want to build a ID: " + ctx.getText());
+		//print("want to build a ID: " + ctx.getText());
 	}
 
 	@Override

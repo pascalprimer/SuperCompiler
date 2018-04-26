@@ -17,7 +17,7 @@ public class FunctionCallExpression extends Expression {
 	//base class function :identifier exp; else: field
 
 	public FunctionCallExpression(Expression function, List<Expression> parameter) {
-		super("", true, function.returnType);
+		super("", true, ((FunctionType)function.returnType).getReturnType());
 		this.function = function;
 		this.parameter = parameter;
 	}
@@ -80,19 +80,25 @@ public class FunctionCallExpression extends Expression {
 		if (function instanceof BaseTypeFieldExpression) {
 			return getFromBaseExpression((BaseTypeFieldExpression) function, para);
 		}
+		/*if (!(function instanceof IdentifierExpression
+				&& ((IdentifierExpression) function).getSymbol().getType() instanceof FunctionType)
+				&& !(function instanceof FieldExpression
+				&& ((FieldExpression) function).getMemberSymbol().getType() instanceof  FunctionType)) {
+			throw new CompilerError("Not a function");
+		}*/
 		if (!(function.returnType instanceof FunctionType)) {
 			throw new CompilerError("Not a function");
 		}
 		List<Symbol> fpara = ((FunctionType) function.returnType).getParameterList();
 		int thisExist = 0;
-		if (fpara.get(0).getName().equals("this")) {
+		if (fpara.size() > 0 && fpara.get(0).getName().equals("this")) {
 			thisExist = 1;
 		}
 		if (para.size() + thisExist != fpara.size()) {
 			throw new CompilerError("Parameter numbers don't match when function call");
 		}
 		for (int i = 0; i < para.size(); ++i) {
-			if (fpara.get(i + thisExist).getType().compatibleWith(para.get(i).returnType)) {
+			if (!fpara.get(i + thisExist).getType().compatibleWith(para.get(i).returnType)) {
 				throw new CompilerError("Parameter types don't match when function call");
 			}
 		}

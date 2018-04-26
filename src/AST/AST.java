@@ -33,6 +33,7 @@ public class AST {
 		load__SubString__();
 		load__ParseInt__();
 		load__Ord__();
+		load__Size__();
 		//loadGlobalFunction();
 	}
 
