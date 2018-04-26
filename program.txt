@@ -1,31 +1,21 @@
-class Cat{
-	void greet(){
-		println("MIAOMIAOMIAO");
-	}
+int main()
+{
+	A a = new A;
+	a.c = 0;
+	println(toString(a.c));
+	a.a = a;
+	println(toString(a.a.a.a.a.a.a.a.a.a.a.c));
+	A b = new A;
+	b.a = a;
+	b.b = b;
+	a.b = b;
+	println(toString(a.b.a.b.a.b.a.c));
+	return 0;
 }
 
-class Lamb{
-	void greet(){
-		println("MIEMIEMIE");
-	}
-}
-
-class Animals{
-	Cat c;
-	Lamb l;
-	void greet(){
-		c.greet();
-		l.greet();
-	}
-}
-
-int main(){
-	Cat cat;
-	cat = new Cat;
-	Lamb lamb;
-	lamb = new Lamb;
-	Animals a = new Animals;
-	a.c = cat;
-	a.l = lamb;
-	a.greet();
+class A
+{
+	A a;
+	A b;
+	int c;
 }

@@ -55,12 +55,12 @@ public class StatementListener extends BaseListener {
 
 		for (ParseTree u: ctx.functionDeclaration()) {
 			FunctionType memberFunction = (FunctionType) nodes.get(u);
-			AST.symbolTable.addFunction(memberFunction);
 			if (memberFunction.getName() == null) {
-				classType.setConstructionFunction(memberFunction);
+				//classType.setConstructionFunction(memberFunction);
 			} else {
 				//System.out.println("adsfafdf");
-				classType.addFunction(memberFunction);
+				//classType.addFunction(memberFunction);
+				AST.symbolTable.addFunction(memberFunction);
 			}
 		}
 		for (ParseTree u: ctx.variableDeclarationStatement()) {
@@ -76,7 +76,7 @@ public class StatementListener extends BaseListener {
 							false
 					)
 			);
-			classType.addVariable(variableDeclarationStatement);
+			//classType.addVariable(variableDeclarationStatement);
 			AST.symbolTable.addSymbol(variableDeclarationStatement.getSymbol());
 		}
 
@@ -136,7 +136,6 @@ public class StatementListener extends BaseListener {
 					false, false
 			);
 			AST.symbolTable.addSymbol(symbol);
-			functionType.addParameter(symbol);
 		}
 		//System.out.println("now ok");
 	}

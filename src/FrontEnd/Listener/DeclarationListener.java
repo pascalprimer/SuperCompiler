@@ -55,6 +55,30 @@ public class DeclarationListener extends BaseListener {
 	public void exitClassDeclaration(CompilerParser.ClassDeclarationContext ctx) {
 		ClassType classType = (ClassType) nodes.get(ctx);
 		AST.symbolTable.exitScope();
+
+		for (ParseTree u: ctx.functionDeclaration()) {
+			FunctionType memberFunction = (FunctionType) nodes.get(u);
+			if (memberFunction.getName() == null) {
+				classType.setConstructionFunction(memberFunction);
+			} else {
+				classType.addFunction(memberFunction);
+			}
+		}
+		for (ParseTree u: ctx.variableDeclarationStatement()) {
+			CompilerParser.VariableDeclarationStatementContext tmp
+					= (CompilerParser.VariableDeclarationStatementContext) u;
+			VariableDeclarationStatement variableDeclarationStatement
+					= new VariableDeclarationStatement(
+					new Symbol(
+							tmp.IDENTIFIER().getText(),
+							(Type) nodes.get(tmp.type()),
+							classType,
+							false,
+							false
+					)
+			);
+			classType.addVariable(variableDeclarationStatement);
+		}
 	}
 
 	@Override
@@ -76,33 +100,26 @@ public class DeclarationListener extends BaseListener {
 	public void exitFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
 		functionType.setReturnType((Type) nodes.get(ctx.type(0)));
-		//functionType.setBody((BlockStatement)nodes.get(ctx.blockStatement()));
-//		int delta = 0;
-//		if (functionType.getClassScope() != null) {
-//			delta = 1;
-//			functionType.addParameter(
-//					new Symbol("this",
-//							functionType.getClassScope(),
-//							functionType.getClassScope(),
-//							false, false
-//					)
-//			);
-//		}
-//		for (int i = 1; i < ctx.type().size(); ++i) {
-//			functionType.addParameter(
-//					new Symbol(
-//							ctx.IDENTIFIER(i - delta).getText(),
-//							(Type) nodes.get(ctx.type(i)),
-//							functionType.getClassScope(),
-//							false, false
-//					)
-//			);
-//		}
-//		if (functionType.getClassScope() == null) {
-//			System.out.println("DecListener add function called: " + functionType.toString());
-//			AST.globalFunctionTable.addFunction(functionType);
-//		}
-		//AST.symbolTable.exitScope();
+		int delta = 0;
+		if (functionType.getName().length() == 0) {
+			delta = 1;
+			functionType.addParameter(
+					new Symbol("this",
+							functionType.getClassScope(),
+							functionType.getClassScope(),
+							false, false
+					)
+			);
+		}
+		for (int i = 1; i < ctx.type().size(); ++i) {
+			Symbol symbol = new Symbol(
+					ctx.IDENTIFIER(i - delta).getText(),
+					(Type) nodes.get(ctx.type(i)),
+					functionType.getClassScope(),
+					false, false
+			);
+			functionType.addParameter(symbol);
+		}
 	}
 
 	@Override
