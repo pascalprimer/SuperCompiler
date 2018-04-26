@@ -50,7 +50,6 @@ public class StatementListener extends BaseListener {
 		Symbol symbol = new Symbol(
 				"this", classType, classType, false, false
 		);
-		//System.out.println("我要加symbol " + symbol.toString());
 		AST.symbolTable.addSymbol(symbol);
 		if (ctx.variableDeclarationStatement().size() == 0) {
 			return;

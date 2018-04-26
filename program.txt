@@ -1,8 +1,20 @@
-class A{
-	int test;
+int a = 1;
+int main()
+{
+   // int[] b = new int[4];
+  //  a=b;
 }
-//A a;
-int main() {
-A a = new A;
-a.test = 123123;
-}
+
+
+
+/*!! metadata:
+=== comment ===
+lvalue2-5110379024-wuhang.mx
+=== assert ===
+success_compile
+=== phase ===
+semantic pretest
+=== is_public ===
+True
+
+!!*/
