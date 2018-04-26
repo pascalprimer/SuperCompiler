@@ -10,6 +10,8 @@ import FrontEnd.Parser.CompilerParser;
 import Utility.CompilerError;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import java.util.Map;
+
 //second
 public class DeclarationListener extends BaseListener {
 
@@ -143,7 +145,9 @@ public class DeclarationListener extends BaseListener {
 
 	@Override
 	public void exitIntType(CompilerParser.IntTypeContext ctx) {
+		System.err.println(ctx.parent + "-----------" + ctx.parent.getText());
 		nodes.put(ctx, IntType.getInstance());
+		print(ctx + ">>>>> " + String.valueOf(nodes.get(ctx) == null));
 	}
 
 	@Override

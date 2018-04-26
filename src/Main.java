@@ -34,11 +34,11 @@ public class Main {
 			walker.walk(new DeclarationListener(), tree);
 			walker.walk(new StatementListener(), tree);
 		} catch (CompilerError compilerError) {
-			System.out.println(compilerError.getMessage());
+			System.err.println(compilerError.getMessage());
 			System.exit(1);
 			return;
 		}
-		System.out.println("okokok Gogogo!!!");
+		System.err.println("okokok Gogogo!!!");
 	}
 
 	public static void main(String[] args) throws Exception{

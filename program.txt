@@ -1,2 +1,8 @@
+class A{
+	int test;
+}
+//A a;
 int main() {
+A a = new A;
+a.test = 123123;
 }

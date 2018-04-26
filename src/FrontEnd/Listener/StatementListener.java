@@ -14,6 +14,7 @@ import AST.Symbol.Type;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import FrontEnd.Parser.CompilerParser;
+import Utility.CompilerError;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
@@ -54,18 +55,21 @@ public class StatementListener extends BaseListener {
 		if (ctx.variableDeclarationStatement().size() == 0) {
 			return;
 		}
-		for (ParseTree u: ctx.variableDeclarationStatement()) {
-			CompilerParser.VariableDeclarationStatementContext t =
-					(CompilerParser.VariableDeclarationStatementContext) u;
-			symbol = new Symbol(
-					t.IDENTIFIER().getText(),
-					(Type) nodes.get(t),
-					classType,
-					false,
-					false
-			);
-			AST.symbolTable.addSymbol(symbol);
-		}
+//		for (ParseTree u: ctx.variableDeclarationStatement()) {
+//			CompilerParser.VariableDeclarationStatementContext t =
+//					(CompilerParser.VariableDeclarationStatementContext) u;
+//			print(t.type().getText() + " " + t.IDENTIFIER().getText());
+//			symbol = new Symbol(
+//					t.IDENTIFIER().getText(),
+//					(Type) nodes.get(t.type()),
+//					classType,
+//					false,
+//					false
+//			);
+//			print("12312---> " + ctx.variableDeclarationStatement(0));
+//			AST.symbolTable.addSymbol(symbol);
+//			print("12312");
+//		}
 	}
 
 	@Override
@@ -91,6 +95,9 @@ public class StatementListener extends BaseListener {
 	@Override
 	public void exitFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
+		if (ctx.blockStatement() == null) {
+			throw new CompilerError("Function no body");
+		}
 		functionType.setBody((BlockStatement) nodes.get(ctx.blockStatement()));
 		AST.symbolTable.exitScope();
 	}

@@ -12,7 +12,7 @@ public class FunctionTable {
 	}
 
 	public void addFunction(FunctionType obj) {
-System.out.println(obj.toString());
+//System.err.println(obj.toString());
 		if (functionTable.containsKey(obj.getName())) {
 			throw new CompilerError("identical function names");
 		}

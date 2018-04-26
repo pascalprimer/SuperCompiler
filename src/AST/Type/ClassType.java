@@ -70,9 +70,14 @@ public class ClassType extends Type implements Scope {
 
 	@Override
 	public String toString() {
-		return "class(" + className + ")" +
-				memberFunction.toString() +
-				constructionFunction.toString() +
-				memberVariable.toString();
+		String str =  "class(" + className + ")";
+		str = str + "memberFunction: " + memberFunction.toString();
+		if (constructionFunction == null) {
+			str = str + "no construction";
+		} else {
+			str = str + "construct: " + constructionFunction.toString();
+		}
+		str = str + "memberVariable: " + memberVariable.toString();
+		return str;
 	}
 }
