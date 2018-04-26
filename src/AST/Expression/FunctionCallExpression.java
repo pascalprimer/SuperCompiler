@@ -17,7 +17,7 @@ public class FunctionCallExpression extends Expression {
 	//base class function :identifier exp; else: field
 
 	public FunctionCallExpression(Expression function, List<Expression> parameter) {
-		super("", true, ((FunctionType)function.returnType).getReturnType());
+		super("", false, ((FunctionType)function.returnType).getReturnType());
 		this.function = function;
 		this.parameter = parameter;
 	}
