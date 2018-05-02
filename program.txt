@@ -1,12 +1,26 @@
-class A {
-  B() {}
+int f() {
+    int[] a = ((new int[2][3][3])[0])[1];
+    {
+        string b = (new string[3])[0];
+        {
+            int c = ((new string[3][3][3])[0][1])[2].length();
+            return c;
+        }
+    }
 }
-
-class B {
-  A() {}
-}
-
 int main() {
-  A b = new A;
-  B a = new B;
+    print(new string);
+    println(toString((new string).length()));
+    print(getString());
+    print(toString(3));
+    string a = (new string).substring(0,10);
+    int b  = (new string).parseInt();
+    {
+        int b = (new string).ord(3);
+        {
+            string b;
+        }
+        return b;
+    }
+    return getInt();
 }

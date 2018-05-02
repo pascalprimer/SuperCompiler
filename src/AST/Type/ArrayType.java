@@ -10,6 +10,9 @@ public class ArrayType extends Type {
 	private int dimension;
 
 	public ArrayType(Type arrayType, int dimension) {
+		if (arrayType instanceof VoidType) {
+			throw new CompilerError("arrayType cannot be void");
+		}
 		this.arrayType = arrayType;
 		this.dimension = dimension;
 	}
