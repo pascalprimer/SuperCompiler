@@ -280,7 +280,7 @@ public class StatementListener extends BaseListener {
 			returnStatement = new ReturnStatement(
 					(Expression) nodes.get(ctx.expression()));
 		} else {
-			returnStatement = new ReturnStatement(new VoidConstant());
+			returnStatement = new ReturnStatement(null);
 		}
 		nodes.put(ctx, returnStatement);
 	}
