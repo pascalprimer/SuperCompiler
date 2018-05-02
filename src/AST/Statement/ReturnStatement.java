@@ -17,7 +17,7 @@ public class ReturnStatement extends Statement {
 			if (((FunctionType) scope).getReturnType() != VoidType.getInstance()) {
 				throw new CompilerError("Nothing to return");
 			} else {
-				this.returnValue = null;
+				this.returnValue = VoidType.getInstance();//?null还是Void不知道
 				return;
 			}
 		}
