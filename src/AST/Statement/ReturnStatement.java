@@ -14,10 +14,11 @@ public class ReturnStatement extends Statement {
 	public ReturnStatement(Expression returnValue) {
 		Scope scope = AST.symbolTable.getFunctionScope();
 		if (returnValue == null) {
-			if (((FunctionType) scope).getReturnType() != null) {
+			if (((FunctionType) scope).getReturnType() != VoidType.getInstance()) {
 				throw new CompilerError("Nothing to return");
 			} else {
 				this.returnValue = null;
+				return;
 			}
 		}
 		if (returnValue.returnType != VoidType.getInstance()
