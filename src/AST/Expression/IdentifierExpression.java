@@ -29,6 +29,9 @@ public class IdentifierExpression extends Expression {
 					symbol.getType()
 			);
 		} else {
+			if (identifier == "this") {
+				return new IdentifierExpression(false, symbol, symbol.getType());
+			}
 			return new IdentifierExpression(true, symbol, symbol.getType());
 		}
 	}

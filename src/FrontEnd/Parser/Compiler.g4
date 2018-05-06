@@ -41,7 +41,7 @@ expression  :   constant                                                        
 			|   expression '(' (expression (',' expression)*)? ')'              #functionCallExpression
 			|   expression '.' IDENTIFIER                                       #fieldExpression
 			|   'new' type ('[' expression? ']')+                               #newArrayExpression
-			|   'new' type                                                      #newClassExpression
+			|   'new' type ('('')')?                                            #newClassExpression
 			|   expression '[' expression ']'                                   #arrayExpression
 			|   'this' ('.' IDENTIFIER)?                                        #thisExpression
 			|   expression operator = ('++' | '--')                             #postfixExpression
