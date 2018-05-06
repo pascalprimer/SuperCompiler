@@ -1,6 +1,7 @@
 package AST.Statement;
 
 import AST.AST;
+import AST.Expression.ConstantExpression.VoidConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Scope;
 import AST.Type.FunctionType;
@@ -17,7 +18,7 @@ public class ReturnStatement extends Statement {
 			if (((FunctionType) scope).getReturnType() != VoidType.getInstance()) {
 				throw new CompilerError("Nothing to return");
 			} else {
-				this.returnValue = VoidType.getInstance();//?null还是Void不知道
+				this.returnValue = new VoidConstant();
 				return;
 			}
 		}
