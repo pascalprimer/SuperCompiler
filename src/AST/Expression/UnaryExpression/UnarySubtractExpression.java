@@ -2,7 +2,13 @@ package AST.Expression.UnaryExpression;
 
 import AST.Expression.Expression;
 import AST.Type.IntType;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Instruction.UnaryInstruction;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class UnarySubtractExpression extends UnaryExpression {
 
@@ -16,4 +22,15 @@ public class UnarySubtractExpression extends UnaryExpression {
 		}
 		throw new CompilerError("Not left value or integer");
 	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		expression.translateIR(instructionList);
+		operand = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(expression.operand, operand));
+		instructionList.add(new UnaryInstruction(
+				UnaryInstruction.Type.SUB, operand, expression.operand
+		));
+	}
+
 }

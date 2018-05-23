@@ -3,7 +3,13 @@ package AST.Statement;
 import AST.Expression.Expression;
 import AST.Symbol.Scope;
 import AST.Type.BoolType;
+import IR.Instruction.*;
+import IR.Operand.Immediate;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class SelectionStatement extends Statement implements Scope {
 
@@ -25,6 +31,44 @@ public class SelectionStatement extends Statement implements Scope {
 		this.condition = condition;
 		this.thenStatement = thenStatement;
 		this.elseStatement = elseStatement;
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		/*
+			condition
+			mov condition.operand tmp
+			cmp tmp 1
+			JNE IfFalse
+			JE IfTrue
+		IfTrue
+			thenClause
+			J IfExit
+		IfFalse:
+			*elseClause
+			J IfExit
+		IfExit:
+		 */
+		Label falseLabel = new Label("IfFalse");
+		Label trueLabel = new Label("IfTrue");
+		Label exitLabel = new Label("IfExit");
+
+		condition.translateIR(instructionList);
+		VirtualRegister con = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(condition.operand, con));
+		instructionList.add(new CompareInstruction(con, new Immediate(1)));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, trueLabel));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, falseLabel));
+
+		instructionList.add(trueLabel);
+		thenStatement.translateIR(instructionList);
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, exitLabel));
+		instructionList.add(falseLabel);
+		if (elseStatement != null) {
+			elseStatement.translateIR(instructionList);
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.J, exitLabel));
+		}
+		instructionList.add(exitLabel);
 	}
 
 	public Expression getCondition() {

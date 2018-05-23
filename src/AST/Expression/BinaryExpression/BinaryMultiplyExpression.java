@@ -4,7 +4,16 @@ import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.IntType;
+import IR.Instruction.BinaryInstruction;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.Address;
+import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class BinaryMultiplyExpression extends BinaryExpression {
 
@@ -22,4 +31,29 @@ public class BinaryMultiplyExpression extends BinaryExpression {
 		}
 		throw new CompilerError("Expressions cannot be multiplied");
 	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		leftExpression.translateIR(instructionList);
+		rightExpression.translateIR(instructionList);
+		operand = RegisterManager.getVirtualRegister();
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if (left instanceof Address && right instanceof Address) {
+			VirtualRegister tmp = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(left, tmp));
+			instructionList.add(
+					new BinaryInstruction(
+							BinaryInstruction.Operation.MUL, tmp, right, operand
+					)
+			);
+		} else {
+			instructionList.add(
+					new BinaryInstruction(
+							BinaryInstruction.Operation.MUL, left, right, operand
+					)
+			);
+		}
+	}
+
 }

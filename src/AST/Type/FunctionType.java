@@ -17,11 +17,13 @@ public class FunctionType extends Type implements Scope {
 	private ClassType classScope;
 	private BlockStatement body;
 	private boolean isConstruction;
+	private boolean isSystem;
 
 	public FunctionType(String functionName) {
 		this.functionName = functionName;
 		this.parameterList = new ArrayList<>();
 		isConstruction = false;
+		isSystem = false;
 	}
 
 	public FunctionType(Type returnType, String functionName,
@@ -31,6 +33,11 @@ public class FunctionType extends Type implements Scope {
 		parameterList = new ArrayList<>();
 		this.classScope = classScope;
 		this.body = null;
+		this.isSystem = false;
+	}
+
+	public void setSystem() {
+		isSystem = true;
 	}
 
 	public void setConstruction(String name) {
@@ -103,6 +110,10 @@ public class FunctionType extends Type implements Scope {
 			return getName();
 		}
 		return classScope.getName() + "." + getName();
+	}
+
+	public boolean isSystem() {
+		return isSystem;
 	}
 
 	@Override

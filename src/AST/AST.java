@@ -1,9 +1,11 @@
 package AST;
 
+import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.GlobalScope;
 import AST.Symbol.Symbol;
 import AST.Type.*;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Stack;
 
@@ -17,6 +19,18 @@ public class AST {
 	public static ClassTable classTable;
 	public static FunctionTable globalFunctionTable;
 	public static SymbolTable symbolTable;
+
+	public static Collection<VariableDeclarationStatement> getGlobalVariable() {
+		return symbolTable.getGlobalVariable().getVariableTable().values();
+	}
+
+	public static Collection<FunctionType> getGlobalFunction() {
+		return globalFunctionTable.getFunctionTable().values();
+	}
+
+	public static Collection<ClassType> getClassType() {
+		return classTable.getClassTable().values();
+	}
 
 	public static void init() {
 		classTable = new ClassTable();
@@ -50,6 +64,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void loadPrintln() {
@@ -59,6 +74,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void loadGetString() {
@@ -66,6 +82,7 @@ public class AST {
 				"getString", null);
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void loadGetInt() {
@@ -73,6 +90,7 @@ public class AST {
 				"getInt", null);
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void loadToString() {
@@ -82,6 +100,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void load__Length__() {
@@ -91,6 +110,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void load__SubString__() {
@@ -104,6 +124,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void load__ParseInt__() {
@@ -113,6 +134,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void load__Ord__() {
@@ -124,6 +146,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 	public static void load__Size__() {
@@ -133,6 +156,7 @@ public class AST {
 				null, false, false));
 		globalFunctionTable.addFunction(func);
 		symbolTable.addFunction(func);
+		func.setSystem();
 	}
 
 }

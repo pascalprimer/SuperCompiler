@@ -2,6 +2,9 @@ package AST.Statement;
 
 import AST.Expression.Expression;
 import AST.Symbol.Scope;
+import IR.Instruction.Instruction;
+
+import java.util.List;
 
 public class ExpressionStatement extends Statement {
 
@@ -11,7 +14,15 @@ public class ExpressionStatement extends Statement {
 		this.expression = expression;
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		if (expression != null) {
+			expression.translateIR(instructionList);
+		}
+	}
+
 	public void setExpression(Expression expression) {
 		this.expression = expression;
 	}
+
 }

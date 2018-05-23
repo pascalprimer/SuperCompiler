@@ -5,7 +5,10 @@ import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
 import AST.Type.FunctionType;
+import IR.Instruction.Instruction;
 import javafx.util.Pair;
+
+import java.util.List;
 
 public class IdentifierExpression extends Expression {
 	private Symbol symbol;
@@ -34,5 +37,10 @@ public class IdentifierExpression extends Expression {
 			}
 			return new IdentifierExpression(true, symbol, symbol.getType());
 		}
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		operand = symbol.operand;
 	}
 }

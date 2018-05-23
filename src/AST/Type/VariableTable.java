@@ -35,4 +35,8 @@ public class VariableTable {
 		//}
 		//throw new CompilerError("Member not exist in class");
 	}
+
+	public Map<String, VariableDeclarationStatement> getVariableTable() {
+		return variableTable;
+	}
 }

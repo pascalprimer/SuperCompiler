@@ -6,17 +6,24 @@ import AST.Symbol.Type;
 import Utility.CompilerError;
 
 import java.lang.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ClassType extends Type implements Scope {
 	private String className;
 	private FunctionTable memberFunction;
 	private VariableTable memberVariable;//'this' included
 	private FunctionType constructionFunction;
+	private Map<String, Integer> offsetMap;
+	private int allocateSize;
 
 	public ClassType(String name) {
 		className = name;
 		memberFunction = new FunctionTable();
 		memberVariable = new VariableTable();
+		allocateSize = 0;
+		constructionFunction = null;
+		offsetMap = new HashMap<>();
 	}
 
 	public String getName() {
@@ -33,6 +40,14 @@ public class ClassType extends Type implements Scope {
 
 	public FunctionType getConstructionFunction() {
 		return constructionFunction;
+	}
+
+	public int getVariableOffset(String name) {
+		return offsetMap.get(name).intValue();
+	}
+
+	public int getAllocateSize() {
+		return allocateSize;
 	}
 
 	public void addName(String className) {
@@ -57,6 +72,9 @@ public class ClassType extends Type implements Scope {
 					+ stat.getSymbol().getName());
 		}
 		this.memberVariable.addDeclaration(stat);
+		stat.setOffset(allocateSize);
+		offsetMap.put(stat.getName(), Integer.valueOf(allocateSize));
+		allocateSize += 8;
 	}
 
 	public void setConstructionFunction(FunctionType constructionFunction) {

@@ -1,6 +1,9 @@
 package AST.Expression.ConstantExpression;
 
 import AST.Type.VoidType;
+import IR.Instruction.Instruction;
+
+import java.util.List;
 
 public class VoidConstant extends Constant {
 
@@ -13,4 +16,8 @@ public class VoidConstant extends Constant {
 		return false;
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+
+	}
 }

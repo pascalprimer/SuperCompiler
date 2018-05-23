@@ -8,6 +8,14 @@ import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Type.IntType;
 import AST.Type.StringType;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.Address;
+import IR.Operand.Immediate;
+import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
+import Test.A;
 import Utility.CompilerError;
 
 import java.util.ArrayList;
@@ -50,4 +58,25 @@ public class FieldExpression extends Expression {
 		return new BaseTypeFieldExpression(field, member);
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		field.translateIR(instructionList);
+		if (memberSymbol.getType() instanceof FunctionType) {
+			return;
+		}
+		VirtualRegister base = RegisterManager.getVirtualRegister();
+		if (field.operand instanceof Address) {
+			instructionList.add(new MoveInstruction(field.operand, base));
+		} else {
+			base = (VirtualRegister) field.operand;
+		}
+		operand = new Address(
+				base,
+				new Immediate(
+						((ClassType) memberSymbol.getType()).getVariableOffset(
+								memberSymbol.getName()
+						)
+				)
+		);
+	}
 }

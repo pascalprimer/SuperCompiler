@@ -2,9 +2,18 @@ package AST.Expression;
 
 import AST.Type.ArrayType;
 import AST.Type.IntType;
+import IR.Instruction.BinaryInstruction;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.Address;
+import IR.Operand.Immediate;
+import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
 import Utility.CompilerError;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 public class ArrayExpression extends Expression {
 
@@ -26,4 +35,20 @@ public class ArrayExpression extends Expression {
 		return new ArrayExpression(base, subscript);
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		baseExpression.translateIR(instructionList);
+		subscriptExpression.translateIR(instructionList);
+		Operand base = baseExpression.operand,
+				offset = subscriptExpression.operand;
+		VirtualRegister tmp = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(base, tmp));
+		instructionList.add(
+				new BinaryInstruction(
+						BinaryInstruction.Operation.SHL,
+						offset, new Immediate(3), offset
+				)
+		);
+		operand = new Address(tmp, offset);
+	}
 }

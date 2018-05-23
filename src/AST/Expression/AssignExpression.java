@@ -1,6 +1,15 @@
 package AST.Expression;
 
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.Address;
+import IR.Operand.Immediate;
+import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class AssignExpression extends Expression {
 	private Expression variable, subscript;
@@ -22,5 +31,21 @@ public class AssignExpression extends Expression {
 			throw new CompilerError("Different type when assigning");
 		}
 		return new AssignExpression(variable, expression);
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		variable.translateIR(instructionList);
+		subscript.translateIR(instructionList);
+		Operand lvalue = variable.operand,
+				rvalue = subscript.operand;
+		if (lvalue instanceof Address && rvalue instanceof Address) {
+			VirtualRegister tmp = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(rvalue, tmp));
+			instructionList.add(new MoveInstruction(tmp, lvalue));
+		} else {
+			instructionList.add(new MoveInstruction(rvalue, lvalue));
+		}
+		operand = subscript.operand;
 	}
 }

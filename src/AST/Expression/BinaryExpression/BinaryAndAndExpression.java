@@ -4,7 +4,12 @@ import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
+import IR.Instruction.*;
+import IR.Operand.Immediate;
+import IR.Operand.Operand;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class BinaryAndAndExpression extends BinaryExpression {
 
@@ -21,6 +26,27 @@ public class BinaryAndAndExpression extends BinaryExpression {
 			return new BinaryAndAndExpression(BoolType.getInstance(), leftExp, rightExp);
 		}
 		throw new CompilerError("Expressions cannot be &&");
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		/*
+		cmp leftExp 0
+		je cmp_and
+		cmp rightExp 0
+		cmp_and:
+		cset operand NE
+		 */
+		leftExpression.translateIR(instructionList);
+		Operand left = leftExpression.operand;
+		Label label = new Label("cmp_and:");
+		instructionList.add(new CompareInstruction(left, new Immediate(0)));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		rightExpression.translateIR(instructionList);
+		Operand right = rightExpression.operand;
+		instructionList.add(new CompareInstruction(right, new Immediate(0)));
+		instructionList.add(label);
+		instructionList.add(new CSetInstruction(CSetInstruction.Type.NEQ, operand));
 	}
 
 }

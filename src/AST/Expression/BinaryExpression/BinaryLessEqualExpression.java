@@ -8,7 +8,15 @@ import AST.Symbol.Type;
 import AST.Type.BoolType;
 import AST.Type.IntType;
 import AST.Type.StringType;
+import IR.Instruction.CSetInstruction;
+import IR.Instruction.CompareInstruction;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.*;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class BinaryLessEqualExpression extends BinaryExpression {
 
@@ -33,6 +41,44 @@ public class BinaryLessEqualExpression extends BinaryExpression {
 			return new BinaryLessEqualExpression(BoolType.getInstance(), leftExp, rightExp);
 		}
 		throw new CompilerError("Expressions cannot be compared");
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		leftExpression.translateIR(instructionList);
+		rightExpression.translateIR(instructionList);
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if (left == right) {
+			operand = new Immediate(1);
+			return;
+		}
+		if (left instanceof StringMemory && right instanceof StringMemory) {
+			if (((StringMemory) left).tag.compareTo(((StringMemory) right).tag) <= 0) {
+				operand = new Immediate(1);
+			} else {
+				operand = new Immediate(0);
+			}
+			return;
+		}
+		if (left instanceof Immediate && right instanceof Immediate) {
+			if (((Immediate) left).getValue() <= ((Immediate) right).getValue()) {
+				operand = new Immediate(1);
+			} else {
+				operand = new Immediate(0);
+			}
+			return;
+		}
+		operand = RegisterManager.getVirtualRegister();
+		//fixme optimize!!!???!!!
+		if (left instanceof Address && right instanceof Address) {
+			VirtualRegister tmp = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(left, tmp));
+			instructionList.add(new CompareInstruction(tmp, right));
+		} else {
+			instructionList.add(new CompareInstruction(left, right));
+		}
+		instructionList.add(new CSetInstruction(CSetInstruction.Type.LE, operand));
 	}
 
 }

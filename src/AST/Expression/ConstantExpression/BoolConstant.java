@@ -1,6 +1,10 @@
 package AST.Expression.ConstantExpression;
 
 import AST.Type.BoolType;
+import IR.Instruction.Instruction;
+import IR.Operand.Immediate;
+
+import java.util.List;
 
 public class BoolConstant extends Constant {
 	private boolean value;
@@ -17,5 +21,14 @@ public class BoolConstant extends Constant {
 	@Override
 	public boolean constantCompatibleWith(Constant obj) {
 		return obj instanceof BoolConstant || obj instanceof NullConstant;
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		if (value) {
+			operand = new Immediate(1);
+		} else {
+			operand = new Immediate(0);
+		}
 	}
 }

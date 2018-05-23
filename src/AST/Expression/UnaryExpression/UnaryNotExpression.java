@@ -3,7 +3,13 @@ package AST.Expression.UnaryExpression;
 import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Instruction.UnaryInstruction;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class UnaryNotExpression extends UnaryExpression {
 
@@ -19,6 +25,15 @@ public class UnaryNotExpression extends UnaryExpression {
 			return new UnaryNotExpression(exp);
 		}
 		throw new CompilerError("Not boolean");
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		expression.translateIR(instructionList);
+		operand = RegisterManager.getVirtualRegister();
+		instructionList.add(new UnaryInstruction(
+				UnaryInstruction.Type.NOT, expression.operand, operand
+		));
 	}
 
 }

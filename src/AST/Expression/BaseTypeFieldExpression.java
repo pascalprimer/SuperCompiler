@@ -2,6 +2,9 @@ package AST.Expression;
 
 import AST.Type.IntType;
 import AST.Type.VoidType;
+import IR.Instruction.Instruction;
+
+import java.util.List;
 
 public class BaseTypeFieldExpression extends Expression {
 
@@ -14,4 +17,8 @@ public class BaseTypeFieldExpression extends Expression {
 		this.member = member;
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		//hahaha
+	}
 }

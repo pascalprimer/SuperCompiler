@@ -4,6 +4,10 @@ import FrontEnd.Listener.DeclarationListener;
 import FrontEnd.Listener.StatementListener;
 import FrontEnd.Parser.CompilerLexer;
 import FrontEnd.Parser.CompilerParser;
+import IR.IRTranslator;
+import Test.A;
+import Test.B;
+import Test.C;
 import Utility.CompilerError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -42,10 +46,25 @@ public class Main {
 		System.err.println("okokok Gogogo!!!");
 	}
 
+	public static void buildIR() throws Exception {
+		IRTranslator.translate();
+	}
+
 	public static void main(String[] args) throws Exception{
+		//testing();
 		File file = new File("program.txt");
 		InputStream fin = new FileInputStream(file);
+
 		buildAST(fin);
+		buildIR();
+	}
+
+	public static void testing() {
+		//		B tb = new B();
+		//		C tc;
+		//		A ta = (A) tb;
+		//		tc = (C) ta;
+		//		System.out.println(tc.a);
 	}
 
 }

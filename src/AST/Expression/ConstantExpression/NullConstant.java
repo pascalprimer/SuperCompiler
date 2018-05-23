@@ -1,6 +1,9 @@
 package AST.Expression.ConstantExpression;
 
 import AST.Type.NullType;
+import IR.Instruction.Instruction;
+
+import java.util.List;
 
 public class NullConstant extends Constant {
 	public NullConstant() {
@@ -10,5 +13,10 @@ public class NullConstant extends Constant {
 	@Override
 	public boolean constantCompatibleWith(Constant obj) {
 		return true;
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		//fixme
 	}
 }

@@ -11,6 +11,10 @@ public class ClassTable {
 		classTable = new HashMap<>();
 	}
 
+	public Map<String, ClassType> getClassTable() {
+		return classTable;
+	}
+
 	public void addClass(String name, ClassType obj) {
 		if (classTable.containsKey(name)) {
 			throw new CompilerError("identical class names");

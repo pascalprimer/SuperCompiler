@@ -6,7 +6,15 @@ import AST.Expression.Expression;
 import AST.Symbol.Scope;
 import AST.Type.FunctionType;
 import AST.Type.VoidType;
+import IR.IRTranslator;
+import IR.Instruction.Instruction;
+import IR.Instruction.JumpInstruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class ReturnStatement extends Statement {
 
@@ -30,4 +38,14 @@ public class ReturnStatement extends Statement {
 		}
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		if (returnValue != null) {
+			returnValue.translateIR(instructionList);
+			//fixme    physical reg needed
+			VirtualRegister tmp = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(returnValue.operand, tmp));
+		}
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, IRTranslator.exitLabel));
+	}
 }

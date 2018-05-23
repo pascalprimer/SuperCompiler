@@ -4,7 +4,12 @@ import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
+import IR.Instruction.*;
+import IR.Operand.Immediate;
+import IR.Operand.Operand;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class BinaryOrOrExpression extends BinaryExpression {
 
@@ -21,6 +26,27 @@ public class BinaryOrOrExpression extends BinaryExpression {
 			return new BinaryOrOrExpression(BoolType.getInstance(), leftExp, rightExp);
 		}
 		throw new CompilerError("Expressions cannot be ||");
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		/*
+		cmp leftExp 1
+		je cmp_or
+		cmp rightExp 1
+		cmp_or:
+		cset operand E
+		 */
+		leftExpression.translateIR(instructionList);
+		Operand left = leftExpression.operand;
+		Label label = new Label("cmp_or:");
+		instructionList.add(new CompareInstruction(left, new Immediate(1)));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		rightExpression.translateIR(instructionList);
+		Operand right = rightExpression.operand;
+		instructionList.add(new CompareInstruction(right, new Immediate(1)));
+		instructionList.add(label);
+		instructionList.add(new CSetInstruction(CSetInstruction.Type.EQ, operand));
 	}
 
 }

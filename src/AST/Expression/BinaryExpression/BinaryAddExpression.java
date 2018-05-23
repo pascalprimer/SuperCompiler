@@ -6,7 +6,16 @@ import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.IntType;
 import AST.Type.StringType;
+import IR.Instruction.BinaryInstruction;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Operand.Address;
+import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
+import IR.RegisterManager;
 import Utility.CompilerError;
+
+import java.util.List;
 
 public class BinaryAddExpression extends BinaryExpression {
 
@@ -30,5 +39,29 @@ public class BinaryAddExpression extends BinaryExpression {
 			return new BinaryAddExpression(StringType.getInstance(), leftExp, rightExp);
 		}
 		throw new CompilerError("Expressions cannot be added");
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		leftExpression.translateIR(instructionList);
+		rightExpression.translateIR(instructionList);
+		operand = RegisterManager.getVirtualRegister();
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if (left instanceof Address && right instanceof Address) {
+			VirtualRegister tmp = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(left, tmp));
+			instructionList.add(
+					new BinaryInstruction(
+							BinaryInstruction.Operation.ADD, tmp, right, operand
+					)
+			);
+		} else {
+			instructionList.add(
+					new BinaryInstruction(
+							BinaryInstruction.Operation.ADD, left, right, operand
+					)
+			);
+		}
 	}
 }

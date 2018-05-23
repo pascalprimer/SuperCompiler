@@ -1,12 +1,15 @@
 package AST.Expression;
 
+import AST.Expression.ConstantExpression.VoidConstant;
 import AST.Symbol.Symbol;
-import AST.Type.ArrayType;
-import AST.Type.FunctionType;
-import AST.Type.IntType;
-import AST.Type.StringType;
+import AST.Type.*;
+import IR.Instruction.FunctionCallInstruction;
+import IR.Instruction.Instruction;
+import IR.Operand.Operand;
+import IR.RegisterManager;
 import Utility.CompilerError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionCallExpression extends Expression {
@@ -80,12 +83,12 @@ public class FunctionCallExpression extends Expression {
 		if (function instanceof BaseTypeFieldExpression) {
 			return getFromBaseExpression((BaseTypeFieldExpression) function, para);
 		}
-		/*if (!(function instanceof IdentifierExpression
-				&& ((IdentifierExpression) function).getSymbol().getType() instanceof FunctionType)
-				&& !(function instanceof FieldExpression
-				&& ((FieldExpression) function).getMemberSymbol().getType() instanceof  FunctionType)) {
-			throw new CompilerError("Not a function");
-		}*/
+//		if (!(function instanceof IdentifierExpression
+//				&& ((IdentifierExpression) function).getSymbol().getType() instanceof FunctionType)
+//				&& !(function instanceof FieldExpression
+//				&& ((FieldExpression) function).getMemberSymbol().getType() instanceof  FunctionType)) {
+//			throw new CompilerError("Not a function");
+//		}
 		if (!(function.returnType instanceof FunctionType)) {
 			throw new CompilerError("Not a function");
 		}
@@ -105,6 +108,36 @@ public class FunctionCallExpression extends Expression {
 			}
 		}
 		return new FunctionCallExpression(function, para);
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		function.translateIR(instructionList);
+		List<Operand> operandList = new ArrayList<>();
+		for (Expression exp: parameter) {
+			exp.translateIR(instructionList);
+			operandList.add(exp.operand);
+		}
+		if (!(returnType instanceof VoidType)) {
+			operand = RegisterManager.getVirtualRegister();
+		}
+		if (function instanceof IdentifierExpression) {
+			instructionList.add(
+					new FunctionCallInstruction(
+							(FunctionType) (((IdentifierExpression) function).getSymbol().getType()),
+							operandList,
+							operand
+					)
+			);
+		} else {
+			instructionList.add(
+					new FunctionCallInstruction(
+							(FunctionType) (((FieldExpression) function).getMemberSymbol().getType()),
+							operandList,
+							operand
+					)
+			);
+		}
 	}
 
 }

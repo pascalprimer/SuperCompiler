@@ -1,6 +1,7 @@
 package AST.Statement;
 
 import AST.Symbol.Scope;
+import IR.Instruction.Instruction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,4 +22,10 @@ public class BlockStatement extends Statement implements Scope {
 		statements.add(statement);
 	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		for (Statement statement: statements) {
+			statement.translateIR(instructionList);
+		}
+	}
 }
