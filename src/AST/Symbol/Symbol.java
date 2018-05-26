@@ -48,6 +48,8 @@ public class Symbol {
 //	}
 
 	public String toString() {
-		return "Symbol(" + name + "," + type.toString() + ")";
+		return "Symbol(" + name
+				+ " ," + type.toString()
+				+ " class: " + (classBelong != null ? classBelong.getName() : "null") + ")";
 	}
 }

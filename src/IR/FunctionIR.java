@@ -30,7 +30,7 @@ public class FunctionIR {
 		int cnt = 0;
 		for (Symbol symbol: functionType.getParameterList()) {
 //fixme first 6parameters
-			symbol.operand = new Address(functionBase, new Immediate(cnt += 8));
+			symbol.operand = new Address(functionBase, new Immediate(cnt += 1));
 			this.parameterList.add(symbol.operand);
 		}
 		buildCFG();

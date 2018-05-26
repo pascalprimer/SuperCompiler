@@ -46,7 +46,7 @@ public class ArrayExpression extends Expression {
 		instructionList.add(
 				new BinaryInstruction(
 						BinaryInstruction.Operation.SHL,
-						offset, new Immediate(3), offset
+						offset, new Immediate(1), offset
 				)
 		);
 		operand = new Address(tmp, offset);

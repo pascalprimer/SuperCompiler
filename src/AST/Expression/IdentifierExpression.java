@@ -24,11 +24,16 @@ public class IdentifierExpression extends Expression {
 
 	public static Expression getExpression(String identifier) {
 		Symbol symbol = AST.symbolTable.getSymbol(identifier);
+		if (symbol.getClassBelong() != null) {
+			return FieldExpression.getExpression(
+					IdentifierExpression.getExpression("this"),
+					identifier
+			);
+		}
 		if (symbol.getType() instanceof FunctionType) {
 			return new IdentifierExpression(
 					false,
 					symbol,
-					//((FunctionType) symbol.getType()).getReturnType()
 					symbol.getType()
 			);
 		} else {

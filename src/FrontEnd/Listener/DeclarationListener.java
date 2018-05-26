@@ -15,6 +15,9 @@ public class DeclarationListener extends BaseListener {
 	public void print(String string) {
 		System.err.println(string);
 	}
+	public void print(int string) {
+		System.err.println(string);
+	}
 
 	@Override
 	public void enterProgram(CompilerParser.ProgramContext ctx) {
@@ -107,12 +110,14 @@ public class DeclarationListener extends BaseListener {
 			functionType.setReturnType((Type) nodes.get(ctx.type(0)));
 		}
 		int delta = 0;
-		if (functionType.getName().length() == 0) {
+		if (ctx.IDENTIFIER().size() != ctx.type().size()) {
 			delta = 1;
+		}
+		if (functionType.getClassScope() != null) {
 			functionType.addParameter(
 					new Symbol("this",
 							functionType.getClassScope(),
-							functionType.getClassScope(),
+							null,
 							false, false
 					)
 			);
@@ -121,11 +126,13 @@ public class DeclarationListener extends BaseListener {
 			Symbol symbol = new Symbol(
 					ctx.IDENTIFIER(i - delta).getText(),
 					(Type) nodes.get(ctx.type(i)),
-					functionType.getClassScope(),
+					null,
 					false, false
 			);
+//print("new Symbol: " + symbol.toString());
 			functionType.addParameter(symbol);
 		}
+		print(functionType.getParameterList().size());
 	}
 
 	@Override

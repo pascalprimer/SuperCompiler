@@ -48,7 +48,7 @@ public class StatementListener extends BaseListener {
 		AST.symbolTable.enterScope(classType);
 		//AST.symbolTable.addThis();
 		Symbol symbol = new Symbol(
-				"this", classType, classType, false, false
+				"this", classType, null, false, false
 		);
 		AST.symbolTable.addSymbol(symbol);
 
@@ -114,30 +114,39 @@ public class StatementListener extends BaseListener {
 	@Override
 	public void enterFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
 		//System.out.println("now ok");
-		print(ctx.getText());
+		//print(ctx.getText());
+		for (int i = 0; i < ctx.IDENTIFIER().size(); ++i) {
+			if (ctx.IDENTIFIER().get(i).getText().substring(0, 1).equals("_")) {
+				throw new CompilerError(ctx.getText() + ": first char not _");
+			}
+		}
+
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
 		//System.out.println("now ok");
 		AST.symbolTable.enterScope(functionType);
-		int delta = 0;
-		if (functionType.getName().length() == 0) {
-			delta = 1;
-			AST.symbolTable.addSymbol(
-					new Symbol("this",
-							functionType.getClassScope(),
-							functionType.getClassScope(),
-							false, false
-					)
-			);
-		}
-		for (int i = 1; i < ctx.type().size(); ++i) {
-			Symbol symbol = new Symbol(
-					ctx.IDENTIFIER(i - delta).getText(),
-					(Type) nodes.get(ctx.type(i)),
-					functionType.getClassScope(),
-					false, false
-			);
+		for (Symbol symbol: functionType.getParameterList()) {
 			AST.symbolTable.addSymbol(symbol);
 		}
+//		int delta = 0;
+//		if (functionType.getName().length() == 0) {
+//			delta = 1;
+//			AST.symbolTable.addSymbol(
+//					new Symbol("",
+//							functionType.getClassScope(),
+//							null,
+//							false, false
+//					)
+//			);
+//		}
+//		for (int i = 1; i < ctx.type().size(); ++i) {
+//			Symbol symbol = new Symbol(
+//					ctx.IDENTIFIER(i - delta).getText(),
+//					(Type) nodes.get(ctx.type(i)),
+//					null,
+//					false, false
+//			);
+//			AST.symbolTable.addSymbol(symbol);
+//		}
 		//System.out.println("now ok");
 		print("enter function: " + ctx.getText());
 	}
@@ -289,7 +298,10 @@ public class StatementListener extends BaseListener {
 
 	@Override
 	public void enterVariableDeclarationStatement(CompilerParser.VariableDeclarationStatementContext ctx) {
-		print("Asdf" + ctx.getText());
+		//print("Asdf" + ctx.getText());
+		if (ctx.IDENTIFIER().getText().substring(0, 1).equals("_")) {
+			throw new CompilerError(ctx.getText() + ": first char not _");
+		}
 		//print(AST.symbolTable);
 		Symbol symbol = new Symbol(
 			ctx.IDENTIFIER().getText(),

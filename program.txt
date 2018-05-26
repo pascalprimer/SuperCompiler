@@ -1,9 +1,11 @@
 class A{
-	A a;
-	void f(A t) {
-		this=t;
+	A t;
+	int f(int t) {
+		return t;
 	}
 }
 int main(){
-  return 0;
+	A a = new A;
+	a.f(123);
+    return 0;
 }

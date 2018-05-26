@@ -70,7 +70,7 @@ public class NewExpression extends Expression {
 		instructionList.add(new BinaryInstruction(
 				BinaryInstruction.Operation.SHL,
 				operandList.get(0),
-				new Immediate(3),
+				new Immediate(1),
 				size
 		));
 		instructionList.add(new AllocateInstruction(base, size));

@@ -74,7 +74,7 @@ public class ClassType extends Type implements Scope {
 		this.memberVariable.addDeclaration(stat);
 		stat.setOffset(allocateSize);
 		offsetMap.put(stat.getName(), Integer.valueOf(allocateSize));
-		allocateSize += 8;
+		allocateSize += 1;
 	}
 
 	public void setConstructionFunction(FunctionType constructionFunction) {

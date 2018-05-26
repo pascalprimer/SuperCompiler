@@ -5,9 +5,6 @@ import FrontEnd.Listener.StatementListener;
 import FrontEnd.Parser.CompilerLexer;
 import FrontEnd.Parser.CompilerParser;
 import IR.IRTranslator;
-import Test.A;
-import Test.B;
-import Test.C;
 import Utility.CompilerError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -56,7 +53,7 @@ public class Main {
 		InputStream fin = new FileInputStream(file);
 
 		buildAST(fin);
-		buildIR();
+		//buildIR();
 	}
 
 	public static void testing() {
