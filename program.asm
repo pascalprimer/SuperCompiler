@@ -6,294 +6,677 @@
 __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   32
-     mov         qword[rbp-8],                    4
-     mov        qword[rbp-16],                    4
-     mov                  rax,         qword[rbp-8]
-     add                  rax,                    1
-     mov         qword[rbp-8],                  rax
-     shl         qword[rbp-8],                    3
-     mov                  rdi,         qword[rbp-8]
-    call               malloc
-     mov        qword[rbp-24],                  rax
-     mov                  rdx,        qword[rbp-24]
-     mov                  rcx,        qword[rbp-16]
-     mov           qword[rdx],                  rcx
-     mov                  rax,        qword[rbp-24]
-     add                  rax,                    8
-     mov        qword[rbp-24],                  rax
-     mov                  rax,         qword[rbp-8]
-     sub                  rax,                    8
-     mov         qword[rbp-8],                  rax
-     mov                  rcx,        qword[rbp-24]
-     mov            qword[@a],                  rcx
-     add                  rsp,                   32
+     sub                  rsp,                   40
+     mov        qword[@total],                    0
+     mov            qword[@h],                   99
+     mov            qword[@i],                  100
+     mov            qword[@j],                  101
+     mov            qword[@k],                  102
+     add                  rsp,                   40
      pop                  rbp
      ret
 main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-     sub                  rsp,                  584
+     sub                  rsp,                  976
 @main.1.enter:
-     mov         qword[rbp-8],                    4
-     mov        qword[rbp-16],                    4
-     mov                  rax,         qword[rbp-8]
-     add                  rax,                    1
-     mov         qword[rbp-8],                  rax
-     shl         qword[rbp-8],                    3
-     mov                  rdi,         qword[rbp-8]
-    call               malloc
-     mov        qword[rbp-24],                  rax
-     mov                  rdx,        qword[rbp-24]
-     mov                  rcx,        qword[rbp-16]
-     mov           qword[rdx],                  rcx
-     mov                  rax,        qword[rbp-24]
-     add                  rax,                    8
-     mov        qword[rbp-24],                  rax
-     mov                  rax,         qword[rbp-8]
-     sub                  rax,                    8
-     mov         qword[rbp-8],                  rax
-     mov                  rcx,        qword[rbp-24]
-     mov        qword[rbp-32],                  rcx
-     mov                  rcx,        qword[rbp-32]
-     mov        qword[rbp-40],                  rcx
-     mov                  rcx,            qword[@a]
-     mov        qword[rbp-48],                  rcx
-     mov                  rdx,        qword[rbp-40]
-     mov                  rcx,        qword[rbp-48]
-     mov           qword[rdx],                  rcx
-     mov                  rcx,        qword[rbp-32]
-     mov        qword[rbp-64],                  rcx
-     mov                  rcx,            qword[@a]
-     mov        qword[rbp-72],                  rcx
-     mov                  rdx,        qword[rbp-64]
-     mov                  rcx,        qword[rbp-72]
-     mov         qword[rdx+8],                  rcx
-     mov                  rcx,        qword[rbp-32]
-     mov        qword[rbp-80],                  rcx
-     mov                  rcx,            qword[@a]
-     mov        qword[rbp-88],                  rcx
-     mov                  rdx,        qword[rbp-80]
-     mov                  rcx,        qword[rbp-88]
-     mov        qword[rdx+16],                  rcx
-     mov                  rcx,        qword[rbp-32]
-     mov        qword[rbp-96],                  rcx
-     mov                  rcx,            qword[@a]
-     mov       qword[rbp-104],                  rcx
-     mov                  rdx,        qword[rbp-96]
-     mov                  rcx,       qword[rbp-104]
-     mov        qword[rdx+24],                  rcx
-     mov                  rdi,        qword[rbp-32]
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     mov       qword[rbp-128],                  rax
-     mov                  rdi,       qword[rbp-128]
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     mov       qword[rbp-152],                  rax
-     mov                  rdi,       qword[rbp-152]
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov       qword[rbp-168],                    0
-jmp	@main.6.ForCon
-@main.5.ForBody:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-176],                  rcx
-     mov                  rdx,       qword[rbp-176]
-     mov                  rcx,           qword[rdx]
-     mov       qword[rbp-184],                  rcx
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-192],                  rcx
-     shl       qword[rbp-192],                    3
-     mov                  rax,       qword[rbp-184]
-     add                  rax,       qword[rbp-192]
-     mov       qword[rbp-184],                  rax
      sub                  rsp,                    8
 call	getInt
      add                  rsp,                    8
-     mov       qword[rbp-208],                  rax
-     mov                  rdx,       qword[rbp-184]
-     mov                  rcx,       qword[rbp-208]
-     mov           qword[rdx],                  rcx
-jmp	@main.4.ForIter
-@main.4.ForIter:
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-216],                  rcx
-     add       qword[rbp-168],                    1
+     mov        qword[rbp-16],                  rax
+     mov                  rcx,        qword[rbp-16]
+     mov            qword[@N],                  rcx
+     mov        qword[rbp-32],                    1
 jmp	@main.6.ForCon
-@main.6.ForCon:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-224],                  rcx
-     mov                  rdx,       qword[rbp-224]
-     mov                  rdi,           qword[rdx]
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     mov       qword[rbp-248],                  rax
-     mov                  rcx,       qword[rbp-168]
-     cmp                  rcx,       qword[rbp-248]
-     mov                  rax,                    0
-    setl                   al
-     mov       qword[rbp-256],                  rax
-     mov                  rcx,       qword[rbp-256]
-     mov       qword[rbp-264],                  rcx
-     cmp       qword[rbp-264],                    1
-je	@main.5.ForBody
-jne	@main.7.ForExit
-@main.7.ForExit:
-     mov       qword[rbp-168],                    0
+@main.5.ForBody:
+     mov        qword[rbp-40],                    1
 jmp	@main.10.ForCon
 @main.9.ForBody:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-272],                  rcx
-     mov                  rdx,       qword[rbp-272]
-     mov                  rcx,         qword[rdx+8]
-     mov       qword[rbp-280],                  rcx
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-288],                  rcx
-     shl       qword[rbp-288],                    3
-     mov                  rax,       qword[rbp-280]
-     add                  rax,       qword[rbp-288]
-     mov       qword[rbp-280],                  rax
-     mov                  rdx,       qword[rbp-280]
-     mov                  rdi,           qword[rdx]
-call	toString
-     mov       qword[rbp-312],                  rax
-     mov                  rdi,       qword[rbp-312]
-call	print
-jmp	@main.8.ForIter
-@main.8.ForIter:
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-328],                  rcx
-     add       qword[rbp-168],                    1
-jmp	@main.10.ForCon
-@main.10.ForCon:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-336],                  rcx
-     mov                  rdx,       qword[rbp-336]
-     mov                  rdi,         qword[rdx+8]
-call	__size__
-     mov       qword[rbp-360],                  rax
-     mov                  rcx,       qword[rbp-168]
-     cmp                  rcx,       qword[rbp-360]
-     mov                  rax,                    0
-    setl                   al
-     mov       qword[rbp-368],                  rax
-     mov                  rcx,       qword[rbp-368]
-     mov       qword[rbp-376],                  rcx
-     cmp       qword[rbp-376],                    1
-je	@main.9.ForBody
-jne	@main.11.ForExit
-@main.11.ForExit:
-     mov                  rdi,         __const_str0
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov       qword[rbp-168],                    0
+     mov        qword[rbp-48],                    1
 jmp	@main.14.ForCon
 @main.13.ForBody:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-392],                  rcx
-     mov                  rdx,       qword[rbp-392]
-     mov                  rcx,        qword[rdx+16]
-     mov       qword[rbp-400],                  rcx
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-408],                  rcx
-     shl       qword[rbp-408],                    3
-     mov                  rax,       qword[rbp-400]
-     add                  rax,       qword[rbp-408]
-     mov       qword[rbp-400],                  rax
-     mov                  rdx,       qword[rbp-400]
-     mov           qword[rdx],                    0
-jmp	@main.12.ForIter
-@main.12.ForIter:
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-416],                  rcx
-     add       qword[rbp-168],                    1
-jmp	@main.14.ForCon
-@main.14.ForCon:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-424],                  rcx
-     mov                  rdx,       qword[rbp-424]
-     mov                  rdi,        qword[rdx+16]
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     mov       qword[rbp-448],                  rax
-     mov                  rcx,       qword[rbp-168]
-     cmp                  rcx,       qword[rbp-448]
-     mov                  rax,                    0
-    setl                   al
-     mov       qword[rbp-456],                  rax
-     mov                  rcx,       qword[rbp-456]
-     mov       qword[rbp-464],                  rcx
-     cmp       qword[rbp-464],                    1
-je	@main.13.ForBody
-jne	@main.15.ForExit
-@main.15.ForExit:
-     mov       qword[rbp-168],                    0
+     mov        qword[rbp-56],                    1
 jmp	@main.18.ForCon
 @main.17.ForBody:
+     mov        qword[rbp-64],                    1
+jmp	@main.22.ForCon
+@main.21.ForBody:
+     mov        qword[rbp-72],                    1
+jmp	@main.26.ForCon
+@main.25.ForBody:
      mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-472],                  rcx
-     mov                  rdx,       qword[rbp-472]
-     mov                  rcx,        qword[rdx+24]
-     mov       qword[rbp-480],                  rcx
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-488],                  rcx
-     shl       qword[rbp-488],                    3
-     mov                  rax,       qword[rbp-480]
-     add                  rax,       qword[rbp-488]
+     cmp                  rcx,        qword[rbp-40]
+     mov                  rax,                    0
+   setne                   al
+     mov        qword[rbp-80],                  rax
+     cmp        qword[rbp-80],                    0
+je	@main.31.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,        qword[rbp-48]
+     mov                  rax,                    0
+   setne                   al
+     mov        qword[rbp-88],                  rax
+     cmp        qword[rbp-88],                    0
+@main.31.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov        qword[rbp-96],                  rax
+     cmp        qword[rbp-96],                    0
+je	@main.32.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,        qword[rbp-56]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-104],                  rax
+     cmp       qword[rbp-104],                    0
+@main.32.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-112],                  rax
+     cmp       qword[rbp-112],                    0
+je	@main.33.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,        qword[rbp-64]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-120],                  rax
+     cmp       qword[rbp-120],                    0
+@main.33.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-128],                  rax
+     cmp       qword[rbp-128],                    0
+je	@main.34.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,        qword[rbp-72]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-136],                  rax
+     cmp       qword[rbp-136],                    0
+@main.34.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-144],                  rax
+     cmp       qword[rbp-144],                    0
+je	@main.35.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,            qword[@h]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-160],                  rax
+     cmp       qword[rbp-160],                    0
+@main.35.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-168],                  rax
+     cmp       qword[rbp-168],                    0
+je	@main.36.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,            qword[@i]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-184],                  rax
+     cmp       qword[rbp-184],                    0
+@main.36.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-192],                  rax
+     cmp       qword[rbp-192],                    0
+je	@main.37.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-208],                  rax
+     cmp       qword[rbp-208],                    0
+@main.37.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-216],                  rax
+     cmp       qword[rbp-216],                    0
+je	@main.38.cmp_and
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-232],                  rax
+     cmp       qword[rbp-232],                    0
+@main.38.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-240],                  rax
+     cmp       qword[rbp-240],                    0
+je	@main.39.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,        qword[rbp-48]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-248],                  rax
+     cmp       qword[rbp-248],                    0
+@main.39.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-256],                  rax
+     cmp       qword[rbp-256],                    0
+je	@main.40.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,        qword[rbp-56]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-264],                  rax
+     cmp       qword[rbp-264],                    0
+@main.40.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-272],                  rax
+     cmp       qword[rbp-272],                    0
+je	@main.41.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,        qword[rbp-64]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-280],                  rax
+     cmp       qword[rbp-280],                    0
+@main.41.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-288],                  rax
+     cmp       qword[rbp-288],                    0
+je	@main.42.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,        qword[rbp-72]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-296],                  rax
+     cmp       qword[rbp-296],                    0
+@main.42.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-304],                  rax
+     cmp       qword[rbp-304],                    0
+je	@main.43.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,            qword[@h]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-312],                  rax
+     cmp       qword[rbp-312],                    0
+@main.43.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-320],                  rax
+     cmp       qword[rbp-320],                    0
+je	@main.44.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,            qword[@i]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-328],                  rax
+     cmp       qword[rbp-328],                    0
+@main.44.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-336],                  rax
+     cmp       qword[rbp-336],                    0
+je	@main.45.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-344],                  rax
+     cmp       qword[rbp-344],                    0
+@main.45.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-352],                  rax
+     cmp       qword[rbp-352],                    0
+je	@main.46.cmp_and
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-360],                  rax
+     cmp       qword[rbp-360],                    0
+@main.46.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-368],                  rax
+     cmp       qword[rbp-368],                    0
+je	@main.47.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,        qword[rbp-56]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-376],                  rax
+     cmp       qword[rbp-376],                    0
+@main.47.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-384],                  rax
+     cmp       qword[rbp-384],                    0
+je	@main.48.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,        qword[rbp-64]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-392],                  rax
+     cmp       qword[rbp-392],                    0
+@main.48.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-400],                  rax
+     cmp       qword[rbp-400],                    0
+je	@main.49.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,        qword[rbp-72]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-408],                  rax
+     cmp       qword[rbp-408],                    0
+@main.49.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-416],                  rax
+     cmp       qword[rbp-416],                    0
+je	@main.50.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,            qword[@h]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-424],                  rax
+     cmp       qword[rbp-424],                    0
+@main.50.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-432],                  rax
+     cmp       qword[rbp-432],                    0
+je	@main.51.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,            qword[@i]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-440],                  rax
+     cmp       qword[rbp-440],                    0
+@main.51.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-448],                  rax
+     cmp       qword[rbp-448],                    0
+je	@main.52.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-456],                  rax
+     cmp       qword[rbp-456],                    0
+@main.52.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-464],                  rax
+     cmp       qword[rbp-464],                    0
+je	@main.53.cmp_and
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-472],                  rax
+     cmp       qword[rbp-472],                    0
+@main.53.cmp_and:
+     mov                  rax,                    0
+   setne                   al
      mov       qword[rbp-480],                  rax
-     mov                  rdx,       qword[rbp-480]
-     mov                  rdi,           qword[rdx]
-call	toString
+     cmp       qword[rbp-480],                    0
+je	@main.54.cmp_and
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,        qword[rbp-64]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-488],                  rax
+     cmp       qword[rbp-488],                    0
+@main.54.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-496],                  rax
+     cmp       qword[rbp-496],                    0
+je	@main.55.cmp_and
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,        qword[rbp-72]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-504],                  rax
+     cmp       qword[rbp-504],                    0
+@main.55.cmp_and:
+     mov                  rax,                    0
+   setne                   al
      mov       qword[rbp-512],                  rax
-     mov                  rdi,       qword[rbp-512]
-call	print
+     cmp       qword[rbp-512],                    0
+je	@main.56.cmp_and
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,            qword[@h]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-520],                  rax
+     cmp       qword[rbp-520],                    0
+@main.56.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-528],                  rax
+     cmp       qword[rbp-528],                    0
+je	@main.57.cmp_and
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,            qword[@i]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-536],                  rax
+     cmp       qword[rbp-536],                    0
+@main.57.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-544],                  rax
+     cmp       qword[rbp-544],                    0
+je	@main.58.cmp_and
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-552],                  rax
+     cmp       qword[rbp-552],                    0
+@main.58.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-560],                  rax
+     cmp       qword[rbp-560],                    0
+je	@main.59.cmp_and
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-568],                  rax
+     cmp       qword[rbp-568],                    0
+@main.59.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-576],                  rax
+     cmp       qword[rbp-576],                    0
+je	@main.60.cmp_and
+     mov                  rcx,        qword[rbp-64]
+     cmp                  rcx,        qword[rbp-72]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-584],                  rax
+     cmp       qword[rbp-584],                    0
+@main.60.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-592],                  rax
+     cmp       qword[rbp-592],                    0
+je	@main.61.cmp_and
+     mov                  rcx,        qword[rbp-64]
+     cmp                  rcx,            qword[@h]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-600],                  rax
+     cmp       qword[rbp-600],                    0
+@main.61.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-608],                  rax
+     cmp       qword[rbp-608],                    0
+je	@main.62.cmp_and
+     mov                  rcx,        qword[rbp-64]
+     cmp                  rcx,            qword[@i]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-616],                  rax
+     cmp       qword[rbp-616],                    0
+@main.62.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-624],                  rax
+     cmp       qword[rbp-624],                    0
+je	@main.63.cmp_and
+     mov                  rcx,        qword[rbp-64]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-632],                  rax
+     cmp       qword[rbp-632],                    0
+@main.63.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-640],                  rax
+     cmp       qword[rbp-640],                    0
+je	@main.64.cmp_and
+     mov                  rcx,        qword[rbp-64]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-648],                  rax
+     cmp       qword[rbp-648],                    0
+@main.64.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-656],                  rax
+     cmp       qword[rbp-656],                    0
+je	@main.65.cmp_and
+     mov                  rcx,        qword[rbp-72]
+     cmp                  rcx,            qword[@h]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-664],                  rax
+     cmp       qword[rbp-664],                    0
+@main.65.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-672],                  rax
+     cmp       qword[rbp-672],                    0
+je	@main.66.cmp_and
+     mov                  rcx,        qword[rbp-72]
+     cmp                  rcx,            qword[@i]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-680],                  rax
+     cmp       qword[rbp-680],                    0
+@main.66.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-688],                  rax
+     cmp       qword[rbp-688],                    0
+je	@main.67.cmp_and
+     mov                  rcx,        qword[rbp-72]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-696],                  rax
+     cmp       qword[rbp-696],                    0
+@main.67.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-704],                  rax
+     cmp       qword[rbp-704],                    0
+je	@main.68.cmp_and
+     mov                  rcx,        qword[rbp-72]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-712],                  rax
+     cmp       qword[rbp-712],                    0
+@main.68.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-720],                  rax
+     cmp       qword[rbp-720],                    0
+je	@main.69.cmp_and
+     mov                  rcx,            qword[@i]
+     mov       qword[rbp-728],                  rcx
+     mov                  rcx,       qword[rbp-728]
+     cmp                  rcx,            qword[@j]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-736],                  rax
+     cmp       qword[rbp-736],                    0
+@main.69.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-744],                  rax
+     cmp       qword[rbp-744],                    0
+je	@main.70.cmp_and
+     mov                  rcx,            qword[@h]
+     mov       qword[rbp-752],                  rcx
+     mov                  rcx,       qword[rbp-752]
+     cmp                  rcx,            qword[@k]
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-760],                  rax
+     cmp       qword[rbp-760],                    0
+@main.70.cmp_and:
+     mov                  rax,                    0
+   setne                   al
+     mov       qword[rbp-768],                  rax
+     mov                  rcx,       qword[rbp-768]
+     mov       qword[rbp-776],                  rcx
+     cmp       qword[rbp-776],                    1
+je	@main.29.IfTrue
+jne	@main.28.IfFalse
+@main.29.IfTrue:
+     mov                  rcx,        qword[@total]
+     mov       qword[rbp-784],                  rcx
+     add        qword[@total],                    1
+jmp	@main.30.IfExit
+@main.28.IfFalse:
+@main.30.IfExit:
+jmp	@main.24.ForIter
+@main.24.ForIter:
+     mov                  rcx,        qword[rbp-72]
+     mov       qword[rbp-800],                  rcx
+     add        qword[rbp-72],                    1
+jmp	@main.26.ForCon
+@main.26.ForCon:
+     mov                  rcx,        qword[rbp-72]
+     cmp                  rcx,            qword[@N]
+     mov                  rax,                    0
+   setle                   al
+     mov       qword[rbp-808],                  rax
+     mov                  rcx,       qword[rbp-808]
+     mov       qword[rbp-816],                  rcx
+     cmp       qword[rbp-816],                    1
+je	@main.25.ForBody
+jne	@main.27.ForExit
+@main.27.ForExit:
+jmp	@main.20.ForIter
+@main.20.ForIter:
+     mov                  rcx,        qword[rbp-64]
+     mov       qword[rbp-824],                  rcx
+     add        qword[rbp-64],                    1
+jmp	@main.22.ForCon
+@main.22.ForCon:
+     mov                  rcx,        qword[rbp-64]
+     cmp                  rcx,            qword[@N]
+     mov                  rax,                    0
+   setle                   al
+     mov       qword[rbp-832],                  rax
+     mov                  rcx,       qword[rbp-832]
+     mov       qword[rbp-840],                  rcx
+     cmp       qword[rbp-840],                    1
+je	@main.21.ForBody
+jne	@main.23.ForExit
+@main.23.ForExit:
 jmp	@main.16.ForIter
 @main.16.ForIter:
-     mov                  rcx,       qword[rbp-168]
-     mov       qword[rbp-528],                  rcx
-     add       qword[rbp-168],                    1
+     mov                  rcx,        qword[rbp-56]
+     mov       qword[rbp-848],                  rcx
+     add        qword[rbp-56],                    1
 jmp	@main.18.ForCon
 @main.18.ForCon:
-     mov                  rcx,        qword[rbp-32]
-     mov       qword[rbp-536],                  rcx
-     mov                  rdx,       qword[rbp-536]
-     mov                  rdi,        qword[rdx+24]
-call	__size__
-     mov       qword[rbp-560],                  rax
-     mov                  rcx,       qword[rbp-168]
-     cmp                  rcx,       qword[rbp-560]
+     mov                  rcx,        qword[rbp-56]
+     cmp                  rcx,            qword[@N]
      mov                  rax,                    0
-    setl                   al
-     mov       qword[rbp-568],                  rax
-     mov                  rcx,       qword[rbp-568]
-     mov       qword[rbp-576],                  rcx
-     cmp       qword[rbp-576],                    1
+   setle                   al
+     mov       qword[rbp-856],                  rax
+     mov                  rcx,       qword[rbp-856]
+     mov       qword[rbp-864],                  rcx
+     cmp       qword[rbp-864],                    1
 je	@main.17.ForBody
 jne	@main.19.ForExit
 @main.19.ForExit:
+jmp	@main.12.ForIter
+@main.12.ForIter:
+     mov                  rcx,        qword[rbp-48]
+     mov       qword[rbp-872],                  rcx
+     add        qword[rbp-48],                    1
+jmp	@main.14.ForCon
+@main.14.ForCon:
+     mov                  rcx,        qword[rbp-48]
+     cmp                  rcx,            qword[@N]
+     mov                  rax,                    0
+   setle                   al
+     mov       qword[rbp-880],                  rax
+     mov                  rcx,       qword[rbp-880]
+     mov       qword[rbp-888],                  rcx
+     cmp       qword[rbp-888],                    1
+je	@main.13.ForBody
+jne	@main.15.ForExit
+@main.15.ForExit:
+jmp	@main.8.ForIter
+@main.8.ForIter:
+     mov                  rcx,        qword[rbp-40]
+     mov       qword[rbp-896],                  rcx
+     add        qword[rbp-40],                    1
+jmp	@main.10.ForCon
+@main.10.ForCon:
+     mov                  rcx,        qword[rbp-40]
+     cmp                  rcx,            qword[@N]
+     mov                  rax,                    0
+   setle                   al
+     mov       qword[rbp-904],                  rax
+     mov                  rcx,       qword[rbp-904]
+     mov       qword[rbp-912],                  rcx
+     cmp       qword[rbp-912],                    1
+je	@main.9.ForBody
+jne	@main.11.ForExit
+@main.11.ForExit:
+jmp	@main.4.ForIter
+@main.4.ForIter:
+     mov                  rcx,        qword[rbp-32]
+     mov       qword[rbp-920],                  rcx
+     add        qword[rbp-32],                    1
+jmp	@main.6.ForCon
+@main.6.ForCon:
+     mov                  rcx,        qword[rbp-32]
+     cmp                  rcx,            qword[@N]
+     mov                  rax,                    0
+   setle                   al
+     mov       qword[rbp-928],                  rax
+     mov                  rcx,       qword[rbp-928]
+     mov       qword[rbp-936],                  rcx
+     cmp       qword[rbp-936],                    1
+je	@main.5.ForBody
+jne	@main.7.ForExit
+@main.7.ForExit:
+     mov                  rdi,        qword[@total]
+call	toString
+     mov       qword[rbp-960],                  rax
+     mov                  rdi,       qword[rbp-960]
+call	println
      mov                  rax,                    0
 jmp	@main.2.exit
 @main.2.exit:
-     add                  rsp,                  584
+     add                  rsp,                  976
      pop                  rbp
      ret
 
 
  section                 .bss
-@a   resq 1
+@total   resq 1
+@h   resq 1
+@i   resq 1
+@j   resq 1
+@k   resq 1
+@N   resq 1
+
 
  section                .data
-      dq                    0
-__const_str0:
-      db "",0
 
 
 

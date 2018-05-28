@@ -84,10 +84,16 @@ public class BinaryLessExpression extends BinaryExpression {
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
 			instructionList.add(new MoveInstruction(tmp, left));
 			instructionList.add(new CompareInstruction(tmp, right));
+			instructionList.add(new CSetInstruction(CSetInstruction.Type.E, operand));
+			return;
+		}
+		if (left instanceof Immediate) {
+			instructionList.add(new CompareInstruction(right, left));
+			instructionList.add(new CSetInstruction(CSetInstruction.Type.G, operand));
 		} else {
 			instructionList.add(new CompareInstruction(left, right));
+			instructionList.add(new CSetInstruction(CSetInstruction.Type.L, operand));
 		}
-		instructionList.add(new CSetInstruction(CSetInstruction.Type.L, operand));
 	}
 
 }

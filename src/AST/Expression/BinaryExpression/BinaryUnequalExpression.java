@@ -94,7 +94,11 @@ public class BinaryUnequalExpression extends BinaryExpression {
 			instructionList.add(new MoveInstruction(tmp, left));
 			instructionList.add(new CompareInstruction(tmp, right));
 		} else {
-			instructionList.add(new CompareInstruction(left, right));
+			if (left instanceof Immediate) {
+				instructionList.add(new CompareInstruction(right, left));
+			} else {
+				instructionList.add(new CompareInstruction(left, right));
+			}
 		}
 		instructionList.add(new CSetInstruction(CSetInstruction.Type.NE, operand));
 	}

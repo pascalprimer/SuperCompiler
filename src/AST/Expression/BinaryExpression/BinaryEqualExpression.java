@@ -84,6 +84,10 @@ public class BinaryEqualExpression extends BinaryExpression {
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
 			instructionList.add(new MoveInstruction(tmp, left));
 			instructionList.add(new CompareInstruction(tmp, right));
+			return;
+		}
+		if (left instanceof Immediate) {
+			instructionList.add(new CompareInstruction(right, left));
 		} else {
 			instructionList.add(new CompareInstruction(left, right));
 		}
