@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalOperand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalOperand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NASM/systemFunction.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/NASM/systemFunction.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systemFunction.asm" beforeDir="false" afterPath="$PROJECT_DIR$/systemFunction.asm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+            <state relative-caret-position="18">
+              <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -62,7 +56,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhysicalAddress.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PhysicalAddress.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalAddress.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="295">
@@ -74,8 +68,8 @@
       <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-420">
-              <caret line="9" column="6" lean-forward="true" selection-end-line="712" />
+            <state relative-caret-position="48">
+              <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -184,10 +178,10 @@
         <option value="$PROJECT_DIR$/src/NASM/SystemFunction.java" />
         <option value="$PROJECT_DIR$/systemFunction.asm" />
         <option value="$PROJECT_DIR$/src/NASM/systemFunction.asm" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalOperand.java" />
         <option value="$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalAddress.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -384,11 +378,11 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.25980392" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.25980392" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.22940724" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.22940724" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.46078432" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -824,20 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/program.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
-          <caret line="9" column="6" lean-forward="true" selection-end-line="712" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NASM/PhysicalOperand/PhysicalOperand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -859,6 +839,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
         </state>
       </provider>
     </entry>
