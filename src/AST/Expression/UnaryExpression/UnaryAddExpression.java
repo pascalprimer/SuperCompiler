@@ -29,10 +29,10 @@ public class UnaryAddExpression extends UnaryExpression {
 	public void translateIR(List<Instruction> instructionList) {
 		expression.translateIR(instructionList);
 		operand = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(
-				UnaryInstruction.Type.ADD, operand
+				UnaryInstruction.Type.ADD, expression.operand
 		));
+		instructionList.add(new MoveInstruction(operand, expression.operand));
 	}
 
 }

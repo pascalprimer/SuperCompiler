@@ -10,12 +10,12 @@ public class SystemFunction {
 	public static String loadSystemFunction() {
 		StringBuilder code = new StringBuilder();
 		try {
-			FileReader reader = new FileReader("systemFunction.asm");
-			BufferedReader br = new BufferedReader(reader);
-			String str = null;
-			while ((str = br.readLine()) != null) {
-				code.append(str + "\n");
-			}
+//			FileReader reader = new FileReader("systemFunction.asm");
+//			BufferedReader br = new BufferedReader(reader);
+//			String str = null;
+//			while ((str = br.readLine()) != null) {
+//				code.append(str + "\n");
+//			}
 		} catch (Throwable throwable) {
 			System.out.println("no system function file!!!");
 		}

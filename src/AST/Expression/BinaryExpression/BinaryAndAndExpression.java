@@ -7,6 +7,7 @@ import AST.Type.BoolType;
 import IR.Instruction.*;
 import IR.Operand.Immediate;
 import IR.Operand.Operand;
+import IR.RegisterManager;
 import Utility.CompilerError;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class BinaryAndAndExpression extends BinaryExpression {
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(0)));
 		instructionList.add(label);
+		operand = RegisterManager.getVirtualRegister();
 		instructionList.add(new CSetInstruction(CSetInstruction.Type.NE, operand));
 	}
 
