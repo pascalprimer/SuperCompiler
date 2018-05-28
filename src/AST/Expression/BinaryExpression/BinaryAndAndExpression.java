@@ -40,7 +40,7 @@ public class BinaryAndAndExpression extends BinaryExpression {
 		 */
 		leftExpression.translateIR(instructionList);
 		Operand left = leftExpression.operand;
-		Label label = new Label("cmp_and:");
+		Label label = new Label("cmp_and");
 		instructionList.add(new CompareInstruction(left, new Immediate(0)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
 		rightExpression.translateIR(instructionList);

@@ -40,7 +40,7 @@ public class BinaryOrOrExpression extends BinaryExpression {
 		 */
 		leftExpression.translateIR(instructionList);
 		Operand left = leftExpression.operand;
-		Label label = new Label("cmp_or:");
+		Label label = new Label("cmp_or");
 		instructionList.add(new CompareInstruction(left, new Immediate(1)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
 		rightExpression.translateIR(instructionList);
