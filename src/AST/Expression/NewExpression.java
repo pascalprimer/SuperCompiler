@@ -89,6 +89,7 @@ public class NewExpression extends Expression {
 		instructionList.add(new BinaryInstruction(
 				BinaryInstruction.Operation.SUB, size, new Immediate(8)
 		));
+		//-> size = allocateSize << 3
 		operandList.remove(0);
 		Type nextType = ((ArrayType) newType).prefixArray();
 		if (/*nextType instanceof ClassType || */operandList.size() > 0) {
@@ -118,7 +119,7 @@ public class NewExpression extends Expression {
 			instructionList.add(new BinaryInstruction(
 					BinaryInstruction.Operation.ADD, idx, new Immediate(8)
 			));
-			instructionList.add(new CompareInstruction(idx, size));
+			instructionList.add(new CompareInstruction(idx, endIDX));
 			instructionList.add(new JumpInstruction(JumpInstruction.Type.JL, allocateLabel));
 		}
 	}

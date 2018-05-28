@@ -41,15 +41,20 @@ public class ArrayExpression extends Expression {
 		subscriptExpression.translateIR(instructionList);
 		Operand base = baseExpression.operand,
 				offset = subscriptExpression.operand;
-		VirtualRegister tmp = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(tmp, base));
+		VirtualRegister tmpBase = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(tmpBase, base));
 		if (offset instanceof Immediate) {
-			operand = new Address(tmp, (Immediate) offset);
+			operand = new Address(tmpBase, (Immediate) offset);
 		} else {
+			VirtualRegister tmpOffset = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(tmpOffset, offset));
 			instructionList.add(new BinaryInstruction(
-							BinaryInstruction.Operation.ADD, tmp, offset
+					BinaryInstruction.Operation.SHL, tmpOffset, new Immediate(3)
 			));
-			operand = new Address(tmp, new Immediate(0));
+			instructionList.add(new BinaryInstruction(
+					BinaryInstruction.Operation.ADD, tmpBase, tmpOffset
+			));
+			operand = new Address(tmpBase, new Immediate(0));
 		}
 	}
 }

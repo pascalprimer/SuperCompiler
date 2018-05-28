@@ -4,6 +4,9 @@ import AST.Type.FunctionType;
 import IR.Operand.Operand;
 import IR.RegisterManager;
 import NASM.NASMTranslator;
+import NASM.PhysicalOperand.PhysicalAddress;
+import NASM.PhysicalOperand.PhysicalOperand;
+import NASM.PhysicalOperand.SystemRegister;
 
 import java.util.List;
 
@@ -51,10 +54,15 @@ public class FunctionCallInstruction extends Instruction{
 		}
 
 		for (int i = parameterList.size() - 1; i >= 0; --i) {
+			PhysicalOperand nowPara = PhysicalOperand.get(code, parameterList.get(i));
+			if (nowPara instanceof PhysicalAddress) {
+				code.append(NASMTranslator.getInstruction("mov", "rcx", nowPara.toString()));
+				nowPara = new SystemRegister("rcx");
+			}
 			code.append(NASMTranslator.getInstruction(
 					"mov",
-					"qword[rsp+" + String.valueOf((i + 2) << 3) + "]",
-					String.valueOf(parameterList.size() << 3)
+					"qword[rsp+" + String.valueOf(i << 3) + "]",
+					nowPara.toString()
 			));
 		}
 		code.append(NASMTranslator.getInstruction("call\t" + functionName));

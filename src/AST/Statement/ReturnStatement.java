@@ -1,6 +1,7 @@
 package AST.Statement;
 
 import AST.AST;
+import AST.Expression.ConstantExpression.NullConstant;
 import AST.Expression.ConstantExpression.VoidConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Scope;
@@ -40,7 +41,9 @@ public class ReturnStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		if (returnValue != null) {
+		if (returnValue != null &&
+				!(returnValue instanceof VoidConstant) &&
+				!(returnValue instanceof NullConstant)) {
 			returnValue.translateIR(instructionList);
 			//fixme    physical reg needed
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
