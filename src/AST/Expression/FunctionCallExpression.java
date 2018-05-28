@@ -4,9 +4,12 @@ import AST.Expression.ConstantExpression.VoidConstant;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
 import AST.Type.*;
+import IR.FunctionIR;
 import IR.Instruction.FunctionCallInstruction;
 import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
 import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import Utility.CompilerError;
 
@@ -95,17 +98,23 @@ public class FunctionCallExpression extends Expression {
 		}
 		if (function instanceof FieldExpression) {
 			para.add(0, ((FieldExpression) function).getField());
-		} else {
+		} else if (((FunctionType) function.returnType).getClassScope() != null){
 			para.add(0, IdentifierExpression.getExpression("this"));
 		}
 		List<Symbol> fpara = ((FunctionType) function.returnType).getParameterList(); //para from func
 		//System.out.println(para.size() + fpara.size());
-		System.out.println(fpara.get(0));
+		//System.out.println(fpara.get(0));
 		if (fpara.size() != para.size()) {
 			throw new CompilerError("Parameter numbers don't match when function calling");
 		}
 		for (int i = 0; i < para.size(); ++i) {
-			if (!fpara.get(i).getType().compatibleWith(para.get(i).returnType)) {
+			Type fp = fpara.get(i).getType();
+			Type p = para.get(i).returnType;
+			if (i == 0 && function instanceof FieldExpression && fp == null) {
+				continue;
+			}
+			if (!fp.compatibleWith(p)) {
+				//System.out.println(fpara.get(i) + " " + para.get(i).returnType);
 				throw new CompilerError("Parameter types don't match when function call");
 			}
 		}
@@ -129,32 +138,27 @@ public class FunctionCallExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-//		function.translateIR(instructionList);
-//		List<Operand> operandList = new ArrayList<>();
-//		for (Expression exp: parameter) {
-//			exp.translateIR(instructionList);
-//			operandList.add(exp.operand);
-//		}
-//		if (!(returnType instanceof VoidType)) {
-//			operand = RegisterManager.getVirtualRegister();
-//		}
-//		if (function instanceof IdentifierExpression) {
-//			instructionList.add(
-//					new FunctionCallInstruction(
-//							(FunctionType) (((IdentifierExpression) function).getSymbol().getType()),
-//							operandList,
-//							operand
-//					)
-//			);
-//		} else {
-//			instructionList.add(
-//					new FunctionCallInstruction(
-//							(FunctionType) (((FieldExpression) function).getMemberSymbol().getType()),
-//							operandList,
-//							operand
-//					)
-//			);
-//		}
+		List<Operand> operandList = new ArrayList<>();
+		for (Expression exp: parameter) {
+			exp.translateIR(instructionList);
+			operandList.add(exp.operand);
+		}
+		VirtualRegister tmp = null;
+		if (!(returnType instanceof VoidType)) {
+			tmp = RegisterManager.getVirtualRegister();
+			tmp.sysRegister = "rax";
+		}
+		for (int i = 0; i < 6 && operandList.size() > 0; ++i) {
+			VirtualRegister nowreg = RegisterManager.getVirtualRegister();
+			nowreg.sysRegister = RegisterManager.parameterRegisterName.get(i);
+			instructionList.add(new MoveInstruction(nowreg, operandList.get(0)));
+			operandList.remove(0);
+		}
+		instructionList.add(new FunctionCallInstruction(function, operandList, tmp));
+		if (!(returnType instanceof VoidType)) {
+			operand = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(operand, tmp));
+		}
 	}
 
 }

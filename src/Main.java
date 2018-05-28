@@ -5,14 +5,14 @@ import FrontEnd.Listener.StatementListener;
 import FrontEnd.Parser.CompilerLexer;
 import FrontEnd.Parser.CompilerParser;
 import IR.IRTranslator;
+import NASM.NASMTranslator;
+import Test.A;
 import Utility.CompilerError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.*;
 
 public class Main {
@@ -40,20 +40,30 @@ public class Main {
 			System.err.println("dangerous program!!!");
 			System.exit(1);
 		}*/
-		System.err.println("okokok Gogogo!!!");
+		System.err.println("Syntax ok!!!");
 	}
 
 	public static void buildIR() throws Exception {
 		IRTranslator.translate();
+		//IRTranslator.print(1);
+	}
+
+	public static void buildNASM() throws Exception {
+		StringBuilder code = NASMTranslator.translate();
+		File file= new File("program.asm");
+		PrintStream fout = new PrintStream(new FileOutputStream(file));
+		fout.print(code.toString());
 	}
 
 	public static void main(String[] args) throws Exception{
-		//testing();
+		A tmp = new A();
+		System.out.println();
 		File file = new File("program.txt");
 		InputStream fin = new FileInputStream(file);
 
 		buildAST(fin);
-		//buildIR();
+		buildIR();
+		buildNASM();
 	}
 
 	public static void testing() {

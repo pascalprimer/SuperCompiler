@@ -31,12 +31,16 @@ public class PostfixSubtractExpression extends Expression {
 	public void translateIR(List<Instruction> instructionList) {
 		expression.translateIR(instructionList);
 		operand = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(expression.operand, operand));
-		VirtualRegister tmp = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(operand, expression.operand));
+		//fixme???!!!
 		instructionList.add(new UnaryInstruction(
-				UnaryInstruction.Type.SUB, operand, tmp
+				UnaryInstruction.Type.ADD, expression.operand
 		));
-		instructionList.add(new MoveInstruction(tmp, expression.operand));
+//		VirtualRegister tmp = RegisterManager.getVirtualRegister();
+//		instructionList.add(new UnaryInstruction(
+//				UnaryInstruction.Type.SUB, operand, tmp
+//		));
+//		instructionList.add(new MoveInstruction(expression.operand, tmp));
 	}
 
 }

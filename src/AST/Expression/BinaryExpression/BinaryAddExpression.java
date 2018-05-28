@@ -1,8 +1,10 @@
 package AST.Expression.BinaryExpression;
 
+import AST.AST;
 import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.ConstantExpression.StringConstant;
 import AST.Expression.Expression;
+import AST.Expression.FunctionCallExpression;
 import AST.Symbol.Type;
 import AST.Type.IntType;
 import AST.Type.StringType;
@@ -15,6 +17,7 @@ import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import Utility.CompilerError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryAddExpression extends BinaryExpression {
@@ -36,7 +39,12 @@ public class BinaryAddExpression extends BinaryExpression {
 				return new StringConstant(((StringConstant) leftExp).getValue()
 											+ ((StringConstant) rightExp).getValue());
 			}
-			return new BinaryAddExpression(StringType.getInstance(), leftExp, rightExp);
+			return new FunctionCallExpression(
+					AST.globalFunctionTable.getFunctionType("__string_connect__"),
+					new ArrayList<Expression>() {{
+						add(leftExp); add(rightExp);
+					}}
+			);
 		}
 		throw new CompilerError("Expressions cannot be added");
 	}
@@ -48,20 +56,9 @@ public class BinaryAddExpression extends BinaryExpression {
 		operand = RegisterManager.getVirtualRegister();
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
-		if (left instanceof Address && right instanceof Address) {
-			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(left, tmp));
-			instructionList.add(
-					new BinaryInstruction(
-							BinaryInstruction.Operation.ADD, tmp, right, operand
-					)
-			);
-		} else {
-			instructionList.add(
-					new BinaryInstruction(
-							BinaryInstruction.Operation.ADD, left, right, operand
-					)
-			);
-		}
+		instructionList.add(new MoveInstruction(operand, left));
+		instructionList.add(new BinaryInstruction(
+						BinaryInstruction.Operation.ADD, operand, right
+		));
 	}
 }

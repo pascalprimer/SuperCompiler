@@ -4,6 +4,7 @@ import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.IntType;
 import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
 import IR.Instruction.UnaryInstruction;
 import IR.RegisterManager;
 import Utility.CompilerError;
@@ -30,8 +31,9 @@ public class UnaryReverseExpression extends UnaryExpression {
 	public void translateIR(List<Instruction> instructionList) {
 		expression.translateIR(instructionList);
 		operand = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(
-				UnaryInstruction.Type.REV, expression.operand, operand
+				UnaryInstruction.Type.REV, operand
 		));
 	}
 }

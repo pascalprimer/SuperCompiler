@@ -46,7 +46,7 @@ public class BinaryOrOrExpression extends BinaryExpression {
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(1)));
 		instructionList.add(label);
-		instructionList.add(new CSetInstruction(CSetInstruction.Type.EQ, operand));
+		instructionList.add(new CSetInstruction(CSetInstruction.Type.E, operand));
 	}
 
 }

@@ -39,12 +39,12 @@ public class IterationStatement extends Statement implements Scope {
 		/*
 			*init
 			J ForCon
-		ForIter:
-			*iter
-			J Forcon
 		ForBody:
 			body
 			J ForIter
+		ForIter:
+			*iter
+			J Forcon
 		ForCon:
 			condition
 			mv condition.operand tmp
@@ -60,25 +60,29 @@ public class IterationStatement extends Statement implements Scope {
 		IRTranslator.loopContinue = iterLabel;
 		IRTranslator.loopExit = exitLabel;
 
+		//JMP
 		if (initialization != null) {
 			initialization.translateIR(instructionList);
 		}
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, conLabel));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, conLabel));
 
+		//Body
+		instructionList.add(bodyLabel);
+		statement.translateIR(instructionList);
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, iterLabel));
+
+		//Iterate
 		instructionList.add(iterLabel);
 		if (operation != null) {
 			operation.translateIR(instructionList);
 		}
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, conLabel));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, conLabel));
 
-		instructionList.add(bodyLabel);
-		statement.translateIR(instructionList);
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, iterLabel));
-
+		//Condition
 		instructionList.add(conLabel);
 		termination.translateIR(instructionList);
 		VirtualRegister tmp = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(termination.operand, tmp));
+		instructionList.add(new MoveInstruction(tmp, termination.operand));
 		instructionList.add(new CompareInstruction(tmp, new Immediate(1)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, bodyLabel));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, exitLabel));

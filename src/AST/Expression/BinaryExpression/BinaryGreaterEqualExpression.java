@@ -1,9 +1,11 @@
 package AST.Expression.BinaryExpression;
 
+import AST.AST;
 import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.ConstantExpression.StringConstant;
 import AST.Expression.Expression;
+import AST.Expression.FunctionCallExpression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
 import AST.Type.IntType;
@@ -16,6 +18,7 @@ import IR.Operand.*;
 import IR.RegisterManager;
 import Utility.CompilerError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryGreaterEqualExpression extends BinaryExpression {
@@ -38,7 +41,15 @@ public class BinaryGreaterEqualExpression extends BinaryExpression {
 				String rstr = ((StringConstant) rightExp).getValue();
 				return new BoolConstant(lstr.compareTo(rstr) >= 0);
 			}
-			return new BinaryGreaterEqualExpression(BoolType.getInstance(), leftExp, rightExp);
+			//if (leftExp.returnType instanceof StringType) {
+			return new FunctionCallExpression(
+					AST.globalFunctionTable.getFunctionType("__string_greater_equal__"),
+					new ArrayList<Expression>() {{
+						add(leftExp); add(rightExp);
+					}}
+			);
+			//}
+			//return new BinaryGreaterEqualExpression(BoolType.getInstance(), leftExp, rightExp);
 		}
 		throw new CompilerError("Expressions cannot be compared");
 	}
@@ -53,14 +64,6 @@ public class BinaryGreaterEqualExpression extends BinaryExpression {
 			operand = new Immediate(1);
 			return;
 		}
-		if (left instanceof StringMemory && right instanceof StringMemory) {
-			if (((StringMemory) left).tag.compareTo(((StringMemory) right).tag) >= 0) {
-				operand = new Immediate(1);
-			} else {
-				operand = new Immediate(0);
-			}
-			return;
-		}
 		if (left instanceof Immediate && right instanceof Immediate) {
 			if (((Immediate) left).getValue() >= ((Immediate) right).getValue()) {
 				operand = new Immediate(1);
@@ -73,7 +76,7 @@ public class BinaryGreaterEqualExpression extends BinaryExpression {
 		//fixme optimize!!!???!!!
 		if (left instanceof Address && right instanceof Address) {
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(left, tmp));
+			instructionList.add(new MoveInstruction(tmp, left));
 			instructionList.add(new CompareInstruction(tmp, right));
 		} else {
 			instructionList.add(new CompareInstruction(left, right));

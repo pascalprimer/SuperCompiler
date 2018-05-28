@@ -41,10 +41,10 @@ public class AssignExpression extends Expression {
 				rvalue = subscript.operand;
 		if (lvalue instanceof Address && rvalue instanceof Address) {
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(rvalue, tmp));
-			instructionList.add(new MoveInstruction(tmp, lvalue));
+			instructionList.add(new MoveInstruction(tmp, rvalue));
+			instructionList.add(new MoveInstruction(lvalue, tmp));
 		} else {
-			instructionList.add(new MoveInstruction(rvalue, lvalue));
+			instructionList.add(new MoveInstruction(lvalue, rvalue));
 		}
 		operand = subscript.operand;
 	}

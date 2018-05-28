@@ -55,18 +55,18 @@ public class SelectionStatement extends Statement implements Scope {
 
 		condition.translateIR(instructionList);
 		VirtualRegister con = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(condition.operand, con));
+		instructionList.add(new MoveInstruction(con, condition.operand));
 		instructionList.add(new CompareInstruction(con, new Immediate(1)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, trueLabel));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, falseLabel));
 
 		instructionList.add(trueLabel);
 		thenStatement.translateIR(instructionList);
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, exitLabel));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, exitLabel));
 		instructionList.add(falseLabel);
 		if (elseStatement != null) {
 			elseStatement.translateIR(instructionList);
-			instructionList.add(new JumpInstruction(JumpInstruction.Type.J, exitLabel));
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, exitLabel));
 		}
 		instructionList.add(exitLabel);
 	}

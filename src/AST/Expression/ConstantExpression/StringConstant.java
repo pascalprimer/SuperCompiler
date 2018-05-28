@@ -12,6 +12,9 @@ public class StringConstant extends Constant {
 
 	public StringConstant(String value) {
 		super(StringType.getInstance());
+		//System.out.print(value + "\n");
+		value = value.substring(1, value.length() - 1);
+		//System.out.print(value + "\n");
 		this.value = value;
 	}
 

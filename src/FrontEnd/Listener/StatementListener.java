@@ -148,12 +148,12 @@ public class StatementListener extends BaseListener {
 //			AST.symbolTable.addSymbol(symbol);
 //		}
 		//System.out.println("now ok");
-		print("enter function: " + ctx.getText());
+		//print("enter function: " + ctx.getText());
 	}
 
 	@Override
 	public void exitFunctionDeclaration(CompilerParser.FunctionDeclarationContext ctx) {
-		print("try exit function ");
+		//print("try exit function ");
 		FunctionType functionType = (FunctionType) nodes.get(ctx);
 		if (ctx.blockStatement() == null) {
 			throw new CompilerError("Function no body");
@@ -285,7 +285,7 @@ public class StatementListener extends BaseListener {
 	@Override
 	public void exitReturnStatement(CompilerParser.ReturnStatementContext ctx) {
 
-		print(ctx.getText());
+		//print(ctx.getText());
 		ReturnStatement returnStatement;
 		if (ctx.expression() != null) {
 			returnStatement = new ReturnStatement(
@@ -306,7 +306,7 @@ public class StatementListener extends BaseListener {
 		Symbol symbol = new Symbol(
 			ctx.IDENTIFIER().getText(),
 			(Type) nodes.get(ctx.type()),
-			AST.symbolTable.getClassScope(),
+			ctx.parent instanceof CompilerParser.ClassDeclarationContext ? AST.symbolTable.getClassScope() : null,
 			AST.symbolTable.ifGlobal(),
 			false
 		);
@@ -462,7 +462,7 @@ public class StatementListener extends BaseListener {
 		nodes.put(ctx, NewExpression.getExpression(
 				(Type) nodes.get(ctx.type()), new ArrayList<>()
 		));
-		print("exit new class");
+		//print("exit new class");
 	}
 
 	@Override

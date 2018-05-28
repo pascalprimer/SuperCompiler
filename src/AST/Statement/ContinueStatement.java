@@ -21,6 +21,6 @@ public class ContinueStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, IRTranslator.loopContinue));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, IRTranslator.loopContinue));
 	}
 }

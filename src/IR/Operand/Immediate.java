@@ -20,4 +20,9 @@ public class Immediate extends Operand {
 		return value;
 	}
 
+	@Override
+	public String toString() {
+		return "Imm(" + String.valueOf(value) + ")";
+	}
+
 }

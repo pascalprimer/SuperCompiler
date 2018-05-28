@@ -46,7 +46,7 @@ public class BinaryAndAndExpression extends BinaryExpression {
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(0)));
 		instructionList.add(label);
-		instructionList.add(new CSetInstruction(CSetInstruction.Type.NEQ, operand));
+		instructionList.add(new CSetInstruction(CSetInstruction.Type.NE, operand));
 	}
 
 }

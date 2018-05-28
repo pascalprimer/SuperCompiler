@@ -4,15 +4,28 @@ public class Address extends Operand {
 
 	private VirtualRegister base;
 //fixme!  operand or immediate???
-	private Operand offset;
+	private Immediate offset;
 
 //	public Address(VirtualRegister base) {
 //		this.base = base;
 //	}
 
-	public Address(VirtualRegister base, Operand offset) {
+	public Address(VirtualRegister base, Immediate offset) {
 		this.base = base;
 		this.offset = offset;
+	}
+
+	public VirtualRegister getBase() {
+		return base;
+	}
+
+	public Immediate getOffset() {
+		return offset;
+	}
+
+	@Override
+	public String toString() {
+		return "[" + (base == null ? "null" : base.toString()) + " + 8 * " + offset.getValue() + "]";
 	}
 
 }

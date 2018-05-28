@@ -42,13 +42,14 @@ public class ArrayExpression extends Expression {
 		Operand base = baseExpression.operand,
 				offset = subscriptExpression.operand;
 		VirtualRegister tmp = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(base, tmp));
-		instructionList.add(
-				new BinaryInstruction(
-						BinaryInstruction.Operation.SHL,
-						offset, new Immediate(1), offset
-				)
-		);
-		operand = new Address(tmp, offset);
+		instructionList.add(new MoveInstruction(tmp, base));
+		if (offset instanceof Immediate) {
+			operand = new Address(tmp, (Immediate) offset);
+		} else {
+			instructionList.add(new BinaryInstruction(
+							BinaryInstruction.Operation.ADD, tmp, offset
+			));
+			operand = new Address(tmp, new Immediate(0));
+		}
 	}
 }

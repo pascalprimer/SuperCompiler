@@ -31,8 +31,9 @@ public class UnaryNegativeExpression extends UnaryExpression {
 	public void translateIR(List<Instruction> instructionList) {
 		expression.translateIR(instructionList);
 		operand = RegisterManager.getVirtualRegister();
+		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(
-				UnaryInstruction.Type.NEG, expression.operand, operand
+				UnaryInstruction.Type.NEG, operand
 		));
 	}
 

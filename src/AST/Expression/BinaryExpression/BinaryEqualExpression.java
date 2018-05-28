@@ -1,9 +1,12 @@
 package AST.Expression.BinaryExpression;
 
+import AST.AST;
 import AST.Expression.ConstantExpression.*;
 import AST.Expression.Expression;
+import AST.Expression.FunctionCallExpression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
+import AST.Type.StringType;
 import IR.Instruction.*;
 import IR.Operand.Address;
 import IR.Operand.Immediate;
@@ -12,6 +15,7 @@ import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import Utility.CompilerError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryEqualExpression extends BinaryExpression {
@@ -45,6 +49,14 @@ public class BinaryEqualExpression extends BinaryExpression {
 			throw new CompilerError(leftExp.returnType.toString() + ", "
 					+ rightExp.returnType.toString() + " cannot be compared");
 		}
+		if (leftExp.returnType instanceof StringType) {
+			return new FunctionCallExpression(
+					AST.globalFunctionTable.getFunctionType("__string_equal__"),
+					new ArrayList<Expression>() {{
+						add(leftExp); add(rightExp);
+					}}
+			);
+		}
 		return new BinaryEqualExpression(BoolType.getInstance(), leftExp, rightExp);
 	}
 
@@ -70,12 +82,12 @@ public class BinaryEqualExpression extends BinaryExpression {
 		//fixme optimize!!!???!!!
 		if (left instanceof Address && right instanceof Address) {
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(left, tmp));
+			instructionList.add(new MoveInstruction(tmp, left));
 			instructionList.add(new CompareInstruction(tmp, right));
 		} else {
 			instructionList.add(new CompareInstruction(left, right));
 		}
-		instructionList.add(new CSetInstruction(CSetInstruction.Type.EQ, operand));
+		instructionList.add(new CSetInstruction(CSetInstruction.Type.E, operand));
 	}
 
 }

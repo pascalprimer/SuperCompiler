@@ -52,53 +52,71 @@ public class NewExpression extends Expression {
 		}
 	}
 
-	private void allocate(Operand base, Type newType, List<Operand> operandList, List<Instruction> instructionList) {
+	private void allocate(VirtualRegister base, Type newType, List<Operand> operandList, List<Instruction> instructionList) {
 		if (newType instanceof ClassType) {
 			instructionList.add(new AllocateInstruction(
-					base, ((ClassType) newType).getAllocateSize()
+					base, ((ClassType) newType).getAllocateSize() << 3
 			));
 			if (((ClassType) newType).getConstructionFunction() != null) {
+				VirtualRegister tmp = RegisterManager.getVirtualRegister();
+				tmp.sysRegister = "rdi";
+				instructionList.add(new MoveInstruction(tmp, base));
 				instructionList.add(new FunctionCallInstruction(
 								((ClassType) newType).getConstructionFunction(),
-								new ArrayList<>(),
-								null
+								new ArrayList<>(), null
 				));
 			}
 			return;
 		}
-		VirtualRegister size = RegisterManager.getVirtualRegister();
+
+		VirtualRegister size = RegisterManager.getVirtualRegister(),
+						tmp = RegisterManager.getVirtualRegister();
+		//size = (allocateSize+1) << 3
+		instructionList.add(new MoveInstruction(size, operandList.get(0)));
+		instructionList.add(new MoveInstruction(tmp, operandList.get(0)));
 		instructionList.add(new BinaryInstruction(
-				BinaryInstruction.Operation.SHL,
-				operandList.get(0),
-				new Immediate(1),
-				size
+				BinaryInstruction.Operation.ADD, size, new Immediate(1)
 		));
+		instructionList.add(new BinaryInstruction(
+				BinaryInstruction.Operation.SHL, size, new Immediate(3)
+		));
+		//base = malloc(size)
 		instructionList.add(new AllocateInstruction(base, size));
+		instructionList.add(new MoveInstruction(new Address(base, new Immediate(0)), tmp));
+		instructionList.add(new BinaryInstruction(
+				BinaryInstruction.Operation.ADD, base, new Immediate(8)
+		));
+		instructionList.add(new BinaryInstruction(
+				BinaryInstruction.Operation.SUB, size, new Immediate(8)
+		));
 		operandList.remove(0);
 		Type nextType = ((ArrayType) newType).prefixArray();
-		if (nextType instanceof ClassType || operandList.size() > 0) {
+		if (/*nextType instanceof ClassType || */operandList.size() > 0) {
 			/*
-			idx = 0
+			idx = base, endIDX = base + size
 			ALLOCATE:
-			allocate(Address(base, idx),...)
+			allocate(idx,...)
 			idx += 8
-			cmp idx size
+			cmp idx endIDX
 			JL ALLOCATE
 			 */
-			VirtualRegister idx = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(new Immediate(0), idx));
-			Label allocateLabel = new Label(
-					"ALLOCATE" + String.valueOf(((ArrayType) newType).getDimension()
-			));
-			instructionList.add(allocateLabel);
-			VirtualRegister tmpBase = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(base, tmpBase));
-			allocate(new Address(tmpBase, idx), nextType, operandList, instructionList);
+			VirtualRegister idx = RegisterManager.getVirtualRegister(),
+							endIDX = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(idx, base));
+			instructionList.add(new MoveInstruction(endIDX, idx));
 			instructionList.add(new BinaryInstruction(
-					BinaryInstruction.Operation.ADD,
-					idx,
-					new Immediate(8),
-					idx
+					BinaryInstruction.Operation.ADD, endIDX, size
+			));
+			Label allocateLabel = new Label(
+					"Allocate" + String.valueOf(((ArrayType) newType).getDimension())
+			);
+			instructionList.add(allocateLabel);
+			//VirtualRegister tmpBase = RegisterManager.getVirtualRegister();
+			//instructionList.add(new MoveInstruction(tmpBase, base));
+
+			allocate(idx, nextType, operandList, instructionList);
+			instructionList.add(new BinaryInstruction(
+					BinaryInstruction.Operation.ADD, idx, new Immediate(8)
 			));
 			instructionList.add(new CompareInstruction(idx, size));
 			instructionList.add(new JumpInstruction(JumpInstruction.Type.JL, allocateLabel));
@@ -115,6 +133,10 @@ public class NewExpression extends Expression {
 			}
 		}
 		operand = RegisterManager.getVirtualRegister();
-		allocate(operand, newType, operandList, instructionList);
+		allocate((VirtualRegister) operand,
+				list.size() == 0 ? newType : new ArrayType(newType, list.size()),
+				operandList,
+				instructionList
+		);
 	}
 }

@@ -23,6 +23,9 @@ public class IdentifierExpression extends Expression {
 	}
 
 	public static Expression getExpression(String identifier) {
+//		if (identifier.equals("i")) {
+//			System.out.println("that is it");
+//		}
 		Symbol symbol = AST.symbolTable.getSymbol(identifier);
 		if (symbol.getClassBelong() != null) {
 			return FieldExpression.getExpression(

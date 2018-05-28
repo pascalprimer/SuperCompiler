@@ -68,7 +68,21 @@ public class FieldExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		if (returnType instanceof  FunctionType) {
+			return;
+		}
 		field.translateIR(instructionList);
+		VirtualRegister base;
+		if (field.operand instanceof Address) {
+			base = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(base, field.operand));
+		} else {
+			base = (VirtualRegister) field.operand;
+		}
+		operand = new Address(
+				base,
+				new Immediate(((ClassType) field.returnType).getVariableOffset(memberName)
+		));
 //		if (memberSymbol.getType() instanceof FunctionType) {
 //			return;
 //		}

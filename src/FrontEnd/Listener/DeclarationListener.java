@@ -132,7 +132,7 @@ public class DeclarationListener extends BaseListener {
 //print("new Symbol: " + symbol.toString());
 			functionType.addParameter(symbol);
 		}
-		print(functionType.getParameterList().size());
+		//print(functionType.getParameterList().size());
 	}
 
 	@Override

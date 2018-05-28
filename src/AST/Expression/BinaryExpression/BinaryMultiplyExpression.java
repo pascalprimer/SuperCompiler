@@ -39,21 +39,10 @@ public class BinaryMultiplyExpression extends BinaryExpression {
 		operand = RegisterManager.getVirtualRegister();
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
-		if (left instanceof Address && right instanceof Address) {
-			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(left, tmp));
-			instructionList.add(
-					new BinaryInstruction(
-							BinaryInstruction.Operation.MUL, tmp, right, operand
-					)
-			);
-		} else {
-			instructionList.add(
-					new BinaryInstruction(
-							BinaryInstruction.Operation.MUL, left, right, operand
-					)
-			);
-		}
+		instructionList.add(new MoveInstruction(operand, left));
+		instructionList.add(new BinaryInstruction(
+				BinaryInstruction.Operation.MUL, operand, right
+		));
 	}
 
 }

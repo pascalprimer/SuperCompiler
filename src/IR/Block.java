@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Block {
 
+	int id;
 	private String name;
 	private FunctionIR functionIRBelong;
 	private Block front, next;
@@ -42,4 +43,14 @@ public class Block {
 	public FunctionIR getFunctionIRBelong() {
 		return functionIRBelong;
 	}
+
+	public String toString(int indents) {
+		StringBuilder str = new StringBuilder();
+		//str.append(Utility.GetIndents.getIndents(indents) + "block " + String.valueOf(id) + "\n");
+		for (Instruction instruction: instructionList) {
+			str.append(Utility.GetIndents.getIndents(indents) + instruction.toString(indents));
+		}
+		return str.toString();
+	}
+
 }

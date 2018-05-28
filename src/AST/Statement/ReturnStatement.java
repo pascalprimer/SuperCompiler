@@ -44,8 +44,9 @@ public class ReturnStatement extends Statement {
 			returnValue.translateIR(instructionList);
 			//fixme    physical reg needed
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(returnValue.operand, tmp));
+			tmp.sysRegister = "rax";
+			instructionList.add(new MoveInstruction(tmp, returnValue.operand));
 		}
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.J, IRTranslator.exitLabel));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, IRTranslator.exitLabel));
 	}
 }

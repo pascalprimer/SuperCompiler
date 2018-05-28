@@ -45,13 +45,14 @@ public class VariableDeclarationStatement extends Statement {
 		}
 		declarationExpression.translateIR(instructionList);
 		Operand source = declarationExpression.operand;
+		//System.out.println("source is empty??" + String.valueOf(source == null));
 		Operand target = symbol.operand;
 		if (source instanceof Address && target instanceof Address) {
 			VirtualRegister tmp = RegisterManager.getVirtualRegister();
-			instructionList.add(new MoveInstruction(source, tmp));
-			instructionList.add(new MoveInstruction(tmp, target));
+			instructionList.add(new MoveInstruction(tmp, source));
+			instructionList.add(new MoveInstruction(target, tmp));
 		} else {
-			instructionList.add(new MoveInstruction(source, target));
+			instructionList.add(new MoveInstruction(target, source));
 		}
 	}
 
@@ -64,7 +65,7 @@ public class VariableDeclarationStatement extends Statement {
 //	}
 
 	public void setDeclarationExpression(Expression declarationExpression) {
-		System.err.println(symbol.toString() + " to -> " + declarationExpression.returnType.toString());
+		//System.err.println(symbol.toString() + " to -> " + declarationExpression.returnType.toString());
 		if (!symbol.getType().compatibleWith(declarationExpression.returnType)) {
 			throw new CompilerError("Type not match when variable declaring");
 		}

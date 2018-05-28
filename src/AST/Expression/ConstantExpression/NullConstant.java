@@ -2,6 +2,7 @@ package AST.Expression.ConstantExpression;
 
 import AST.Type.NullType;
 import IR.Instruction.Instruction;
+import IR.Operand.Immediate;
 
 import java.util.List;
 
@@ -18,5 +19,6 @@ public class NullConstant extends Constant {
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		//fixme
+		operand = new Immediate(0);
 	}
 }

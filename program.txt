@@ -1,11 +1,4 @@
-class A{
-	A t;
-	int f(int t) {
-		return t;
-	}
-}
-int main(){
-	A a = new A;
-	a.f(123);
-    return 0;
+string a = "12312331";
+int main() {
+	println(a);
 }
