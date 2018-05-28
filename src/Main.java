@@ -53,6 +53,7 @@ public class Main {
 		File file= new File("program.asm");
 		PrintStream fout = new PrintStream(new FileOutputStream(file));
 		fout.print(code.toString());
+		System.out.println(code.toString());
 	}
 
 	public static void main(String[] args) throws Exception{
