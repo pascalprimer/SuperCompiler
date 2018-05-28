@@ -164,6 +164,11 @@ __length__:
         nop
 
 
+__size__:
+		mov     rax, qword[rdi - 8H]
+		ret
+
+
 
 
 

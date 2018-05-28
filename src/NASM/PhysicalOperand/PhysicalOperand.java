@@ -22,7 +22,7 @@ public abstract class PhysicalOperand {
 //				}
 				return new PhysicalAddress(
 						new SystemRegister("rbp"),
-						NASMTranslator.nowFunctionIR.offsetMap.get(operand).intValue()
+						-NASMTranslator.nowFunctionIR.offsetMap.get(operand).intValue()
 				);
 			}
 		} else { //Address

@@ -12,13 +12,13 @@ public class PhysicalAddress extends PhysicalOperand {
 
 	@Override
 	public String toString() {
-		if (-offset > 0) {
-			return "qword[" + base.name + "+" + String.valueOf(-offset * 8) + "]";
+		if (offset > 0) {
+			return "qword[" + base.name + "+" + String.valueOf(offset * 8) + "]";
 		}
-		if (-offset == 0) {
+		if (offset == 0) {
 			return "qword[" + base.name + "]";
 		} else {
-			return "qword[" + base.name + "-" + String.valueOf(offset * 8) + "]";
+			return "qword[" + base.name + "-" + String.valueOf(-offset * 8) + "]";
 		}
 	}
 }
