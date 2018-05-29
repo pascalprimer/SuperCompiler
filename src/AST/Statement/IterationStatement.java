@@ -64,7 +64,11 @@ public class IterationStatement extends Statement implements Scope {
 		if (initialization != null) {
 			initialization.translateIR(instructionList);
 		}
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, conLabel));
+		if (termination == null) {
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, bodyLabel));
+		} else {
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, conLabel));
+		}
 
 		//Body
 		instructionList.add(bodyLabel);
@@ -76,16 +80,22 @@ public class IterationStatement extends Statement implements Scope {
 		if (operation != null) {
 			operation.translateIR(instructionList);
 		}
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, conLabel));
+		if (termination == null) {
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, bodyLabel));
+		} else {
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, conLabel));
+		}
 
 		//Condition
-		instructionList.add(conLabel);
-		termination.translateIR(instructionList);
-		VirtualRegister tmp = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(tmp, termination.operand));
-		instructionList.add(new CompareInstruction(tmp, new Immediate(1)));
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, bodyLabel));
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, exitLabel));
+		if (termination != null) {
+			instructionList.add(conLabel);
+			termination.translateIR(instructionList);
+			VirtualRegister tmp = RegisterManager.getVirtualRegister();
+			instructionList.add(new MoveInstruction(tmp, termination.operand));
+			instructionList.add(new CompareInstruction(tmp, new Immediate(1)));
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, bodyLabel));
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, exitLabel));
+		}
 
 		instructionList.add(exitLabel);
 	}
