@@ -59,7 +59,7 @@ int heapSort() {
 
 int main() {
     int i;
-	n = 9987;
+	n = getString().parseInt();
 	a = new int[n];
 
     for (i = 0; i < a.size(); i = i + 1)
