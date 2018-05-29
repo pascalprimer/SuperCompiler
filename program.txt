@@ -17,7 +17,7 @@ int[][] step;
 int i;
 int j;
 
-/*void origin(int N)
+void origin(int N)
 {
     head = 0;
     tail = 0;
@@ -27,7 +27,7 @@ int j;
         for (j = 0; j < N; j ++ )
         step[i][j] = 0;
     }
-}*/
+}
 
 bool check(int a) {
     return ((a < N) && (a >= 0));
@@ -39,26 +39,17 @@ void addList(int x, int y) {
         xlist[tail] = x;
         ylist[tail] = y;
         step[x][y] = now + 1;
-        if ((x == targetx) && (y == targety)) ok = 233;
+        if ((x == targetx) && (y == targety)) ok = 1;
     }
 }
 int main() {
-	//origin(106);
-	head = 0;
-	tail = 0;
-	step = new int [3][];
-	step[0] = new int [3];
-	step[1] = new int [3];
-	step[2] = new int [3];
-    N = 3;
+	origin(106);
+    N = getInt();
     targety  = N - 1;
     targetx = targety;
-    /*for (i = 0; i < N; i ++)
+    for (i = 0; i < N; i ++)
         for (j = 0; j < N; j ++)
-        step[i][j] = -1;*/
-    step[0][0] = step[0][1] = step[0][2] = -1;
-    step[1][0] = step[1][1] = step[1][2] = -1;
-    step[2][0] = step[2][1] = step[2][2] = -1;
+        step[i][j] = -1;
     dx[0] = -2; dy[0] = -1;
     dx[1] = -2; dy[1] = 1;
     dx[2] = 2; dy[2] = -1;
@@ -70,23 +61,17 @@ int main() {
     while (head <= tail) {
         x = xlist[head];
         y = ylist[head];
-
-println(toString(x) + " " + toString(y) + " " + toString(step[x][y]));
         now = step[x][y];
-        for (j = 0;j < 8;j =j+1) {
-            //println(toString(i) + " " + toString(j));
+        println(toString(x) + " " + toString(y) + " " + toString(now));
+        for (j = 0;j < 8;j ++)
             addList(x + dx[j], y + dy[j]);
-        }
-
-        println("---------");
-        if (ok == 233) {
-        println("okokok!!!");
+        if (ok == 1) {
+            println("okokok");
             break;
         }
-        println("aaaaaaaaaaa");
         head ++;
     }
-    if (ok == 233) println(toString(step[targetx][targety]));
+    if (ok == 1) println(toString(step[targetx][targety]));
     else print("no solution!\n");
     return 0;
 }
