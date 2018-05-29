@@ -8,6 +8,7 @@ import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Type.VariableTable;
 import Utility.CompilerError;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.util.Pair;
 
 import java.util.*;
@@ -144,13 +145,13 @@ public class SymbolTable {
 		return null;
 	}
 
-	public boolean haveIteration() {
+	public Pair<Boolean, IterationStatement> getIteration() {
 		for (int i = topNumber.intValue() - 1; i >= 0; --i) {
 			if (scopeStack.get(i) instanceof IterationStatement) {
-				return true;
+				return new Pair<>(true, (IterationStatement) scopeStack.get(i));
 			}
 		}
-		return false;
+		return new Pair<>(false, null);
 	}
 
 	public FunctionType getFunctionScope() {

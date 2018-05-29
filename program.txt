@@ -1,73 +1,92 @@
-int n;
-int[] a;
+int N;
+int head;
+int startx;
+int starty;
+int targetx;
+int targety;
+int x;
+int y;
+int[] xlist = new int[12000];
+int[] ylist = new int[12000];
+int tail;
+int ok;
+int now;
+int[] dx = new int[8];
+int[] dy = new int[9];
+int[][] step;
+int i;
+int j;
 
-void exchange(int x,int y)
+/*void origin(int N)
 {
-    int t=a[x];
-    a[x]=a[y];
-    a[y]=t;
-}
-
-int makeHeap() {
-    int i;
-    int t;
-    int j;
-    i = (n - 1) / 2;
-    t = 0;
-    j = 0;
-    while (i >= 0) {
-        j = i * 2;
-        if (i*2+1<n && a[i*2+1]<a[i*2]) j = i*2+1;
-        if (a[i] > a[j]) {
-            exchange(i,j);
-        }
-        i = i - 1;
+    head = 0;
+    tail = 0;
+	step = new int[N][];
+    for (i = 0; i < N; i ++ ) {
+		step[i] = new int[N];
+        for (j = 0; j < N; j ++ )
+        step[i][j] = 0;
     }
-    return 0;
+}*/
+
+bool check(int a) {
+    return ((a < N) && (a >= 0));
 }
 
-int adjustHeap(int n) {
-    int i = 0;
-    int j = 0;
-    int t = 0;
-    while (i * 2 < n) {
-        j = i*2;
-        if (i*2+1<n && a[i*2+1] < a[i*2]) j = i*2+1;
-        if (a[i] > a[j]) {
-            int t = a[i];
-            a[i] = a[j];
-            a[j] = t;
-            i = j;
-        }
-        else break;
+void addList(int x, int y) {
+    if (check(x) && check(y) && step[x][y] == -1) {
+        tail ++;
+        xlist[tail] = x;
+        ylist[tail] = y;
+        step[x][y] = now + 1;
+        if ((x == targetx) && (y == targety)) ok = 233;
     }
-    return 0;
 }
-
-int heapSort() {
-    int t;
-    int k;
-    t = 0;
-    for (k = 0; k < n; k = k + 1) {
-        t = a[0];
-        a[0] = a[n-k-1];
-        a[n-k-1] = t;
-        adjustHeap(n-k-1);
-    }
-    return 0;
-}
-
 int main() {
-    int i;
-	n = getString().parseInt();
-	a = new int[n];
+	//origin(106);
+	head = 0;
+	tail = 0;
+	step = new int [3][];
+	step[0] = new int [3];
+	step[1] = new int [3];
+	step[2] = new int [3];
+    N = 3;
+    targety  = N - 1;
+    targetx = targety;
+    /*for (i = 0; i < N; i ++)
+        for (j = 0; j < N; j ++)
+        step[i][j] = -1;*/
+    step[0][0] = step[0][1] = step[0][2] = -1;
+    step[1][0] = step[1][1] = step[1][2] = -1;
+    step[2][0] = step[2][1] = step[2][2] = -1;
+    dx[0] = -2; dy[0] = -1;
+    dx[1] = -2; dy[1] = 1;
+    dx[2] = 2; dy[2] = -1;
+    dx[3] = 2; dy[3] = 1;
+    dx[4] = -1; dy[4] = -2;
+    dx[5] = -1; dy[5] = 2;
+    dx[6] = 1; dy[6] = -2;
+    dx[7] = 1; dy[7] = 2;
+    while (head <= tail) {
+        x = xlist[head];
+        y = ylist[head];
 
-    for (i = 0; i < a.size(); i = i + 1)
-		a[i] = i;
-    makeHeap();
-    heapSort();
-    for (i = 0; i < a.size(); i = i + 1)
-        print(toString(a[i]) + " ");
-	print("\n");
+println(toString(x) + " " + toString(y) + " " + toString(step[x][y]));
+        now = step[x][y];
+        for (j = 0;j < 8;j =j+1) {
+            //println(toString(i) + " " + toString(j));
+            addList(x + dx[j], y + dy[j]);
+        }
+
+        println("---------");
+        if (ok == 233) {
+        println("okokok!!!");
+            break;
+        }
+        println("aaaaaaaaaaa");
+        head ++;
+    }
+    if (ok == 233) println(toString(step[targetx][targety]));
+    else print("no solution!\n");
     return 0;
 }

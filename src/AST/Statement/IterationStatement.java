@@ -18,6 +18,7 @@ public class IterationStatement extends Statement implements Scope {
 
 	private Expression initialization, termination, operation;
 	private Statement statement;
+	Label iterLabel, bodyLabel, conLabel, exitLabel;
 
 	public IterationStatement() {
 		initialization = termination = operation = null;
@@ -36,6 +37,7 @@ public class IterationStatement extends Statement implements Scope {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		System.out.println("iteration");
 		/*
 			*init
 			J ForCon
@@ -53,10 +55,10 @@ public class IterationStatement extends Statement implements Scope {
 			JNE ForBody
 		ForExit:
 		*/
-		Label iterLabel = new Label("ForIter");
-		Label bodyLabel = new Label("ForBody");
-		Label conLabel = new Label("ForCon");
-		Label exitLabel = new Label("ForExit");
+		iterLabel = new Label("ForIter");
+		bodyLabel = new Label("ForBody");
+		conLabel = new Label("ForCon");
+		exitLabel = new Label("ForExit");
 		IRTranslator.loopContinue = iterLabel;
 		IRTranslator.loopExit = exitLabel;
 

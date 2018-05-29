@@ -6,14 +6,18 @@ import IR.IRTranslator;
 import IR.Instruction.Instruction;
 import IR.Instruction.JumpInstruction;
 import Utility.CompilerError;
+import javafx.util.Pair;
 
 import java.util.List;
 
 public class ContinueStatement extends Statement {
 
-	public ContinueStatement() {
-		if (AST.symbolTable.haveIteration()) {
+	IterationStatement iterationStatement;
 
+	public ContinueStatement() {
+		Pair<Boolean, IterationStatement> nowIteration = AST.symbolTable.getIteration();
+		if (nowIteration.getKey().booleanValue()) {
+			iterationStatement = nowIteration.getValue();
 		} else {
 			throw new CompilerError("No iteration to continue");
 		}
@@ -21,6 +25,9 @@ public class ContinueStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, IRTranslator.loopContinue));
+		instructionList.add(new JumpInstruction(
+				JumpInstruction.Type.JMP,
+				iterationStatement.iterLabel
+		));
 	}
 }

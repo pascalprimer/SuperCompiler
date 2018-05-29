@@ -6,14 +6,18 @@ import IR.IRTranslator;
 import IR.Instruction.Instruction;
 import IR.Instruction.JumpInstruction;
 import Utility.CompilerError;
+import javafx.util.Pair;
 
 import java.util.List;
 
 public class BreakStatement extends Statement {
 
-	public BreakStatement() {
-		if (AST.symbolTable.haveIteration()) {
+	IterationStatement iterationStatement;
 
+	public BreakStatement() {
+		Pair<Boolean, IterationStatement> nowIteration = AST.symbolTable.getIteration();
+		if (nowIteration.getKey().booleanValue()) {
+			iterationStatement = nowIteration.getValue();
 		} else {
 			throw new CompilerError("No iteration to break");
 		}
@@ -21,7 +25,11 @@ public class BreakStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, IRTranslator.loopExit));
+		System.err.println(IRTranslator.loopExit.toString());
+		instructionList.add(new JumpInstruction(
+				JumpInstruction.Type.JMP,
+				iterationStatement.exitLabel
+		));
 	}
 
 }
