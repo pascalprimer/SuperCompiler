@@ -34,7 +34,7 @@ public class PostfixSubtractExpression extends Expression {
 		instructionList.add(new MoveInstruction(operand, expression.operand));
 		//fixme???!!!
 		instructionList.add(new UnaryInstruction(
-				UnaryInstruction.Type.ADD, expression.operand
+				UnaryInstruction.Type.SUB, expression.operand
 		));
 //		VirtualRegister tmp = RegisterManager.getVirtualRegister();
 //		instructionList.add(new UnaryInstruction(

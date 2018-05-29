@@ -111,7 +111,7 @@ public class NASMTranslator {
 		code.append("\n\n");
 		code.append(getInstruction("section", ".bss"));
 		for (VariableDeclarationStatement vds: AST.getGlobalVariable()) {
-			code.append(((Address) (vds.getSymbol().operand)).getBase().sysRegister + "   resq 1\n");
+			code.append(((Address) (vds.getSymbol().operand)).getBase().sysRegister + ":\n  \tresq \t\t1\n");
 		}
 		return code.toString();
 	}

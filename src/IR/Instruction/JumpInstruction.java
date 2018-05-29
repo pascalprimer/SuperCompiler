@@ -26,7 +26,7 @@ public class JumpInstruction extends Instruction {
 		StringBuilder code = new StringBuilder();
 		//if (type.equals(Type.JMP)) {
 		code.append(NASMTranslator.getInstruction(
-				type.toString().toLowerCase() + "\t" + label.getName()
+				"\t" + type.toString().toLowerCase() + "\t" + label.getName()
 		));
 		//}
 		return code.toString();
