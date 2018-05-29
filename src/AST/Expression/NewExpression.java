@@ -53,6 +53,7 @@ public class NewExpression extends Expression {
 	}
 
 	private void allocate(VirtualRegister base, Type newType, List<Operand> operandList, List<Instruction> instructionList) {
+		//System.err.println(base.getName());
 		if (newType instanceof ClassType) {
 			instructionList.add(new AllocateInstruction(
 					base, ((ClassType) newType).getAllocateSize() << 3
@@ -104,7 +105,7 @@ public class NewExpression extends Expression {
 			VirtualRegister idx = RegisterManager.getVirtualRegister(),
 							endIDX = RegisterManager.getVirtualRegister();
 			instructionList.add(new MoveInstruction(idx, base));
-			instructionList.add(new MoveInstruction(endIDX, idx));
+			instructionList.add(new MoveInstruction(endIDX, base));
 			instructionList.add(new BinaryInstruction(
 					BinaryInstruction.Operation.ADD, endIDX, size
 			));
@@ -115,7 +116,9 @@ public class NewExpression extends Expression {
 			//VirtualRegister tmpBase = RegisterManager.getVirtualRegister();
 			//instructionList.add(new MoveInstruction(tmpBase, base));
 
-			allocate(idx, nextType, operandList, instructionList);
+			VirtualRegister nxtBase = RegisterManager.getVirtualRegister();
+			allocate(nxtBase, nextType, operandList, instructionList);
+			instructionList.add(new MoveInstruction(new Address(idx, new Immediate(0)), nxtBase));
 			instructionList.add(new BinaryInstruction(
 					BinaryInstruction.Operation.ADD, idx, new Immediate(8)
 			));

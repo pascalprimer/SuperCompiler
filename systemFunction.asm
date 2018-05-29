@@ -164,11 +164,6 @@ __length__:
         nop
 
 
-__size__:
-		mov     rax, qword[rdi - 8H]
-		ret
-
-
 ALIGN   16
 
 __substring__:
@@ -609,6 +604,11 @@ __string_connect__:
         pop     r15
         ret
 
+
+ALIGN   8
+__size__:
+		mov     rax, qword[rdi - 8H]
+		ret
 
 
 SECTION .data   

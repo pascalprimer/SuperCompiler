@@ -36,8 +36,16 @@ public class BinaryAddExpression extends BinaryExpression {
 		}
 		if (leftExp.returnType instanceof StringType && rightExp.returnType instanceof StringType) {
 			if (leftExp instanceof StringConstant && rightExp instanceof StringConstant) {
-				return new StringConstant(((StringConstant) leftExp).getValue()
-											+ ((StringConstant) rightExp).getValue());
+//				System.out.println(((StringConstant) leftExp).getValue());
+//				System.out.println(((StringConstant) rightExp).getValue());
+//				System.out.println(((StringConstant) leftExp).getValue()
+//						+ ((StringConstant) rightExp).getValue());
+				return new StringConstant(
+						"\""
+						+ ((StringConstant) leftExp).getValue()
+						+ ((StringConstant) rightExp).getValue()
+						+ "\""
+				);
 			}
 			return new FunctionCallExpression(
 					AST.globalFunctionTable.getFunctionType("__string_connect__"),

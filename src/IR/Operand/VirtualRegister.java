@@ -15,4 +15,9 @@ public class VirtualRegister extends Operand {
 	public String toString() {
 		return name + "(" + sysRegister + ")";
 	}
+
+	public String getName() {
+		return name;
+	}
+
 }
