@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
             </state>
           </provider>
         </entry>
@@ -49,8 +46,8 @@
       <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="278" lean-forward="true" selection-start-line="278" selection-end-line="278" />
+            <state relative-caret-position="108">
+              <caret line="476" column="26" lean-forward="true" selection-start-line="476" selection-start-column="26" selection-end-line="476" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -811,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="278" lean-forward="true" selection-start-line="278" selection-end-line="278" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Statement/IterationStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -833,10 +823,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/program.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="476" column="26" lean-forward="true" selection-start-line="476" selection-start-column="26" selection-end-line="476" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
         </state>
       </provider>
     </entry>
