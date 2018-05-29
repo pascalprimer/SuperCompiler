@@ -176,6 +176,7 @@ ALIGN   16
 
 __substring__:
         push    r13
+        add     rdx, 1
         sub     rdx, rsi
         push    r12
         push    rbp
