@@ -37,7 +37,7 @@ public class IterationStatement extends Statement implements Scope {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		System.out.println("iteration");
+//System.out.println("iteration");
 		/*
 			*init
 			J ForCon
