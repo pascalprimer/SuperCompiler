@@ -31,6 +31,7 @@ public class FunctionTable {
 
 	public FunctionType getFunctionType(String name) {
 		//if (functionTable.containsKey(name)) {
+		//System.err.println("search for " + name);
 		return functionTable.get(name);
 		//} else {
 		//	throw new CompilerError("Function not found");

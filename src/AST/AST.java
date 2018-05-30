@@ -16,6 +16,9 @@ import java.util.Stack;
 //__size__(Array array)????????????????????????????????????
 
 public class AST {
+
+	public static int cnt = 0;
+
 	public static ClassTable classTable;
 	public static FunctionTable globalFunctionTable;
 	public static SymbolTable symbolTable;
@@ -220,7 +223,7 @@ public class AST {
 
 	public static void load__ParseInt__() {
 		FunctionType func = new FunctionType(IntType.getInstance(),
-				"parseInt", null);
+				"__parseInt__", null);
 		func.addParameter(new Symbol("str", StringType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);

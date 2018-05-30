@@ -13,7 +13,7 @@ global getInt
 global toString
 global __length__
 global __substring__
-global parseInt
+global __parseInt__
 global __ord__
 global __string_equal__
 global __string_not_equal__
@@ -223,7 +223,7 @@ __substring__:
 
 ALIGN   8
 
-parseInt:
+__parseInt__:
         movsx   edx, byte [rdi]
         cmp     dl, 45
         jz      L_006

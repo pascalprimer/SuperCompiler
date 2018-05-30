@@ -93,9 +93,13 @@ public class FunctionCallExpression extends Expression {
 //				&& ((FieldExpression) function).getMemberSymbol().getType() instanceof  FunctionType)) {
 //			throw new CompilerError("Not a function");
 //		}
+		/*if (++AST.AST.cnt == 2) {
+			AST.AST.cnt = 123123;
+		}*/
 		if (!(function.returnType instanceof FunctionType)) {
 			throw new CompilerError(function.returnType.toString() + " not a function");
 		}
+		//System.err.println(((FunctionType) (function.returnType)).getFullName());
 		if (function instanceof FieldExpression) {
 			para.add(0, ((FieldExpression) function).getField());
 		} else if (((FunctionType) function.returnType).getClassScope() != null){
