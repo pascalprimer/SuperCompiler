@@ -30,6 +30,7 @@ public class VariableDeclarationStatement extends Statement {
 				|| symbol.getType() == VoidType.getInstance()) {
 			throw new CompilerError("null, void cannot be declared");
 		}
+		//System.err.println("variable dec: " + symbol.getName());
 		this.symbol = symbol;
 		this.type = symbol.getType();
 		this.name = symbol.getName();

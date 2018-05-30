@@ -47,6 +47,7 @@ public class SymbolTable {
 
 	public void addGlobalVariable(VariableDeclarationStatement variableDeclarationStatement) {
 		globalVariable.addDeclaration(variableDeclarationStatement);
+//System.err.println("add global va: " + variableDeclarationStatement.getName());
 		addSymbol(variableDeclarationStatement.getSymbol());
 	}
 

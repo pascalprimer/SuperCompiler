@@ -220,7 +220,7 @@ public class AST {
 
 	public static void load__ParseInt__() {
 		FunctionType func = new FunctionType(IntType.getInstance(),
-				"__parseInt__", null);
+				"parseInt", null);
 		func.addParameter(new Symbol("str", StringType.getInstance(),
 				null, false, false));
 		globalFunctionTable.addFunction(func);

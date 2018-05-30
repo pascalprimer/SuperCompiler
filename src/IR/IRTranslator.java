@@ -38,6 +38,7 @@ public class IRTranslator {
 		stringList = new HashMap<>();
 //for heap
 		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
+//System.err.println(variable.getName());
 			VirtualRegister tmp = (VirtualRegister) variable.getSymbol().operand;
 			tmp.isGlobal = true;
 			tmp.sysRegister = "@" + variable.getName();

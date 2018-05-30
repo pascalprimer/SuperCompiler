@@ -3,14 +3,15 @@ package AST.Type;
 import AST.Statement.VariableDeclarationStatement;
 import Utility.CompilerError;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.HashMap;
 
 public class VariableTable {
-	private Map<String, VariableDeclarationStatement> variableTable;
+	private LinkedHashMap<String, VariableDeclarationStatement> variableTable;
 
 	public VariableTable() {
-		variableTable = new HashMap<>();
+		variableTable = new LinkedHashMap<>();
 	}
 
 	public void addSymbolDeclaration(String name, VariableDeclarationStatement vds) {

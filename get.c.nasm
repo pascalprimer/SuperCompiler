@@ -663,13 +663,13 @@ __size__:
 
 
 
-SECTION .data
+SECTION .data   
 
 
-SECTION .bss
+SECTION .bss    
 
 
-SECTION .rodata.str1.1
+SECTION .rodata.str1.1 
 
 L_037:
         db 25H, 73H, 00H
@@ -678,10 +678,14 @@ L_038:
         db 25H, 6CH, 64H, 00H
 
 
-SECTION .text.unlikely
+SECTION .text.unlikely 
 
 
 SECTION .text.startup 6
+
+main:
+        xor     eax, eax
+        ret
 
 
 
