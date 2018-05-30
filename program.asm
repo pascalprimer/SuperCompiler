@@ -12,40 +12,313 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-     sub                  rsp,                   80
+     sub                  rsp,                  264
 @main.1.enter:
-     sub                  rsp,                    8
-call	getString
-     add                  rsp,                    8
-     mov        qword[rbp-16],                  rax
-     mov                  rdi,        qword[rbp-16]
-     sub                  rsp,                    8
+     mov            qword[@A],         __const_str0
+     mov            qword[@B],         __const_str1
+     mov                  rdi,            qword[@B]
 call	__parseInt__
-     add                  rsp,                    8
      mov        qword[rbp-40],                  rax
      mov                  rcx,        qword[rbp-40]
-     mov            qword[@n],                  rcx
-     mov                  rdi,            qword[@n]
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
+     mov            qword[@N],                  rcx
+     mov                  rdi,            qword[@A]
+call	__length__
      mov        qword[rbp-72],                  rax
-     mov                  rdi,        qword[rbp-72]
+     mov                  rcx,        qword[rbp-72]
+     cmp                  rcx,            qword[@N]
+     mov                  rax,                    0
+    setl                   al
+     mov        qword[rbp-80],                  rax
+     mov                  rcx,        qword[rbp-80]
+     mov        qword[rbp-88],                  rcx
+     cmp        qword[rbp-88],                    1
+	je	@main.5.IfTrue
+	jne	@main.4.IfFalse
+@main.5.IfTrue:
+     mov                  rdi,         __const_str2
      sub                  rsp,                    8
 call	println
      add                  rsp,                    8
+     mov                  rax,                    0
+	jmp	@main.2.exit
+	jmp	@main.6.IfExit
+@main.4.IfFalse:
+@main.6.IfExit:
+     mov                  rcx,            qword[@N]
+     mov       qword[rbp-112],                  rcx
+     mov                  rax,       qword[rbp-112]
+     sub                  rax,                    1
+     mov       qword[rbp-112],                  rax
+     mov                  rdi,            qword[@A]
+     mov                  rsi,                    0
+     mov                  rdx,       qword[rbp-112]
+     sub                  rsp,                    8
+call	__substring__
+     add                  rsp,                    8
+     mov       qword[rbp-152],                  rax
+     mov                  rdi,       qword[rbp-152]
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     mov                  rax,                    0
+	jmp	@main.2.exit
+     mov                  rcx,            qword[@N]
+     mov       qword[rbp-176],                  rcx
+     mov                  rax,       qword[rbp-176]
+     sub                  rax,                    1
+     mov       qword[rbp-176],                  rax
+     mov                  rdi,            qword[@A]
+     mov                  rsi,                    0
+     mov                  rdx,       qword[rbp-176]
+     sub                  rsp,                    8
+call	__substring__
+     add                  rsp,                    8
+     mov       qword[rbp-216],                  rax
+     mov                  rdi,       qword[rbp-216]
+     sub                  rsp,                    8
+call	calc
+     add                  rsp,                    8
+     mov       qword[rbp-240],                  rax
+     mov                  rcx,       qword[rbp-240]
+     mov            qword[@C],                  rcx
+     mov                  rdi,            qword[@C]
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     mov                  rax,                    0
+	jmp	@main.2.exit
 @main.2.exit:
-     add                  rsp,                   80
+     add                  rsp,                  264
+     pop                  rbp
+     ret
+calc:
+    push                  rbp
+     mov                  rbp,                  rsp
+     sub                  rsp,                  624
+@calc.1.enter:
+     mov         qword[rbp-8],                  rdi
+     mov                  rdi,         qword[rbp-8]
+    push                  rdi
+call	__length__
+     pop                  rdi
+     mov        qword[rbp-32],                  rax
+     mov                  rcx,        qword[rbp-32]
+     mov        qword[rbp-40],                  rcx
+     cmp        qword[rbp-40],                    1
+     mov                  rax,                    0
+    sete                   al
+     mov        qword[rbp-48],                  rax
+     mov                  rcx,        qword[rbp-48]
+     mov        qword[rbp-56],                  rcx
+     cmp        qword[rbp-56],                    1
+	je	@calc.5.IfTrue
+	jne	@calc.4.IfFalse
+@calc.5.IfTrue:
+     mov                  rax,         qword[rbp-8]
+	jmp	@calc.2.exit
+	jmp	@calc.6.IfExit
+@calc.4.IfFalse:
+@calc.6.IfExit:
+     mov                  rcx,        qword[rbp-40]
+     mov        qword[rbp-72],                  rcx
+     mov                  rax,        qword[rbp-72]
+     mov                  rcx,                    2
+     cdq
+    idiv                  ecx
+     mov        qword[rbp-72],                  rax
+     mov                  rcx,        qword[rbp-72]
+     mov        qword[rbp-80],                  rcx
+     mov                  rcx,        qword[rbp-80]
+     mov        qword[rbp-88],                  rcx
+     mov                  rax,        qword[rbp-88]
+     sub                  rax,                    1
+     mov        qword[rbp-88],                  rax
+     mov                  rdi,         qword[rbp-8]
+     mov                  rsi,                    0
+     mov                  rdx,        qword[rbp-88]
+    push                  rdi
+call	__substring__
+     pop                  rdi
+     mov       qword[rbp-128],                  rax
+     mov                  rdi,       qword[rbp-128]
+    push                  rdi
+call	calc
+     pop                  rdi
+     mov       qword[rbp-152],                  rax
+     mov                  rcx,       qword[rbp-152]
+     mov       qword[rbp-160],                  rcx
+     mov                  rcx,        qword[rbp-40]
+     mov       qword[rbp-168],                  rcx
+     mov                  rax,       qword[rbp-168]
+     sub                  rax,                    1
+     mov       qword[rbp-168],                  rax
+     mov                  rdi,         qword[rbp-8]
+     mov                  rsi,        qword[rbp-80]
+     mov                  rdx,       qword[rbp-168]
+    push                  rdi
+call	__substring__
+     pop                  rdi
+     mov       qword[rbp-208],                  rax
+     mov                  rdi,       qword[rbp-208]
+    push                  rdi
+call	calc
+     pop                  rdi
+     mov       qword[rbp-232],                  rax
+     mov                  rcx,       qword[rbp-232]
+     mov       qword[rbp-240],                  rcx
+     mov                  rdi,       qword[rbp-160]
+     mov                  rsi,       qword[rbp-240]
+    push                  rdi
+call	__string_less__
+     pop                  rdi
+     mov       qword[rbp-272],                  rax
+     mov                  rcx,       qword[rbp-272]
+     mov       qword[rbp-280],                  rcx
+     cmp       qword[rbp-280],                    1
+	je	@calc.8.IfTrue
+	jne	@calc.7.IfFalse
+@calc.8.IfTrue:
+     mov                  rdi,       qword[rbp-160]
+     mov                  rsi,       qword[rbp-240]
+    push                  rdi
+call	__string_connect__
+     pop                  rdi
+     mov       qword[rbp-312],                  rax
+     mov                  rax,       qword[rbp-312]
+	jmp	@calc.2.exit
+	jmp	@calc.9.IfExit
+@calc.7.IfFalse:
+     mov                  rdi,       qword[rbp-160]
+     mov                  rsi,       qword[rbp-240]
+    push                  rdi
+call	__string_equal__
+     pop                  rdi
+     mov       qword[rbp-352],                  rax
+     mov                  rcx,       qword[rbp-352]
+     mov       qword[rbp-360],                  rcx
+     cmp       qword[rbp-360],                    1
+	je	@calc.11.IfTrue
+	jne	@calc.10.IfFalse
+@calc.11.IfTrue:
+     mov                  rdi,       qword[rbp-160]
+     mov                  rsi,                    0
+    push                  rdi
+call	__ord__
+     pop                  rdi
+     mov       qword[rbp-392],                  rax
+     mov                  rcx,       qword[rbp-392]
+     mov       qword[rbp-400],                  rcx
+     mov                  rdi,       qword[rbp-240]
+     mov                  rsi,                    0
+    push                  rdi
+call	__ord__
+     pop                  rdi
+     mov       qword[rbp-432],                  rax
+     mov                  rcx,       qword[rbp-432]
+     mov       qword[rbp-440],                  rcx
+     mov                  rcx,       qword[rbp-400]
+     cmp                  rcx,       qword[rbp-440]
+     mov                  rax,                    0
+    setl                   al
+     mov       qword[rbp-448],                  rax
+     mov                  rcx,       qword[rbp-448]
+     mov       qword[rbp-456],                  rcx
+     cmp       qword[rbp-456],                    1
+	je	@calc.14.IfTrue
+	jne	@calc.13.IfFalse
+@calc.14.IfTrue:
+     mov                  rdi,       qword[rbp-160]
+     mov                  rsi,       qword[rbp-240]
+    push                  rdi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rdi
+     mov       qword[rbp-488],                  rax
+     mov                  rax,       qword[rbp-488]
+	jmp	@calc.2.exit
+	jmp	@calc.15.IfExit
+@calc.13.IfFalse:
+@calc.15.IfExit:
+     mov                  rdi,       qword[rbp-240]
+     mov                  rsi,       qword[rbp-160]
+    push                  rdi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rdi
+     mov       qword[rbp-528],                  rax
+     mov                  rax,       qword[rbp-528]
+	jmp	@calc.2.exit
+	jmp	@calc.12.IfExit
+@calc.10.IfFalse:
+     mov                  rdi,       qword[rbp-160]
+     mov                  rsi,       qword[rbp-240]
+    push                  rdi
+     sub                  rsp,                    8
+call	__string_greater__
+     add                  rsp,                    8
+     pop                  rdi
+     mov       qword[rbp-568],                  rax
+     mov                  rcx,       qword[rbp-568]
+     mov       qword[rbp-576],                  rcx
+     cmp       qword[rbp-576],                    1
+	je	@calc.17.IfTrue
+	jne	@calc.16.IfFalse
+@calc.17.IfTrue:
+     mov                  rdi,       qword[rbp-240]
+     mov                  rsi,       qword[rbp-160]
+    push                  rdi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rdi
+     mov       qword[rbp-608],                  rax
+     mov                  rax,       qword[rbp-608]
+	jmp	@calc.2.exit
+	jmp	@calc.18.IfExit
+@calc.16.IfFalse:
+@calc.18.IfExit:
+	jmp	@calc.12.IfExit
+@calc.12.IfExit:
+	jmp	@calc.9.IfExit
+@calc.9.IfExit:
+     mov                  rdi,         __const_str3
+    push                  rdi
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  rdi
+@calc.2.exit:
+     add                  rsp,                  624
      pop                  rbp
      ret
 
 
  section                 .bss
-@n:
+@A:
+  	resq 		1
+@B:
+  	resq 		1
+@C:
+  	resq 		1
+@N:
   	resq 		1
 
 
  section                .data
+      dq                   11
+__const_str3:
+      db "Never Ever!",0
+      dq                   13
+__const_str2:
+      db "length error!",0
+      dq                    7
+__const_str1:
+      db "4ssfsdf",0
+      dq                    5
+__const_str0:
+      db "DCBAE",0
 
 
 
@@ -239,15 +512,15 @@ ALIGN   16
 
 __substring__:
         push    r13
-        sub     rdx, rsi
         push    r12
+        mov     r13, rdi
         push    rbp
         push    rbx
-        mov     r13, rdi
-        lea     rdi, [rdx+9H]
-        mov     rbx, rdx
+        lea     rbx, [rdx+1H]
         mov     rbp, rsi
+        sub     rbx, rsi
         sub     rsp, 8
+        lea     rdi, [rbx+9H]
         call    malloc
         lea     rcx, [rax+8H]
         lea     rsi, [r13+rbp]

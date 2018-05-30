@@ -191,15 +191,15 @@ ALIGN   16
 
 __substring__:
         push    r13
-        sub     rdx, rsi
         push    r12
+        mov     r13, rdi
         push    rbp
         push    rbx
-        mov     r13, rdi
-        lea     rdi, [rdx+9H]
-        mov     rbx, rdx
+        lea     rbx, [rdx+1H]
         mov     rbp, rsi
+        sub     rbx, rsi
         sub     rsp, 8
+        lea     rdi, [rbx+9H]
         call    malloc
         lea     rcx, [rax+8H]
         lea     rsi, [r13+rbp]
