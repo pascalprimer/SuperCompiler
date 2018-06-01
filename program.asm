@@ -12,49 +12,211 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
     push                  rbx
 @main.1.enter:
-     mov                  rsi,                    1
-     mov                  rbx,                    1
+     mov                  r10,                10000
+     mov                  rbx,                    0
+     mov                  r14,                 2800
+     mov                  rsi,                    0
+     mov                  r15,                    0
+     mov                  rsi,                 2801
+     mov                  rdi,                 2801
      add                  rsi,                    1
      shl                  rsi,                    3
+    push                  r10
     push                  rdi
+    push                   r8
+    push                   r9
     push                  rsi
-     sub                  rsp,                    8
      mov                  rdi,                  rsi
     call               malloc
-     add                  rsp,                    8
      pop                  rsi
+     pop                   r9
+     pop                   r8
      pop                  rdi
-     mov                  rdi,                  rax
-     mov           qword[rdi],                  rbx
-     add                  rdi,                    8
+     pop                  r10
+     mov                  r12,                  rax
+     mov           qword[r12],                  rdi
+     add                  r12,                    8
      sub                  rsi,                    8
-     mov                  rbx,                  rdi
+     mov                   r9,                  r12
+     mov                  rdi,                    0
+	jmp	@main.6.ForCon
+@main.5.ForBody:
      mov                  rsi,                  rbx
-     mov           qword[rsi],                   10
-     mov                  rsi,                  rbx
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                   20
-     mov                  rdi,                  rsi
-    push                  rdi
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
+     add                  rbx,                    1
+     mov                  rdi,                   r9
+     mov                  rsi,                  rsi
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rsi,                  r10
+     mov                  rax,                  rsi
+     mov                  rcx,                    5
+     cdq
+    idiv                  ecx
      mov                  rsi,                  rax
+     mov           qword[rdi],                  rsi
+	jmp	@main.4.ForIter
+@main.4.ForIter:
+	jmp	@main.6.ForCon
+@main.6.ForCon:
+     mov                  rsi,                  rbx
+     sub                  rsi,                  r14
+     cmp                  rsi,                    0
+     mov                  rax,                    0
+   setne                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@main.5.ForBody
+	jmp	@main.7.ForExit
+@main.7.ForExit:
+	jmp	@main.9.ForBody
+@main.9.ForBody:
+     mov                  rsi,                    0
+     mov                  rbx,                  r14
+    imul                  rbx,                    2
+     mov                  rdi,                  rbx
+     cmp                  rdi,                    0
+     mov                  rax,                    0
+    sete                   al
+     mov                  rbx,                  rax
+     mov                  rbx,                  rbx
+     cmp                  rbx,                    1
+	je	@main.13.IfTrue
+	jmp	@main.12.IfFalse
+@main.13.IfTrue:
+	jmp	@main.11.ForExit
+	jmp	@main.14.IfExit
+@main.12.IfFalse:
+@main.14.IfExit:
+     mov                  rbx,                  r14
+	jmp	@main.16.ForBody
+@main.16.ForBody:
+     mov                   r8,                   r9
+     mov                  r12,                  rbx
+     shl                  r12,                    3
+     add                   r8,                  r12
+     mov                  r12,            qword[r8]
+    imul                  r12,                  r10
+     mov                  rsi,                  rsi
+     add                  rsi,                  r12
+     mov                  rsi,                  rsi
+     mov                   r8,                   r9
+     mov                  r12,                  rbx
+     shl                  r12,                    3
+     add                   r8,                  r12
+     sub                  rdi,                    1
+     mov                  r13,                  rdi
+     mov                  r12,                  rsi
+     mov                  rax,                  r12
+     mov                  rcx,                  r13
+     cdq
+    idiv                  ecx
+     mov                  r12,                  rdx
+     mov            qword[r8],                  r12
+     mov                  r12,                  rdi
+     sub                  rdi,                    1
+     mov                  rsi,                  rsi
+     mov                  rax,                  rsi
+     mov                  rcx,                  r12
+     cdq
+    idiv                  ecx
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     sub                  rbx,                    1
+     mov                  r12,                  rbx
+     cmp                  r12,                    0
+     mov                  rax,                    0
+    sete                   al
+     mov                  r12,                  rax
+     mov                  r12,                  r12
+     cmp                  r12,                    1
+	je	@main.20.IfTrue
+	jmp	@main.19.IfFalse
+@main.20.IfTrue:
+	jmp	@main.18.ForExit
+	jmp	@main.21.IfExit
+@main.19.IfFalse:
+@main.21.IfExit:
+	jmp	@main.15.ForIter
+@main.15.ForIter:
+     mov                  rsi,                  rsi
+    imul                  rsi,                  rbx
+     mov                  rsi,                  rsi
+	jmp	@main.16.ForBody
+@main.18.ForExit:
+     mov                  rbx,                  r14
+     sub                  rbx,                   14
+     mov                  r14,                  rbx
      mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                  r10
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rax
+     mov                  rbx,                  r15
+     add                  rbx,                  rdi
+     mov                  rdi,                  rbx
+    push                  r10
     push                  rdi
+    push                   r8
+    push                   r9
     push                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
+call	toString
      pop                  rsi
+     pop                   r9
+     pop                   r8
      pop                  rdi
+     pop                  r10
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  r10
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+call	print
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     pop                  r10
+	jmp	@main.8.ForIter
+@main.8.ForIter:
+     mov                  rsi,                  rsi
+     mov                  rax,                  rsi
+     mov                  rcx,                  r10
+     cdq
+    idiv                  ecx
+     mov                  rsi,                  rdx
+     mov                  r15,                  rsi
+	jmp	@main.9.ForBody
+@main.11.ForExit:
+     mov                  rdi,         __const_str0
+    push                  r10
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+call	print
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     pop                  r10
+     mov                  rax,                    0
+	jmp	@main.2.exit
 @main.2.exit:
      pop                  rbx
+     pop                  r15
+     pop                  r13
+     pop                  r14
+     pop                  r12
      pop                  rbp
      ret
 
@@ -63,6 +225,9 @@ call	println
 
 
  section                .data
+      dq                    1
+__const_str0:
+      db "",10,"",0
 
 
 

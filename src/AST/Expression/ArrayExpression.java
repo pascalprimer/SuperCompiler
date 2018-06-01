@@ -42,10 +42,16 @@ public class ArrayExpression extends Expression {
 		Operand base = baseExpression.operand,
 				offset = subscriptExpression.operand;
 		VirtualRegister tmpBase = RegisterManager.getVirtualRegister();
-		instructionList.add(new MoveInstruction(tmpBase, base));
+		//System.out.println(base + " " + offset);
 		if (offset instanceof Immediate) {
+			if (base instanceof Address) {
+				instructionList.add(new MoveInstruction(tmpBase, base));
+			} else {
+				tmpBase = (VirtualRegister) base;
+			}
 			operand = new Address(tmpBase, (Immediate) offset);
 		} else {
+			instructionList.add(new MoveInstruction(tmpBase, base));
 			VirtualRegister tmpOffset = RegisterManager.getVirtualRegister();
 			instructionList.add(new MoveInstruction(tmpOffset, offset));
 			instructionList.add(new BinaryInstruction(

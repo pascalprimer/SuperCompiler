@@ -38,6 +38,7 @@ public class BinaryInstruction extends Instruction {
 	public void claimSet() {
 		if (target instanceof VirtualRegister) {
 			def.add((VirtualRegister) target);
+			use.add((VirtualRegister) target);
 			((VirtualRegister) target).addLoop(loopNumber);
 		}
 		if (target instanceof Address) {

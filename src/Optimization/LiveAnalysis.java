@@ -152,6 +152,13 @@ public class LiveAnalysis {
 				}
 			}
 
+//System.out.println("\n" + instruction.toString(0));
+//System.out.println("use: " + instruction.use);
+//System.out.println("def: " + instruction.def);
+//System.out.println("liveIn: " + instruction.liveIn);
+//System.out.println("liveOut: " + instruction.liveOut);
+
+
 			for (VirtualRegister register: instruction.liveOut) {
 				if (!(instruction instanceof MoveInstruction) || !instruction.def.contains(register)) {
 					for (VirtualRegister u: instruction.def) {
