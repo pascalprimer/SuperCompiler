@@ -185,3 +185,27 @@ int main() {
     print(toString(ans));
     return 0;
 }
+
+
+
+/*!! metadata:
+=== comment ===
+segtree-515030910592-lijinning.txt
+=== is_public ===
+True
+=== assert ===
+output
+=== timeout ===
+1.5
+=== input ===
+40000
+40000
+9977
+=== phase ===
+optim pretest
+=== output ===
+21523
+=== exitcode ===
+
+
+!!*/

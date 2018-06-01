@@ -88,7 +88,7 @@ public class IRTranslator {
 		System.out.println("------- start printing IR -------");
 		for (FunctionIR functionIR: functionIRMap.values()) {
 			if (functionIR.getName().charAt(0) != '_') {
-				continue;
+				//continue;
 			}
 			System.out.println(functionIR.toString(indents));
 		}
