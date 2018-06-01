@@ -4,6 +4,7 @@ import AST.AST;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
+import IR.Instruction.Instruction;
 import IR.Instruction.Label;
 import IR.Operand.Address;
 import IR.Operand.Immediate;
@@ -75,12 +76,20 @@ public class IRTranslator {
 		globalDeclaration.blockList = new ArrayList<Block>() {{
 			add(globalDeclarationBlock);
 		}};
+		for (Instruction instruction: globalDeclarationBlock.instructionList) {
+			if (instruction instanceof Label) {
+				((Label) instruction).blockBelong = globalDeclarationBlock;
+			}
+		}
 		functionIRMap.put("__global_declaration", globalDeclaration);
 	}
 
 	public static void print(int indents) {
 		System.out.println("------- start printing IR -------");
 		for (FunctionIR functionIR: functionIRMap.values()) {
+			if (functionIR.getName().charAt(0) != '_') {
+				continue;
+			}
 			System.out.println(functionIR.toString(indents));
 		}
 		System.out.println("-------------- end --------------");

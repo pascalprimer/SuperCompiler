@@ -89,6 +89,10 @@ public class LiveAnalysis {
 				if (instruction instanceof JumpInstruction) {
 					Block target = ((JumpInstruction) instruction).getLabel().blockBelong;
 					if (block != target) {
+						if (target == null) {
+							System.out.println("null occur");
+							System.out.println(instruction.toString(0));
+						}
 						block.blockOut.add(target);
 						target.blockIn.add(block);
 					}
