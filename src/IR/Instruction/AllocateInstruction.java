@@ -52,8 +52,10 @@ public class AllocateInstruction extends Instruction {
 
 		StringBuilder code = new StringBuilder();
 
+//System.out.println("now offset: " + String.valueOf(NASMTranslator.rspOffset));
+//System.out.println(NASMTranslator.nowFunctionIR.callerRegisters);
 		code.append(NASMTranslator.saveCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
-
+//System.out.println("now offset: " + String.valueOf(NASMTranslator.rspOffset));
 		int rsp_delta = 0;
 		if ((NASMTranslator.rspOffset + rsp_delta) % 2 == 1) {
 			++rsp_delta;
@@ -70,7 +72,6 @@ public class AllocateInstruction extends Instruction {
 		code.append(NASMTranslator.getInstruction("mov", "rdi", physicalSize.toString()));
 		//code.append(NASMTranslator.getInstruction("shl", "rdi", String.valueOf(3)));
 		code.append(NASMTranslator.getInstruction("call", "malloc"));
-		code.append(NASMTranslator.getInstruction("mov", physicalBase.toString(), "rax"));
 
 		if (rsp_delta > 0) {
 			code.append(NASMTranslator.getInstruction(
@@ -80,6 +81,8 @@ public class AllocateInstruction extends Instruction {
 		}
 
 		code.append(NASMTranslator.restoreCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
+
+		code.append(NASMTranslator.getInstruction("mov", physicalBase.toString(), "rax"));
 
 		return code.toString();
 	}

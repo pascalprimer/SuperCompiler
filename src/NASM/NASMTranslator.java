@@ -18,10 +18,13 @@ public class NASMTranslator {
 	public static FunctionIR nowFunctionIR;
 
 	static public String getInstruction(String a, String b) {
-		if (a.equals("pop")) {
+		if (a.equals("push")) {
 			rspOffset++;
-		} else {
+			//System.out.println("plus rsp offset: " + a + " " + b + " " + rspOffset);
+		}
+		if (a.equals("pop")) {
 			rspOffset--;
+			//System.out.println("subtract rsp offset: " + a + " " + b + " " + rspOffset);
 		}
 		return String.format("%8s %20s\n", a, b);
 	}
@@ -36,17 +39,21 @@ public class NASMTranslator {
 
 	static public String saveCallerRegister(List<String> callerRegisters) {
 		StringBuilder code = new StringBuilder();
+		//System.out.println("now push caller:" + callerRegisters);
 		for (String register: callerRegisters) {
-			rspOffset++;
+			//System.out.println(NASMTranslator.rspOffset);
+			//rspOffset++;
+			//System.out.println(NASMTranslator.rspOffset);
 			code.append(getInstruction("push", register));
 		}
+		//System.out.println(NASMTranslator.rspOffset);
 		return code.toString();
 	}
 
 	static public String restoreCallerRegister(List<String> callerRegisters) {
 		StringBuilder code = new StringBuilder();
 		for (int i = callerRegisters.size() - 1; i >= 0; --i) {
-			rspOffset--;
+			//rspOffset--;
 			code.append(getInstruction("pop", callerRegisters.get(i)));
 		}
 		return code.toString();
@@ -55,7 +62,7 @@ public class NASMTranslator {
 	static public String saveCalleeRegister(List<String> calleeRegisters) {
 		StringBuilder code = new StringBuilder();
 		for (String register: calleeRegisters) {
-			rspOffset++;
+			//rspOffset++;
 			code.append(getInstruction("push", register));
 		}
 		return code.toString();
@@ -64,7 +71,7 @@ public class NASMTranslator {
 	static public String restoreCalleeRegister(List<String> calleeRegisters) {
 		StringBuilder code = new StringBuilder();
 		for (int i = calleeRegisters.size() - 1; i >= 0; --i) {
-			rspOffset--;
+			//rspOffset--;
 			code.append(getInstruction("pop", calleeRegisters.get(i)));
 		}
 		return code.toString();

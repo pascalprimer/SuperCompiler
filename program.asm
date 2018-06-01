@@ -12,49 +12,49 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-    push                  r12
     push                  rbx
 @main.1.enter:
-     mov                  r12,                   20
-     mov                  rdi,                    0
      mov                  rsi,                    1
-	jmp	@main.6.ForCon
-@main.5.ForBody:
-     mov                  rbx,                  rdi
-     add                  rbx,                  rsi
-     mov                  rdi,                  rbx
-     mov                  rsi,                  rsi
+     mov                  rbx,                    1
      add                  rsi,                    1
-     mov                  rsi,                  rsi
-	jmp	@main.4.ForIter
-@main.4.ForIter:
-	jmp	@main.6.ForCon
-@main.6.ForCon:
-     cmp                  rsi,                  r12
-     mov                  rax,                    0
-   setle                   al
-     mov                  rbx,                  rax
-     mov                  rbx,                  rbx
-     cmp                  rbx,                    1
-	je	@main.5.ForBody
-	jmp	@main.7.ForExit
-@main.7.ForExit:
-     mov                  rdi,                  rdi
+     shl                  rsi,                    3
     push                  rdi
     push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                  rsi
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rdi,                  rax
+     mov           qword[rdi],                  rbx
+     add                  rdi,                    8
+     sub                  rsi,                    8
+     mov                  rbx,                  rdi
+     mov                  rsi,                  rbx
+     mov           qword[rsi],                   10
+     mov                  rsi,                  rbx
+     mov                  rsi,           qword[rsi]
+     add                  rsi,                   20
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
 call	toString
+     add                  rsp,                    8
      pop                  rsi
      pop                  rdi
      mov                  rsi,                  rax
      mov                  rdi,                  rsi
     push                  rdi
     push                  rsi
+     sub                  rsp,                    8
 call	println
+     add                  rsp,                    8
      pop                  rsi
      pop                  rdi
 @main.2.exit:
      pop                  rbx
-     pop                  r12
      pop                  rbp
      ret
 

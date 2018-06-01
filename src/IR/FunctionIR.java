@@ -117,7 +117,7 @@ public class FunctionIR {
 		code.append(name + ":\n");
 		code.append(NASMTranslator.getInstruction("push", "rbp"));
 		code.append(NASMTranslator.getInstruction("mov", "rbp", "rsp"));
-
+//System.out.println(NASMTranslator.rspOffset);
 		if (name.equals("main")) {
 			code.append(NASMTranslator.getInstruction("call", "__global_declaration"));
 		}

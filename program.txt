@@ -1,11 +1,5 @@
 int main() {
-    int n = 20;
-    int sum = 0;
-    int i = 1;
-    while (i <= n) {
-        sum = sum + i;
-        //println(toString(i) + " " + toString(sum));
-        i = i+1;
-    }
-    println(toString(sum));
+    int[] a = new int[1];
+    a[0] = 10;
+    println(toString(a[0] + 20));
 }
