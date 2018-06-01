@@ -5,7 +5,9 @@ import FrontEnd.Listener.StatementListener;
 import FrontEnd.Parser.CompilerLexer;
 import FrontEnd.Parser.CompilerParser;
 import IR.IRTranslator;
+import IR.RegisterManager;
 import NASM.NASMTranslator;
+import Optimization.Optimizer;
 import Test.A;
 import Utility.CompilerError;
 import org.antlr.v4.runtime.*;
@@ -48,6 +50,11 @@ public class Main {
 		//IRTranslator.print(1);
 	}
 
+	public static void optimize() throws Exception {
+		Optimizer.optimizer();
+		//IRTranslator.print(1);
+	}
+
 	public static void buildNASM() throws Exception {
 		StringBuilder code = NASMTranslator.translate();
 		File file= new File("program.asm");
@@ -57,13 +64,13 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws Exception{
-		A tmp = new A();
-		System.out.println();
 		File file = new File("program.txt");
 		InputStream fin = new FileInputStream(file);
 
+		RegisterManager.initialize();
 		buildAST(fin);
 		buildIR();
+		optimize();
 		buildNASM();
 	}
 

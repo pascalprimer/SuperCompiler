@@ -1,5 +1,6 @@
 package IR.Instruction;
 
+import IR.Block;
 import IR.FunctionIR;
 import IR.IRTranslator;
 import NASM.PhysicalOperand.SystemRegister;
@@ -7,10 +8,18 @@ import NASM.PhysicalOperand.SystemRegister;
 public class Label extends Instruction {
 
 	private String name;
+	public Block blockBelong;
 
 	public Label(String labelName) {
+		super();
 		FunctionIR who = IRTranslator.who;
 		this.name = "@" + who.getName() + "." + ++who.labelID + "." + labelName;
+		claimSet();
+	}
+
+	@Override
+	public void claimSet() {
+
 	}
 
 	public String getName() {

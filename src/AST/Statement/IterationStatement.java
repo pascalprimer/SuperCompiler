@@ -2,6 +2,7 @@
 
 package AST.Statement;
 
+import AST.AST;
 import AST.Expression.Expression;
 import AST.Symbol.Scope;
 import AST.Type.BoolType;
@@ -55,6 +56,8 @@ public class IterationStatement extends Statement implements Scope {
 			JNE ForBody
 		ForExit:
 		*/
+		++AST.loopCnt;
+
 		iterLabel = new Label("ForIter");
 		bodyLabel = new Label("ForBody");
 		conLabel = new Label("ForCon");
@@ -96,10 +99,12 @@ public class IterationStatement extends Statement implements Scope {
 			instructionList.add(new MoveInstruction(tmp, termination.operand));
 			instructionList.add(new CompareInstruction(tmp, new Immediate(1)));
 			instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, bodyLabel));
-			instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, exitLabel));
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, exitLabel));
 		}
 
 		instructionList.add(exitLabel);
+
+		--AST.loopCnt;
 	}
 
 	public void setInitialization(Expression initialization) {

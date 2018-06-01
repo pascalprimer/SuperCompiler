@@ -5,10 +5,10 @@ import Utility.CompilerError;
 import java.util.*;
 
 public class ClassTable {
-	private Map<String, ClassType> classTable;
+	private LinkedHashMap<String, ClassType> classTable;
 
 	public ClassTable() {
-		classTable = new HashMap<>();
+		classTable = new LinkedHashMap<>();
 	}
 
 	public Map<String, ClassType> getClassTable() {

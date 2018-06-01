@@ -2,6 +2,7 @@ package IR.Instruction;
 
 import IR.Operand.Address;
 import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalImmediate;
@@ -23,12 +24,34 @@ public class BinaryInstruction extends Instruction {
 	private Operation op;
 
 	public BinaryInstruction(Operation op, Operand target, Operand source) {
+		super();
 		if (target instanceof Address && source instanceof Address) {
 			throw new RuntimeError("target & source both address");
 		}
 		this.op = op;
 		this.target = target;
 		this.source = source;
+		claimSet();
+	}
+
+	@Override
+	public void claimSet() {
+		if (target instanceof VirtualRegister) {
+			def.add((VirtualRegister) target);
+			((VirtualRegister) target).addLoop(loopNumber);
+		}
+		if (target instanceof Address) {
+			use.add(((Address) target).getBase());
+			(((Address) target).getBase()).addLoop(loopNumber);
+		}
+		if (source instanceof VirtualRegister) {
+			use.add((VirtualRegister) source);
+			((VirtualRegister) source).addLoop(loopNumber);
+		}
+		if (source instanceof Address) {
+			use.add(((Address) source).getBase());
+			(((Address) source).getBase()).addLoop(loopNumber);
+		}
 	}
 
 	@Override

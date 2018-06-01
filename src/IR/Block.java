@@ -1,44 +1,55 @@
 package IR;
 
 import IR.Instruction.Instruction;
+import IR.Operand.VirtualRegister;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Block {
 
-	int id;
+	public int id;
 	private String name;
 	private FunctionIR functionIRBelong;
-	private Block front, next;
+	//private Block front, next;
 	public List<Instruction> instructionList;
+	public Set<Block> blockIn, blockOut;
+	public Set<VirtualRegister> use, def, liveIn, liveOut;
 
 	public Block(String name, FunctionIR functionIRBelong) {
 		this.name = name;
 		this.functionIRBelong = functionIRBelong;
 		instructionList = new ArrayList<>();
-		front = next = null;
+		//front = next = null;
+		blockIn = new HashSet<>();
+		blockOut = new HashSet<>();
+		use = new HashSet<>();
+		def = new HashSet<>();
+		liveIn = new HashSet<>();
+		liveOut = new HashSet<>();
 	}
 
 	public void addInstruction(Instruction instruction) {
 		instructionList.add(instruction);
 	}
 
-	public void setFront(Block front) {
-		this.front = front;
-	}
-
-	public void setNext(Block next) {
-		this.next = next;
-	}
-
-	public Block getFront() {
-		return front;
-	}
-
-	public Block getNext() {
-		return next;
-	}
+//	public void setFront(Block front) {
+//		this.front = front;
+//	}
+//
+//	public void setNext(Block next) {
+//		this.next = next;
+//	}
+//
+//	public Block getFront() {
+//		return front;
+//	}
+//
+//	public Block getNext() {
+//		return next;
+//	}
 
 	public FunctionIR getFunctionIRBelong() {
 		return functionIRBelong;

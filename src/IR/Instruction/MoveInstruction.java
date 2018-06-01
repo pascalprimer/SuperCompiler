@@ -1,6 +1,8 @@
 package IR.Instruction;
 
+import IR.Operand.Address;
 import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalAddress;
@@ -13,11 +15,33 @@ public class MoveInstruction extends Instruction {
 	private Operand source;
 
 	public MoveInstruction(Operand target, Operand source) {
+		super();
 		if (source == null || target == null) {
 			throw new RuntimeError("source && target not null");
 		}
 		this.source = source;
 		this.target = target;
+		claimSet();
+	}
+
+	@Override
+	public void claimSet() {
+		if (target instanceof VirtualRegister) {
+			def.add((VirtualRegister) target);
+			((VirtualRegister) target).addLoop(loopNumber);
+		}
+		if (target instanceof Address) {
+			use.add(((Address) target).getBase());
+			((Address) target).getBase().addLoop(loopNumber);
+		}
+		if (source instanceof VirtualRegister) {
+			use.add((VirtualRegister) source);
+			((VirtualRegister) source).addLoop(loopNumber);
+		}
+		if (source instanceof Address) {
+			use.add(((Address) source).getBase());
+			((Address) source).getBase().addLoop(loopNumber);
+		}
 	}
 
 	@Override

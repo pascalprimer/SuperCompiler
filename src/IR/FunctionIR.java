@@ -82,6 +82,7 @@ public class FunctionIR {
 					this
 			);
 			nowBlock.addInstruction(instructionList.get(i));
+			((Label) instructionList.get(i)).blockBelong = nowBlock;
 			blockList.add(nowBlock);
 			nowBlock.id = cnt++;
 			for (++j; !(instructionList.get(j) instanceof Label); ++j) {

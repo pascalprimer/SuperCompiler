@@ -1,24 +1,44 @@
 package IR.Instruction;
 
+import IR.Operand.Address;
 import IR.Operand.Immediate;
 import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalOperand;
 
+import java.util.HashSet;
+
 public class AllocateInstruction extends Instruction {
 
-	private Operand base;
+	private VirtualRegister base;
 	private Operand allocateSize;
 
-	public AllocateInstruction(Operand base, int allocateSize) {
+	public AllocateInstruction(VirtualRegister base, int allocateSize) {
+		super();
 		this.base = base;
 		this.allocateSize = new Immediate(allocateSize);
+		claimSet();
 	}
 
-	public AllocateInstruction(Operand base, Operand allocateSize) {
+	public AllocateInstruction(VirtualRegister base, Operand allocateSize) {
 		this.base = base;
 		this.allocateSize = allocateSize;
+	}
+
+	@Override
+	public void claimSet() {
+		def.add(base);
+		base.addLoop(loopNumber);
+		if (allocateSize instanceof VirtualRegister) {
+			use.add((VirtualRegister) allocateSize);
+			((VirtualRegister) allocateSize).addLoop(loopNumber);
+		}
+		if (allocateSize instanceof Address) {
+			use.add(((Address) allocateSize).getBase());
+			((Address) allocateSize).getBase().addLoop(loopNumber);
+		}
 	}
 
 	@Override

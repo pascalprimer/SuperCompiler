@@ -58,7 +58,7 @@ public class SelectionStatement extends Statement implements Scope {
 		instructionList.add(new MoveInstruction(con, condition.operand));
 		instructionList.add(new CompareInstruction(con, new Immediate(1)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, trueLabel));
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JNE, falseLabel));
+		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, falseLabel));
 
 		instructionList.add(trueLabel);
 		thenStatement.translateIR(instructionList);

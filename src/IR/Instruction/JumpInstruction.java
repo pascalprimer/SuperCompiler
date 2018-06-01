@@ -12,8 +12,15 @@ public class JumpInstruction extends Instruction {
 	private Label label;
 
 	public JumpInstruction(Type type, Label label) {
+		super();
 		this.type = type;
 		this.label = label;
+		claimSet();
+	}
+
+	@Override
+	public void claimSet() {
+
 	}
 
 	@Override
@@ -37,6 +44,14 @@ public class JumpInstruction extends Instruction {
 		return Utility.GetIndents.getIndents(indents) +
 				type.toString().toLowerCase() + "\t" +
 				(label == null ? "null": label.getName()) + "\n";
+	}
+
+	public Label getLabel() {
+		return label;
+	}
+
+	public Type getType() {
+		return type;
 	}
 
 }

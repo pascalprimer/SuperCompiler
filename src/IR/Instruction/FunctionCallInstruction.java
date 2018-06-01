@@ -1,7 +1,9 @@
 package IR.Instruction;
 
 import AST.Type.FunctionType;
+import IR.Operand.Address;
 import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalAddress;
@@ -22,10 +24,34 @@ public class FunctionCallInstruction extends Instruction{
 			List<Operand> parameterList,
 			Operand returnValue
 	) {
+		super();
 		this.functionName = functionType.getFullName();
 		this.functionType = functionType;
 		this.parameterList = parameterList;
 		this.returnValue = returnValue;
+		claimSet();
+	}
+
+	@Override
+	public void claimSet() {
+		if (returnValue instanceof VirtualRegister) {
+			def.add((VirtualRegister) returnValue);
+			((VirtualRegister) returnValue).addLoop(loopNumber);
+		}
+		if (returnValue instanceof Address) {
+			use.add(((Address) returnValue).getBase());
+			((Address) returnValue).getBase().addLoop(loopNumber);
+		}
+		for (Operand source: parameterList) {
+			if (source instanceof VirtualRegister) {
+				use.add((VirtualRegister) source);
+				((VirtualRegister) source).addLoop(loopNumber);
+			}
+			if (source instanceof Address) {
+				use.add(((Address) source).getBase());
+				((Address) source).getBase().addLoop(loopNumber);
+			}
+		}
 	}
 
 	@Override

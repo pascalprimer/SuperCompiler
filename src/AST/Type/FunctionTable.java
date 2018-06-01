@@ -8,7 +8,7 @@ public class FunctionTable {
 	private Map<String, FunctionType> functionTable;
 
 	public FunctionTable() {
-		functionTable = new HashMap<>();
+		functionTable = new LinkedHashMap<>();
 	}
 
 	public void addFunction(FunctionType obj) {

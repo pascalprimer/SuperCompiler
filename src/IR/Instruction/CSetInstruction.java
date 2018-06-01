@@ -1,6 +1,8 @@
 package IR.Instruction;
 
+import IR.Operand.Address;
 import IR.Operand.Operand;
+import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalOperand;
@@ -15,8 +17,22 @@ public class CSetInstruction extends Instruction {
 	private Operand target;
 
 	public CSetInstruction(Type type, Operand target) {
+		super();
 		this.type = type;
 		this.target = target;
+		claimSet();
+	}
+
+	@Override
+	public void claimSet() {
+		if (target instanceof VirtualRegister) {
+			def.add((VirtualRegister) target);
+			((VirtualRegister) target).addLoop(loopNumber);
+		}
+		if (target instanceof Address) {
+			use.add(((Address) target).getBase());
+			((Address) target).getBase().addLoop(loopNumber);
+		}
 	}
 
 	@Override

@@ -17,7 +17,7 @@ import java.util.Stack;
 
 public class AST {
 
-	public static int cnt = 0;
+	public static int loopCnt = 0;
 
 	public static ClassTable classTable;
 	public static FunctionTable globalFunctionTable;

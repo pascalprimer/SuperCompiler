@@ -12,6 +12,8 @@ import java.util.Set;
 
 public class RegisterManager {
 
+	private static final long loopR = 5;
+	public static long[] loopCoefficient;
 	private static int allocateNumber;
 	private static int offset;
 	public static Set<String> usedRegister;
@@ -44,6 +46,11 @@ public class RegisterManager {
 
 	public static void initialize() {
 		allocateNumber = 0;
+		loopCoefficient = new long [15];
+		loopCoefficient[0] = 1;
+		for (int i = 1; i < loopCoefficient.length; ++i) {
+			loopCoefficient[i] = loopCoefficient[i - 1] * loopR;
+		}
 	}
 
 	public static VirtualRegister getVirtualRegister() {

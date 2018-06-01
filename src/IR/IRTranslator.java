@@ -22,6 +22,7 @@ public class IRTranslator {
 	//public static Block globalDeclarationBlock;
 	public static Label exitLabel, loopContinue, loopExit;
 	public static FunctionIR who;
+	public static int VirtualRegisterCnt = 0;
 
 	public static StringMemory getStringOperand(String str) {
 		if (stringList.containsKey(str)) {
