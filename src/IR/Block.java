@@ -3,10 +3,7 @@ package IR;
 import IR.Instruction.Instruction;
 import IR.Operand.VirtualRegister;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Block {
 
@@ -25,10 +22,10 @@ public class Block {
 		//front = next = null;
 		blockIn = new HashSet<>();
 		blockOut = new HashSet<>();
-		use = new HashSet<>();
-		def = new HashSet<>();
-		liveIn = new HashSet<>();
-		liveOut = new HashSet<>();
+		use = new LinkedHashSet<>();
+		def = new LinkedHashSet<>();
+		liveIn = new LinkedHashSet<>();
+		liveOut = new LinkedHashSet<>();
 	}
 
 	public void addInstruction(Instruction instruction) {
@@ -62,6 +59,10 @@ public class Block {
 			str.append(Utility.GetIndents.getIndents(indents) + instruction.toString(indents));
 		}
 		return str.toString();
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

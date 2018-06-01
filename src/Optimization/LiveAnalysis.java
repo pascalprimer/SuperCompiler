@@ -54,10 +54,17 @@ public class LiveAnalysis {
 	}
 
 	public static void solveBlocks() {
+		Block last = null;
 		for (Block block: nowFunc.blockList) {
+			if (last != null) {
+				last.blockOut.add(block);
+				block.blockIn.add(last);
+			}
+			last = block;
 			Set<VirtualRegister> nowAssigned = new HashSet<>();
 			for (Instruction instruction: block.instructionList) {
 				for (VirtualRegister register: instruction.use) {
+					//System.out.println("use: " + register + " " + isRegister(register));
 					if (!isRegister(register)) {
 						continue;
 					}
@@ -69,6 +76,7 @@ public class LiveAnalysis {
 					}
 				}
 				for (VirtualRegister register: instruction.def) {
+//					System.out.println("def: " + register);
 					if (isRegister(register) && !conflictEdge.containsKey(register)) {
 						conflictEdge.put(register, new HashSet<>());
 					}
@@ -94,10 +102,23 @@ public class LiveAnalysis {
 		while (!converge) {
 			converge = true;
 			for (Block block: nowFunc.blockList) {
-				converge |= !calcBlockIn(block);
-				converge |= !calcBlockOut(block);
+				if (calcBlockIn(block)) {
+					converge = false;
+				}
+				if (calcBlockOut(block)) {
+					converge = false;
+				}
+				//converge |= !calcBlockOut(block);
 			}
 		}
+
+//		for (Block block: nowFunc.blockList) {
+//			System.out.println("\n" + block.getName());
+//			System.out.println("use: " + block.use);
+//			System.out.println("def: " + block.def);
+//			System.out.println("liveIn: " + block.liveIn);
+//			System.out.println("liveOut: " + block.liveOut);
+//		}
 	}
 
 	private static void solveInstructions(Block block) {
@@ -134,7 +155,9 @@ public class LiveAnalysis {
 			for (VirtualRegister register: instruction.liveOut) {
 				if (!(instruction instanceof MoveInstruction) || !instruction.def.contains(register)) {
 					for (VirtualRegister u: instruction.def) {
-						addConflictEdge(u, register);
+						if (isRegister(register)) {
+							addConflictEdge(u, register);
+						}
 					}
 				}
 			}
@@ -142,7 +165,7 @@ public class LiveAnalysis {
 	}
 
 	private static void addConflictEdge(VirtualRegister u, VirtualRegister v) {
-//System.out.println(u + " " + v);
+//System.out.println(u + " --------- " + v);
 //System.out.println(conflictEdge.containsKey(u) + " " + conflictEdge.containsKey(v));
 		if (u == v) {
 			return;
@@ -151,8 +174,9 @@ public class LiveAnalysis {
 		conflictEdge.get(v).add(u);
 	}
 
+	//true if needed to allocate
 	private static boolean isRegister(VirtualRegister register) {
-		//System.out.println(register + " " + register.isGlobal + " " + nowFunc.offsetMap.containsKey(register));
+//System.out.println(register + " " + register.isGlobal + " " + nowFunc.offsetMap.containsKey(register));
 		if (register.isGlobal || nowFunc.offsetMap.containsKey(register)) {
 			return false;
 		}
@@ -163,6 +187,7 @@ public class LiveAnalysis {
 	private static boolean calcBlockIn(Block block) {
 		boolean ret = false;
 		for (VirtualRegister register: block.liveOut) {
+			//System.out.println(block.getName() + " -> " + register);
 			if (!block.def.contains(register)
 					&& !block.liveIn.contains(register)) {
 				ret = true;
