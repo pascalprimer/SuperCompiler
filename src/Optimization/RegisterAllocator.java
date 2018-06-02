@@ -99,6 +99,7 @@ public class RegisterAllocator {
 			}
 		}
 
+		Stack<VirtualRegister> naiveRegister = new Stack<>();
 		while (allocateList.size() > 0) {
 			long maxWeight = 0;
 			int id = -1;
@@ -112,22 +113,39 @@ public class RegisterAllocator {
 					who = now;
 				}
 			}
-			if (who == null) {
-				for (int j = 0; j < allocateList.size(); ++j) {
-					VirtualRegister now = allocateList.get(j);
-					if (id == -1 || now.getWeight() > maxWeight) {
-						id = j;
-						maxWeight = now.getWeight();
-						who = now;
-					}
+			if (who != null) {
+				naiveRegister.push(who);
+				allocateList.remove(id);
+				for (VirtualRegister neighbour: conflictEdge.get(who)) {
+					conflictEdge.get(neighbour).remove(who);
+				}
+				continue;
+			}
+			//if (who == null) {
+			for (int j = 0; j < allocateList.size(); ++j) {
+				VirtualRegister now = allocateList.get(j);
+				if (id == -1 || now.getWeight() > maxWeight) {
+					id = j;
+					maxWeight = now.getWeight();
+					who = now;
 				}
 			}
+			//}
 			for (String systemReg : myOrder) {
 				if (tryColoring(registerMap, who, systemReg)) {
 					break;
 				}
 			}
 			allocateList.remove(id);
+		}
+
+		while (naiveRegister.size() > 0) {
+			VirtualRegister now = naiveRegister.pop();
+			for (String systemReg : myOrder) {
+				if (tryColoring(registerMap, now, systemReg)) {
+					break;
+				}
+			}
 		}
 
 		nowFunc.systemRegisterMap = registerMap;
