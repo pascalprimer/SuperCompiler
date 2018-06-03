@@ -26,7 +26,7 @@ public class FunctionIR {
 	public List<Block> blockList;
 	private String name;
 	public FunctionType functionType;
-	private Label enterLabel, exitLabel;
+	public Label enterLabel, exitLabel;
 	private List<Operand> parameterList;
 	public Map<VirtualRegister, String> systemRegisterMap;
 	public Map<VirtualRegister, Integer> offsetMap;
@@ -68,7 +68,6 @@ public class FunctionIR {
 	public void buildCFG() {
 		enterLabel = new Label("enter");
 		exitLabel = new Label("exit");
-		Label tmpLabel = new Label("tmp_label");
 		IRTranslator.exitLabel = exitLabel;
 		List<Instruction> instructionList = new ArrayList<>();
 		instructionList.add(enterLabel);
@@ -88,8 +87,6 @@ public class FunctionIR {
 		}
 		instructionList.add(exitLabel);
 
-		instructionList.add(tmpLabel);
-
 		//check if purity
 		for (Instruction instruction: instructionList) {
 			if (!instruction.getPurity()) {
@@ -107,6 +104,18 @@ public class FunctionIR {
 			IRTranslator.purityReg.put(this, purityRegister);
 		}
 
+
+		getBlocks(instructionList);
+		//System.err.println("---------------------");
+	}
+
+	public void getBlocks(List<Instruction> instructionList) {
+
+		blockList.clear();
+
+		Label tmpLabel = new Label("tmp_label");
+		instructionList.add(tmpLabel);
+
 		int cnt = 0;
 		for (int i = 0, j = i; i + 1 < instructionList.size(); i = j) {
 			Block nowBlock = new Block(
@@ -121,7 +130,6 @@ public class FunctionIR {
 				nowBlock.addInstruction(instructionList.get(j));
 			}
 		}
-		//System.err.println("---------------------");
 	}
 
 	public String translateNASM() {

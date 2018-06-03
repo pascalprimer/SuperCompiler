@@ -58,6 +58,14 @@ public class CSetInstruction extends Instruction {
 		return false;
 	}
 
+	public Type getType() {
+		return type;
+	}
+
+	public Operand getTarget() {
+		return target;
+	}
+
 	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +

@@ -11,7 +11,7 @@ import Utility.RuntimeError;
 
 public class MoveInstruction extends Instruction {
 
-	private Operand target;
+	public Operand target;
 	private Operand source;
 
 	public MoveInstruction(Operand target, Operand source) {
@@ -22,6 +22,26 @@ public class MoveInstruction extends Instruction {
 		this.source = source;
 		this.target = target;
 		claimSet();
+	}
+
+	public void changeTarget(Operand newTarget) {
+		if (target instanceof VirtualRegister) {
+			def.remove((VirtualRegister) target);
+			((VirtualRegister) target).delLoop(loopNumber);
+		}
+		if (target instanceof Address) {
+			use.remove(((Address) target).getBase());
+			((Address) target).getBase().delLoop(loopNumber);
+		}
+		target = newTarget;
+		if (target instanceof VirtualRegister) {
+			def.add((VirtualRegister) target);
+			((VirtualRegister) target).addLoop(loopNumber);
+		}
+		if (target instanceof Address) {
+			use.add(((Address) target).getBase());
+			((Address) target).getBase().addLoop(loopNumber);
+		}
 	}
 
 	@Override
@@ -73,6 +93,14 @@ public class MoveInstruction extends Instruction {
 	@Override
 	public boolean getPurity() {
 		return (target.ifPurity() && source.ifPurity());
+	}
+
+	public Operand getTarget() {
+		return target;
+	}
+
+	public Operand getSource() {
+		return source;
 	}
 
 	@Override

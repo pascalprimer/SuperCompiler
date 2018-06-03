@@ -16,8 +16,8 @@ import java.util.List;
 public class FunctionCallInstruction extends Instruction{
 
 	private String functionName;
-	private FunctionType functionType;
-	private List<Operand> parameterList;
+	public FunctionType functionType;
+	public List<Operand> parameterList;
 	private Operand returnValue;
 
 	public FunctionCallInstruction(
@@ -104,6 +104,10 @@ public class FunctionCallInstruction extends Instruction{
 		code.append(NASMTranslator.restoreCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
 
 		return code.toString();
+	}
+
+	public Operand getReturnValue() {
+		return returnValue;
 	}
 
 	@Override

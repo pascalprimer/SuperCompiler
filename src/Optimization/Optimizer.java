@@ -12,6 +12,10 @@ public class Optimizer {
 //				continue;
 //			}
 			//System.out.println(functionIR.toString(1));
+			//if (functionIR.getName().charAt(0) == 'm') {
+				Inliner.inliner(functionIR);
+				//return;
+			//}
 			LiveAnalysis.FunctionAnalysis(functionIR);
 			RegisterAllocator.LinearAllocator();
 		}

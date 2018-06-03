@@ -92,6 +92,14 @@ public class AllocateInstruction extends Instruction {
 		return false;
 	}
 
+	public VirtualRegister getMyBase() {
+		return base;
+	}
+
+	public Operand getAllocateSize() {
+		return allocateSize;
+	}
+
 	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +

@@ -39,6 +39,20 @@ public class VirtualRegister extends Operand {
 		}
 	}
 
+	public void delLoop(int cnt) {
+		Integer loopNumber = cnt;
+		if (cnt >= RegisterManager.loopCoefficient.length) {
+			throw new RuntimeError("too many loops!!!");
+		}
+		loopWeight -= RegisterManager.loopCoefficient[cnt];
+		Integer number = loopRefNumber.get(loopNumber);
+		if (number.intValue() > 1) {
+			loopRefNumber.replace(loopNumber, number - 1);
+		} else {
+			loopRefNumber.remove(loopNumber);
+		}
+	}
+
 	public long getWeight() {
 		return loopWeight + defOrder;
 	}

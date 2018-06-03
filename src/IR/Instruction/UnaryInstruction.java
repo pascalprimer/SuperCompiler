@@ -81,6 +81,14 @@ public class UnaryInstruction extends Instruction {
 		return code.toString();
 	}
 
+	public Operand getTarget() {
+		return target;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
 	@Override
 	public boolean getPurity() {
 		if (target.ifPurity()) {

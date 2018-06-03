@@ -152,6 +152,18 @@ public class BinaryInstruction extends Instruction {
 		return false;
 	}
 
+	public Operand getTarget() {
+		return target;
+	}
+
+	public Operand getSource() {
+		return source;
+	}
+
+	public Operation getOp() {
+		return op;
+	}
+
 	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +

@@ -8,11 +8,20 @@ import NASM.PhysicalOperand.SystemRegister;
 public class Label extends Instruction {
 
 	private String name;
+	private String smallName;
 	public Block blockBelong;
+
+	public Label(FunctionIR who, String labelName) {
+		super();
+		this.smallName = labelName;
+		this.name = "@" + who.getName() + "." + ++who.labelID + "." + labelName;
+		claimSet();
+	}
 
 	public Label(String labelName) {
 		super();
 		FunctionIR who = IRTranslator.who;
+		this.smallName = labelName;
 		this.name = "@" + who.getName() + "." + ++who.labelID + "." + labelName;
 		claimSet();
 	}
@@ -24,6 +33,10 @@ public class Label extends Instruction {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getSmallName() {
+		return smallName;
 	}
 
 	@Override

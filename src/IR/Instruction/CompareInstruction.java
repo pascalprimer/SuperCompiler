@@ -80,6 +80,14 @@ public class CompareInstruction extends Instruction {
 		return false;
 	}
 
+	public Operand getLeftOper() {
+		return leftOper;
+	}
+
+	public Operand getRightOper() {
+		return rightOper;
+	}
+
 	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +
