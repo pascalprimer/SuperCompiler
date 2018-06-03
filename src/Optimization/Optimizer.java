@@ -7,10 +7,12 @@ public class Optimizer {
 
 	public static void optimizer() {
 		//LiveAnalysis.GlobalAnalysis();
-		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
-			if (functionIR.getName().charAt(0) == 'm') {
-				Inliner.inliner(functionIR);
-				//return;
+		for (int times = 5; times > 0; --times) {
+			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
+				if (functionIR.getName().charAt(0) == 'm') {
+					Inliner.inliner(functionIR);
+					//return;
+				}
 			}
 		}
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
