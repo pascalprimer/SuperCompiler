@@ -8,7 +8,7 @@ public class Optimizer {
 	public static void optimizer() {
 		//LiveAnalysis.GlobalAnalysis();
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
-			if (functionIR.getName().charAt(0) != '_') {
+			if (functionIR.getName().charAt(0) == 'm') {
 				Inliner.inliner(functionIR);
 				//return;
 			}
@@ -18,8 +18,8 @@ public class Optimizer {
 //				continue;
 //			}
 			//System.out.println(functionIR.toString(1));
-			LiveAnalysis.FunctionAnalysis(functionIR);
-			RegisterAllocator.LinearAllocator();
+			//LiveAnalysis.FunctionAnalysis(functionIR);
+			//RegisterAllocator.LinearAllocator();
 		}
 	}
 

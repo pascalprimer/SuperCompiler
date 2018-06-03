@@ -167,7 +167,7 @@ public class Inliner {
 										getOperand(((MoveInstruction) whichInstruction).getTarget()),
 										getOperand(((MoveInstruction) whichInstruction).getSource())
 								));
-							} else if (instruction instanceof UnaryInstruction) {
+							} else if (whichInstruction instanceof UnaryInstruction) {
 								newList.add(new UnaryInstruction(
 										((UnaryInstruction) whichInstruction).getType(),
 										getOperand(((UnaryInstruction) whichInstruction).getTarget())
