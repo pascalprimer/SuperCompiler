@@ -52,7 +52,7 @@ public class Inliner {
 		if (operand instanceof Address) {
 			return new Address(getRegister(((Address) operand).getBase()), ((Address) operand).getOffset());
 		}
-		throw new RuntimeError("get operand error error");
+		return null;
 	}
 
 	private static Label getLabel(FunctionIR caller, Label label) {

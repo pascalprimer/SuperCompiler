@@ -8,17 +8,19 @@ public class Optimizer {
 	public static void optimizer() {
 		//LiveAnalysis.GlobalAnalysis();
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
-//			if (functionIR.getName().charAt(0) == '_') {
-//				continue;
-//			}
-			//System.out.println(functionIR.toString(1));
 			if (functionIR.getName().charAt(0) != '_') {
 				Inliner.inliner(functionIR);
 				//return;
 			}
+		}
+		/*for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
+//			if (functionIR.getName().charAt(0) == '_') {
+//				continue;
+//			}
+			//System.out.println(functionIR.toString(1));
 			LiveAnalysis.FunctionAnalysis(functionIR);
 			RegisterAllocator.LinearAllocator();
-		}
+		}*/
 	}
 
 }
