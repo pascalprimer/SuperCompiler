@@ -18,8 +18,8 @@ public class Optimizer {
 //				continue;
 //			}
 			//System.out.println(functionIR.toString(1));
-			//LiveAnalysis.FunctionAnalysis(functionIR);
-			//RegisterAllocator.LinearAllocator();
+			LiveAnalysis.FunctionAnalysis(functionIR);
+			RegisterAllocator.LinearAllocator();
 		}
 	}
 
