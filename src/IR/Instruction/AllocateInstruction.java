@@ -88,6 +88,11 @@ public class AllocateInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean getPurity() {
+		return false;
+	}
+
+	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +
 				(base == null ? "null" : base.toString()) +

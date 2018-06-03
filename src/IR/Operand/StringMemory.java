@@ -51,4 +51,8 @@ public class StringMemory extends Operand {
 		return new Pair<String, Integer>(code.toString(), Integer.valueOf(len));
 	}
 
+	@Override
+	public boolean ifPurity() {
+		return false;
+	}
 }

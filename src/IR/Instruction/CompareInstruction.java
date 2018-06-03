@@ -73,6 +73,14 @@ public class CompareInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean getPurity() {
+		if (leftOper.ifPurity() && rightOper.ifPurity()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +
 				"cmp" + "\t" +

@@ -145,6 +145,14 @@ public class BinaryInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean getPurity() {
+		if (target.ifPurity() && source.ifPurity()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +
 				op.toString().toLowerCase() + "\t" +

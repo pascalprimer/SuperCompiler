@@ -82,6 +82,14 @@ public class UnaryInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean getPurity() {
+		if (target.ifPurity()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +
 				type.toString().toLowerCase() + "\t" +

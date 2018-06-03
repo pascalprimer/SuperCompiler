@@ -2,6 +2,10 @@ package IR;
 
 import AST.Symbol.Symbol;
 import AST.Type.FunctionType;
+import AST.Type.IntType;
+import AST.Type.NullType;
+import AST.Type.VoidType;
+import IR.Instruction.FunctionCallInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.Label;
 import IR.Instruction.MoveInstruction;
@@ -10,6 +14,7 @@ import IR.Operand.Immediate;
 import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
 import NASM.NASMTranslator;
+import NASM.PhysicalOperand.PhysicalOperand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,13 +25,15 @@ public class FunctionIR {
 
 	public List<Block> blockList;
 	private String name;
-	private FunctionType functionType;
+	public FunctionType functionType;
 	private Label enterLabel, exitLabel;
 	private List<Operand> parameterList;
 	public Map<VirtualRegister, String> systemRegisterMap;
 	public Map<VirtualRegister, Integer> offsetMap;
 	public List<String> calleeRegisters, callerRegisters;
 	public int labelID;
+	public boolean purity;
+	public VirtualRegister purityRegister, purityParameter;
 	//	private Operand returnOperand;
 	//private VirtualRegister functionBase;
 
@@ -41,6 +48,13 @@ public class FunctionIR {
 		this.functionType = functionType;
 		this.parameterList = new ArrayList<>();
 		this.blockList = new ArrayList<>();
+		this.purity = true;
+		if (functionType.getParameterList().size() != 1
+				|| functionType.getReturnType() instanceof VoidType
+				|| functionType.getReturnType() instanceof NullType
+				|| !(functionType.getParameterList().get(0).getType() instanceof IntType)) {
+			this.purity = false;
+		}
 		//this.functionBase = new VirtualRegister(name + "Base");
 		int cnt = 0;
 		for (Symbol symbol: functionType.getParameterList()) {
@@ -75,6 +89,24 @@ public class FunctionIR {
 		instructionList.add(exitLabel);
 
 		instructionList.add(tmpLabel);
+
+		//check if purity
+		for (Instruction instruction: instructionList) {
+			if (!instruction.getPurity()) {
+				//System.out.println(instruction.toString(1));
+				instruction.getPurity();
+				purity = false;
+				break;
+			}
+		}
+		//System.out.println(name + ": " + String.valueOf(purity));
+		if (purity) {
+			purityRegister = RegisterManager.getVirtualRegister();
+			purityRegister.sysRegister = "@@" + name;
+			purityParameter = RegisterManager.getVirtualRegister();
+			IRTranslator.purityReg.put(this, purityRegister);
+		}
+
 		int cnt = 0;
 		for (int i = 0, j = i; i + 1 < instructionList.size(); i = j) {
 			Block nowBlock = new Block(
@@ -101,6 +133,10 @@ public class FunctionIR {
 				instruction.loadVirtualRegister();
 			}
 		}
+		if (purity) {
+			RegisterManager.addVirtualRegister(purityRegister);
+			RegisterManager.addVirtualRegister(purityParameter);
+		}
 
 		calleeRegisters = new ArrayList<>();
 		callerRegisters = new ArrayList<>();
@@ -117,6 +153,12 @@ public class FunctionIR {
 		code.append(name + ":\n");
 		code.append(NASMTranslator.getInstruction("push", "rbp"));
 		code.append(NASMTranslator.getInstruction("mov", "rbp", "rsp"));
+
+		//do something with purity function
+		if (purity) {
+			code.append(getPurityCheck());
+		}
+
 //System.out.println(NASMTranslator.rspOffset);
 		if (name.equals("main")) {
 			code.append(NASMTranslator.getInstruction("call", "__global_declaration"));
@@ -144,14 +186,75 @@ public class FunctionIR {
 
 		code.append(NASMTranslator.restoreCalleeRegister(calleeRegisters));
 
+
 		if (cntTemp > 0) {
 			code.append(NASMTranslator.getInstruction("add", "rsp", String.valueOf(8 * cntTemp)));
 			NASMTranslator.rspOffset -= cntTemp;
 		}
 
+		//do something with purity function
+		if (purity) {
+			code.append(getPurityAddition());
+		}
+
 		code.append(NASMTranslator.getInstruction("pop", "rbp"));
 		code.append(NASMTranslator.getInstruction("ret"));
 
+		return code.toString();
+	}
+
+	public String getPurityCheck() {
+		StringBuilder code = new StringBuilder();
+		PhysicalOperand purityBase = PhysicalOperand.get(code, purityRegister);
+		PhysicalOperand purityPara = PhysicalOperand.get(code, purityParameter);
+		code.append(NASMTranslator.getInstruction("mov", purityPara.toString(), "rdi"));
+
+		code.append(NASMTranslator.getInstruction("cmp", "rdi", "0"));
+		code.append(NASMTranslator.getInstruction("jl", "@" + name + "_purity_checkin_out"));
+
+		code.append(NASMTranslator.getInstruction("cmp", "rdi", String.valueOf(IRTranslator.puritySize)));
+		code.append(NASMTranslator.getInstruction("jnl", "@" + name + "_purity_checkin_out"));
+
+		code.append(NASMTranslator.getInstruction("mov", "rdx", purityBase.toString()));//base
+		code.append(NASMTranslator.getInstruction("mov", "rcx", purityPara.toString()));//offset
+		code.append(NASMTranslator.getInstruction("shl", "rcx", String.valueOf(3)));
+		code.append(NASMTranslator.getInstruction("add", "rdx", "rcx"));
+		code.append(NASMTranslator.getInstruction("mov", "rdx", "qword[rdx]"));
+
+		code.append(NASMTranslator.getInstruction("cmp", "rdx", String.valueOf(IRTranslator.purityTag)));
+		code.append(NASMTranslator.getInstruction("je", "@" + name + "_purity_checkin_out"));
+
+		code.append(NASMTranslator.getInstruction("mov", "rax", "rdx"));
+
+		code.append(NASMTranslator.getInstruction("pop", "rbp"));
+		code.append(NASMTranslator.getInstruction("ret"));
+		code.append("@" + name + "_purity_checkin_out:\n");
+		return code.toString();
+	}
+
+	public String getPurityAddition() {
+		StringBuilder code = new StringBuilder();
+		PhysicalOperand purityBase = PhysicalOperand.get(code, purityRegister);
+		PhysicalOperand purityPara = PhysicalOperand.get(code, purityParameter);
+		code.append(NASMTranslator.getInstruction("mov", "rdi", "rax"));
+
+		code.append(NASMTranslator.getInstruction("cmp", purityPara.toString(), "0"));
+		code.append(NASMTranslator.getInstruction("jl", "@" + name + "_purity_addition_out"));
+
+		code.append(NASMTranslator.getInstruction("cmp", purityPara.toString(), String.valueOf(IRTranslator.puritySize)));
+		code.append(NASMTranslator.getInstruction("jnl", "@" + name + "_purity_addition_out"));
+
+		code.append(NASMTranslator.getInstruction("mov", "rdx", purityBase.toString()));//base
+		code.append(NASMTranslator.getInstruction("mov", "rcx", purityPara.toString()));//offset
+		code.append(NASMTranslator.getInstruction("shl", "rcx", String.valueOf(3)));
+		code.append(NASMTranslator.getInstruction("add", "rdx", "rcx"));
+		code.append(NASMTranslator.getInstruction("mov", "qword[rdx]", "rax"));
+
+		code.append(NASMTranslator.getInstruction("mov", "rax", "rdi"));
+
+		code.append(NASMTranslator.getInstruction("pop", "rbp"));
+		code.append(NASMTranslator.getInstruction("ret"));
+		code.append("@" + name + "_purity_addition_out:\n");
 		return code.toString();
 	}
 

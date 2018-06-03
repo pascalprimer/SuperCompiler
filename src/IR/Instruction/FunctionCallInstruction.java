@@ -1,6 +1,7 @@
 package IR.Instruction;
 
 import AST.Type.FunctionType;
+import IR.IRTranslator;
 import IR.Operand.Address;
 import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
@@ -103,6 +104,11 @@ public class FunctionCallInstruction extends Instruction{
 		code.append(NASMTranslator.restoreCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
 
 		return code.toString();
+	}
+
+	@Override
+	public boolean getPurity() {
+		return functionType == IRTranslator.who.functionType;
 	}
 
 	@Override

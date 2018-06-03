@@ -28,4 +28,8 @@ public class Address extends Operand {
 		return "[" + (base == null ? "null" : base.toString()) + " + 8 * " + offset.getValue() + "]";
 	}
 
+	@Override
+	public boolean ifPurity() {
+		return false;
+	}
 }

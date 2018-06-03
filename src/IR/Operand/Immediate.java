@@ -25,4 +25,8 @@ public class Immediate extends Operand {
 		return "Imm(" + String.valueOf(value) + ")";
 	}
 
+	@Override
+	public boolean ifPurity() {
+		return true;
+	}
 }

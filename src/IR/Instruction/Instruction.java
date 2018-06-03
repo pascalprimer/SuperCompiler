@@ -27,6 +27,8 @@ public abstract class Instruction {
 
 	public abstract void claimSet();
 
+	public abstract boolean getPurity();
+
 	public abstract String toString(int indents);
 
 }

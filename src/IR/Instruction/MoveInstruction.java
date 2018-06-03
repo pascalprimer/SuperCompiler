@@ -71,6 +71,11 @@ public class MoveInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean getPurity() {
+		return (target.ifPurity() && source.ifPurity());
+	}
+
+	@Override
 	public String toString(int indents) {
 		return Utility.GetIndents.getIndents(indents) +
 				"mov" + "\t" +

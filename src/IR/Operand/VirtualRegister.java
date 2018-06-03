@@ -44,6 +44,11 @@ public class VirtualRegister extends Operand {
 	}
 
 	@Override
+	public boolean ifPurity() {
+		return !isGlobal;
+	}
+
+	@Override
 	public String toString() {
 		return name + "(" + sysRegister + ")";
 	}

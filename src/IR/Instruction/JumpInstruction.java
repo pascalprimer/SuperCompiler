@@ -50,6 +50,11 @@ public class JumpInstruction extends Instruction {
 		return label;
 	}
 
+	@Override
+	public boolean getPurity() {
+		return true;
+	}
+
 	public Type getType() {
 		return type;
 	}

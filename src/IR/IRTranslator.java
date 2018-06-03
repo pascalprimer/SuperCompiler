@@ -4,8 +4,10 @@ import AST.AST;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
+import IR.Instruction.AllocateInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.Label;
+import IR.Instruction.MoveInstruction;
 import IR.Operand.Address;
 import IR.Operand.Immediate;
 import IR.Operand.StringMemory;
@@ -24,6 +26,10 @@ public class IRTranslator {
 	public static Label exitLabel, loopContinue, loopExit;
 	public static FunctionIR who;
 	public static int VirtualRegisterCnt = 0;
+
+	public static Map<FunctionIR, VirtualRegister> purityReg = new HashMap<>();
+	public static final int puritySize = 100;
+	public static final int purityTag = -1887415157;
 
 	public static StringMemory getStringOperand(String str) {
 		if (stringList.containsKey(str)) {
@@ -44,6 +50,7 @@ public class IRTranslator {
 			VirtualRegister tmp = (VirtualRegister) variable.getSymbol().operand;
 			tmp.isGlobal = true;
 			tmp.sysRegister = "@" + variable.getName();
+//System.out.println("gg: " + tmp.getName());
 			variable.getSymbol().operand = new Address(tmp, new Immediate(0));
 		}
 
@@ -76,6 +83,20 @@ public class IRTranslator {
 		globalDeclaration.blockList = new ArrayList<Block>() {{
 			add(globalDeclarationBlock);
 		}};
+		VirtualRegister tempBase = RegisterManager.getVirtualRegister();
+		for (Map.Entry<FunctionIR, VirtualRegister> entry: purityReg.entrySet()) {
+			globalDeclarationBlock.instructionList.add(new AllocateInstruction(
+					tempBase, puritySize
+			));
+			globalDeclarationBlock.instructionList.add(new MoveInstruction(
+					new Address(entry.getValue(), new Immediate(0)), tempBase
+			));
+			for (int i = 0; i < 100; ++i) {
+				globalDeclarationBlock.instructionList.add(new MoveInstruction(
+						new Address(entry.getValue(), new Immediate(i)), new Immediate(purityTag)
+				));
+			}
+		}
 		for (Instruction instruction: globalDeclarationBlock.instructionList) {
 			if (instruction instanceof Label) {
 				((Label) instruction).blockBelong = globalDeclarationBlock;

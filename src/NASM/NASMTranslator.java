@@ -120,6 +120,9 @@ public class NASMTranslator {
 		for (VariableDeclarationStatement vds: AST.getGlobalVariable()) {
 			code.append(((Address) (vds.getSymbol().operand)).getBase().sysRegister + ":\n  \tresq \t\t1\n");
 		}
+		for (VirtualRegister register: IRTranslator.purityReg.values()) {
+			code.append(register.sysRegister + ":\n  \tresq \t\t1\n");
+		}
 		return code.toString();
 	}
 

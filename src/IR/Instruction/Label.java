@@ -37,6 +37,11 @@ public class Label extends Instruction {
 	}
 
 	@Override
+	public boolean getPurity() {
+		return true;
+	}
+
+	@Override
 	public String translateNASM() {
 		StringBuilder code = new StringBuilder();
 		code.append(name + ":\n");
