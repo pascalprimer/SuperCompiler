@@ -72,7 +72,7 @@ public class Inliner {
 				if (instruction instanceof FunctionCallInstruction) {
 					FunctionType whichFunc = ((FunctionCallInstruction) instruction).functionType;
 //System.out.println("print now call: " + whichFunc);
-					if (whichFunc.isSystem() || whichFunc.getName().charAt(0) == '_') { //sys or global dec
+					if (whichFunc.isSystem() || whichFunc.getFullName().charAt(0) == '_') { //sys or global dec
 						newList.add(instruction);
 						continue;
 					}

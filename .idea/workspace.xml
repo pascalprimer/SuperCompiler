@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Optimization/Inliner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Inliner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optimization/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Optimizer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,16 +22,16 @@
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="103">
-              <caret line="13" lean-forward="true" selection-end-line="1291" />
+              <caret line="13" lean-forward="true" selection-end-line="1070" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="378">
+              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
             </state>
           </provider>
         </entry>
@@ -64,17 +60,17 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="90">
+              <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Inliner.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Inliner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="167" column="50" selection-start-line="167" selection-start-column="50" selection-end-line="167" selection-end-column="50" />
+            <state relative-caret-position="127">
+              <caret line="74" column="71" selection-start-line="74" selection-start-column="71" selection-end-line="74" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" />
         <option value="$PROJECT_DIR$/src/Optimization/Optimizer.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/Inliner.java" />
         <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/Optimization/Inliner.java" />
       </list>
     </option>
   </component>
@@ -477,13 +473,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -892,34 +881,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="167" column="50" selection-start-line="167" selection-start-column="50" selection-end-line="167" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/program.asm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
-          <caret line="13" lean-forward="true" selection-end-line="1291" />
+          <caret line="13" lean-forward="true" selection-end-line="1070" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="657" selection-start-line="657" selection-end-line="657" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="378">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="74" column="71" selection-start-line="74" selection-start-column="71" selection-end-line="74" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
