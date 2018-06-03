@@ -19,8 +19,8 @@ public class RegisterManager {
 	public static Set<String> usedRegister;
 	public static Set<String> callerRegisterName = new HashSet<String>() {{
 		//add("rdx");
-		add("rsi");
 		//add("rcx");
+		add("rsi");
 		add("rdi");
 		add("r8");
 		add("r9");

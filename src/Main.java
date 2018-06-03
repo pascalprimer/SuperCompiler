@@ -52,7 +52,7 @@ public class Main {
 
 	public static void optimize() throws Exception {
 		Optimizer.optimizer();
-		//IRTranslator.print(1);
+	//	IRTranslator.print(1);
 	}
 
 	public static void buildNASM() throws Exception {

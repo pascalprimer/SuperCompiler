@@ -12,7 +12,7 @@ public class Optimizer {
 //				continue;
 //			}
 			//System.out.println(functionIR.toString(1));
-			//if (functionIR.getName().charAt(0) == 'm') {
+			//if (functionIR.getName().charAt(0) == 't') {
 				Inliner.inliner(functionIR);
 				//return;
 			//}

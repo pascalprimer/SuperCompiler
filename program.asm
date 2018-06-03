@@ -3,24 +3,6 @@
 
 
  section                .text
-func:
-    push                  rbp
-     mov                  rbp,                  rsp
-@func.1.enter:
-     mov                  rdi,                  rdi
-     mov                  rsi,                  rsi
-     mov                   r8,                  rdx
-     mov                  rdi,                  rdi
-     add                  rdi,                  rsi
-     mov                  rsi,                  rdi
-     add                  rsi,                   r8
-     mov                  rsi,                  rsi
-     and                  rsi,           1073741823
-     mov                  rax,                  rsi
-	jmp	@func.2.exit
-@func.2.exit:
-     pop                  rbp
-     ret
 __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
@@ -30,562 +12,668 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-     sub                  rsp,                    8
     push                  r12
-    push                  r14
     push                  r13
-    push                  r15
     push                  rbx
 @main.1.enter:
-     mov                  r11,                  700
-     mov                  rdi,                  r11
-     mov                  rsi,                  r11
-     add                  rdi,                    1
-     shl                  rdi,                    3
-    push                  r10
-    push                  r11
     push                  rdi
     push                   r8
     push                   r9
     push                  rsi
+     sub                  rsp,                    8
+call	getInt
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     mov                  rsi,                  rsi
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+call	getInt
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rbx,                  rbx
+     mov                  rbx,                  rbx
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+call	getInt
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,                  rax
      mov                  rdi,                  rdi
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     sub                  rdi,                    8
+     mov                  rdi,                  rdi
+     mov                   r8,                  rsi
      mov                  r12,                  rbx
+     mov                  rbx,                  rdi
+@main.5.@tak.1.enter:
+     cmp                  r12,                   r8
+     mov                  rax,                    0
+    setl                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@main.6.@tak.4.IfTrue
+	jmp	@main.7.@tak.3.IfFalse
+@main.6.@tak.4.IfTrue:
+     mov                  rsi,                   r8
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r12
+     mov                  rdx,                  rbx
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     mov                  rsi,                  r12
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
      mov                  rsi,                  rbx
-     add                  rsi,                  rdi
-@main.3.Allocate2:
-     mov                  r13,                  r11
-     mov                  rdi,                  r11
-     add                  r13,                    1
-     shl                  r13,                    3
-    push                  r10
-    push                  r11
+     mov                  rdx,                   r8
     push                  rdi
     push                   r8
     push                   r9
     push                  rsi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                   r9,                  rsi
+     mov                  rsi,                  rbx
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                   r8
+     mov                  rdx,                  r12
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
      mov                  rdi,                  r13
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                   r8,                  rax
-     mov            qword[r8],                  rdi
-     add                   r8,                    8
-     sub                  r13,                    8
-     mov           qword[r12],                   r8
-     add                  r12,                    8
-     cmp                  r12,                  rsi
-	jl	@main.3.Allocate2
-     mov         qword[rbp-8],                  rbx
-     mov                  rbx,                  r11
-     mov                  rsi,                  r11
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  r10
-    push                  r11
+     mov                  rsi,                   r9
+     mov                  rdx,                  rbx
     push                  rdi
     push                   r8
     push                   r9
     push                  rsi
-     mov                  rdi,                  rbx
-    call               malloc
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
      pop                  rsi
      pop                   r9
      pop                   r8
      pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                   r9,                  rax
-     mov            qword[r9],                  rsi
-     add                   r9,                    8
-     sub                  rbx,                    8
-     mov                  rsi,                   r9
-     mov                  rdi,                   r9
-     add                  rdi,                  rbx
-@main.4.Allocate2:
-     mov                  r12,                  r11
-     mov                  rbx,                  r11
-     add                  r12,                    1
-     shl                  r12,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r12
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  r14,                  rax
-     mov           qword[r14],                  rbx
-     add                  r14,                    8
-     sub                  r12,                    8
-     mov           qword[rsi],                  r14
-     add                  rsi,                    8
-     cmp                  rsi,                  rdi
-	jl	@main.4.Allocate2
-     mov                   r9,                   r9
-     mov                  rbx,                  r11
-     mov                  rsi,                  r11
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  rbx
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  r10,                  rax
-     mov           qword[r10],                  rsi
-     add                  r10,                    8
-     sub                  rbx,                    8
-     mov                  rdi,                  r10
-     mov                  rsi,                  r10
-     add                  rsi,                  rbx
-@main.5.Allocate2:
-     mov                  r12,                  r11
-     mov                  rbx,                  r11
-     add                  r12,                    1
-     shl                  r12,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r12
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  r15,                  rax
-     mov           qword[r15],                  rbx
-     add                  r15,                    8
-     sub                  r12,                    8
-     mov           qword[rdi],                  r15
-     add                  rdi,                    8
-     cmp                  rdi,                  rsi
-	jl	@main.5.Allocate2
-     mov                  r12,                  r10
-     mov                  r10,                    0
-	jmp	@main.8.ForCon
-@main.7.ForBody:
-     mov                  r15,                    0
-	jmp	@main.12.ForCon
-@main.11.ForBody:
-     mov                  rsi,         qword[rbp-8]
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,                  r15
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rbx,                  r10
-     add                  rbx,                  r15
-     mov           qword[rsi],                  rbx
-	jmp	@main.10.ForIter
-@main.10.ForIter:
-     add                  r15,                    1
-     mov                  rsi,                  r15
-	jmp	@main.12.ForCon
-@main.12.ForCon:
-     cmp                  r15,                  r11
-     mov                  rax,                    0
-    setl                   al
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
-     cmp                  rsi,                    1
-	je	@main.11.ForBody
-	jmp	@main.13.ForExit
-@main.13.ForExit:
-	jmp	@main.6.ForIter
-@main.6.ForIter:
-     add                  r10,                    1
-     mov                  rsi,                  r10
-	jmp	@main.8.ForCon
-@main.8.ForCon:
-     cmp                  r10,                  r11
-     mov                  rax,                    0
-    setl                   al
-     mov                  rsi,                  rax
+     mov                  rbx,                    1
+     add                  rbx,                  rsi
+     mov                  rsi,                  rbx
+	jmp	@main.4.@tak.2.exit
+	jmp	@main.8.@tak.5.IfExit
+@main.7.@tak.3.IfFalse:
+     mov                  rsi,                  rbx
+	jmp	@main.4.@tak.2.exit
+	jmp	@main.8.@tak.5.IfExit
+@main.8.@tak.5.IfExit:
+@main.4.@tak.2.exit:
      mov                  rsi,                  rsi
-     cmp                  rsi,                    1
-	je	@main.7.ForBody
-	jmp	@main.9.ForExit
-@main.9.ForExit:
-     mov                  r10,                    0
-	jmp	@main.16.ForCon
-@main.15.ForBody:
-     mov                  r15,                    0
-	jmp	@main.20.ForCon
-@main.19.ForBody:
-     mov                  r14,                    0
-	jmp	@main.24.ForCon
-@main.23.ForBody:
-     cmp                  r15,                  r10
-     mov                  rax,                    0
-   setge                   al
-     mov                  rsi,                  rax
-     mov                  rsi,                  rsi
-     cmp                  rsi,                    1
-	je	@main.27.IfTrue
-	jmp	@main.26.IfFalse
-@main.27.IfTrue:
-     mov                  rsi,                   r9
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                   r8,           qword[rsi]
-     mov                  rsi,                  r15
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rsi,                   r9
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,                  r15
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rbx,         qword[rbp-8]
-     mov                  rdi,                  r10
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rbx,           qword[rbx]
-     mov                  rdi,                  r14
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rdi,         qword[rbp-8]
-     mov                  r13,                  r14
-     shl                  r13,                    3
-     add                  rdi,                  r13
-     mov                  r13,           qword[rdi]
-     mov                  rdi,                  r15
-     shl                  rdi,                    3
-     add                  r13,                  rdi
-     mov                  rsi,           qword[rsi]
-     mov                  rdi,           qword[rbx]
-     mov                  rbx,           qword[r13]
-@main.39.@func.1.enter:
-     mov                  rsi,                  rsi
-     add                  rsi,                  rdi
-     mov                  rsi,                  rsi
-     add                  rsi,                  rbx
-     mov                  rsi,                  rsi
-     and                  rsi,           1073741823
-     mov                  rax,                  rsi
-	jmp	@main.38.@func.2.exit
-@main.38.@func.2.exit:
-     mov                  rsi,                  rax
-     mov            qword[r8],                  rsi
-     mov                  rsi,                  r12
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                   r8,           qword[rsi]
-     mov                  rsi,                  r15
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rsi,                   r9
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,                  r15
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rbx,         qword[rbp-8]
-     mov                  rdi,                  r10
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rbx,           qword[rbx]
-     mov                  rdi,                  r14
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rdi,         qword[rbp-8]
-     mov                  r13,                  r14
-     shl                  r13,                    3
-     add                  rdi,                  r13
-     mov                  r13,           qword[rdi]
-     mov                  rdi,                  r15
-     shl                  rdi,                    3
-     add                  r13,                  rdi
-     mov                  rsi,           qword[rsi]
-     mov                  rdi,           qword[rbx]
-     mov                  rbx,           qword[r13]
-@main.41.@func.1.enter:
-     mov                  rsi,                  rsi
-     add                  rsi,                  rdi
-     mov                  rsi,                  rsi
-     add                  rsi,                  rbx
-     mov                  rsi,                  rsi
-     and                  rsi,           1073741823
-     mov                  rax,                  rsi
-	jmp	@main.40.@func.2.exit
-@main.40.@func.2.exit:
-     mov                  rsi,                  rax
-     mov            qword[r8],                  rsi
-     mov                  rsi,                  r12
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                   r8,           qword[rsi]
-     mov                  rsi,                  r15
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rsi,                   r9
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,                  r15
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rbx,         qword[rbp-8]
-     mov                  rdi,                  r10
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rbx,           qword[rbx]
-     mov                  rdi,                  r14
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rdi,         qword[rbp-8]
-     mov                  r13,                  r14
-     shl                  r13,                    3
-     add                  rdi,                  r13
-     mov                  r13,           qword[rdi]
-     mov                  rdi,                  r15
-     shl                  rdi,                    3
-     add                  r13,                  rdi
-     mov                  rsi,           qword[rsi]
-     mov                  rdi,           qword[rbx]
-     mov                  rbx,           qword[r13]
-@main.43.@func.1.enter:
-     mov                  rsi,                  rsi
-     add                  rsi,                  rdi
-     mov                  rsi,                  rsi
-     add                  rsi,                  rbx
-     mov                  rsi,                  rsi
-     and                  rsi,           1073741823
-     mov                  rax,                  rsi
-	jmp	@main.42.@func.2.exit
-@main.42.@func.2.exit:
-     mov                  rsi,                  rax
-     mov            qword[r8],                  rsi
-     mov                  rsi,                  r12
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                   r8,           qword[rsi]
-     mov                  rsi,                  r15
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rsi,                   r9
-     mov                  rbx,                  r10
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,                  r15
-     shl                  rbx,                    3
-     add                  rsi,                  rbx
-     mov                  rbx,         qword[rbp-8]
-     mov                  rdi,                  r10
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rbx,           qword[rbx]
-     mov                  rdi,                  r14
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rdi,         qword[rbp-8]
-     mov                  r13,                  r14
-     shl                  r13,                    3
-     add                  rdi,                  r13
-     mov                  r13,           qword[rdi]
-     mov                  rdi,                  r15
-     shl                  rdi,                    3
-     add                  r13,                  rdi
-     mov                  rsi,           qword[rsi]
-     mov                  rdi,           qword[rbx]
-     mov                  rbx,           qword[r13]
-@main.45.@func.1.enter:
-     mov                  rsi,                  rsi
-     add                  rsi,                  rdi
-     mov                  rsi,                  rsi
-     add                  rsi,                  rbx
-     mov                  rsi,                  rsi
-     and                  rsi,           1073741823
-     mov                  rax,                  rsi
-	jmp	@main.44.@func.2.exit
-@main.44.@func.2.exit:
-     mov                  rsi,                  rax
-     mov            qword[r8],                  rsi
-	jmp	@main.28.IfExit
-@main.26.IfFalse:
-@main.28.IfExit:
-	jmp	@main.22.ForIter
-@main.22.ForIter:
-     add                  r14,                    1
-     mov                  rsi,                  r14
-	jmp	@main.24.ForCon
-@main.24.ForCon:
-     cmp                  r14,                  r11
-     mov                  rax,                    0
-    setl                   al
-     mov                  rsi,                  rax
-     mov                  rsi,                  rsi
-     cmp                  rsi,                    1
-	je	@main.23.ForBody
-	jmp	@main.25.ForExit
-@main.25.ForExit:
-	jmp	@main.18.ForIter
-@main.18.ForIter:
-     add                  r15,                    1
-     mov                  rsi,                  r15
-	jmp	@main.20.ForCon
-@main.20.ForCon:
-     cmp                  r15,                  r11
-     mov                  rax,                    0
-    setl                   al
-     mov                  rsi,                  rax
-     mov                  rsi,                  rsi
-     cmp                  rsi,                    1
-	je	@main.19.ForBody
-	jmp	@main.21.ForExit
-@main.21.ForExit:
-	jmp	@main.14.ForIter
-@main.14.ForIter:
-     add                  r10,                    1
-     mov                  rsi,                  r10
-	jmp	@main.16.ForCon
-@main.16.ForCon:
-     cmp                  r10,                  r11
-     mov                  rax,                    0
-    setl                   al
-     mov                  rsi,                  rax
-     mov                  rsi,                  rsi
-     cmp                  rsi,                    1
-	je	@main.15.ForBody
-	jmp	@main.17.ForExit
-@main.17.ForExit:
-     mov                  rsi,                    0
-     mov                  r10,                    0
-	jmp	@main.31.ForCon
-@main.30.ForBody:
-     mov                  r15,                    0
-	jmp	@main.35.ForCon
-@main.34.ForBody:
-     mov                  rbx,                   r9
-     mov                  rdi,                  r10
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rbx,           qword[rbx]
-     mov                  rdi,                  r15
-     shl                  rdi,                    3
-     add                  rbx,                  rdi
-     mov                  rsi,                  rsi
-     add                  rsi,           qword[rbx]
-     mov                  rsi,                  rsi
-     and                  rsi,           1073741823
-     mov                  rsi,                  rsi
-	jmp	@main.33.ForIter
-@main.33.ForIter:
-     add                  r15,                    1
-     mov                  rbx,                  r15
-	jmp	@main.35.ForCon
-@main.35.ForCon:
-     cmp                  r15,                  r11
-     mov                  rax,                    0
-    setl                   al
-     mov                  rbx,                  rax
-     mov                  rbx,                  rbx
-     cmp                  rbx,                    1
-	je	@main.34.ForBody
-	jmp	@main.36.ForExit
-@main.36.ForExit:
-	jmp	@main.29.ForIter
-@main.29.ForIter:
-     add                  r10,                    1
-     mov                  rbx,                  r10
-	jmp	@main.31.ForCon
-@main.31.ForCon:
-     cmp                  r10,                  r11
-     mov                  rax,                    0
-    setl                   al
-     mov                  rbx,                  rax
-     mov                  rbx,                  rbx
-     cmp                  rbx,                    1
-	je	@main.30.ForBody
-	jmp	@main.32.ForExit
-@main.32.ForExit:
      mov                  rdi,                  rsi
-    push                  r10
-    push                  r11
     push                  rdi
     push                   r8
     push                   r9
     push                  rsi
+     sub                  rsp,                    8
 call	toString
+     add                  rsp,                    8
      pop                  rsi
      pop                   r9
      pop                   r8
      pop                  rdi
-     pop                  r11
-     pop                  r10
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
-    push                  r10
-    push                  r11
     push                  rdi
     push                   r8
     push                   r9
     push                  rsi
-call	print
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
      pop                  rsi
      pop                   r9
      pop                   r8
      pop                  rdi
-     pop                  r11
-     pop                  r10
      mov                  rax,                    0
 	jmp	@main.2.exit
 @main.2.exit:
      pop                  rbx
+     pop                  r13
+     pop                  r12
+     pop                  rbp
+     ret
+tak:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
+@tak.1.enter:
+     mov                  rbx,                  rdi
+     mov                  r12,                  rsi
+     mov                   r8,                  rdx
+     cmp                  r12,                  rbx
+     mov                  rax,                    0
+    setl                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@tak.4.IfTrue
+	jmp	@tak.3.IfFalse
+@tak.4.IfTrue:
+     mov                  rsi,                  rbx
+     sub                  rsi,                    1
+     mov                  r14,                  rsi
+     mov                   r9,                  r12
+     mov                  r13,                   r8
+@tak.8.@tak.1.enter:
+     cmp                   r9,                  r14
+     mov                  rax,                    0
+    setl                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@tak.9.@tak.4.IfTrue
+	jmp	@tak.10.@tak.3.IfFalse
+@tak.9.@tak.4.IfTrue:
+     mov                  rsi,                  r14
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                   r9
+     mov                  rdx,                  r13
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r10,                  rsi
+     mov                  rsi,                   r9
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r13
+     mov                  rdx,                  r14
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r15,                  rsi
+     mov                  rsi,                  r13
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r14
+     mov                  rdx,                   r9
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     mov                  rdi,                  r10
+     mov                  rsi,                  r15
+     mov                  rdx,                  r13
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     mov                  rdi,                    1
+     add                  rdi,                  rsi
+     mov                  rsi,                  rdi
+	jmp	@tak.7.@tak.2.exit
+	jmp	@tak.11.@tak.5.IfExit
+@tak.10.@tak.3.IfFalse:
+     mov                  rsi,                  r13
+	jmp	@tak.7.@tak.2.exit
+	jmp	@tak.11.@tak.5.IfExit
+@tak.11.@tak.5.IfExit:
+@tak.7.@tak.2.exit:
+     mov                  r13,                  rsi
+     mov                  rsi,                  r12
+     sub                  rsi,                    1
+     mov                  r10,                  rsi
+     mov                  r14,                   r8
+     mov                   r9,                  rbx
+@tak.13.@tak.1.enter:
+     cmp                  r14,                  r10
+     mov                  rax,                    0
+    setl                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@tak.14.@tak.4.IfTrue
+	jmp	@tak.15.@tak.3.IfFalse
+@tak.14.@tak.4.IfTrue:
+     mov                  rsi,                  r10
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r14
+     mov                  rdx,                   r9
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r15,                  rsi
+     mov                  rsi,                  r14
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                   r9
+     mov                  rdx,                  r10
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r11,                  rsi
+     mov                  rsi,                   r9
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r10
+     mov                  rdx,                  r14
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                   r9,                  rsi
+     mov                  rdi,                  r15
+     mov                  rsi,                  r11
+     mov                  rdx,                   r9
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     mov                  rdi,                    1
+     add                  rdi,                  rsi
+     mov                  rsi,                  rdi
+	jmp	@tak.12.@tak.2.exit
+	jmp	@tak.16.@tak.5.IfExit
+@tak.15.@tak.3.IfFalse:
+     mov                  rsi,                   r9
+	jmp	@tak.12.@tak.2.exit
+	jmp	@tak.16.@tak.5.IfExit
+@tak.16.@tak.5.IfExit:
+@tak.12.@tak.2.exit:
+     mov                   r9,                  rsi
+     mov                  rsi,                   r8
+     sub                  rsi,                    1
+     mov                  r10,                  rsi
+     mov                  r14,                  rbx
+     mov                  rbx,                  r12
+@tak.18.@tak.1.enter:
+     cmp                  r14,                  r10
+     mov                  rax,                    0
+    setl                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@tak.19.@tak.4.IfTrue
+	jmp	@tak.20.@tak.3.IfFalse
+@tak.19.@tak.4.IfTrue:
+     mov                  rsi,                  r10
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r14
+     mov                  rdx,                  rbx
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r12,                  rsi
+     mov                  rsi,                  r14
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rbx
+     mov                  rdx,                  r10
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r15,                  rsi
+     mov                  rsi,                  rbx
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r10
+     mov                  rdx,                  r14
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,                  r12
+     mov                  rsi,                  r15
+     mov                  rdx,                  rbx
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     mov                  rbx,                    1
+     add                  rbx,                  rsi
+     mov                  rsi,                  rbx
+	jmp	@tak.17.@tak.2.exit
+	jmp	@tak.21.@tak.5.IfExit
+@tak.20.@tak.3.IfFalse:
+     mov                  rsi,                  rbx
+	jmp	@tak.17.@tak.2.exit
+	jmp	@tak.21.@tak.5.IfExit
+@tak.21.@tak.5.IfExit:
+@tak.17.@tak.2.exit:
+     mov                  rsi,                  rsi
+     mov                  r13,                  r13
+     mov                  r12,                   r9
+     mov                  rbx,                  rsi
+@tak.23.@tak.1.enter:
+     cmp                  r12,                  r13
+     mov                  rax,                    0
+    setl                   al
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     cmp                  rsi,                    1
+	je	@tak.24.@tak.4.IfTrue
+	jmp	@tak.25.@tak.3.IfFalse
+@tak.24.@tak.4.IfTrue:
+     mov                  rsi,                  r13
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r12
+     mov                  rdx,                  rbx
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                   r9,                  rsi
+     mov                  rsi,                  r12
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rbx
+     mov                  rdx,                  r13
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r14,                  rsi
+     mov                  rsi,                  rbx
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+     mov                  rsi,                  r13
+     mov                  rdx,                  r12
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,                   r9
+     mov                  rsi,                  r14
+     mov                  rdx,                  rbx
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+call	tak
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rsi,                  rsi
+     mov                  rbx,                    1
+     add                  rbx,                  rsi
+     mov                  rsi,                  rbx
+	jmp	@tak.22.@tak.2.exit
+	jmp	@tak.26.@tak.5.IfExit
+@tak.25.@tak.3.IfFalse:
+     mov                  rsi,                  rbx
+	jmp	@tak.22.@tak.2.exit
+	jmp	@tak.26.@tak.5.IfExit
+@tak.26.@tak.5.IfExit:
+@tak.22.@tak.2.exit:
+     mov                  rsi,                  rsi
+     mov                  rbx,                    1
+     add                  rbx,                  rsi
+     mov                  rax,                  rbx
+	jmp	@tak.2.exit
+	jmp	@tak.5.IfExit
+@tak.3.IfFalse:
+     mov                  rax,                   r8
+	jmp	@tak.2.exit
+	jmp	@tak.5.IfExit
+@tak.5.IfExit:
+@tak.2.exit:
      pop                  r15
      pop                  r13
      pop                  r14
      pop                  r12
-     add                  rsp,                    8
+     pop                  rbx
      pop                  rbp
      ret
 

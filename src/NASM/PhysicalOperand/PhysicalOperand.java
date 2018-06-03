@@ -6,6 +6,7 @@ import NASM.NASMTranslator;
 public abstract class PhysicalOperand {
 
 	public static PhysicalOperand get(StringBuilder code, Operand operand) {
+		//System.out.println(operand);
 		if (operand instanceof Immediate) {
 			return new PhysicalImmediate(((Immediate) operand).getValue());
 		}
@@ -20,6 +21,11 @@ public abstract class PhysicalOperand {
 //				if (tmp.sysRegister != null) {
 //					return new PhysicalAddress(new SystemRegister(tmp.sysRegister), 0);
 //				}
+				//System.out.println("adsfdas--- " + operand);
+				if (!NASMTranslator.nowFunctionIR.offsetMap.containsKey(operand)) {
+					System.out.println("adsfdas " + operand);
+				}
+				//System.out.println(">>>adsfdas--- " + operand);
 				return new PhysicalAddress(
 						new SystemRegister("rbp"),
 						-NASMTranslator.nowFunctionIR.offsetMap.get(operand).intValue()

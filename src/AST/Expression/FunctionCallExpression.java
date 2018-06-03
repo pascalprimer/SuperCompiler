@@ -150,7 +150,7 @@ public class FunctionCallExpression extends Expression {
 		VirtualRegister tmp = null;
 		if (!(returnType instanceof VoidType)) {
 			tmp = RegisterManager.getVirtualRegister();
-			tmp.sysRegister = "rax";
+			//tmp.sysRegister = "rax";
 		}
 		for (int i = 0; i < 6 && operandList.size() > 0; ++i) {
 			VirtualRegister nowreg = RegisterManager.getVirtualRegister();

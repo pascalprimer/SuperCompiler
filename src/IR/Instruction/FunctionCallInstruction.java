@@ -103,6 +103,11 @@ public class FunctionCallInstruction extends Instruction{
 
 		code.append(NASMTranslator.restoreCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
 
+		if (returnValue != null) {
+			PhysicalOperand value = PhysicalOperand.get(code, returnValue);
+			code.append(NASMTranslator.getInstruction("mov", value.toString(), "rax"));
+		}
+
 		return code.toString();
 	}
 
