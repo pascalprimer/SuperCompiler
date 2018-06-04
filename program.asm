@@ -48,15 +48,6 @@ __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
      sub                  rsp,                   16
-     mov            qword[@c],                  123
-     mov                  rdi,            qword[@c]
-    push                  rsi
-     sub                  rsp,                    8
-call	lol
-     add                  rsp,                    8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov            qword[@x],                  rsi
     push                  rdi
     push                  rsi
      mov                  rdi,                  150
@@ -215,6 +206,15 @@ call	lol
      mov    qword[@@lol+1176],          -1887415157
      mov    qword[@@lol+1184],          -1887415157
      mov    qword[@@lol+1192],          -1887415157
+     mov            qword[@c],                  123
+     mov                  rdi,            qword[@c]
+    push                  rsi
+     sub                  rsp,                    8
+call	lol
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov            qword[@x],                  rsi
      add                  rsp,                   16
      pop                  rbp
      ret
@@ -224,7 +224,15 @@ main:
     call __global_declaration
      sub                  rsp,                    8
 @main.1.enter:
-     mov                  rax,            qword[@x]
+     mov                  rdi,            qword[@x]
+    push                  rsi
+call	toString
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
      add                  rsp,                    8
      pop                  rbp
      ret

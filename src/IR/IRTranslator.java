@@ -109,15 +109,6 @@ public class IRTranslator {
 		}
 
 		Block globalDeclarationBlock = new Block("@global_declaration", null);
-		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
-			variable.translateIR(globalDeclarationBlock.instructionList);
-		}
-		globalDeclarationBlock.id = 0;
-		FunctionIR globalDeclaration =
-				new FunctionIR(new FunctionType("__global_declaration"));
-		globalDeclaration.blockList = new ArrayList<Block>() {{
-			add(globalDeclarationBlock);
-		}};
 		VirtualRegister tempBase = RegisterManager.getVirtualRegister();
 		for (Map.Entry<FunctionIR, VirtualRegister> entry: purityReg.entrySet()) {
 			globalDeclarationBlock.instructionList.add(new AllocateInstruction(
@@ -132,6 +123,15 @@ public class IRTranslator {
 				));
 			}
 		}
+		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
+			variable.translateIR(globalDeclarationBlock.instructionList);
+		}
+		globalDeclarationBlock.id = 0;
+		FunctionIR globalDeclaration =
+				new FunctionIR(new FunctionType("__global_declaration"));
+		globalDeclaration.blockList = new ArrayList<Block>() {{
+			add(globalDeclarationBlock);
+		}};
 		for (Instruction instruction: globalDeclarationBlock.instructionList) {
 			if (instruction instanceof Label) {
 				((Label) instruction).blockBelong = globalDeclarationBlock;
