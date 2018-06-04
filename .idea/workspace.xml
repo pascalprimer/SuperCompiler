@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IR/IRTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/IRTranslator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optimization/Inliner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Inliner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Optimization/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Optimizer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="program.asm" pinned="false" current-in-tab="true">
+      <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1035">
-              <caret line="4597" column="24" lean-forward="true" selection-end-line="4660" />
+            <state relative-caret-position="180">
+              <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -32,26 +36,35 @@
       <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="117" column="15" lean-forward="true" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
+            <state relative-caret-position="108">
+              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Optimizer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Optimizer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Optimization/Optimizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="262">
+              <caret line="20" column="74" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Inliner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-281">
+              <caret line="149" column="64" lean-forward="true" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IRTranslator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -60,10 +73,28 @@
         <entry file="file://$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
-              <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+              <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FunctionIR.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3390">
+              <caret line="217" column="9" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -81,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>println</find>
       <find>---</find>
       <find>offset</find>
       <find>jl	@main.22.Allocate2</find>
@@ -111,6 +141,7 @@
       <find>z+i</find>
       <find>@main.18.ForExit:</find>
       <find>=</find>
+      <find>find</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -125,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/program.asm" />
         <option value="$PROJECT_DIR$/src/AST/AST.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/Expression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/NewExpression.java" />
@@ -169,13 +199,14 @@
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" />
-        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
         <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
         <option value="$PROJECT_DIR$/src/Optimization/LiveAnalysis.java" />
         <option value="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" />
+        <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/Optimization/Inliner.java" />
+        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Optimization/Optimizer.java" />
-        <option value="$PROJECT_DIR$/program.txt" />
       </list>
     </option>
   </component>
@@ -378,12 +409,12 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.61928105" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.5996732" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.21555042" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.07775211" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.32026145" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -768,20 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1098">
-          <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="217" column="9" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -796,48 +813,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
-          <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+          <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/Optimizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="117" column="15" lean-forward="true" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
+        <state relative-caret-position="3390">
+          <caret line="217" column="9" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/program.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1035">
-          <caret line="4597" column="24" lean-forward="true" selection-end-line="4660" />
+        <state relative-caret-position="180">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-281">
+          <caret line="149" column="64" lean-forward="true" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Optimization/Optimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="20" column="74" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
         </state>
       </provider>
     </entry>

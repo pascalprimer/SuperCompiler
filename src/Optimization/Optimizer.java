@@ -6,17 +6,22 @@ import IR.IRTranslator;
 public class Optimizer {
 
 	public static void optimizer() {
-		//LiveAnalysis.GlobalAnalysis();
 		for (int times = 1; times > 0; --times) {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
+//System.out.println("origin" + times + "\n" + functionIR.toString(1));
 				if (functionIR.getName().charAt(0) != '_') {
 					Inliner.inliner(functionIR);
-					//System.out.println("inliner\n" + functionIR.toString(1));
+//System.out.println("end of inliner" + times + "\n" + functionIR.toString(1));
 					//return;
 				}
-				NaiveOptimizer.removeUselessRegister(functionIR);
+//System.out.println("end of remove" + times + "\n" + functionIR.toString(1));
 			}
 		}
+
+		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
+			NaiveOptimizer.removeUselessRegister(functionIR);
+		}
+
 		/*for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
 			if (functionIR.getName().charAt(0) != '_') {
 				functionIR.checkPurity();

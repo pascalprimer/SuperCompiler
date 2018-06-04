@@ -32,7 +32,7 @@ public class Inliner {
 		} else {
 			VirtualRegister ret = RegisterManager.getVirtualRegister();
 			if (reg.sysRegister != null) {
-				ret.sysRegister = new String(reg.sysRegister);
+				ret.sysRegister = reg.sysRegister;
 			}
 			//System.out.println("get a new reg: " + reg + " " + ret);
 			vregMap.put(reg, ret);
@@ -70,19 +70,22 @@ public class Inliner {
 				if (instruction instanceof FunctionCallInstruction) {
 					FunctionType whichFunc = ((FunctionCallInstruction) instruction).functionType;
 //System.out.println("print now call: " + whichFunc);
-					if (whichFunc.isSystem() || whichFunc.getFullName().charAt(0) == '_'
+					if (whichFunc.isSystem()
+							|| whichFunc.getFullName().charAt(0) == '_'
 							|| /*!inlineTimes.contains(nowfunc) && */nowfunc.functionType == whichFunc
 							|| newList.size() > 1500) { //sys or global dec
 						newList.add(instruction);
 						continue;
 					}
-					//System.out.println("print now call: " + whichFunc);
+//System.out.println("print now call: " + whichFunc);
 					if (whichFunc.getParameterList().size() > 6) {
 						newList.add(instruction);
 						continue;
 					}
+
 					vregMap = new HashMap<>();
 					labelMap = new HashMap<>();
+
 					List<VirtualRegister> tempOperands = new ArrayList<>();
 					for (int i = 0; i < whichFunc.getParameterList().size(); ++i) {
 						MoveInstruction nowIns = (MoveInstruction) newList.get(newList.size() - 1 - i);
@@ -93,27 +96,23 @@ public class Inliner {
 						nowIns = (MoveInstruction) newList.get(newList.size() - 1 - i);
 
 						//mapping original one to a new system register
-						VirtualRegister newOperand = RegisterManager.getVirtualRegister();
-						newOperand.sysRegister = ((VirtualRegister) (nowIns.target)).sysRegister;
-						vregMap.put((VirtualRegister) nowIns.target, newOperand);
+						VirtualRegister newOperand;
+						//fixme!!
+//						newOperand = RegisterManager.getVirtualRegister();
+//						newOperand.sysRegister = ((VirtualRegister) (nowIns.target)).sysRegister;
+//						vregMap.put((VirtualRegister) nowIns.target, newOperand);
 
 						//change now
 						newOperand = RegisterManager.getVirtualRegister();
 						nowIns.changeTarget(newOperand);
 						tempOperands.add(0, newOperand);
-
-//						tempOperands.add(0, (VirtualRegister) newOperand);
-//						((VirtualRegister) newOperand).sysRegister = ((VirtualRegister) (nowIns.target)).sysRegister;
-//						Operand newOperand = getOperand(nowIns.target);
-//						((VirtualRegister) newOperand).sysRegister = null;
-//						nowIns.changeTarget(newOperand);
-//						tempOperands.add(0, (VirtualRegister) newOperand);
 					}
 
 					FunctionIR whichIR = IRTranslator.functionIRMap.get(whichFunc.getFullName());
 					returnValue = (VirtualRegister) ((FunctionCallInstruction) instruction).getReturnValue();
 					getLabel(nowfunc, whichIR.exitLabel);
 					int useless = whichFunc.getParameterList().size(), count = 0;
+
 					for (Block whichBlock: whichIR.blockList) {
 						for (Instruction whichInstruction: whichBlock.instructionList) {
 							if (whichInstruction instanceof AllocateInstruction) {
