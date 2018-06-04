@@ -176,8 +176,8 @@ public class LiveAnalysis {
 	}
 
 	private static void addConflictEdge(VirtualRegister u, VirtualRegister v) {
-//System.out.println(u + " --------- " + v);
-//System.out.println(conflictEdge.containsKey(u) + " " + conflictEdge.containsKey(v));
+System.out.println(u + " --------- " + v);
+System.out.println(conflictEdge.containsKey(u) + " " + conflictEdge.containsKey(v));
 		if (u == v) {
 			return;
 		}

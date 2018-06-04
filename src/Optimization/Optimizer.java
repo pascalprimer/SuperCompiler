@@ -8,9 +8,9 @@ public class Optimizer {
 	public static void optimizer() {
 		//LiveAnalysis.GlobalAnalysis();
 
-//		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
-//			NaiveOptimizer.removeUselessRegister(functionIR);
-//		}
+		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
+			NaiveOptimizer.removeUselessRegister(functionIR);
+		}
 
 		for (int times = 1; times > 0; --times) {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {

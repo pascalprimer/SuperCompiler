@@ -1,10 +1,7 @@
 package IR;
 
 import AST.Symbol.Symbol;
-import AST.Type.FunctionType;
-import AST.Type.IntType;
-import AST.Type.NullType;
-import AST.Type.VoidType;
+import AST.Type.*;
 import IR.Instruction.FunctionCallInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.Label;
@@ -53,6 +50,7 @@ public class FunctionIR {
 		if (functionType.getParameterList().size() != 1
 				|| functionType.getReturnType() instanceof VoidType
 				|| functionType.getReturnType() instanceof NullType
+				|| functionType.getReturnType() instanceof StringType
 				|| !(functionType.getParameterList().get(0).getType() instanceof IntType)) {
 			this.purity = false;
 		}

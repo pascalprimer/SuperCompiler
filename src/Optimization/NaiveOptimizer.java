@@ -16,9 +16,16 @@ public class NaiveOptimizer {
 			for (int i = 0; i + 1 < block.instructionList.size(); ++i) {
 				Instruction now = block.instructionList.get(i);
 				Instruction nxt = block.instructionList.get(i + 1);
+				if (now instanceof MoveInstruction
+						&& ((MoveInstruction) now).getSource() == ((MoveInstruction) now).target) {
+					block.instructionList.remove(i);
+					--i;
+					continue;
+				}
 				if (now instanceof MoveInstruction && nxt instanceof MoveInstruction) {
 					if (((MoveInstruction) now).target == ((MoveInstruction) nxt).getSource()
-							&& ((MoveInstruction) now).target instanceof VirtualRegister) {
+							&& ((MoveInstruction) now).target instanceof VirtualRegister
+							&& ((MoveInstruction) now).getSource() instanceof VirtualRegister) {
 						VirtualRegister register = (VirtualRegister) ((MoveInstruction) now).target;
 						if (!nxt.liveOut.contains(register)) {
 							((MoveInstruction) now).changeTarget(((MoveInstruction) nxt).target);

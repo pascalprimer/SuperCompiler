@@ -52,348 +52,6 @@ __global_declaration:
      mov           qword[@co],        __const_str29
      mov          qword[@a2q],       __const_str125
      mov          qword[@a2b],       __const_str126
-    push                   r8
-    push                  rdi
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                  100
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                  rdi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov        qword[@@digt],                  rsi
-     mov        qword[@@digt],          -1887415157
-     mov      qword[@@digt+8],          -1887415157
-     mov     qword[@@digt+16],          -1887415157
-     mov     qword[@@digt+24],          -1887415157
-     mov     qword[@@digt+32],          -1887415157
-     mov     qword[@@digt+40],          -1887415157
-     mov     qword[@@digt+48],          -1887415157
-     mov     qword[@@digt+56],          -1887415157
-     mov     qword[@@digt+64],          -1887415157
-     mov     qword[@@digt+72],          -1887415157
-     mov     qword[@@digt+80],          -1887415157
-     mov     qword[@@digt+88],          -1887415157
-     mov     qword[@@digt+96],          -1887415157
-     mov    qword[@@digt+104],          -1887415157
-     mov    qword[@@digt+112],          -1887415157
-     mov    qword[@@digt+120],          -1887415157
-     mov    qword[@@digt+128],          -1887415157
-     mov    qword[@@digt+136],          -1887415157
-     mov    qword[@@digt+144],          -1887415157
-     mov    qword[@@digt+152],          -1887415157
-     mov    qword[@@digt+160],          -1887415157
-     mov    qword[@@digt+168],          -1887415157
-     mov    qword[@@digt+176],          -1887415157
-     mov    qword[@@digt+184],          -1887415157
-     mov    qword[@@digt+192],          -1887415157
-     mov    qword[@@digt+200],          -1887415157
-     mov    qword[@@digt+208],          -1887415157
-     mov    qword[@@digt+216],          -1887415157
-     mov    qword[@@digt+224],          -1887415157
-     mov    qword[@@digt+232],          -1887415157
-     mov    qword[@@digt+240],          -1887415157
-     mov    qword[@@digt+248],          -1887415157
-     mov    qword[@@digt+256],          -1887415157
-     mov    qword[@@digt+264],          -1887415157
-     mov    qword[@@digt+272],          -1887415157
-     mov    qword[@@digt+280],          -1887415157
-     mov    qword[@@digt+288],          -1887415157
-     mov    qword[@@digt+296],          -1887415157
-     mov    qword[@@digt+304],          -1887415157
-     mov    qword[@@digt+312],          -1887415157
-     mov    qword[@@digt+320],          -1887415157
-     mov    qword[@@digt+328],          -1887415157
-     mov    qword[@@digt+336],          -1887415157
-     mov    qword[@@digt+344],          -1887415157
-     mov    qword[@@digt+352],          -1887415157
-     mov    qword[@@digt+360],          -1887415157
-     mov    qword[@@digt+368],          -1887415157
-     mov    qword[@@digt+376],          -1887415157
-     mov    qword[@@digt+384],          -1887415157
-     mov    qword[@@digt+392],          -1887415157
-     mov    qword[@@digt+400],          -1887415157
-     mov    qword[@@digt+408],          -1887415157
-     mov    qword[@@digt+416],          -1887415157
-     mov    qword[@@digt+424],          -1887415157
-     mov    qword[@@digt+432],          -1887415157
-     mov    qword[@@digt+440],          -1887415157
-     mov    qword[@@digt+448],          -1887415157
-     mov    qword[@@digt+456],          -1887415157
-     mov    qword[@@digt+464],          -1887415157
-     mov    qword[@@digt+472],          -1887415157
-     mov    qword[@@digt+480],          -1887415157
-     mov    qword[@@digt+488],          -1887415157
-     mov    qword[@@digt+496],          -1887415157
-     mov    qword[@@digt+504],          -1887415157
-     mov    qword[@@digt+512],          -1887415157
-     mov    qword[@@digt+520],          -1887415157
-     mov    qword[@@digt+528],          -1887415157
-     mov    qword[@@digt+536],          -1887415157
-     mov    qword[@@digt+544],          -1887415157
-     mov    qword[@@digt+552],          -1887415157
-     mov    qword[@@digt+560],          -1887415157
-     mov    qword[@@digt+568],          -1887415157
-     mov    qword[@@digt+576],          -1887415157
-     mov    qword[@@digt+584],          -1887415157
-     mov    qword[@@digt+592],          -1887415157
-     mov    qword[@@digt+600],          -1887415157
-     mov    qword[@@digt+608],          -1887415157
-     mov    qword[@@digt+616],          -1887415157
-     mov    qword[@@digt+624],          -1887415157
-     mov    qword[@@digt+632],          -1887415157
-     mov    qword[@@digt+640],          -1887415157
-     mov    qword[@@digt+648],          -1887415157
-     mov    qword[@@digt+656],          -1887415157
-     mov    qword[@@digt+664],          -1887415157
-     mov    qword[@@digt+672],          -1887415157
-     mov    qword[@@digt+680],          -1887415157
-     mov    qword[@@digt+688],          -1887415157
-     mov    qword[@@digt+696],          -1887415157
-     mov    qword[@@digt+704],          -1887415157
-     mov    qword[@@digt+712],          -1887415157
-     mov    qword[@@digt+720],          -1887415157
-     mov    qword[@@digt+728],          -1887415157
-     mov    qword[@@digt+736],          -1887415157
-     mov    qword[@@digt+744],          -1887415157
-     mov    qword[@@digt+752],          -1887415157
-     mov    qword[@@digt+760],          -1887415157
-     mov    qword[@@digt+768],          -1887415157
-     mov    qword[@@digt+776],          -1887415157
-     mov    qword[@@digt+784],          -1887415157
-     mov    qword[@@digt+792],          -1887415157
-    push                   r8
-    push                  rdi
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                  100
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                  rdi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov          qword[@@s2],                  rsi
-     mov          qword[@@s2],          -1887415157
-     mov        qword[@@s2+8],          -1887415157
-     mov       qword[@@s2+16],          -1887415157
-     mov       qword[@@s2+24],          -1887415157
-     mov       qword[@@s2+32],          -1887415157
-     mov       qword[@@s2+40],          -1887415157
-     mov       qword[@@s2+48],          -1887415157
-     mov       qword[@@s2+56],          -1887415157
-     mov       qword[@@s2+64],          -1887415157
-     mov       qword[@@s2+72],          -1887415157
-     mov       qword[@@s2+80],          -1887415157
-     mov       qword[@@s2+88],          -1887415157
-     mov       qword[@@s2+96],          -1887415157
-     mov      qword[@@s2+104],          -1887415157
-     mov      qword[@@s2+112],          -1887415157
-     mov      qword[@@s2+120],          -1887415157
-     mov      qword[@@s2+128],          -1887415157
-     mov      qword[@@s2+136],          -1887415157
-     mov      qword[@@s2+144],          -1887415157
-     mov      qword[@@s2+152],          -1887415157
-     mov      qword[@@s2+160],          -1887415157
-     mov      qword[@@s2+168],          -1887415157
-     mov      qword[@@s2+176],          -1887415157
-     mov      qword[@@s2+184],          -1887415157
-     mov      qword[@@s2+192],          -1887415157
-     mov      qword[@@s2+200],          -1887415157
-     mov      qword[@@s2+208],          -1887415157
-     mov      qword[@@s2+216],          -1887415157
-     mov      qword[@@s2+224],          -1887415157
-     mov      qword[@@s2+232],          -1887415157
-     mov      qword[@@s2+240],          -1887415157
-     mov      qword[@@s2+248],          -1887415157
-     mov      qword[@@s2+256],          -1887415157
-     mov      qword[@@s2+264],          -1887415157
-     mov      qword[@@s2+272],          -1887415157
-     mov      qword[@@s2+280],          -1887415157
-     mov      qword[@@s2+288],          -1887415157
-     mov      qword[@@s2+296],          -1887415157
-     mov      qword[@@s2+304],          -1887415157
-     mov      qword[@@s2+312],          -1887415157
-     mov      qword[@@s2+320],          -1887415157
-     mov      qword[@@s2+328],          -1887415157
-     mov      qword[@@s2+336],          -1887415157
-     mov      qword[@@s2+344],          -1887415157
-     mov      qword[@@s2+352],          -1887415157
-     mov      qword[@@s2+360],          -1887415157
-     mov      qword[@@s2+368],          -1887415157
-     mov      qword[@@s2+376],          -1887415157
-     mov      qword[@@s2+384],          -1887415157
-     mov      qword[@@s2+392],          -1887415157
-     mov      qword[@@s2+400],          -1887415157
-     mov      qword[@@s2+408],          -1887415157
-     mov      qword[@@s2+416],          -1887415157
-     mov      qword[@@s2+424],          -1887415157
-     mov      qword[@@s2+432],          -1887415157
-     mov      qword[@@s2+440],          -1887415157
-     mov      qword[@@s2+448],          -1887415157
-     mov      qword[@@s2+456],          -1887415157
-     mov      qword[@@s2+464],          -1887415157
-     mov      qword[@@s2+472],          -1887415157
-     mov      qword[@@s2+480],          -1887415157
-     mov      qword[@@s2+488],          -1887415157
-     mov      qword[@@s2+496],          -1887415157
-     mov      qword[@@s2+504],          -1887415157
-     mov      qword[@@s2+512],          -1887415157
-     mov      qword[@@s2+520],          -1887415157
-     mov      qword[@@s2+528],          -1887415157
-     mov      qword[@@s2+536],          -1887415157
-     mov      qword[@@s2+544],          -1887415157
-     mov      qword[@@s2+552],          -1887415157
-     mov      qword[@@s2+560],          -1887415157
-     mov      qword[@@s2+568],          -1887415157
-     mov      qword[@@s2+576],          -1887415157
-     mov      qword[@@s2+584],          -1887415157
-     mov      qword[@@s2+592],          -1887415157
-     mov      qword[@@s2+600],          -1887415157
-     mov      qword[@@s2+608],          -1887415157
-     mov      qword[@@s2+616],          -1887415157
-     mov      qword[@@s2+624],          -1887415157
-     mov      qword[@@s2+632],          -1887415157
-     mov      qword[@@s2+640],          -1887415157
-     mov      qword[@@s2+648],          -1887415157
-     mov      qword[@@s2+656],          -1887415157
-     mov      qword[@@s2+664],          -1887415157
-     mov      qword[@@s2+672],          -1887415157
-     mov      qword[@@s2+680],          -1887415157
-     mov      qword[@@s2+688],          -1887415157
-     mov      qword[@@s2+696],          -1887415157
-     mov      qword[@@s2+704],          -1887415157
-     mov      qword[@@s2+712],          -1887415157
-     mov      qword[@@s2+720],          -1887415157
-     mov      qword[@@s2+728],          -1887415157
-     mov      qword[@@s2+736],          -1887415157
-     mov      qword[@@s2+744],          -1887415157
-     mov      qword[@@s2+752],          -1887415157
-     mov      qword[@@s2+760],          -1887415157
-     mov      qword[@@s2+768],          -1887415157
-     mov      qword[@@s2+776],          -1887415157
-     mov      qword[@@s2+784],          -1887415157
-     mov      qword[@@s2+792],          -1887415157
-    push                   r8
-    push                  rdi
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                  100
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                  rdi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov          qword[@@c2],                  rsi
-     mov          qword[@@c2],          -1887415157
-     mov        qword[@@c2+8],          -1887415157
-     mov       qword[@@c2+16],          -1887415157
-     mov       qword[@@c2+24],          -1887415157
-     mov       qword[@@c2+32],          -1887415157
-     mov       qword[@@c2+40],          -1887415157
-     mov       qword[@@c2+48],          -1887415157
-     mov       qword[@@c2+56],          -1887415157
-     mov       qword[@@c2+64],          -1887415157
-     mov       qword[@@c2+72],          -1887415157
-     mov       qword[@@c2+80],          -1887415157
-     mov       qword[@@c2+88],          -1887415157
-     mov       qword[@@c2+96],          -1887415157
-     mov      qword[@@c2+104],          -1887415157
-     mov      qword[@@c2+112],          -1887415157
-     mov      qword[@@c2+120],          -1887415157
-     mov      qword[@@c2+128],          -1887415157
-     mov      qword[@@c2+136],          -1887415157
-     mov      qword[@@c2+144],          -1887415157
-     mov      qword[@@c2+152],          -1887415157
-     mov      qword[@@c2+160],          -1887415157
-     mov      qword[@@c2+168],          -1887415157
-     mov      qword[@@c2+176],          -1887415157
-     mov      qword[@@c2+184],          -1887415157
-     mov      qword[@@c2+192],          -1887415157
-     mov      qword[@@c2+200],          -1887415157
-     mov      qword[@@c2+208],          -1887415157
-     mov      qword[@@c2+216],          -1887415157
-     mov      qword[@@c2+224],          -1887415157
-     mov      qword[@@c2+232],          -1887415157
-     mov      qword[@@c2+240],          -1887415157
-     mov      qword[@@c2+248],          -1887415157
-     mov      qword[@@c2+256],          -1887415157
-     mov      qword[@@c2+264],          -1887415157
-     mov      qword[@@c2+272],          -1887415157
-     mov      qword[@@c2+280],          -1887415157
-     mov      qword[@@c2+288],          -1887415157
-     mov      qword[@@c2+296],          -1887415157
-     mov      qword[@@c2+304],          -1887415157
-     mov      qword[@@c2+312],          -1887415157
-     mov      qword[@@c2+320],          -1887415157
-     mov      qword[@@c2+328],          -1887415157
-     mov      qword[@@c2+336],          -1887415157
-     mov      qword[@@c2+344],          -1887415157
-     mov      qword[@@c2+352],          -1887415157
-     mov      qword[@@c2+360],          -1887415157
-     mov      qword[@@c2+368],          -1887415157
-     mov      qword[@@c2+376],          -1887415157
-     mov      qword[@@c2+384],          -1887415157
-     mov      qword[@@c2+392],          -1887415157
-     mov      qword[@@c2+400],          -1887415157
-     mov      qword[@@c2+408],          -1887415157
-     mov      qword[@@c2+416],          -1887415157
-     mov      qword[@@c2+424],          -1887415157
-     mov      qword[@@c2+432],          -1887415157
-     mov      qword[@@c2+440],          -1887415157
-     mov      qword[@@c2+448],          -1887415157
-     mov      qword[@@c2+456],          -1887415157
-     mov      qword[@@c2+464],          -1887415157
-     mov      qword[@@c2+472],          -1887415157
-     mov      qword[@@c2+480],          -1887415157
-     mov      qword[@@c2+488],          -1887415157
-     mov      qword[@@c2+496],          -1887415157
-     mov      qword[@@c2+504],          -1887415157
-     mov      qword[@@c2+512],          -1887415157
-     mov      qword[@@c2+520],          -1887415157
-     mov      qword[@@c2+528],          -1887415157
-     mov      qword[@@c2+536],          -1887415157
-     mov      qword[@@c2+544],          -1887415157
-     mov      qword[@@c2+552],          -1887415157
-     mov      qword[@@c2+560],          -1887415157
-     mov      qword[@@c2+568],          -1887415157
-     mov      qword[@@c2+576],          -1887415157
-     mov      qword[@@c2+584],          -1887415157
-     mov      qword[@@c2+592],          -1887415157
-     mov      qword[@@c2+600],          -1887415157
-     mov      qword[@@c2+608],          -1887415157
-     mov      qword[@@c2+616],          -1887415157
-     mov      qword[@@c2+624],          -1887415157
-     mov      qword[@@c2+632],          -1887415157
-     mov      qword[@@c2+640],          -1887415157
-     mov      qword[@@c2+648],          -1887415157
-     mov      qword[@@c2+656],          -1887415157
-     mov      qword[@@c2+664],          -1887415157
-     mov      qword[@@c2+672],          -1887415157
-     mov      qword[@@c2+680],          -1887415157
-     mov      qword[@@c2+688],          -1887415157
-     mov      qword[@@c2+696],          -1887415157
-     mov      qword[@@c2+704],          -1887415157
-     mov      qword[@@c2+712],          -1887415157
-     mov      qword[@@c2+720],          -1887415157
-     mov      qword[@@c2+728],          -1887415157
-     mov      qword[@@c2+736],          -1887415157
-     mov      qword[@@c2+744],          -1887415157
-     mov      qword[@@c2+752],          -1887415157
-     mov      qword[@@c2+760],          -1887415157
-     mov      qword[@@c2+768],          -1887415157
-     mov      qword[@@c2+776],          -1887415157
-     mov      qword[@@c2+784],          -1887415157
-     mov      qword[@@c2+792],          -1887415157
      add                  rsp,                   40
      pop                  rbp
      ret
@@ -4694,23 +4352,6 @@ call	println
 digt:
     push                  rbp
      mov                  rbp,                  rsp
-     mov        qword[rbp-16],                  rdi
-     cmp                  rdi,                    0
-      jl @digt_purity_checkin_out
-     cmp                  rdi,                  100
-     jnl @digt_purity_checkin_out
-     mov                  rdx,               @@digt
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov                  rdx,           qword[rdx]
-     cmp                  rdx,          -1887415157
-      je @digt_purity_checkin_out
-     mov                  rax,                  rdx
-     pop                  rbp
-     ret
-@digt_purity_checkin_out:
-     sub                  rsp,                   16
 @digt.1.enter:
      mov                  rsi,                  rdi
      cmp                  rsi,                    0
@@ -4844,43 +4485,11 @@ digt:
 @digt.30.IfFalse:
 @digt.32.IfExit:
 @digt.2.exit:
-     add                  rsp,                   16
-     mov                  rdi,                  rax
-     cmp        qword[rbp-16],                    0
-      jl @digt_purity_addition_out
-     cmp        qword[rbp-16],                  100
-     jnl @digt_purity_addition_out
-     mov                  rdx,               @@digt
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov           qword[rdx],                  rax
-     mov                  rax,                  rdi
-     pop                  rbp
-     ret
-@digt_purity_addition_out:
      pop                  rbp
      ret
 s2:
     push                  rbp
      mov                  rbp,                  rsp
-     mov        qword[rbp-16],                  rdi
-     cmp                  rdi,                    0
-      jl @s2_purity_checkin_out
-     cmp                  rdi,                  100
-     jnl @s2_purity_checkin_out
-     mov                  rdx,                 @@s2
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov                  rdx,           qword[rdx]
-     cmp                  rdx,          -1887415157
-      je @s2_purity_checkin_out
-     mov                  rax,                  rdx
-     pop                  rbp
-     ret
-@s2_purity_checkin_out:
-     sub                  rsp,                   16
     push                  r12
     push                  r13
     push                  rbx
@@ -5031,18 +4640,14 @@ s2:
      mov                  rdi,        __const_str10
      mov                  rsi,                  rsi
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
      mov                  rdi,                  rsi
      mov                  rsi,        __const_str11
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
@@ -5193,11 +4798,13 @@ call	__string_connect__
      mov                  rsi,                  r12
      mov                  rdi,        __const_str10
      mov                  rsi,                  rsi
-    push                  rsi
     push                   r8
+    push                  rsi
+     sub                  rsp,                    8
 call	__string_connect__
-     pop                   r8
+     add                  rsp,                    8
      pop                  rsi
+     pop                   r8
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
      mov                  rbx,                  rbx
@@ -5343,18 +4950,14 @@ call	__string_connect__
      mov                  rdi,                  rsi
      mov                  rsi,                  rbx
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
      mov                  rdi,                  rsi
      mov                  rsi,        __const_str11
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
@@ -5364,43 +4967,11 @@ call	__string_connect__
      pop                  rbx
      pop                  r13
      pop                  r12
-     add                  rsp,                   16
-     mov                  rdi,                  rax
-     cmp        qword[rbp-16],                    0
-      jl @s2_purity_addition_out
-     cmp        qword[rbp-16],                  100
-     jnl @s2_purity_addition_out
-     mov                  rdx,                 @@s2
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov           qword[rdx],                  rax
-     mov                  rax,                  rdi
-     pop                  rbp
-     ret
-@s2_purity_addition_out:
      pop                  rbp
      ret
 c2:
     push                  rbp
      mov                  rbp,                  rsp
-     mov        qword[rbp-16],                  rdi
-     cmp                  rdi,                    0
-      jl @c2_purity_checkin_out
-     cmp                  rdi,                  100
-     jnl @c2_purity_checkin_out
-     mov                  rdx,                 @@c2
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov                  rdx,           qword[rdx]
-     cmp                  rdx,          -1887415157
-      je @c2_purity_checkin_out
-     mov                  rax,                  rdx
-     pop                  rbp
-     ret
-@c2_purity_checkin_out:
-     sub                  rsp,                   16
     push                  r12
     push                  r13
     push                  rbx
@@ -5551,18 +5122,14 @@ c2:
      mov                  rdi,        __const_str12
      mov                  rsi,                  rsi
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
      mov                  rdi,                  rsi
      mov                  rsi,        __const_str11
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
@@ -5713,11 +5280,13 @@ call	__string_connect__
      mov                  rsi,                  r12
      mov                  rdi,        __const_str12
      mov                  rsi,                  rsi
-    push                  rsi
     push                   r8
+    push                  rsi
+     sub                  rsp,                    8
 call	__string_connect__
-     pop                   r8
+     add                  rsp,                    8
      pop                  rsi
+     pop                   r8
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
      mov                  rbx,                  rbx
@@ -5863,18 +5432,14 @@ call	__string_connect__
      mov                  rdi,                  rsi
      mov                  rsi,                  rbx
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
      mov                  rdi,                  rsi
      mov                  rsi,        __const_str11
     push                  rsi
-     sub                  rsp,                    8
 call	__string_connect__
-     add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
      mov                  rsi,                  rsi
@@ -5884,21 +5449,6 @@ call	__string_connect__
      pop                  rbx
      pop                  r13
      pop                  r12
-     add                  rsp,                   16
-     mov                  rdi,                  rax
-     cmp        qword[rbp-16],                    0
-      jl @c2_purity_addition_out
-     cmp        qword[rbp-16],                  100
-     jnl @c2_purity_addition_out
-     mov                  rdx,                 @@c2
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov           qword[rdx],                  rax
-     mov                  rax,                  rdi
-     pop                  rbp
-     ret
-@c2_purity_addition_out:
      pop                  rbp
      ret
 
@@ -5913,12 +5463,6 @@ call	__string_connect__
 @a2q:
   	resq 		1
 @a2b:
-  	resq 		1
-@@digt:
-  	resq 		1
-@@s2:
-  	resq 		1
-@@c2:
   	resq 		1
 
 
