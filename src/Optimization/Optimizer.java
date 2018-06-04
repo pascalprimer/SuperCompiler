@@ -6,7 +6,7 @@ import IR.IRTranslator;
 public class Optimizer {
 
 	public static void optimizer() {
-		for (int times = 1; times > 0; --times) {
+		for (int times = 5; times > 0; --times) {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
 //System.out.println("origin" + times + "\n" + functionIR.toString(1));
 				if (functionIR.getName().charAt(0) != '_') {

@@ -2,10 +2,7 @@ package IR;
 
 import AST.Symbol.Symbol;
 import AST.Type.*;
-import IR.Instruction.FunctionCallInstruction;
-import IR.Instruction.Instruction;
-import IR.Instruction.Label;
-import IR.Instruction.MoveInstruction;
+import IR.Instruction.*;
 import IR.Operand.Address;
 import IR.Operand.Immediate;
 import IR.Operand.Operand;
@@ -13,10 +10,7 @@ import IR.Operand.VirtualRegister;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalOperand;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FunctionIR {
 
@@ -93,8 +87,33 @@ public class FunctionIR {
 
 	public void getBlocks(List<Instruction> instructionList) {
 
-		blockList.clear();
+		for (int i = 0; i + 1 < instructionList.size(); ++i) {
+			Instruction now = instructionList.get(i),
+					nxt = instructionList.get(i + 1);
+			if (now instanceof JumpInstruction
+					&& nxt instanceof Label
+					&& ((JumpInstruction) now).getLabel() == nxt) {
+				instructionList.remove(i);
+				--i;
+			}
+		}
 
+		Set<Label> usedLabel = new HashSet<>();
+		for (int i = 1; i < instructionList.size(); ++i) {
+			Instruction now = instructionList.get(i);
+			if (now instanceof JumpInstruction) {
+				usedLabel.add(((JumpInstruction) now).getLabel());
+			}
+		}
+		for (int i = 1; i < instructionList.size(); ++i) {
+			Instruction now = instructionList.get(i);
+			if (now instanceof Label && !usedLabel.contains(now)) {
+				instructionList.remove(i);
+				--i;
+			}
+		}
+
+		blockList.clear();
 		Label tmpLabel = new Label("tmp_label");
 		instructionList.add(tmpLabel);
 

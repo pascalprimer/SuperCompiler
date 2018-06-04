@@ -7,6 +7,7 @@ import IR.RegisterManager;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalAddress;
 import NASM.PhysicalOperand.PhysicalOperand;
+import NASM.PhysicalOperand.SystemRegister;
 import Utility.RuntimeError;
 
 public class MoveInstruction extends Instruction {

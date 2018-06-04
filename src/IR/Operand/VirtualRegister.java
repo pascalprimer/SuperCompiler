@@ -54,7 +54,8 @@ public class VirtualRegister extends Operand {
 	}
 
 	public long getWeight() {
-		return loopWeight + defOrder;
+		//return loopWeight + defOrder;
+		return loopWeight + 2000 - defOrder;
 	}
 
 	@Override

@@ -64,6 +64,7 @@ public class Inliner {
 	}
 
 	private static void single_inliner(FunctionIR nowfunc) {
+		//System.out
 		List<Instruction> newList = new ArrayList<>();
 		for (Block block: nowfunc.blockList) {
 			for (Instruction instruction: block.instructionList) {

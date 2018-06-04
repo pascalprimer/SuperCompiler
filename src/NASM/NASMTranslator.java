@@ -30,6 +30,17 @@ public class NASMTranslator {
 	}
 
 	static public String getInstruction(String a, String b, String c) {
+		if (b.equals(c)) {
+			if (a.equals("add")) {
+				return String.format("%8s %20s, %20s\n", "shl", b, "1");
+			}
+			if (a.equals("sub")) {
+				return String.format("%8s %20s, %20s\n", "xor", b, "1");
+			}
+			if (a.equals("mov")) {
+				return "";
+			}
+		}
 		return String.format("%8s %20s, %20s\n", a, b, c);
 	}
 

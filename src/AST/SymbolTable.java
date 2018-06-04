@@ -8,7 +8,6 @@ import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Type.VariableTable;
 import Utility.CompilerError;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.util.Pair;
 
 import java.util.*;

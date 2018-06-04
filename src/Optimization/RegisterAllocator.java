@@ -63,6 +63,9 @@ public class RegisterAllocator {
 		}
 		registerMap.put(register, color);
 		register.sysRegister = color;
+//		if (nowFunc != null && nowFunc.getName()!= null && nowFunc.getName().charAt(0) == 'm') {
+//			System.out.println("allocate " + color + "->" + register);
+//		}
 		return true;
 	}
 
