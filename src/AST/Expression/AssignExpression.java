@@ -35,10 +35,6 @@ public class AssignExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		if (variable instanceof IdentifierExpression) {
-			((IdentifierExpression) variable).getSymbol().number++;
-		}
-
 		variable.translateIR(instructionList);
 		subscript.translateIR(instructionList);
 		Operand lvalue = variable.operand,
@@ -51,5 +47,10 @@ public class AssignExpression extends Expression {
 			instructionList.add(new MoveInstruction(lvalue, rvalue));
 		}
 		operand = subscript.operand;
+
+
+		if (variable instanceof IdentifierExpression) {
+			((IdentifierExpression) variable).getSymbol().number++;
+		}
 	}
 }
