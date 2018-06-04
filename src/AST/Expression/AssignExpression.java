@@ -36,6 +36,9 @@ public class AssignExpression extends Expression {
 	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		subscript.dfsBuiltOperand(ok);
+		if (variable instanceof IdentifierExpression) {
+			((IdentifierExpression) variable).getSymbol().number++;
+		}
 	}
 
 	@Override
@@ -52,10 +55,5 @@ public class AssignExpression extends Expression {
 			instructionList.add(new MoveInstruction(lvalue, rvalue));
 		}
 		operand = subscript.operand;
-
-
-		if (variable instanceof IdentifierExpression) {
-			((IdentifierExpression) variable).getSymbol().number++;
-		}
 	}
 }

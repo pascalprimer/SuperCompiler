@@ -6,226 +6,246 @@
 __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                    8
-     mov                  rdi,                    4
-     mov                  rsi,                    4
-     add                  rdi,                    1
-     shl                  rdi,                    3
-    push                  rdi
-    push                   r8
-    push                  rsi
-    call               malloc
-     pop                  rsi
-     pop                   r8
-     pop                  rdi
-     mov                   r8,                  rax
-     mov            qword[r8],                  rsi
-     add                   r8,                    8
-     sub                  rdi,                    8
-     mov            qword[@a],                   r8
-     add                  rsp,                    8
+     sub                  rsp,                   24
+     mov            qword[@A],                    1
+     mov            qword[@B],                    1
+     mov            qword[@C],                    1
+     add                  rsp,                   24
      pop                  rbp
      ret
 main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-     sub                  rsp,                    8
+     sub                  rsp,                   24
     push                  r12
+    push                  r13
     push                  rbx
 @main.1.enter:
-     mov                  rbx,                    4
-     mov                  rsi,                    4
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  rdi
-    push                   r8
-    push                  rsi
-     mov                  rdi,                  rbx
-    call               malloc
-     pop                  rsi
-     pop                   r8
-     pop                  rdi
-     mov                  rdi,                  rax
-     mov           qword[rdi],                  rsi
-     add                  rdi,                    8
-     sub                  rbx,                    8
-     mov                  r12,                  rdi
-     mov                  rsi,            qword[@a]
-     mov           qword[r12],                  rsi
-     mov                  rsi,            qword[@a]
-     mov         qword[r12+8],                  rsi
-     mov                  rsi,            qword[@a]
-     mov        qword[r12+16],                  rsi
-     mov                  rsi,            qword[@a]
-     mov        qword[r12+24],                  rsi
-     mov                  rdi,                  r12
-    push                  rsi
-call	__size__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  rsi
-call	toString
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                   r8,                    0
 	jmp	@main.5.ForCon
 @main.4.ForBody:
-     mov                  rbx,           qword[r12]
+     mov                  rsi,            qword[@C]
+     sub                  rsi,            qword[@A]
+     mov                  r12,                  rsi
+     add                  r12,            qword[@B]
+     mov                  rdi,            qword[@A]
+     add                  rdi,            qword[@B]
+     mov                  rbx,                  r12
+     sub                  rbx,                  rdi
+     mov                  rsi,                  rbx
+     add                  rsi,                  rbx
+     mov                  r13,                  rbx
+     add                  r13,                  r12
+     add                  rsi,                  r13
+     mov                   r8,                  rdi
+     add                   r8,                  r12
+     mov                  rbx,                   r8
+     sub                  rbx,                  rdi
+     mov                  r12,                  rbx
+     add                  r12,                  r13
+     mov                  rdi,                  rsi
+     sub                  rdi,                  r12
      mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	getInt
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov           qword[rbx],                  rsi
+     sub                  rsi,                   r8
+     sub                  rsi,                  rbx
+     sub                  r13,                  rbx
+     mov                   r8,                  rsi
+     add                   r8,                  r13
+     mov                  rbx,                  rdi
+     sub                  rbx,                   r8
+     mov                  rsi,                  r12
+     sub                  rsi,                  r12
+     mov                  r12,                  rdi
+     sub                  r12,                  rsi
+     mov                  rdi,                  rbx
+     add                  rdi,                  r12
+     mov                  rbx,                  r13
+     add                  rbx,                  r13
      mov                  rsi,                   r8
-     add                   r8,                    1
+     add                  rsi,                  rbx
+     mov                  rbx,                  rsi
+     add                  rbx,                  r12
+     mov                  rsi,                  rdi
+     sub                  rsi,                  rbx
+     mov            qword[@A],                  rsi
+     mov                   r9,            qword[@C]
+     sub                   r9,            qword[@A]
+     mov                  r12,                   r9
+     add                  r12,            qword[@B]
+     mov                  rdi,            qword[@A]
+     add                  rdi,            qword[@B]
+     mov                  rbx,                  r12
+     sub                  rbx,                  rdi
+     mov                  rsi,                  rbx
+     add                  rsi,                  rbx
+     mov                  r13,                  rbx
+     add                  r13,                  r12
+     add                  rsi,                  r13
+     mov                   r8,                  rdi
+     add                   r8,                  r12
+     mov                  rbx,                   r8
+     sub                  rbx,                  rdi
+     mov                  r12,                  rbx
+     add                  r12,                  r13
+     mov                  rdi,                  rsi
+     sub                  rdi,                  r12
+     mov                  rsi,                   r8
+     sub                  rsi,                   r8
+     sub                  rsi,                  rbx
+     sub                  r13,                  rbx
+     mov                   r8,                  rsi
+     add                   r8,                  r13
+     mov                  rbx,                  rdi
+     sub                  rbx,                   r8
+     mov                  rsi,                  r12
+     sub                  rsi,                  r12
+     mov                  r12,                  rdi
+     sub                  r12,                  rsi
+     mov                  rdi,                  rbx
+     add                  rdi,                  r12
+     mov                  rbx,                  r13
+     add                  rbx,                  r13
+     mov                  rsi,                   r8
+     add                  rsi,                  rbx
+     mov                  rbx,                  rsi
+     add                  rbx,                  r12
+     mov                  rsi,                  rdi
+     sub                  rsi,                  rbx
+     mov            qword[@B],                  rsi
+     mov                  r12,                   r9
+     add                  r12,            qword[@B]
+     mov                  rdi,            qword[@A]
+     add                  rdi,            qword[@B]
+     mov                  rbx,                  r12
+     sub                  rbx,                  rdi
+     mov                  rsi,                  rbx
+     add                  rsi,                  rbx
+     mov                  r13,                  rbx
+     add                  r13,                  r12
+     add                  rsi,                  r13
+     mov                   r8,                  rdi
+     add                   r8,                  r12
+     mov                  rbx,                   r8
+     sub                  rbx,                  rdi
+     mov                  r12,                  rbx
+     add                  r12,                  r13
+     mov                  rdi,                  rsi
+     sub                  rdi,                  r12
+     mov                  rsi,                   r8
+     sub                  rsi,                   r8
+     sub                  rsi,                  rbx
+     sub                  r13,                  rbx
+     mov                   r8,                  rsi
+     add                   r8,                  r13
+     mov                  rbx,                  rdi
+     sub                  rbx,                   r8
+     mov                  rsi,                  r12
+     sub                  rsi,                  r12
+     mov                  r12,                  rdi
+     sub                  r12,                  rsi
+     mov                  rdi,                  rbx
+     add                  rdi,                  r12
+     mov                  rbx,                  r13
+     add                  rbx,                  r13
+     mov                  rsi,                   r8
+     add                  rsi,                  rbx
+     mov                  rbx,                  rsi
+     add                  rbx,                  r12
+     mov                  rsi,                  rdi
+     sub                  rsi,                  rbx
+     mov            qword[@C],                  rsi
 @main.5.ForCon:
-     mov                  rdi,           qword[r12]
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     cmp                   r8,                  rsi
+     cmp            qword[@C],            536870912
      mov                  rsi,                    0
     setl                  sil
+     cmp                  rsi,                    0
+	je	@main.7.cmp_and
+     cmp            qword[@C],           -536870912
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    0
+@main.7.cmp_and:
+     mov                  rsi,                    0
+   setne                  sil
      cmp                  rsi,                    1
 	je	@main.4.ForBody
-     mov                   r8,                    0
-	jmp	@main.9.ForCon
-@main.8.ForBody:
-     mov                  rbx,         qword[r12+8]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-    push                   r8
+     mov                  rdi,            qword[@A]
     push                  rsi
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
      pop                  rsi
-     pop                   r8
      mov                  rsi,                  rax
      mov                  rdi,                  rsi
-    push                   r8
-call	print
-     pop                   r8
-     mov                  rsi,                   r8
-     add                   r8,                    1
-@main.9.ForCon:
-     mov                  rdi,         qword[r12+8]
-    push                   r8
+     mov                  rsi,         __const_str0
     push                  rsi
      sub                  rsp,                    8
-call	__size__
+call	__string_connect__
      add                  rsp,                    8
      pop                  rsi
-     pop                   r8
      mov                  rsi,                  rax
-     cmp                   r8,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.8.ForBody
-     mov                  rdi,         __const_str0
+     mov                  rbx,                  rsi
+     mov                  rdi,            qword[@B]
+    push                  rsi
      sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,         __const_str0
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,            qword[@C]
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
 call	println
-     add                  rsp,                    8
-     mov                   r8,                    0
-	jmp	@main.13.ForCon
-@main.12.ForBody:
-     mov                  rbx,        qword[r12+16]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rsi,                   r8
-     add                   r8,                    1
-@main.13.ForCon:
-     mov                  rdi,        qword[r12+16]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     cmp                   r8,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.12.ForBody
-     mov                   r8,                    0
-	jmp	@main.17.ForCon
-@main.16.ForBody:
-     mov                  rbx,        qword[r12+24]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-call	print
-     pop                   r8
-     mov                  rsi,                   r8
-     add                   r8,                    1
-@main.17.ForCon:
-     mov                  rdi,        qword[r12+24]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     cmp                   r8,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.16.ForBody
      mov                  rax,                    0
      pop                  rbx
+     pop                  r13
      pop                  r12
-     add                  rsp,                    8
+     add                  rsp,                   24
      pop                  rbp
      ret
 
 
  section                 .bss
-@a:
+@A:
+  	resq 		1
+@B:
+  	resq 		1
+@C:
   	resq 		1
 
 
  section                .data
-      dq                    0
+      dq                    1
 __const_str0:
-      db "",0
+      db " ",0
 
 
 
