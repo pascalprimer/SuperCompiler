@@ -11,10 +11,10 @@ public class Optimizer {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
 				if (functionIR.getName().charAt(0) != '_') {
 					Inliner.inliner(functionIR);
-					//System.out.println(functionIR.toString(1));
+					//System.out.println("inliner\n" + functionIR.toString(1));
 					//return;
 				}
-				//NaiveOptimizer.removeUselessRegister(functionIR);
+				NaiveOptimizer.removeUselessRegister(functionIR);
 			}
 		}
 		/*for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
@@ -30,6 +30,7 @@ public class Optimizer {
 			//System.out.println(functionIR.toString(1));
 			LiveAnalysis.FunctionAnalysis(functionIR);
 			RegisterAllocator.LinearAllocator();
+			//System.out.println("allocater\n" + functionIR.toString(1));
 		}
 	}
 

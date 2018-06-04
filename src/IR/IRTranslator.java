@@ -33,10 +33,10 @@ public class IRTranslator {
 
 	public static Operand getBuiltOperand(String hash) {
 		//System.out.println(hash + " " + builtOperand.containsKey(hash));
-//		if (builtOperand.containsKey(hash)) {
+		if (builtOperand.containsKey(hash)) {
 //System.out.println("find " + hash);
-//			return builtOperand.get(hash);
-//		}
+			return builtOperand.get(hash);
+		}
 		return null;
 	}
 
