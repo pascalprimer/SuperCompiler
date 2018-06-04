@@ -42,6 +42,7 @@ public class IterationStatement extends Statement implements Scope {
 		if (statement != null) {
 			statement.dfsBuiltOperand(ok);
 		}
+		IRTranslator.builtOperand.clear();
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import AST.Statement.BlockStatement;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
+import IR.IRTranslator;
 import Utility.CompilerError;
 
 import java.util.ArrayList;
@@ -150,7 +151,9 @@ public class FunctionType extends Type implements Scope {
 	}
 
 	public void dfsBuiltOperand(boolean ok) {
+		//System.out.println("\ndfs " + getFullName() + "\n");
 		if (body != null) {
+			IRTranslator.builtOperand.clear();
 			body.dfsBuiltOperand(ok);
 		}
 	}

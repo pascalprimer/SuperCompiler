@@ -42,7 +42,7 @@ public class Main {
 			System.err.println("dangerous program!!!");
 			System.exit(1);
 		}*/
-		System.err.println("Syntax ok!!!");
+		//System.err.println("Syntax ok!!!");
 	}
 
 	public static void buildIR() throws Exception {

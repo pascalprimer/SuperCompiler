@@ -2,6 +2,7 @@ package IR;
 
 import AST.AST;
 import AST.Expression.Expression;
+import AST.Expression.IdentifierExpression;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
@@ -37,6 +38,10 @@ public class IRTranslator {
 //System.out.println(builtOperand);
 		if (builtOperand.containsKey(hash)) {
 //System.out.println("find " + hash);
+			Expression exp = builtOperand.get(hash);
+//			if (exp instanceof IdentifierExpression) {
+//				return null;
+//			}
 			return builtOperand.get(hash);
 		} else {
 			builtOperand.put(hash, who);
