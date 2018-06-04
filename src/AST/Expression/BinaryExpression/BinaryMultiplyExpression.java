@@ -41,6 +41,7 @@ public class BinaryMultiplyExpression extends BinaryExpression {
 		HASH = "(" + leftExpression.HASH + "*" + rightExpression.HASH + ")";
 		operand = IRTranslator.getBuiltOperand(HASH);
 		if (operand != null) {
+			//System.out.println("niubi");
 			return;
 		}
 

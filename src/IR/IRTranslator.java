@@ -32,6 +32,7 @@ public class IRTranslator {
 	public static Map<String, Operand> builtOperand = new HashMap<>();
 
 	public static Operand getBuiltOperand(String hash) {
+		//System.out.println(hash + " " + builtOperand.containsKey(hash));
 		if (builtOperand.containsKey(hash)) {
 			return builtOperand.get(hash);
 		}

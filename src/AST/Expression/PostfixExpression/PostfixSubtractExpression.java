@@ -1,6 +1,8 @@
 package AST.Expression.PostfixExpression;
 
 import AST.Expression.Expression;
+import AST.Expression.IdentifierExpression;
+import AST.Symbol.Symbol;
 import AST.Type.IntType;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
@@ -29,6 +31,11 @@ public class PostfixSubtractExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		if (expression instanceof IdentifierExpression) {
+			Symbol symbol = ((IdentifierExpression) expression).getSymbol();
+			symbol.number++;
+		}
+
 		expression.translateIR(instructionList);
 		operand = RegisterManager.getVirtualRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));

@@ -61,6 +61,7 @@ public class BinaryGreaterExpression extends BinaryExpression {
 		HASH = "(" + leftExpression.HASH + ">" + rightExpression.HASH + ")";
 		operand = IRTranslator.getBuiltOperand(HASH);
 		if (operand != null) {
+			System.err.println("niubi>");
 			return;
 		}
 
