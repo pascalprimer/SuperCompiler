@@ -13,6 +13,7 @@ public class Symbol {
 	private boolean isglobal;
 	private boolean built;
 	public Operand operand;
+	//public boolean isUseless;
 
 	public Symbol(String name, Type type, ClassType classBelong, boolean isglobal, boolean built) {
 		this.name = name;
@@ -21,6 +22,8 @@ public class Symbol {
 		this.isglobal = isglobal;
 		this.built = built;
 		operand = new VirtualRegister(name);
+		//setUseless();
+		//System.out.println(this);
 	}
 
 	public void setOperand(Operand operand) {
@@ -46,6 +49,11 @@ public class Symbol {
 //	public Operand getRegister() {
 //		return register;
 //	}
+
+
+	/*public void setUseless() {
+		isUseless = name.equals("");
+	}*/
 
 	public String toString() {
 		return "Symbol(" + name

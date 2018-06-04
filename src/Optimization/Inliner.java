@@ -9,10 +9,7 @@ import IR.Operand.*;
 import IR.RegisterManager;
 import Utility.RuntimeError;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 public class Inliner {
@@ -20,6 +17,7 @@ public class Inliner {
 	private static Map<VirtualRegister, VirtualRegister> vregMap;
 	private static Map<Label, Label> labelMap;
 	private static VirtualRegister returnValue;
+	private static Set<FunctionIR> inlineTimes = new HashSet<>();
 
 	private static VirtualRegister getRegister(VirtualRegister reg) {
 		if (reg.sysRegister != null && reg.sysRegister.equals("rax")) { //rax -> returnValue
@@ -72,7 +70,8 @@ public class Inliner {
 				if (instruction instanceof FunctionCallInstruction) {
 					FunctionType whichFunc = ((FunctionCallInstruction) instruction).functionType;
 //System.out.println("print now call: " + whichFunc);
-					if (whichFunc.isSystem() || whichFunc.getFullName().charAt(0) == '_') { //sys or global dec
+					if (whichFunc.isSystem() || whichFunc.getFullName().charAt(0) == '_'
+							|| /*!inlineTimes.contains(nowfunc) && */nowfunc.functionType == whichFunc) { //sys or global dec
 						newList.add(instruction);
 						continue;
 					}
@@ -181,6 +180,7 @@ public class Inliner {
 			}
 		}
 
+		inlineTimes.add(nowfunc);
 		nowfunc.getBlocks(newList);
 	}
 

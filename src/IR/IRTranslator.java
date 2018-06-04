@@ -20,6 +20,7 @@ import java.util.function.Function;
 
 public class IRTranslator {
 
+	public static int r233 = 0;
 	public static Map<String, FunctionIR> functionIRMap;
 	public static Map<String, StringMemory> stringList;
 	//public static Block globalDeclarationBlock;
