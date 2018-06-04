@@ -29,7 +29,7 @@ public class NaiveOptimizer {
 							&& ((MoveInstruction) nxt).target instanceof VirtualRegister) {
 						VirtualRegister register = (VirtualRegister) ((MoveInstruction) now).target;
 						if (!nxt.liveOut.contains(register)) {
-							System.out.println("replace " + now.toString(1) + nxt.toString(1));
+//System.out.println("replace " + now.toString(1) + nxt.toString(1));
 							((MoveInstruction) now).changeTarget(((MoveInstruction) nxt).target);
 							block.instructionList.remove(i + 1);
 
