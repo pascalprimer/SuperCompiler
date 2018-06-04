@@ -64,6 +64,9 @@ public class SelectionStatement extends Statement implements Scope {
 
 		instructionList.add(trueLabel);
 		thenStatement.translateIR(instructionList);
+
+		IRTranslator.builtOperand.clear();
+
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, exitLabel));
 		instructionList.add(falseLabel);
 		if (elseStatement != null) {

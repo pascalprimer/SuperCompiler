@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IR/IRTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/IRTranslator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optimization/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +24,8 @@
       <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+            <state relative-caret-position="8662">
+              <caret line="512" column="5" selection-end-line="2203" />
             </state>
           </provider>
         </entry>
@@ -35,17 +33,26 @@
       <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
+            <state relative-caret-position="98">
+              <caret line="65" column="48" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssignExpression.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SelectionStatement.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssignExpression.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AST/Expression/AssignExpression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+            <state relative-caret-position="-5">
+              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -53,8 +60,8 @@
       <file leaf-file-name="IRTranslator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="35" selection-start-line="35" selection-end-line="38" selection-end-column="9" />
+            <state relative-caret-position="169">
+              <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -62,8 +69,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+            <state relative-caret-position="124">
+              <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -99,7 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>t31</find>
       <find>conflictEdge</find>
       <find>registerMap</find>
       <find>println</find>
@@ -129,6 +135,7 @@
       <find>purityReg</find>
       <find>@@</find>
       <find>t4</find>
+      <find>z+i</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -159,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Symbol/Symbol.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java" />
@@ -190,10 +196,11 @@
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java" />
         <option value="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" />
         <option value="$PROJECT_DIR$/src/Optimization/Optimizer.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
-        <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" />
+        <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" />
       </list>
     </option>
   </component>
@@ -240,8 +247,7 @@
               <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AST" type="462c0819:PsiDirectoryNode" />
-              <item name="Expression" type="462c0819:PsiDirectoryNode" />
-              <item name="BinaryExpression" type="462c0819:PsiDirectoryNode" />
+              <item name="Statement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Main" type="b2602c69:ProjectViewProjectNode" />
@@ -397,12 +403,12 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.21568628" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.43300653" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.21555042" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.21555042" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.32026145" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -543,13 +549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -797,38 +796,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="35" selection-start-line="35" selection-end-line="38" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/program.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
+        <state relative-caret-position="8662">
+          <caret line="512" column="5" selection-end-line="2203" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/AssignExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+        <state relative-caret-position="-5">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="65" column="48" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
         </state>
       </provider>
     </entry>
