@@ -25,7 +25,7 @@ public class NaiveOptimizer {
 				if (now instanceof MoveInstruction && nxt instanceof MoveInstruction) {
 					if (((MoveInstruction) now).target == ((MoveInstruction) nxt).getSource()
 							&& ((MoveInstruction) now).target instanceof VirtualRegister
-							&& ((MoveInstruction) now).getSource() instanceof VirtualRegister) {
+							&& ((MoveInstruction) nxt).target instanceof VirtualRegister) {
 						VirtualRegister register = (VirtualRegister) ((MoveInstruction) now).target;
 						if (!nxt.liveOut.contains(register)) {
 							((MoveInstruction) now).changeTarget(((MoveInstruction) nxt).target);
