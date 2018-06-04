@@ -67,6 +67,10 @@ public class FieldExpression extends Expression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (returnType instanceof  FunctionType) {
 			return;

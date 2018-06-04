@@ -128,6 +128,16 @@ public class NewExpression extends Expression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		if (!ok) {
+			return;
+		}
+		for (Expression expression: list) {
+			expression.dfsBuiltOperand(ok);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		//System.out.println(HASH);
 		List<Operand> operandList = new ArrayList<>();

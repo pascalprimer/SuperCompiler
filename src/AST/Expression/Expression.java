@@ -14,12 +14,14 @@ public abstract class Expression {
 	public Type returnType;
 
 	public String HASH;
+	public Expression identical;
 
 	public Expression(String op, boolean leftValue, Type type) {
 		this.op = op;
 		this.leftValue = leftValue;
 		this.returnType = type;
 		this.operand = null;
+		this.identical = null;
 		HASH = String.valueOf(hashCode());
 	}
 
@@ -30,6 +32,8 @@ public abstract class Expression {
 	public String getOp() {
 		return op;
 	}
+
+	public abstract void dfsBuiltOperand(boolean ok);
 
 	public abstract void translateIR(List<Instruction> instructionList);
 

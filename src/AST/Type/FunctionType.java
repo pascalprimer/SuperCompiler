@@ -148,4 +148,11 @@ public class FunctionType extends Type implements Scope {
 		str = str + ")";
 		return str;*/
 	}
+
+	public void dfsBuiltOperand(boolean ok) {
+		if (body != null) {
+			body.dfsBuiltOperand(ok);
+		}
+	}
+
 }

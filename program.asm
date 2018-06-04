@@ -3,2037 +3,4097 @@
 
 
  section                .text
-shift_l:
+p:
     push                  rbp
      mov                  rbp,                  rsp
-@shift_l.1.enter:
-     mov                   r9,                  rdi
-     mov                  rcx,                  rsi
-     shl                   r9,                   cl
-     mov                  rsi,                32767
-     mov                   r8,                65535
-     mov                  rdi,                  rsi
-     shl                  rdi,                   16
-     mov                  rsi,                   r8
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-     and                  rsi,                  rdi
-     mov                  rax,                  rsi
+     mov        qword[rbp-16],                  rdi
+     cmp                  rdi,                    0
+      jl @p_purity_checkin_out
+     cmp                  rdi,                  150
+     jnl @p_purity_checkin_out
+     mov                  rdx,                  @@p
+     mov                  rcx,        qword[rbp-16]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov                  rdx,           qword[rdx]
+     cmp                  rdx,          -1887415157
+      je @p_purity_checkin_out
+     mov                  rax,                  rdx
      pop                  rbp
      ret
-hilo:
-    push                  rbp
-     mov                  rbp,                  rsp
-@hilo.1.enter:
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rax,                  rsi
-     pop                  rbp
-     ret
-int2chr:
-    push                  rbp
-     mov                  rbp,                  rsp
-     sub                  rsp,                    8
+@p_purity_checkin_out:
+     sub                  rsp,                   16
+    push                  r12
     push                  rbx
-@int2chr.1.enter:
-     mov                  rbx,                  rdi
-     cmp                  rbx,                   32
+@p.1.enter:
+     mov                   r8,                  rdi
+     cmp                   r8,                   20
      mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    0
-	je	@int2chr.6.cmp_and
-     cmp                  rbx,                  126
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    0
-@int2chr.6.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
+    setg                  sil
      cmp                  rsi,                    1
-	je	@int2chr.4.IfTrue
-	jmp	@int2chr.3.IfFalse
-@int2chr.4.IfTrue:
-     sub                  rbx,                   32
-     mov                  rdi,   qword[@asciiTable]
-     mov                  rsi,                  rbx
-     mov                  rdx,                  rbx
+	je	@p.4.IfTrue
+	jmp	@p.3.IfFalse
+@p.4.IfTrue:
+     mov                  r12,                   r8
+     sub                  r12,                    1
+     mov                  rdi,                  r12
+    push                   r8
     push                  rsi
      sub                  rsp,                    8
-call	__substring__
+  call	p
      add                  rsp,                    8
      pop                  rsi
+     pop                   r8
      mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r8
+     mov                  rax,                  rbx
+     mov                  rcx,                  r12
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
      mov                  rax,                  rsi
-	jmp	@int2chr.2.exit
-	jmp	@int2chr.5.IfExit
-@int2chr.3.IfFalse:
-@int2chr.5.IfExit:
-     mov                  rax,         __const_str0
-@int2chr.2.exit:
+	jmp	@p.2.exit
+	jmp	@p.5.IfExit
+@p.3.IfFalse:
+     mov                  rax,                    0
+	jmp	@p.2.exit
+@p.5.IfExit:
+@p.2.exit:
      pop                  rbx
-     add                  rsp,                    8
+     pop                  r12
+     add                  rsp,                   16
+     mov                  rdi,                  rax
+     cmp        qword[rbp-16],                    0
+      jl @p_purity_addition_out
+     cmp        qword[rbp-16],                  150
+     jnl @p_purity_addition_out
+     mov                  rdx,                  @@p
+     mov                  rcx,        qword[rbp-16]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov           qword[rdx],                  rax
+     mov                  rax,                  rdi
      pop                  rbp
      ret
-getnumber:
+@p_purity_addition_out:
+     pop                  rbp
+     ret
+f:
     push                  rbp
      mov                  rbp,                  rsp
+     mov        qword[rbp-16],                  rdi
+     cmp                  rdi,                    0
+      jl @f_purity_checkin_out
+     cmp                  rdi,                  150
+     jnl @f_purity_checkin_out
+     mov                  rdx,                  @@f
+     mov                  rcx,        qword[rbp-16]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov                  rdx,           qword[rdx]
+     cmp                  rdx,          -1887415157
+      je @f_purity_checkin_out
+     mov                  rax,                  rdx
+     pop                  rbp
+     ret
+@f_purity_checkin_out:
+     sub                  rsp,                   16
     push                  r12
+    push                  r14
     push                  r13
+    push                  r15
     push                  rbx
-@getnumber.1.enter:
-     mov                   r8,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                  rdx
-     and                  rsi,                   31
-     mov                  r13,                  rsi
-     mov                  rsi,                   r8
-     mov                  rbx,                  rdi
-     add                  rsi,                    1
-     mov                  r12,                  rsi
-     mov                  r11,                    0
-	jmp	@getnumber.6.@xorshift.5.ForCon
-@getnumber.7.@xorshift.4.ForBody:
-     mov                  rsi,                  r12
-     mov                  rdi,                   13
-     mov                   r8,                  rsi
-     mov                  rcx,                  rdi
-     shl                   r8,                   cl
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r12
-     xor                  rsi,                  rdi
-     mov                  r12,                  rsi
-     mov                   r9,                  r12
-     mov                  r10,                   17
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rcx,                  r10
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                   r8,                  rsi
-     mov                  rdi,                   r9
-     mov                  rcx,                  r10
-     shr                  rdi,                   cl
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                   r8,                  rsi
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r12
-     xor                  rsi,                  rdi
-     mov                  r12,                  rsi
-     mov                  rsi,                  r12
-     mov                  rdi,                    5
-     mov                   r8,                  rsi
-     mov                  rcx,                  rdi
-     shl                   r8,                   cl
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r12
-     xor                  rsi,                  rdi
-     mov                  r12,                  rsi
-     mov                  rsi,                  r11
-     add                  r11,                    1
-@getnumber.6.@xorshift.5.ForCon:
-     mov                  rsi,                  rbx
-    imul                  rsi,                   10
-     cmp                  r11,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@getnumber.7.@xorshift.4.ForBody
-     mov                  rsi,                  r12
-     xor                  rsi,            123456789
-     mov                   r9,                  rsi
-     mov                  rsi,                   r9
-     mov                  rdi,                  r13
-     mov                   r8,                  rsi
-     mov                  rcx,                  rdi
-     shl                   r8,                   cl
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rbx,                  rsi
-     mov                  rsi,                   32
-     sub                  rsi,                  r13
-     mov                  r10,                   r9
+@f.1.enter:
+     mov                  rsi,                  rdi
      mov                  r11,                  rsi
-     mov                  rsi,                32767
-     mov                   r8,                65535
+     cmp                  r11,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@f.8.@h.6.@p.4.IfTrue
+	jmp	@f.9.@h.7.@p.3.IfFalse
+@f.8.@h.6.@p.4.IfTrue:
+     mov                  r15,                  r11
+     sub                  r15,                    1
+     mov                  r10,                  r15
+     cmp                  r10,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@f.14.@p.4.IfTrue
+	jmp	@f.15.@p.3.IfFalse
+@f.14.@p.4.IfTrue:
+     mov                  r14,                  r10
+     sub                  r14,                    1
+     mov                   r9,                  r14
+     cmp                   r9,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@f.19.@p.4.IfTrue
+	jmp	@f.20.@p.3.IfFalse
+@f.19.@p.4.IfTrue:
+     mov                  r13,                   r9
+     sub                  r13,                    1
+     mov                   r8,                  r13
+     cmp                   r8,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@f.24.@p.4.IfTrue
+	jmp	@f.25.@p.3.IfFalse
+@f.24.@p.4.IfTrue:
+     mov                  r12,                   r8
+     sub                  r12,                    1
+     mov                  rdi,                  r12
+    push                  r11
+    push                   r9
+    push                   r8
+    push                  r10
+    push                  rsi
+     sub                  rsp,                    8
+  call	p
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     pop                  r11
+     mov                  rsi,                  rax
      mov                  rdi,                  rsi
-     shl                  rdi,                   16
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r8
+     mov                  rax,                  rbx
+     mov                  rcx,                  r12
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                   r8
-      or                  rsi,                  rdi
-     mov                  rcx,                  r11
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                   r9,                  rsi
-     mov                  rdi,                  r10
-     mov                  rcx,                  r11
-     shr                  rdi,                   cl
-     mov                  rsi,                   r9
-     and                  rsi,                  rdi
-     mov                   r9,                  rsi
-     mov                  rsi,                32767
-     mov                   r8,                65535
-     mov                  rdi,                  rsi
-     shl                  rdi,                   16
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                   r8
-      or                  rsi,                  rdi
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@f.22.@p.2.exit
+	jmp	@f.26.@p.5.IfExit
+@f.25.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@f.22.@p.2.exit
+@f.26.@p.5.IfExit:
+@f.22.@p.2.exit:
      mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r9
+     mov                  rax,                  rbx
+     mov                  rcx,                  r13
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                   r9
-     and                  rsi,                  rdi
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@f.17.@p.2.exit
+	jmp	@f.21.@p.5.IfExit
+@f.20.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@f.17.@p.2.exit
+@f.21.@p.5.IfExit:
+@f.17.@p.2.exit:
      mov                  rdi,                  rsi
-     mov                  rsi,                  rbx
-      or                  rsi,                  rdi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r10
+     mov                  rax,                  rbx
+     mov                  rcx,                  r14
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@f.12.@p.2.exit
+	jmp	@f.16.@p.5.IfExit
+@f.15.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@f.12.@p.2.exit
+@f.16.@p.5.IfExit:
+@f.12.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r11
+     mov                  rax,                  rbx
+     mov                  rcx,                  r15
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@f.10.@h.4.@p.2.exit
+	jmp	@f.11.@h.8.@p.5.IfExit
+@f.9.@h.7.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@f.10.@h.4.@p.2.exit
+@f.11.@h.8.@p.5.IfExit:
+@f.10.@h.4.@p.2.exit:
      mov                  rax,                  rsi
      pop                  rbx
+     pop                  r15
      pop                  r13
+     pop                  r14
      pop                  r12
+     add                  rsp,                   16
+     mov                  rdi,                  rax
+     cmp        qword[rbp-16],                    0
+      jl @f_purity_addition_out
+     cmp        qword[rbp-16],                  150
+     jnl @f_purity_addition_out
+     mov                  rdx,                  @@f
+     mov                  rcx,        qword[rbp-16]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov           qword[rdx],                  rax
+     mov                  rax,                  rdi
+     pop                  rbp
+     ret
+@f_purity_addition_out:
+     pop                  rbp
+     ret
+g:
+    push                  rbp
+     mov                  rbp,                  rsp
+     mov        qword[rbp-16],                  rdi
+     cmp                  rdi,                    0
+      jl @g_purity_checkin_out
+     cmp                  rdi,                  150
+     jnl @g_purity_checkin_out
+     mov                  rdx,                  @@g
+     mov                  rcx,        qword[rbp-16]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov                  rdx,           qword[rdx]
+     cmp                  rdx,          -1887415157
+      je @g_purity_checkin_out
+     mov                  rax,                  rdx
+     pop                  rbp
+     ret
+@g_purity_checkin_out:
+     sub                  rsp,                   16
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
+    push                  rbx
+@g.1.enter:
+     mov                  rsi,                  rdi
+     mov                  r11,                  rsi
+     cmp                  r11,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@g.8.@p.4.IfTrue
+	jmp	@g.9.@p.3.IfFalse
+@g.8.@p.4.IfTrue:
+     mov                  r15,                  r11
+     sub                  r15,                    1
+     mov                  r10,                  r15
+     cmp                  r10,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@g.13.@p.4.IfTrue
+	jmp	@g.14.@p.3.IfFalse
+@g.13.@p.4.IfTrue:
+     mov                  r14,                  r10
+     sub                  r14,                    1
+     mov                   r9,                  r14
+     cmp                   r9,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@g.18.@p.4.IfTrue
+	jmp	@g.19.@p.3.IfFalse
+@g.18.@p.4.IfTrue:
+     mov                  r13,                   r9
+     sub                  r13,                    1
+     mov                   r8,                  r13
+     cmp                   r8,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@g.23.@p.4.IfTrue
+	jmp	@g.24.@p.3.IfFalse
+@g.23.@p.4.IfTrue:
+     mov                  r12,                   r8
+     sub                  r12,                    1
+     mov                  rdi,                  r12
+    push                  r11
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+     sub                  rsp,                    8
+  call	p
+     add                  rsp,                    8
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  r11
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r8
+     mov                  rax,                  rbx
+     mov                  rcx,                  r12
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@g.21.@p.2.exit
+	jmp	@g.25.@p.5.IfExit
+@g.24.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@g.21.@p.2.exit
+@g.25.@p.5.IfExit:
+@g.21.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r9
+     mov                  rax,                  rbx
+     mov                  rcx,                  r13
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@g.16.@p.2.exit
+	jmp	@g.20.@p.5.IfExit
+@g.19.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@g.16.@p.2.exit
+@g.20.@p.5.IfExit:
+@g.16.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r10
+     mov                  rax,                  rbx
+     mov                  rcx,                  r14
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@g.11.@p.2.exit
+	jmp	@g.15.@p.5.IfExit
+@g.14.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@g.11.@p.2.exit
+@g.15.@p.5.IfExit:
+@g.11.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r11
+     mov                  rax,                  rbx
+     mov                  rcx,                  r15
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@g.6.@p.2.exit
+	jmp	@g.10.@p.5.IfExit
+@g.9.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@g.6.@p.2.exit
+@g.10.@p.5.IfExit:
+@g.6.@p.2.exit:
+     mov                  rax,                  rsi
+     pop                  rbx
+     pop                  r15
+     pop                  r13
+     pop                  r14
+     pop                  r12
+     add                  rsp,                   16
+     mov                  rdi,                  rax
+     cmp        qword[rbp-16],                    0
+      jl @g_purity_addition_out
+     cmp        qword[rbp-16],                  150
+     jnl @g_purity_addition_out
+     mov                  rdx,                  @@g
+     mov                  rcx,        qword[rbp-16]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov           qword[rdx],                  rax
+     mov                  rax,                  rdi
+     pop                  rbp
+     ret
+@g_purity_addition_out:
+     pop                  rbp
+     ret
+h:
+    push                  rbp
+     mov                  rbp,                  rsp
+     mov        qword[rbp-32],                  rdi
+     cmp                  rdi,                    0
+      jl @h_purity_checkin_out
+     cmp                  rdi,                  150
+     jnl @h_purity_checkin_out
+     mov                  rdx,                  @@h
+     mov                  rcx,        qword[rbp-32]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov                  rdx,           qword[rdx]
+     cmp                  rdx,          -1887415157
+      je @h_purity_checkin_out
+     mov                  rax,                  rdx
+     pop                  rbp
+     ret
+@h_purity_checkin_out:
+     sub                  rsp,                   32
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
+    push                  rbx
+@h.1.enter:
+     mov         qword[rbp-8],                  rdi
+     cmp         qword[rbp-8],                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@h.6.@p.4.IfTrue
+	jmp	@h.7.@p.3.IfFalse
+@h.6.@p.4.IfTrue:
+     mov                  rcx,         qword[rbp-8]
+     mov        qword[rbp-16],                  rcx
+     mov                  rax,        qword[rbp-16]
+     sub                  rax,                    1
+     mov        qword[rbp-16],                  rax
+     mov                  r11,        qword[rbp-16]
+     cmp                  r11,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@h.11.@p.4.IfTrue
+	jmp	@h.12.@p.3.IfFalse
+@h.11.@p.4.IfTrue:
+     mov                  r15,                  r11
+     sub                  r15,                    1
+     mov                  r10,                  r15
+     cmp                  r10,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@h.16.@p.4.IfTrue
+	jmp	@h.17.@p.3.IfFalse
+@h.16.@p.4.IfTrue:
+     mov                  r14,                  r10
+     sub                  r14,                    1
+     mov                   r9,                  r14
+     cmp                   r9,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@h.21.@p.4.IfTrue
+	jmp	@h.22.@p.3.IfFalse
+@h.21.@p.4.IfTrue:
+     mov                  r13,                   r9
+     sub                  r13,                    1
+     mov                   r8,                  r13
+     cmp                   r8,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@h.26.@p.4.IfTrue
+	jmp	@h.27.@p.3.IfFalse
+@h.26.@p.4.IfTrue:
+     mov                  r12,                   r8
+     sub                  r12,                    1
+     mov                  rdi,                  r12
+    push                   r8
+    push                  r11
+    push                  rsi
+    push                  r10
+    push                   r9
+     sub                  rsp,                    8
+  call	p
+     add                  rsp,                    8
+     pop                   r9
+     pop                  r10
+     pop                  rsi
+     pop                  r11
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r8
+     mov                  rax,                  rbx
+     mov                  rcx,                  r12
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@h.24.@p.2.exit
+	jmp	@h.28.@p.5.IfExit
+@h.27.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@h.24.@p.2.exit
+@h.28.@p.5.IfExit:
+@h.24.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r9
+     mov                  rax,                  rbx
+     mov                  rcx,                  r13
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@h.19.@p.2.exit
+	jmp	@h.23.@p.5.IfExit
+@h.22.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@h.19.@p.2.exit
+@h.23.@p.5.IfExit:
+@h.19.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r10
+     mov                  rax,                  rbx
+     mov                  rcx,                  r14
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@h.14.@p.2.exit
+	jmp	@h.18.@p.5.IfExit
+@h.17.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@h.14.@p.2.exit
+@h.18.@p.5.IfExit:
+@h.14.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r11
+     mov                  rax,                  rbx
+     mov                  rcx,                  r15
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@h.9.@p.2.exit
+	jmp	@h.13.@p.5.IfExit
+@h.12.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@h.9.@p.2.exit
+@h.13.@p.5.IfExit:
+@h.9.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,         qword[rbp-8]
+     mov                  rax,                  rbx
+     mov                  rcx,        qword[rbp-16]
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,         qword[rbp-8]
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@h.4.@p.2.exit
+	jmp	@h.8.@p.5.IfExit
+@h.7.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@h.4.@p.2.exit
+@h.8.@p.5.IfExit:
+@h.4.@p.2.exit:
+     mov                  rax,                  rsi
+     pop                  rbx
+     pop                  r15
+     pop                  r13
+     pop                  r14
+     pop                  r12
+     add                  rsp,                   32
+     mov                  rdi,                  rax
+     cmp        qword[rbp-32],                    0
+      jl @h_purity_addition_out
+     cmp        qword[rbp-32],                  150
+     jnl @h_purity_addition_out
+     mov                  rdx,                  @@h
+     mov                  rcx,        qword[rbp-32]
+     shl                  rcx,                    3
+     add                  rdx,                  rcx
+     mov           qword[rdx],                  rax
+     mov                  rax,                  rdi
+     pop                  rbp
+     ret
+@h_purity_addition_out:
      pop                  rbp
      ret
 __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
+    push                  rsi
      sub                  rsp,                    8
-     mov   qword[@asciiTable],         __const_str2
+     mov                  rdi,                  150
+    call               malloc
      add                  rsp,                    8
-     pop                  rbp
-     ret
-shift_r:
-    push                  rbp
-     mov                  rbp,                  rsp
-@shift_r.1.enter:
-     mov                  r10,                  rdi
-     mov                  r11,                  rsi
-     mov                  rsi,                32767
-     mov                   r8,                65535
-     mov                  rdi,                  rsi
-     shl                  rdi,                   16
-     mov                  rsi,                   r8
-      or                  rsi,                  rdi
-     mov                  rcx,                  r11
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                   r9,                  rsi
-     mov                  rdi,                  r10
-     mov                  rcx,                  r11
-     shr                  rdi,                   cl
-     mov                  rsi,                   r9
-     and                  rsi,                  rdi
-     mov                   r9,                  rsi
-     mov                  rsi,                32767
-     mov                   r8,                65535
-     mov                  rdi,                  rsi
-     shl                  rdi,                   16
-     mov                  rsi,                   r8
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-     and                  rsi,                  rdi
-     mov                  rax,                  rsi
-     pop                  rbp
-     ret
-xorshift:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r12
-    push                  rbx
-@xorshift.1.enter:
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     add                  rsi,                    1
-     mov                  r12,                  rsi
-     mov                  r11,                    0
-	jmp	@xorshift.5.ForCon
-@xorshift.4.ForBody:
-     mov                  rsi,                  r12
-     mov                  rdi,                   13
-     mov                   r8,                  rsi
-     mov                  rcx,                  rdi
-     shl                   r8,                   cl
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rdi,                  r12
-     xor                  rdi,                  rsi
-     mov                  r12,                  rdi
-     mov                   r9,                  r12
-     mov                  r10,                   17
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rcx,                  r10
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                   r8,                  rsi
-     mov                  rdi,                   r9
-     mov                  rcx,                  r10
-     shr                  rdi,                   cl
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                   r8,                  rsi
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rdi,                  r12
-     xor                  rdi,                  rsi
-     mov                  r12,                  rdi
-     mov                  rsi,                  r12
-     mov                  rdi,                    5
-     mov                   r8,                  rsi
-     mov                  rcx,                  rdi
-     shl                   r8,                   cl
-     mov                  rdi,                32767
-     mov                  rsi,                65535
-     shl                  rdi,                   16
-      or                  rsi,                  rdi
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r8
-     and                  rsi,                  rdi
-     mov                  rdi,                  r12
-     xor                  rdi,                  rsi
-     mov                  r12,                  rdi
-     mov                  rsi,                  r11
-     add                  r11,                    1
-@xorshift.5.ForCon:
-     mov                  rsi,                  rbx
-    imul                  rsi,                   10
-     cmp                  r11,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@xorshift.4.ForBody
-     mov                  rsi,                  r12
-     xor                  rsi,            123456789
-     mov                  rax,                  rsi
-     pop                  rbx
-     pop                  r12
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov           qword[@@h],                  rsi
+     mov           qword[@@h],          -1887415157
+     mov         qword[@@h+8],          -1887415157
+     mov        qword[@@h+16],          -1887415157
+     mov        qword[@@h+24],          -1887415157
+     mov        qword[@@h+32],          -1887415157
+     mov        qword[@@h+40],          -1887415157
+     mov        qword[@@h+48],          -1887415157
+     mov        qword[@@h+56],          -1887415157
+     mov        qword[@@h+64],          -1887415157
+     mov        qword[@@h+72],          -1887415157
+     mov        qword[@@h+80],          -1887415157
+     mov        qword[@@h+88],          -1887415157
+     mov        qword[@@h+96],          -1887415157
+     mov       qword[@@h+104],          -1887415157
+     mov       qword[@@h+112],          -1887415157
+     mov       qword[@@h+120],          -1887415157
+     mov       qword[@@h+128],          -1887415157
+     mov       qword[@@h+136],          -1887415157
+     mov       qword[@@h+144],          -1887415157
+     mov       qword[@@h+152],          -1887415157
+     mov       qword[@@h+160],          -1887415157
+     mov       qword[@@h+168],          -1887415157
+     mov       qword[@@h+176],          -1887415157
+     mov       qword[@@h+184],          -1887415157
+     mov       qword[@@h+192],          -1887415157
+     mov       qword[@@h+200],          -1887415157
+     mov       qword[@@h+208],          -1887415157
+     mov       qword[@@h+216],          -1887415157
+     mov       qword[@@h+224],          -1887415157
+     mov       qword[@@h+232],          -1887415157
+     mov       qword[@@h+240],          -1887415157
+     mov       qword[@@h+248],          -1887415157
+     mov       qword[@@h+256],          -1887415157
+     mov       qword[@@h+264],          -1887415157
+     mov       qword[@@h+272],          -1887415157
+     mov       qword[@@h+280],          -1887415157
+     mov       qword[@@h+288],          -1887415157
+     mov       qword[@@h+296],          -1887415157
+     mov       qword[@@h+304],          -1887415157
+     mov       qword[@@h+312],          -1887415157
+     mov       qword[@@h+320],          -1887415157
+     mov       qword[@@h+328],          -1887415157
+     mov       qword[@@h+336],          -1887415157
+     mov       qword[@@h+344],          -1887415157
+     mov       qword[@@h+352],          -1887415157
+     mov       qword[@@h+360],          -1887415157
+     mov       qword[@@h+368],          -1887415157
+     mov       qword[@@h+376],          -1887415157
+     mov       qword[@@h+384],          -1887415157
+     mov       qword[@@h+392],          -1887415157
+     mov       qword[@@h+400],          -1887415157
+     mov       qword[@@h+408],          -1887415157
+     mov       qword[@@h+416],          -1887415157
+     mov       qword[@@h+424],          -1887415157
+     mov       qword[@@h+432],          -1887415157
+     mov       qword[@@h+440],          -1887415157
+     mov       qword[@@h+448],          -1887415157
+     mov       qword[@@h+456],          -1887415157
+     mov       qword[@@h+464],          -1887415157
+     mov       qword[@@h+472],          -1887415157
+     mov       qword[@@h+480],          -1887415157
+     mov       qword[@@h+488],          -1887415157
+     mov       qword[@@h+496],          -1887415157
+     mov       qword[@@h+504],          -1887415157
+     mov       qword[@@h+512],          -1887415157
+     mov       qword[@@h+520],          -1887415157
+     mov       qword[@@h+528],          -1887415157
+     mov       qword[@@h+536],          -1887415157
+     mov       qword[@@h+544],          -1887415157
+     mov       qword[@@h+552],          -1887415157
+     mov       qword[@@h+560],          -1887415157
+     mov       qword[@@h+568],          -1887415157
+     mov       qword[@@h+576],          -1887415157
+     mov       qword[@@h+584],          -1887415157
+     mov       qword[@@h+592],          -1887415157
+     mov       qword[@@h+600],          -1887415157
+     mov       qword[@@h+608],          -1887415157
+     mov       qword[@@h+616],          -1887415157
+     mov       qword[@@h+624],          -1887415157
+     mov       qword[@@h+632],          -1887415157
+     mov       qword[@@h+640],          -1887415157
+     mov       qword[@@h+648],          -1887415157
+     mov       qword[@@h+656],          -1887415157
+     mov       qword[@@h+664],          -1887415157
+     mov       qword[@@h+672],          -1887415157
+     mov       qword[@@h+680],          -1887415157
+     mov       qword[@@h+688],          -1887415157
+     mov       qword[@@h+696],          -1887415157
+     mov       qword[@@h+704],          -1887415157
+     mov       qword[@@h+712],          -1887415157
+     mov       qword[@@h+720],          -1887415157
+     mov       qword[@@h+728],          -1887415157
+     mov       qword[@@h+736],          -1887415157
+     mov       qword[@@h+744],          -1887415157
+     mov       qword[@@h+752],          -1887415157
+     mov       qword[@@h+760],          -1887415157
+     mov       qword[@@h+768],          -1887415157
+     mov       qword[@@h+776],          -1887415157
+     mov       qword[@@h+784],          -1887415157
+     mov       qword[@@h+792],          -1887415157
+     mov       qword[@@h+800],          -1887415157
+     mov       qword[@@h+808],          -1887415157
+     mov       qword[@@h+816],          -1887415157
+     mov       qword[@@h+824],          -1887415157
+     mov       qword[@@h+832],          -1887415157
+     mov       qword[@@h+840],          -1887415157
+     mov       qword[@@h+848],          -1887415157
+     mov       qword[@@h+856],          -1887415157
+     mov       qword[@@h+864],          -1887415157
+     mov       qword[@@h+872],          -1887415157
+     mov       qword[@@h+880],          -1887415157
+     mov       qword[@@h+888],          -1887415157
+     mov       qword[@@h+896],          -1887415157
+     mov       qword[@@h+904],          -1887415157
+     mov       qword[@@h+912],          -1887415157
+     mov       qword[@@h+920],          -1887415157
+     mov       qword[@@h+928],          -1887415157
+     mov       qword[@@h+936],          -1887415157
+     mov       qword[@@h+944],          -1887415157
+     mov       qword[@@h+952],          -1887415157
+     mov       qword[@@h+960],          -1887415157
+     mov       qword[@@h+968],          -1887415157
+     mov       qword[@@h+976],          -1887415157
+     mov       qword[@@h+984],          -1887415157
+     mov       qword[@@h+992],          -1887415157
+     mov      qword[@@h+1000],          -1887415157
+     mov      qword[@@h+1008],          -1887415157
+     mov      qword[@@h+1016],          -1887415157
+     mov      qword[@@h+1024],          -1887415157
+     mov      qword[@@h+1032],          -1887415157
+     mov      qword[@@h+1040],          -1887415157
+     mov      qword[@@h+1048],          -1887415157
+     mov      qword[@@h+1056],          -1887415157
+     mov      qword[@@h+1064],          -1887415157
+     mov      qword[@@h+1072],          -1887415157
+     mov      qword[@@h+1080],          -1887415157
+     mov      qword[@@h+1088],          -1887415157
+     mov      qword[@@h+1096],          -1887415157
+     mov      qword[@@h+1104],          -1887415157
+     mov      qword[@@h+1112],          -1887415157
+     mov      qword[@@h+1120],          -1887415157
+     mov      qword[@@h+1128],          -1887415157
+     mov      qword[@@h+1136],          -1887415157
+     mov      qword[@@h+1144],          -1887415157
+     mov      qword[@@h+1152],          -1887415157
+     mov      qword[@@h+1160],          -1887415157
+     mov      qword[@@h+1168],          -1887415157
+     mov      qword[@@h+1176],          -1887415157
+     mov      qword[@@h+1184],          -1887415157
+     mov      qword[@@h+1192],          -1887415157
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                  150
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov           qword[@@p],                  rsi
+     mov           qword[@@p],          -1887415157
+     mov         qword[@@p+8],          -1887415157
+     mov        qword[@@p+16],          -1887415157
+     mov        qword[@@p+24],          -1887415157
+     mov        qword[@@p+32],          -1887415157
+     mov        qword[@@p+40],          -1887415157
+     mov        qword[@@p+48],          -1887415157
+     mov        qword[@@p+56],          -1887415157
+     mov        qword[@@p+64],          -1887415157
+     mov        qword[@@p+72],          -1887415157
+     mov        qword[@@p+80],          -1887415157
+     mov        qword[@@p+88],          -1887415157
+     mov        qword[@@p+96],          -1887415157
+     mov       qword[@@p+104],          -1887415157
+     mov       qword[@@p+112],          -1887415157
+     mov       qword[@@p+120],          -1887415157
+     mov       qword[@@p+128],          -1887415157
+     mov       qword[@@p+136],          -1887415157
+     mov       qword[@@p+144],          -1887415157
+     mov       qword[@@p+152],          -1887415157
+     mov       qword[@@p+160],          -1887415157
+     mov       qword[@@p+168],          -1887415157
+     mov       qword[@@p+176],          -1887415157
+     mov       qword[@@p+184],          -1887415157
+     mov       qword[@@p+192],          -1887415157
+     mov       qword[@@p+200],          -1887415157
+     mov       qword[@@p+208],          -1887415157
+     mov       qword[@@p+216],          -1887415157
+     mov       qword[@@p+224],          -1887415157
+     mov       qword[@@p+232],          -1887415157
+     mov       qword[@@p+240],          -1887415157
+     mov       qword[@@p+248],          -1887415157
+     mov       qword[@@p+256],          -1887415157
+     mov       qword[@@p+264],          -1887415157
+     mov       qword[@@p+272],          -1887415157
+     mov       qword[@@p+280],          -1887415157
+     mov       qword[@@p+288],          -1887415157
+     mov       qword[@@p+296],          -1887415157
+     mov       qword[@@p+304],          -1887415157
+     mov       qword[@@p+312],          -1887415157
+     mov       qword[@@p+320],          -1887415157
+     mov       qword[@@p+328],          -1887415157
+     mov       qword[@@p+336],          -1887415157
+     mov       qword[@@p+344],          -1887415157
+     mov       qword[@@p+352],          -1887415157
+     mov       qword[@@p+360],          -1887415157
+     mov       qword[@@p+368],          -1887415157
+     mov       qword[@@p+376],          -1887415157
+     mov       qword[@@p+384],          -1887415157
+     mov       qword[@@p+392],          -1887415157
+     mov       qword[@@p+400],          -1887415157
+     mov       qword[@@p+408],          -1887415157
+     mov       qword[@@p+416],          -1887415157
+     mov       qword[@@p+424],          -1887415157
+     mov       qword[@@p+432],          -1887415157
+     mov       qword[@@p+440],          -1887415157
+     mov       qword[@@p+448],          -1887415157
+     mov       qword[@@p+456],          -1887415157
+     mov       qword[@@p+464],          -1887415157
+     mov       qword[@@p+472],          -1887415157
+     mov       qword[@@p+480],          -1887415157
+     mov       qword[@@p+488],          -1887415157
+     mov       qword[@@p+496],          -1887415157
+     mov       qword[@@p+504],          -1887415157
+     mov       qword[@@p+512],          -1887415157
+     mov       qword[@@p+520],          -1887415157
+     mov       qword[@@p+528],          -1887415157
+     mov       qword[@@p+536],          -1887415157
+     mov       qword[@@p+544],          -1887415157
+     mov       qword[@@p+552],          -1887415157
+     mov       qword[@@p+560],          -1887415157
+     mov       qword[@@p+568],          -1887415157
+     mov       qword[@@p+576],          -1887415157
+     mov       qword[@@p+584],          -1887415157
+     mov       qword[@@p+592],          -1887415157
+     mov       qword[@@p+600],          -1887415157
+     mov       qword[@@p+608],          -1887415157
+     mov       qword[@@p+616],          -1887415157
+     mov       qword[@@p+624],          -1887415157
+     mov       qword[@@p+632],          -1887415157
+     mov       qword[@@p+640],          -1887415157
+     mov       qword[@@p+648],          -1887415157
+     mov       qword[@@p+656],          -1887415157
+     mov       qword[@@p+664],          -1887415157
+     mov       qword[@@p+672],          -1887415157
+     mov       qword[@@p+680],          -1887415157
+     mov       qword[@@p+688],          -1887415157
+     mov       qword[@@p+696],          -1887415157
+     mov       qword[@@p+704],          -1887415157
+     mov       qword[@@p+712],          -1887415157
+     mov       qword[@@p+720],          -1887415157
+     mov       qword[@@p+728],          -1887415157
+     mov       qword[@@p+736],          -1887415157
+     mov       qword[@@p+744],          -1887415157
+     mov       qword[@@p+752],          -1887415157
+     mov       qword[@@p+760],          -1887415157
+     mov       qword[@@p+768],          -1887415157
+     mov       qword[@@p+776],          -1887415157
+     mov       qword[@@p+784],          -1887415157
+     mov       qword[@@p+792],          -1887415157
+     mov       qword[@@p+800],          -1887415157
+     mov       qword[@@p+808],          -1887415157
+     mov       qword[@@p+816],          -1887415157
+     mov       qword[@@p+824],          -1887415157
+     mov       qword[@@p+832],          -1887415157
+     mov       qword[@@p+840],          -1887415157
+     mov       qword[@@p+848],          -1887415157
+     mov       qword[@@p+856],          -1887415157
+     mov       qword[@@p+864],          -1887415157
+     mov       qword[@@p+872],          -1887415157
+     mov       qword[@@p+880],          -1887415157
+     mov       qword[@@p+888],          -1887415157
+     mov       qword[@@p+896],          -1887415157
+     mov       qword[@@p+904],          -1887415157
+     mov       qword[@@p+912],          -1887415157
+     mov       qword[@@p+920],          -1887415157
+     mov       qword[@@p+928],          -1887415157
+     mov       qword[@@p+936],          -1887415157
+     mov       qword[@@p+944],          -1887415157
+     mov       qword[@@p+952],          -1887415157
+     mov       qword[@@p+960],          -1887415157
+     mov       qword[@@p+968],          -1887415157
+     mov       qword[@@p+976],          -1887415157
+     mov       qword[@@p+984],          -1887415157
+     mov       qword[@@p+992],          -1887415157
+     mov      qword[@@p+1000],          -1887415157
+     mov      qword[@@p+1008],          -1887415157
+     mov      qword[@@p+1016],          -1887415157
+     mov      qword[@@p+1024],          -1887415157
+     mov      qword[@@p+1032],          -1887415157
+     mov      qword[@@p+1040],          -1887415157
+     mov      qword[@@p+1048],          -1887415157
+     mov      qword[@@p+1056],          -1887415157
+     mov      qword[@@p+1064],          -1887415157
+     mov      qword[@@p+1072],          -1887415157
+     mov      qword[@@p+1080],          -1887415157
+     mov      qword[@@p+1088],          -1887415157
+     mov      qword[@@p+1096],          -1887415157
+     mov      qword[@@p+1104],          -1887415157
+     mov      qword[@@p+1112],          -1887415157
+     mov      qword[@@p+1120],          -1887415157
+     mov      qword[@@p+1128],          -1887415157
+     mov      qword[@@p+1136],          -1887415157
+     mov      qword[@@p+1144],          -1887415157
+     mov      qword[@@p+1152],          -1887415157
+     mov      qword[@@p+1160],          -1887415157
+     mov      qword[@@p+1168],          -1887415157
+     mov      qword[@@p+1176],          -1887415157
+     mov      qword[@@p+1184],          -1887415157
+     mov      qword[@@p+1192],          -1887415157
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                  150
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov           qword[@@f],                  rsi
+     mov           qword[@@f],          -1887415157
+     mov         qword[@@f+8],          -1887415157
+     mov        qword[@@f+16],          -1887415157
+     mov        qword[@@f+24],          -1887415157
+     mov        qword[@@f+32],          -1887415157
+     mov        qword[@@f+40],          -1887415157
+     mov        qword[@@f+48],          -1887415157
+     mov        qword[@@f+56],          -1887415157
+     mov        qword[@@f+64],          -1887415157
+     mov        qword[@@f+72],          -1887415157
+     mov        qword[@@f+80],          -1887415157
+     mov        qword[@@f+88],          -1887415157
+     mov        qword[@@f+96],          -1887415157
+     mov       qword[@@f+104],          -1887415157
+     mov       qword[@@f+112],          -1887415157
+     mov       qword[@@f+120],          -1887415157
+     mov       qword[@@f+128],          -1887415157
+     mov       qword[@@f+136],          -1887415157
+     mov       qword[@@f+144],          -1887415157
+     mov       qword[@@f+152],          -1887415157
+     mov       qword[@@f+160],          -1887415157
+     mov       qword[@@f+168],          -1887415157
+     mov       qword[@@f+176],          -1887415157
+     mov       qword[@@f+184],          -1887415157
+     mov       qword[@@f+192],          -1887415157
+     mov       qword[@@f+200],          -1887415157
+     mov       qword[@@f+208],          -1887415157
+     mov       qword[@@f+216],          -1887415157
+     mov       qword[@@f+224],          -1887415157
+     mov       qword[@@f+232],          -1887415157
+     mov       qword[@@f+240],          -1887415157
+     mov       qword[@@f+248],          -1887415157
+     mov       qword[@@f+256],          -1887415157
+     mov       qword[@@f+264],          -1887415157
+     mov       qword[@@f+272],          -1887415157
+     mov       qword[@@f+280],          -1887415157
+     mov       qword[@@f+288],          -1887415157
+     mov       qword[@@f+296],          -1887415157
+     mov       qword[@@f+304],          -1887415157
+     mov       qword[@@f+312],          -1887415157
+     mov       qword[@@f+320],          -1887415157
+     mov       qword[@@f+328],          -1887415157
+     mov       qword[@@f+336],          -1887415157
+     mov       qword[@@f+344],          -1887415157
+     mov       qword[@@f+352],          -1887415157
+     mov       qword[@@f+360],          -1887415157
+     mov       qword[@@f+368],          -1887415157
+     mov       qword[@@f+376],          -1887415157
+     mov       qword[@@f+384],          -1887415157
+     mov       qword[@@f+392],          -1887415157
+     mov       qword[@@f+400],          -1887415157
+     mov       qword[@@f+408],          -1887415157
+     mov       qword[@@f+416],          -1887415157
+     mov       qword[@@f+424],          -1887415157
+     mov       qword[@@f+432],          -1887415157
+     mov       qword[@@f+440],          -1887415157
+     mov       qword[@@f+448],          -1887415157
+     mov       qword[@@f+456],          -1887415157
+     mov       qword[@@f+464],          -1887415157
+     mov       qword[@@f+472],          -1887415157
+     mov       qword[@@f+480],          -1887415157
+     mov       qword[@@f+488],          -1887415157
+     mov       qword[@@f+496],          -1887415157
+     mov       qword[@@f+504],          -1887415157
+     mov       qword[@@f+512],          -1887415157
+     mov       qword[@@f+520],          -1887415157
+     mov       qword[@@f+528],          -1887415157
+     mov       qword[@@f+536],          -1887415157
+     mov       qword[@@f+544],          -1887415157
+     mov       qword[@@f+552],          -1887415157
+     mov       qword[@@f+560],          -1887415157
+     mov       qword[@@f+568],          -1887415157
+     mov       qword[@@f+576],          -1887415157
+     mov       qword[@@f+584],          -1887415157
+     mov       qword[@@f+592],          -1887415157
+     mov       qword[@@f+600],          -1887415157
+     mov       qword[@@f+608],          -1887415157
+     mov       qword[@@f+616],          -1887415157
+     mov       qword[@@f+624],          -1887415157
+     mov       qword[@@f+632],          -1887415157
+     mov       qword[@@f+640],          -1887415157
+     mov       qword[@@f+648],          -1887415157
+     mov       qword[@@f+656],          -1887415157
+     mov       qword[@@f+664],          -1887415157
+     mov       qword[@@f+672],          -1887415157
+     mov       qword[@@f+680],          -1887415157
+     mov       qword[@@f+688],          -1887415157
+     mov       qword[@@f+696],          -1887415157
+     mov       qword[@@f+704],          -1887415157
+     mov       qword[@@f+712],          -1887415157
+     mov       qword[@@f+720],          -1887415157
+     mov       qword[@@f+728],          -1887415157
+     mov       qword[@@f+736],          -1887415157
+     mov       qword[@@f+744],          -1887415157
+     mov       qword[@@f+752],          -1887415157
+     mov       qword[@@f+760],          -1887415157
+     mov       qword[@@f+768],          -1887415157
+     mov       qword[@@f+776],          -1887415157
+     mov       qword[@@f+784],          -1887415157
+     mov       qword[@@f+792],          -1887415157
+     mov       qword[@@f+800],          -1887415157
+     mov       qword[@@f+808],          -1887415157
+     mov       qword[@@f+816],          -1887415157
+     mov       qword[@@f+824],          -1887415157
+     mov       qword[@@f+832],          -1887415157
+     mov       qword[@@f+840],          -1887415157
+     mov       qword[@@f+848],          -1887415157
+     mov       qword[@@f+856],          -1887415157
+     mov       qword[@@f+864],          -1887415157
+     mov       qword[@@f+872],          -1887415157
+     mov       qword[@@f+880],          -1887415157
+     mov       qword[@@f+888],          -1887415157
+     mov       qword[@@f+896],          -1887415157
+     mov       qword[@@f+904],          -1887415157
+     mov       qword[@@f+912],          -1887415157
+     mov       qword[@@f+920],          -1887415157
+     mov       qword[@@f+928],          -1887415157
+     mov       qword[@@f+936],          -1887415157
+     mov       qword[@@f+944],          -1887415157
+     mov       qword[@@f+952],          -1887415157
+     mov       qword[@@f+960],          -1887415157
+     mov       qword[@@f+968],          -1887415157
+     mov       qword[@@f+976],          -1887415157
+     mov       qword[@@f+984],          -1887415157
+     mov       qword[@@f+992],          -1887415157
+     mov      qword[@@f+1000],          -1887415157
+     mov      qword[@@f+1008],          -1887415157
+     mov      qword[@@f+1016],          -1887415157
+     mov      qword[@@f+1024],          -1887415157
+     mov      qword[@@f+1032],          -1887415157
+     mov      qword[@@f+1040],          -1887415157
+     mov      qword[@@f+1048],          -1887415157
+     mov      qword[@@f+1056],          -1887415157
+     mov      qword[@@f+1064],          -1887415157
+     mov      qword[@@f+1072],          -1887415157
+     mov      qword[@@f+1080],          -1887415157
+     mov      qword[@@f+1088],          -1887415157
+     mov      qword[@@f+1096],          -1887415157
+     mov      qword[@@f+1104],          -1887415157
+     mov      qword[@@f+1112],          -1887415157
+     mov      qword[@@f+1120],          -1887415157
+     mov      qword[@@f+1128],          -1887415157
+     mov      qword[@@f+1136],          -1887415157
+     mov      qword[@@f+1144],          -1887415157
+     mov      qword[@@f+1152],          -1887415157
+     mov      qword[@@f+1160],          -1887415157
+     mov      qword[@@f+1168],          -1887415157
+     mov      qword[@@f+1176],          -1887415157
+     mov      qword[@@f+1184],          -1887415157
+     mov      qword[@@f+1192],          -1887415157
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                  150
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov           qword[@@g],                  rsi
+     mov           qword[@@g],          -1887415157
+     mov         qword[@@g+8],          -1887415157
+     mov        qword[@@g+16],          -1887415157
+     mov        qword[@@g+24],          -1887415157
+     mov        qword[@@g+32],          -1887415157
+     mov        qword[@@g+40],          -1887415157
+     mov        qword[@@g+48],          -1887415157
+     mov        qword[@@g+56],          -1887415157
+     mov        qword[@@g+64],          -1887415157
+     mov        qword[@@g+72],          -1887415157
+     mov        qword[@@g+80],          -1887415157
+     mov        qword[@@g+88],          -1887415157
+     mov        qword[@@g+96],          -1887415157
+     mov       qword[@@g+104],          -1887415157
+     mov       qword[@@g+112],          -1887415157
+     mov       qword[@@g+120],          -1887415157
+     mov       qword[@@g+128],          -1887415157
+     mov       qword[@@g+136],          -1887415157
+     mov       qword[@@g+144],          -1887415157
+     mov       qword[@@g+152],          -1887415157
+     mov       qword[@@g+160],          -1887415157
+     mov       qword[@@g+168],          -1887415157
+     mov       qword[@@g+176],          -1887415157
+     mov       qword[@@g+184],          -1887415157
+     mov       qword[@@g+192],          -1887415157
+     mov       qword[@@g+200],          -1887415157
+     mov       qword[@@g+208],          -1887415157
+     mov       qword[@@g+216],          -1887415157
+     mov       qword[@@g+224],          -1887415157
+     mov       qword[@@g+232],          -1887415157
+     mov       qword[@@g+240],          -1887415157
+     mov       qword[@@g+248],          -1887415157
+     mov       qword[@@g+256],          -1887415157
+     mov       qword[@@g+264],          -1887415157
+     mov       qword[@@g+272],          -1887415157
+     mov       qword[@@g+280],          -1887415157
+     mov       qword[@@g+288],          -1887415157
+     mov       qword[@@g+296],          -1887415157
+     mov       qword[@@g+304],          -1887415157
+     mov       qword[@@g+312],          -1887415157
+     mov       qword[@@g+320],          -1887415157
+     mov       qword[@@g+328],          -1887415157
+     mov       qword[@@g+336],          -1887415157
+     mov       qword[@@g+344],          -1887415157
+     mov       qword[@@g+352],          -1887415157
+     mov       qword[@@g+360],          -1887415157
+     mov       qword[@@g+368],          -1887415157
+     mov       qword[@@g+376],          -1887415157
+     mov       qword[@@g+384],          -1887415157
+     mov       qword[@@g+392],          -1887415157
+     mov       qword[@@g+400],          -1887415157
+     mov       qword[@@g+408],          -1887415157
+     mov       qword[@@g+416],          -1887415157
+     mov       qword[@@g+424],          -1887415157
+     mov       qword[@@g+432],          -1887415157
+     mov       qword[@@g+440],          -1887415157
+     mov       qword[@@g+448],          -1887415157
+     mov       qword[@@g+456],          -1887415157
+     mov       qword[@@g+464],          -1887415157
+     mov       qword[@@g+472],          -1887415157
+     mov       qword[@@g+480],          -1887415157
+     mov       qword[@@g+488],          -1887415157
+     mov       qword[@@g+496],          -1887415157
+     mov       qword[@@g+504],          -1887415157
+     mov       qword[@@g+512],          -1887415157
+     mov       qword[@@g+520],          -1887415157
+     mov       qword[@@g+528],          -1887415157
+     mov       qword[@@g+536],          -1887415157
+     mov       qword[@@g+544],          -1887415157
+     mov       qword[@@g+552],          -1887415157
+     mov       qword[@@g+560],          -1887415157
+     mov       qword[@@g+568],          -1887415157
+     mov       qword[@@g+576],          -1887415157
+     mov       qword[@@g+584],          -1887415157
+     mov       qword[@@g+592],          -1887415157
+     mov       qword[@@g+600],          -1887415157
+     mov       qword[@@g+608],          -1887415157
+     mov       qword[@@g+616],          -1887415157
+     mov       qword[@@g+624],          -1887415157
+     mov       qword[@@g+632],          -1887415157
+     mov       qword[@@g+640],          -1887415157
+     mov       qword[@@g+648],          -1887415157
+     mov       qword[@@g+656],          -1887415157
+     mov       qword[@@g+664],          -1887415157
+     mov       qword[@@g+672],          -1887415157
+     mov       qword[@@g+680],          -1887415157
+     mov       qword[@@g+688],          -1887415157
+     mov       qword[@@g+696],          -1887415157
+     mov       qword[@@g+704],          -1887415157
+     mov       qword[@@g+712],          -1887415157
+     mov       qword[@@g+720],          -1887415157
+     mov       qword[@@g+728],          -1887415157
+     mov       qword[@@g+736],          -1887415157
+     mov       qword[@@g+744],          -1887415157
+     mov       qword[@@g+752],          -1887415157
+     mov       qword[@@g+760],          -1887415157
+     mov       qword[@@g+768],          -1887415157
+     mov       qword[@@g+776],          -1887415157
+     mov       qword[@@g+784],          -1887415157
+     mov       qword[@@g+792],          -1887415157
+     mov       qword[@@g+800],          -1887415157
+     mov       qword[@@g+808],          -1887415157
+     mov       qword[@@g+816],          -1887415157
+     mov       qword[@@g+824],          -1887415157
+     mov       qword[@@g+832],          -1887415157
+     mov       qword[@@g+840],          -1887415157
+     mov       qword[@@g+848],          -1887415157
+     mov       qword[@@g+856],          -1887415157
+     mov       qword[@@g+864],          -1887415157
+     mov       qword[@@g+872],          -1887415157
+     mov       qword[@@g+880],          -1887415157
+     mov       qword[@@g+888],          -1887415157
+     mov       qword[@@g+896],          -1887415157
+     mov       qword[@@g+904],          -1887415157
+     mov       qword[@@g+912],          -1887415157
+     mov       qword[@@g+920],          -1887415157
+     mov       qword[@@g+928],          -1887415157
+     mov       qword[@@g+936],          -1887415157
+     mov       qword[@@g+944],          -1887415157
+     mov       qword[@@g+952],          -1887415157
+     mov       qword[@@g+960],          -1887415157
+     mov       qword[@@g+968],          -1887415157
+     mov       qword[@@g+976],          -1887415157
+     mov       qword[@@g+984],          -1887415157
+     mov       qword[@@g+992],          -1887415157
+     mov      qword[@@g+1000],          -1887415157
+     mov      qword[@@g+1008],          -1887415157
+     mov      qword[@@g+1016],          -1887415157
+     mov      qword[@@g+1024],          -1887415157
+     mov      qword[@@g+1032],          -1887415157
+     mov      qword[@@g+1040],          -1887415157
+     mov      qword[@@g+1048],          -1887415157
+     mov      qword[@@g+1056],          -1887415157
+     mov      qword[@@g+1064],          -1887415157
+     mov      qword[@@g+1072],          -1887415157
+     mov      qword[@@g+1080],          -1887415157
+     mov      qword[@@g+1088],          -1887415157
+     mov      qword[@@g+1096],          -1887415157
+     mov      qword[@@g+1104],          -1887415157
+     mov      qword[@@g+1112],          -1887415157
+     mov      qword[@@g+1120],          -1887415157
+     mov      qword[@@g+1128],          -1887415157
+     mov      qword[@@g+1136],          -1887415157
+     mov      qword[@@g+1144],          -1887415157
+     mov      qword[@@g+1152],          -1887415157
+     mov      qword[@@g+1160],          -1887415157
+     mov      qword[@@g+1168],          -1887415157
+     mov      qword[@@g+1176],          -1887415157
+     mov      qword[@@g+1184],          -1887415157
+     mov      qword[@@g+1192],          -1887415157
      pop                  rbp
      ret
 main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-     sub                  rsp,                  136
-    push                  rbx
+     sub                  rsp,                   24
     push                  r12
     push                  r14
     push                  r13
     push                  r15
+    push                  rbx
 @main.1.enter:
-     mov         qword[rbp-8],                    0
-     mov                  r15,                   40
-     mov        qword[rbp-16],                  100
-     mov                  r11,                  200
-     mov        qword[rbp-24],                  125
-     mov        qword[rbp-32],                  250
-     mov        qword[rbp-40],                   30
-     mov        qword[rbp-48],                    0
-     mov        qword[rbp-56],                    0
-     mov        qword[rbp-64],                    0
-     mov        qword[rbp-72],                    0
-     mov                  rcx,         qword[rbp-8]
-     mov        qword[rbp-80],                  rcx
+     mov         qword[rbp-8],                    1
 	jmp	@main.5.ForCon
 @main.4.ForBody:
+     mov        qword[rbp-16],                  100
+     cmp        qword[rbp-16],                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@main.13.@p.4.IfTrue
+	jmp	@main.14.@p.3.IfFalse
+@main.13.@p.4.IfTrue:
      mov                  rcx,        qword[rbp-16]
-     mov        qword[rbp-88],                  rcx
-	jmp	@main.9.ForCon
-@main.8.ForBody:
-     mov                  rcx,        qword[rbp-24]
-     mov        qword[rbp-96],                  rcx
-	jmp	@main.13.ForCon
-@main.12.ForBody:
-     mov                  rsi,         qword[rbp-8]
-     mov                  rdi,        qword[rbp-40]
-     mov                  rbx,        qword[rbp-96]
-     and                  rbx,                   31
-     mov                  r14,                  rbx
-     mov                   r9,                  rdi
-     add                  rsi,                    1
-     mov                  r10,                  rsi
-     mov                  r13,                    0
-	jmp	@main.18.@getnumber.6.@xorshift.5.ForCon
-@main.19.@getnumber.7.@xorshift.4.ForBody:
-     mov                  rsi,                  r10
-     mov                  rbx,                   13
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  r12,                  r10
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r10
-     mov                  rbx,                    5
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.18.@getnumber.6.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+     mov        qword[rbp-24],                  rcx
+     mov                  rax,        qword[rbp-24]
+     sub                  rax,                    1
+     mov        qword[rbp-24],                  rax
+     mov                  r11,        qword[rbp-24]
+     cmp                  r11,                   20
      mov                  rsi,                    0
-    setl                  sil
+    setg                  sil
      cmp                  rsi,                    1
-	je	@main.19.@getnumber.7.@xorshift.4.ForBody
-     mov                  rsi,                  r10
-     xor                  rsi,            123456789
-     mov                  r12,                  rsi
-     mov                  rbx,                  r12
-     mov                  rsi,                  r14
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                   r9,                  rsi
-     mov                  rsi,                   32
-     sub                  rsi,                  r14
-     mov                  r13,                  r12
-     mov                   r8,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  r12,                  rsi
-     mov                  rbx,                  r13
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  r12,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                   r9
-      or                  rsi,                  rbx
-     mov       qword[rbp-104],                  rsi
-     mov                  rsi,        qword[rbp-80]
-     mov                  rbx,        qword[rbp-40]
-     mov                  rdi,        qword[rbp-96]
-     and                  rdi,                   31
-     mov                  r14,                  rdi
-     mov                   r9,                  rbx
-     add                  rsi,                    1
-     mov                  r10,                  rsi
-     mov                  r13,                    0
-	jmp	@main.22.@getnumber.6.@xorshift.5.ForCon
-@main.23.@getnumber.7.@xorshift.4.ForBody:
-     mov                  rsi,                  r10
-     mov                  rbx,                   13
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  r12,                  r10
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r10
-     mov                  rbx,                    5
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.22.@getnumber.6.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+	je	@main.18.@p.4.IfTrue
+	jmp	@main.19.@p.3.IfFalse
+@main.18.@p.4.IfTrue:
+     mov                  r15,                  r11
+     sub                  r15,                    1
+     mov                  r10,                  r15
+     cmp                  r10,                   20
      mov                  rsi,                    0
-    setl                  sil
+    setg                  sil
      cmp                  rsi,                    1
-	je	@main.23.@getnumber.7.@xorshift.4.ForBody
-     mov                  rsi,                  r10
-     xor                  rsi,            123456789
-     mov                  r12,                  rsi
-     mov                  rbx,                  r12
-     mov                  rsi,                  r14
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                   r9,                  rsi
-     mov                  rsi,                   32
-     sub                  rsi,                  r14
-     mov                   r8,                  r12
-     mov                  r13,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rcx,                  r13
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  r12,                  rsi
+	je	@main.23.@p.4.IfTrue
+	jmp	@main.24.@p.3.IfFalse
+@main.23.@p.4.IfTrue:
+     mov                  r14,                  r10
+     sub                  r14,                    1
+     mov                   r9,                  r14
+     cmp                   r9,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@main.28.@p.4.IfTrue
+	jmp	@main.29.@p.3.IfFalse
+@main.28.@p.4.IfTrue:
+     mov                  r13,                   r9
+     sub                  r13,                    1
+     mov                   r8,                  r13
+     cmp                   r8,                   20
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@main.33.@p.4.IfTrue
+	jmp	@main.34.@p.3.IfFalse
+@main.33.@p.4.IfTrue:
+     mov                  r12,                   r8
+     sub                  r12,                    1
+     mov                  rdi,                  r12
+    push                   r8
+    push                   r9
+    push                  r10
+    push                  rsi
+    push                  r11
+     sub                  rsp,                    8
+  call	p
+     add                  rsp,                    8
+     pop                  r11
+     pop                  rsi
+     pop                  r10
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
      mov                  rbx,                   r8
-     mov                  rcx,                  r13
-     shr                  rbx,                   cl
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  r12,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                   r9
-      or                  rsi,                  rbx
-     mov       qword[rbp-112],                  rsi
-     mov                  rsi,        qword[rbp-88]
-     mov                  rbx,        qword[rbp-40]
-     mov                  rdi,        qword[rbp-96]
-     and                  rdi,                   31
-     mov                  r14,                  rdi
-     mov                   r9,                  rbx
-     add                  rsi,                    1
-     mov                  r10,                  rsi
-     mov                  r13,                    0
-	jmp	@main.26.@getnumber.6.@xorshift.5.ForCon
-@main.27.@getnumber.7.@xorshift.4.ForBody:
-     mov                  rsi,                  r10
-     mov                  rbx,                   13
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  r12,                  r10
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r10
-     mov                  rbx,                    5
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.26.@getnumber.6.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.27.@getnumber.7.@xorshift.4.ForBody
-     mov                  rsi,                  r10
-     xor                  rsi,            123456789
-     mov                  r12,                  rsi
-     mov                  rbx,                  r12
-     mov                  rsi,                  r14
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                   r9,                  rsi
-     mov                  rsi,                   32
-     sub                  rsi,                  r14
-     mov                   r8,                  r12
-     mov                  r13,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rcx,                  r13
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  r12,                  rsi
-     mov                  rbx,                   r8
-     mov                  rcx,                  r13
-     shr                  rbx,                   cl
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  r12,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                   r9
-      or                  rsi,                  rbx
-     mov       qword[rbp-120],                  rsi
-     mov                  rsi,        qword[rbp-80]
-     xor                  rsi,        qword[rbp-88]
-     mov                  rbx,        qword[rbp-40]
-     mov                  rdi,        qword[rbp-96]
-     and                  rdi,                   31
-     mov                  r14,                  rdi
-     mov                   r9,                  rbx
-     add                  rsi,                    1
-     mov                  r10,                  rsi
-     mov                  r13,                    0
-	jmp	@main.30.@getnumber.6.@xorshift.5.ForCon
-@main.31.@getnumber.7.@xorshift.4.ForBody:
-     mov                  rsi,                  r10
-     mov                  rbx,                   13
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  r12,                  r10
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r10
-     mov                  rbx,                    5
-     mov                  rdi,                  rsi
-     mov                  rcx,                  rbx
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r10
-     xor                  rsi,                  rbx
-     mov                  r10,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.30.@getnumber.6.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.31.@getnumber.7.@xorshift.4.ForBody
-     mov                  rsi,                  r10
-     xor                  rsi,            123456789
-     mov                  r12,                  rsi
-     mov                  rbx,                  r12
-     mov                  rsi,                  r14
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                   r9,                  rsi
-     mov                  rsi,                   32
-     sub                  rsi,                  r14
-     mov                   r8,                  r12
-     mov                  r13,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rcx,                  r13
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  r12,                  rsi
-     mov                  rbx,                   r8
-     mov                  rcx,                  r13
-     shr                  rbx,                   cl
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  r12,                  rsi
-     mov                  rsi,                32767
-     mov                  rdi,                65535
-     mov                  rbx,                  rsi
-     shl                  rbx,                   16
-     mov                  rsi,                  rdi
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r12
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                   r9
-      or                  rsi,                  rbx
-     mov       qword[rbp-128],                  rsi
-     mov                  rsi,        qword[rbp-96]
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.34.@xorshift.5.ForCon
-@main.35.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                   r8,                  r14
-     mov                  r12,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
+     mov                  rax,                  rbx
      mov                  rcx,                  r12
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                   r8
-     mov                  rcx,                  r12
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r8
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.34.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+     add                  rsi,                  rbx
+	jmp	@main.31.@p.2.exit
+	jmp	@main.35.@p.5.IfExit
+@main.34.@p.3.IfFalse:
      mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.35.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
-     mov                  r10,                  rsi
-     mov                  rsi,        qword[rbp-88]
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.38.@xorshift.5.ForCon
-@main.39.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                   r8,                  r14
-     mov                  r12,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                  r12
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
+	jmp	@main.31.@p.2.exit
+@main.35.@p.5.IfExit:
+@main.31.@p.2.exit:
      mov                  rdi,                  rsi
-     mov                  rbx,                   r8
-     mov                  rcx,                  r12
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.38.@xorshift.5.ForCon:
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                   r9
+     mov                  rax,                  rbx
+     mov                  rcx,                  r13
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.39.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
-     xor                  r10,                  rsi
-     mov                  rsi,        qword[rbp-80]
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.42.@xorshift.5.ForCon
-@main.43.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  r12,                  r14
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.42.@xorshift.5.ForCon:
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                   r9
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  rdi
+     add                  rsi,                  rbx
+	jmp	@main.26.@p.2.exit
+	jmp	@main.30.@p.5.IfExit
+@main.29.@p.3.IfFalse:
      mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.43.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
+	jmp	@main.26.@p.2.exit
+@main.30.@p.5.IfExit:
+@main.26.@p.2.exit:
+     mov                  rdi,                  rsi
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
      mov                  rbx,                  r10
-     xor                  rbx,                  rsi
-     mov                  r10,                  rbx
-     mov                  rsi,       qword[rbp-104]
-     xor                  rsi,                  r10
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.46.@xorshift.5.ForCon
-@main.47.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
+     mov                  rax,                  rbx
+     mov                  rcx,                  r14
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                   r8,                  r14
-     mov                  r12,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                  r12
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                   r8
-     mov                  rcx,                  r12
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r10
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.46.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+     add                  rsi,                  rbx
+	jmp	@main.21.@p.2.exit
+	jmp	@main.25.@p.5.IfExit
+@main.24.@p.3.IfFalse:
      mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.47.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
-     mov                  rbx,        qword[rbp-48]
-     add                  rbx,                  rsi
-     mov        qword[rbp-48],                  rbx
-     mov                  rsi,       qword[rbp-112]
-     xor                  rsi,                  r10
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.50.@xorshift.5.ForCon
-@main.51.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                   r8,                  r14
-     mov                  r12,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                  r12
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
+	jmp	@main.21.@p.2.exit
+@main.25.@p.5.IfExit:
+@main.21.@p.2.exit:
      mov                  rdi,                  rsi
-     mov                  rbx,                   r8
-     mov                  rcx,                  r12
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,                  r11
+     mov                  rax,                  rbx
+     mov                  rcx,                  r15
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,                  r11
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.50.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+     add                  rsi,                  rbx
+	jmp	@main.16.@p.2.exit
+	jmp	@main.20.@p.5.IfExit
+@main.19.@p.3.IfFalse:
      mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.51.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
-     mov                  rbx,        qword[rbp-56]
-     add                  rbx,                  rsi
-     mov        qword[rbp-56],                  rbx
-     mov                  rsi,       qword[rbp-120]
-     xor                  rsi,                  r10
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.54.@xorshift.5.ForCon
-@main.55.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
-     mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  r12,                  r14
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
+	jmp	@main.16.@p.2.exit
+@main.20.@p.5.IfExit:
+@main.16.@p.2.exit:
      mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
+     mov                  rax,                  rdi
+     mov                  rcx,                    1
+     cdq
+    idiv                  ecx
+     mov                  rdi,                  rdx
+     mov                  rbx,        qword[rbp-16]
+     mov                  rax,                  rbx
+     mov                  rcx,        qword[rbp-24]
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    2
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.54.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.55.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
-     mov                  rbx,        qword[rbp-64]
-     add                  rbx,                  rsi
-     mov        qword[rbp-64],                  rbx
-     mov                  rsi,       qword[rbp-128]
-     xor                  rsi,                  r10
-     mov                   r9,                    1
-     add                  rsi,                    1
-     mov                  r14,                  rsi
-     mov                  r13,                    0
-	jmp	@main.58.@xorshift.5.ForCon
-@main.59.@xorshift.4.ForBody:
-     mov                  rbx,                  r14
-     mov                  rsi,                   13
-     mov                  rdi,                  rbx
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    3
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  r12,                  r14
-     mov                   r8,                   17
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     shl                  rsi,                    1
-     add                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     mov                  rcx,                   r8
-     shr                  rbx,                   cl
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rdi,                  rsi
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  rdi
-     and                  rsi,                  rbx
-     mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rbx,                  r14
-     mov                  rsi,                    5
-     mov                  rdi,                  rbx
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    4
+     mov                  rax,                  rbx
      mov                  rcx,                  rsi
-     shl                  rdi,                   cl
-     mov                  rbx,                32767
-     mov                  rsi,                65535
-     shl                  rbx,                   16
-      or                  rsi,                  rbx
-     mov                  rbx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    5
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    6
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    7
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    8
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                    9
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   10
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   11
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   12
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   13
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   14
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   15
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   16
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   17
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   18
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   19
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
+     mov                  rsi,        qword[rbp-16]
+     sub                  rsi,                   20
+     mov                  rax,                  rbx
+     mov                  rcx,                  rsi
+     cdq
+    idiv                  ecx
+     mov                  rbx,                  rdx
      mov                  rsi,                  rdi
-     and                  rsi,                  rbx
+     add                  rsi,                  rbx
+	jmp	@main.11.@p.2.exit
+	jmp	@main.15.@p.5.IfExit
+@main.14.@p.3.IfFalse:
+     mov                  rsi,                    0
+	jmp	@main.11.@p.2.exit
+@main.15.@p.5.IfExit:
+@main.11.@p.2.exit:
      mov                  rbx,                  rsi
-     mov                  rsi,                  r14
-     xor                  rsi,                  rbx
-     mov                  r14,                  rsi
-     mov                  rsi,                  r13
-     add                  r13,                    1
-@main.58.@xorshift.5.ForCon:
-     mov                  rsi,                   r9
-    imul                  rsi,                   10
-     cmp                  r13,                  rsi
+     mov                  rsi,         qword[rbp-8]
+     mov                  rax,                  rsi
+     mov                  rcx,              3000000
+     cdq
+    idiv                  ecx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
      mov                  rsi,                    0
-    setl                  sil
+    sete                  sil
      cmp                  rsi,                    1
-	je	@main.59.@xorshift.4.ForBody
-     mov                  rsi,                  r14
-     xor                  rsi,            123456789
-     mov                  rbx,        qword[rbp-72]
-     add                  rbx,                  rsi
-     mov        qword[rbp-72],                  rbx
-     mov                  rsi,        qword[rbp-96]
-     add        qword[rbp-96],                    1
-@main.13.ForCon:
-     mov                  rcx,        qword[rbp-96]
-     cmp                  rcx,        qword[rbp-32]
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.12.ForBody
-     mov                  rsi,        qword[rbp-88]
-     add        qword[rbp-88],                    1
-@main.9.ForCon:
-     cmp        qword[rbp-88],                  r11
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.8.ForBody
-     mov                  rsi,        qword[rbp-80]
-     add        qword[rbp-80],                    1
+	je	@main.8.IfTrue
+	jmp	@main.7.IfFalse
+@main.8.IfTrue:
+     mov                  rdi,                  rbx
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+	jmp	@main.9.IfExit
+@main.7.IfFalse:
+@main.9.IfExit:
+     add         qword[rbp-8],                    1
+     mov                  rsi,         qword[rbp-8]
 @main.5.ForCon:
-     cmp        qword[rbp-80],                  r15
+     cmp         qword[rbp-8],             30000000
      mov                  rsi,                    0
-    setl                  sil
+   setle                  sil
      cmp                  rsi,                    1
 	je	@main.4.ForBody
-     mov                   r8,        qword[rbp-48]
-     mov                   r9,         __const_str0
-     mov                  r13,                   28
-	jmp	@main.62.@toStringHex.5.ForCon
-@main.63.@toStringHex.4.ForBody:
-     mov                  rsi,                   r8
-     mov                  rcx,                  r13
-     shr                  rsi,                   cl
-     and                  rsi,                   15
-     mov                  r12,                  rsi
-     cmp                  r12,                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.64.@toStringHex.8.IfTrue
-	jmp	@main.65.@toStringHex.7.IfFalse
-@main.64.@toStringHex.8.IfTrue:
-     mov                  rsi,                   48
-     add                  rsi,                  r12
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   32
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    0
-	je	@main.130.@int2chr.6.cmp_and
-     cmp                  rbx,                  126
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    0
-@main.130.@int2chr.6.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.131.@int2chr.4.IfTrue
-	jmp	@main.132.@int2chr.3.IfFalse
-@main.131.@int2chr.4.IfTrue:
-     sub                  rbx,                   32
-     mov                  rdi,   qword[@asciiTable]
-     mov                  rsi,                  rbx
-     mov                  rdx,                  rbx
-    push                   r9
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__substring__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@main.128.@int2chr.2.exit
-	jmp	@main.133.@int2chr.5.IfExit
-@main.132.@int2chr.3.IfFalse:
-@main.133.@int2chr.5.IfExit:
-     mov                  rsi,         __const_str0
-@main.128.@int2chr.2.exit:
-     mov                  rdi,                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r9,                  rsi
-	jmp	@main.66.@toStringHex.9.IfExit
-@main.65.@toStringHex.7.IfFalse:
-     mov                  rsi,                   65
-     add                  rsi,                  r12
-     sub                  rsi,                   10
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   32
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    0
-	je	@main.136.@int2chr.6.cmp_and
-     cmp                  rbx,                  126
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    0
-@main.136.@int2chr.6.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.137.@int2chr.4.IfTrue
-	jmp	@main.138.@int2chr.3.IfFalse
-@main.137.@int2chr.4.IfTrue:
-     sub                  rbx,                   32
-     mov                  rdi,   qword[@asciiTable]
-     mov                  rsi,                  rbx
-     mov                  rdx,                  rbx
-    push                   r9
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__substring__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@main.134.@int2chr.2.exit
-	jmp	@main.139.@int2chr.5.IfExit
-@main.138.@int2chr.3.IfFalse:
-@main.139.@int2chr.5.IfExit:
-     mov                  rsi,         __const_str0
-@main.134.@int2chr.2.exit:
-     mov                  rdi,                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r9,                  rsi
-@main.66.@toStringHex.9.IfExit:
-     mov                  rsi,                  r13
-     sub                  rsi,                    4
-     mov                  r13,                  rsi
-@main.62.@toStringHex.5.ForCon:
-     cmp                  r13,                    0
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    1
-	je	@main.63.@toStringHex.4.ForBody
-     mov                  rsi,                   r9
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-call	print
-     mov                  r12,        qword[rbp-56]
-     mov                  r13,         __const_str0
-     mov                   r8,                   28
-	jmp	@main.69.@toStringHex.5.ForCon
-@main.70.@toStringHex.4.ForBody:
-     mov                  rsi,                  r12
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     and                  rsi,                   15
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.71.@toStringHex.8.IfTrue
-	jmp	@main.72.@toStringHex.7.IfFalse
-@main.71.@toStringHex.8.IfTrue:
-     mov                  rsi,                   48
-     add                  rsi,                  rbx
-     mov                  rdi,                  rsi
-    push                  rsi
-    push                   r8
-call	int2chr
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.73.@toStringHex.9.IfExit
-@main.72.@toStringHex.7.IfFalse:
-     mov                  rsi,                   65
-     add                  rsi,                  rbx
-     sub                  rsi,                   10
-     mov                  rdi,                  rsi
-    push                  rsi
-    push                   r8
-call	int2chr
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-@main.73.@toStringHex.9.IfExit:
-     mov                  rsi,                   r8
-     sub                  rsi,                    4
-     mov                   r8,                  rsi
-@main.69.@toStringHex.5.ForCon:
-     cmp                   r8,                    0
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    1
-	je	@main.70.@toStringHex.4.ForBody
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-call	print
-     mov                  r12,        qword[rbp-64]
-     mov                  r13,         __const_str0
-     mov                   r8,                   28
-	jmp	@main.76.@toStringHex.5.ForCon
-@main.77.@toStringHex.4.ForBody:
-     mov                  rsi,                  r12
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     and                  rsi,                   15
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.78.@toStringHex.8.IfTrue
-	jmp	@main.79.@toStringHex.7.IfFalse
-@main.78.@toStringHex.8.IfTrue:
-     mov                  rsi,                   48
-     add                  rsi,                  rbx
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  rsi
-call	int2chr
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.80.@toStringHex.9.IfExit
-@main.79.@toStringHex.7.IfFalse:
-     mov                  rsi,                   65
-     add                  rsi,                  rbx
-     sub                  rsi,                   10
-     mov                  rdi,                  rsi
-    push                  rsi
-    push                   r8
-call	int2chr
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-@main.80.@toStringHex.9.IfExit:
-     mov                  rsi,                   r8
-     sub                  rsi,                    4
-     mov                   r8,                  rsi
-@main.76.@toStringHex.5.ForCon:
-     cmp                   r8,                    0
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    1
-	je	@main.77.@toStringHex.4.ForBody
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-call	print
-     mov                  r12,        qword[rbp-72]
-     mov                  r13,         __const_str0
-     mov                   r8,                   28
-	jmp	@main.83.@toStringHex.5.ForCon
-@main.84.@toStringHex.4.ForBody:
-     mov                  rsi,                  r12
-     mov                  rcx,                   r8
-     shr                  rsi,                   cl
-     and                  rsi,                   15
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.85.@toStringHex.8.IfTrue
-	jmp	@main.86.@toStringHex.7.IfFalse
-@main.85.@toStringHex.8.IfTrue:
-     mov                  rsi,                   48
-     add                  rsi,                  rbx
-     mov                  rdi,                  rsi
-    push                  rsi
-    push                   r8
-call	int2chr
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.87.@toStringHex.9.IfExit
-@main.86.@toStringHex.7.IfFalse:
-     mov                  rsi,                   65
-     add                  rsi,                  rbx
-     sub                  rsi,                   10
-     mov                  rdi,                  rsi
-    push                  rsi
-    push                   r8
-call	int2chr
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-@main.87.@toStringHex.9.IfExit:
-     mov                  rsi,                   r8
-     sub                  rsi,                    4
-     mov                   r8,                  rsi
-@main.83.@toStringHex.5.ForCon:
-     cmp                   r8,                    0
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    1
-	je	@main.84.@toStringHex.4.ForBody
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-call	print
-     mov                  rdi,         __const_str0
-call	println
      mov                  rax,                    0
+     pop                  rbx
      pop                  r15
      pop                  r13
      pop                  r14
      pop                  r12
-     pop                  rbx
-     add                  rsp,                  136
-     pop                  rbp
-     ret
-toStringHex:
-    push                  rbp
-     mov                  rbp,                  rsp
-     sub                  rsp,                    8
-    push                  r12
-    push                  r13
-    push                  rbx
-@toStringHex.1.enter:
-     mov                   r8,                  rdi
-     mov                   r9,         __const_str0
-     mov                  r13,                   28
-	jmp	@toStringHex.5.ForCon
-@toStringHex.4.ForBody:
-     mov                  rsi,                   r8
-     mov                  rcx,                  r13
-     shr                  rsi,                   cl
-     and                  rsi,                   15
-     mov                  r12,                  rsi
-     cmp                  r12,                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@toStringHex.8.IfTrue
-	jmp	@toStringHex.7.IfFalse
-@toStringHex.8.IfTrue:
-     mov                  rsi,                   48
-     add                  rsi,                  r12
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   32
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    0
-	je	@toStringHex.13.@int2chr.6.cmp_and
-     cmp                  rbx,                  126
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    0
-@toStringHex.13.@int2chr.6.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@toStringHex.14.@int2chr.4.IfTrue
-	jmp	@toStringHex.15.@int2chr.3.IfFalse
-@toStringHex.14.@int2chr.4.IfTrue:
-     sub                  rbx,                   32
-     mov                  rdi,   qword[@asciiTable]
-     mov                  rsi,                  rbx
-     mov                  rdx,                  rbx
-    push                   r8
-    push                  rsi
-    push                   r9
-     sub                  rsp,                    8
-call	__substring__
-     add                  rsp,                    8
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-	jmp	@toStringHex.11.@int2chr.2.exit
-	jmp	@toStringHex.16.@int2chr.5.IfExit
-@toStringHex.15.@int2chr.3.IfFalse:
-@toStringHex.16.@int2chr.5.IfExit:
-     mov                  rsi,         __const_str0
-@toStringHex.11.@int2chr.2.exit:
-     mov                  rdi,                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                   r9,                  rsi
-	jmp	@toStringHex.9.IfExit
-@toStringHex.7.IfFalse:
-     mov                  rsi,                   65
-     add                  rsi,                  r12
-     sub                  rsi,                   10
-     mov                  rbx,                  rsi
-     cmp                  rbx,                   32
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    0
-	je	@toStringHex.19.@int2chr.6.cmp_and
-     cmp                  rbx,                  126
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    0
-@toStringHex.19.@int2chr.6.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@toStringHex.20.@int2chr.4.IfTrue
-	jmp	@toStringHex.21.@int2chr.3.IfFalse
-@toStringHex.20.@int2chr.4.IfTrue:
-     sub                  rbx,                   32
-     mov                  rdi,   qword[@asciiTable]
-     mov                  rsi,                  rbx
-     mov                  rdx,                  rbx
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-call	__substring__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-	jmp	@toStringHex.17.@int2chr.2.exit
-	jmp	@toStringHex.22.@int2chr.5.IfExit
-@toStringHex.21.@int2chr.3.IfFalse:
-@toStringHex.22.@int2chr.5.IfExit:
-     mov                  rsi,         __const_str0
-@toStringHex.17.@int2chr.2.exit:
-     mov                  rdi,                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                   r9,                  rsi
-@toStringHex.9.IfExit:
-     mov                  rsi,                  r13
-     sub                  rsi,                    4
-     mov                  r13,                  rsi
-@toStringHex.5.ForCon:
-     cmp                  r13,                    0
-     mov                  rsi,                    0
-   setge                  sil
-     cmp                  rsi,                    1
-	je	@toStringHex.4.ForBody
-     mov                  rax,                   r9
-     pop                  rbx
-     pop                  r13
-     pop                  r12
-     add                  rsp,                    8
+     add                  rsp,                   24
      pop                  rbp
      ret
 
 
  section                 .bss
-@asciiTable:
+@@h:
+  	resq 		1
+@@p:
+  	resq 		1
+@@f:
+  	resq 		1
+@@g:
   	resq 		1
 
 
  section                .data
-      dq                    0
-__const_str0:
-      db "",0
-      dq                    1
-__const_str1:
-      db " ",0
-      dq                   95
-__const_str2:
-      db " !",34,"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[",92,"]^_`abcdefghijklmnopqrstuvwxyz{|}~",0
 
 
 

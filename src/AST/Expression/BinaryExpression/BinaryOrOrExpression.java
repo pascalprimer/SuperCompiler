@@ -31,7 +31,22 @@ public class BinaryOrOrExpression extends BinaryExpression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		leftExpression.dfsBuiltOperand(ok);
+		rightExpression.dfsBuiltOperand(false);
+		HASH = (leftExpression.HASH + "||" + rightExpression.HASH);
+		if (ok) {
+			identical = IRTranslator.getBuiltExpression(HASH, this);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		if (identical != null) {
+			operand = identical.operand;
+			return;
+		}
+
 		/*
 		cmp leftExp 1
 		je cmp_or
@@ -44,6 +59,7 @@ public class BinaryOrOrExpression extends BinaryExpression {
 		Label label = new Label("cmp_or");
 		instructionList.add(new CompareInstruction(left, new Immediate(1)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+
 		rightExpression.translateIR(instructionList);
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(1)));

@@ -34,15 +34,24 @@ public class BinaryXorExpression extends BinaryExpression {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
-		leftExpression.translateIR(instructionList);
-		rightExpression.translateIR(instructionList);
-
+	public void dfsBuiltOperand(boolean ok) {
+		leftExpression.dfsBuiltOperand(ok);
+		rightExpression.dfsBuiltOperand(ok);
 		HASH = "(" + leftExpression.HASH + "^" + rightExpression.HASH + ")";
-		operand = IRTranslator.getBuiltOperand(HASH);
-		if (operand != null) {
+		if (ok) {
+			identical = IRTranslator.getBuiltExpression(HASH, this);
+		}
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		if (identical != null) {
+			operand = identical.operand;
 			return;
 		}
+
+		leftExpression.translateIR(instructionList);
+		rightExpression.translateIR(instructionList);
 
 		operand = RegisterManager.getVirtualRegister();
 		Operand left = leftExpression.operand;
@@ -51,7 +60,5 @@ public class BinaryXorExpression extends BinaryExpression {
 		instructionList.add(new BinaryInstruction(
 				BinaryInstruction.Operation.XOR, operand, right
 		));
-
-		IRTranslator.builtOperand.put(HASH, operand);
 	}
 }

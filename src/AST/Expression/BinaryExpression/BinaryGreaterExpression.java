@@ -54,16 +54,24 @@ public class BinaryGreaterExpression extends BinaryExpression {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
-		leftExpression.translateIR(instructionList);
-		rightExpression.translateIR(instructionList);
-
+	public void dfsBuiltOperand(boolean ok) {
+		leftExpression.dfsBuiltOperand(ok);
+		rightExpression.dfsBuiltOperand(ok);
 		HASH = "(" + leftExpression.HASH + ">" + rightExpression.HASH + ")";
-		operand = IRTranslator.getBuiltOperand(HASH);
-		if (operand != null) {
-			System.err.println("niubi>");
+		if (ok) {
+			identical = IRTranslator.getBuiltExpression(HASH, this);
+		}
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		if (identical != null) {
+			operand = identical.operand;
 			return;
 		}
+
+		leftExpression.translateIR(instructionList);
+		rightExpression.translateIR(instructionList);
 
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
@@ -95,8 +103,6 @@ public class BinaryGreaterExpression extends BinaryExpression {
 			instructionList.add(new CompareInstruction(left, right));
 			instructionList.add(new CSetInstruction(CSetInstruction.Type.G, operand));
 		}
-
-		IRTranslator.builtOperand.put(HASH, operand);
 	}
 
 }

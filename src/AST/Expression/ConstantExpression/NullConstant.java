@@ -17,6 +17,11 @@ public class NullConstant extends Constant {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		//fixme
 		operand = new Immediate(0);

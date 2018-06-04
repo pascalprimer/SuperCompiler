@@ -24,6 +24,13 @@ public class BlockStatement extends Statement implements Scope {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		for (Statement statement: statements) {
+			statement.dfsBuiltOperand(ok);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		IRTranslator.builtOperand.clear();
 		for (Statement statement: statements) {

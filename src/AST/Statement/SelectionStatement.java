@@ -35,8 +35,20 @@ public class SelectionStatement extends Statement implements Scope {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
+	public void dfsBuiltOperand(boolean ok) {
+		condition.dfsBuiltOperand(ok);
+		if (thenStatement != null) {
+			thenStatement.dfsBuiltOperand(ok);
+		}
 		IRTranslator.builtOperand.clear();
+		if (elseStatement != null) {
+			elseStatement.dfsBuiltOperand(ok);
+		}
+		IRTranslator.builtOperand.clear();
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
 		/*
 			condition
 			mov condition.operand tmp
@@ -64,8 +76,6 @@ public class SelectionStatement extends Statement implements Scope {
 
 		instructionList.add(trueLabel);
 		thenStatement.translateIR(instructionList);
-
-		IRTranslator.builtOperand.clear();
 
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JMP, exitLabel));
 		instructionList.add(falseLabel);

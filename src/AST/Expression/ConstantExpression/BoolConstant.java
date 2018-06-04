@@ -25,19 +25,16 @@ public class BoolConstant extends Constant {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
+	public void dfsBuiltOperand(boolean ok) {
 		HASH = String.valueOf(value);
-		operand = IRTranslator.getBuiltOperand(HASH);
-		if (operand != null) {
-			return;
-		}
+	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
 		if (value) {
 			operand = new Immediate(1);
 		} else {
 			operand = new Immediate(0);
 		}
-
-		IRTranslator.builtOperand.put(HASH, operand);
 	}
 }

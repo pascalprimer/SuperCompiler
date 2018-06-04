@@ -24,6 +24,11 @@ public class UnaryPositiveExpression extends UnaryExpression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		System.out.println("fxfxfxfxfxfxfxffxfxfxfxfxfxfx");
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		System.err.println("unary positive??? Are you kidding me?");
 	}

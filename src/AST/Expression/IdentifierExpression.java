@@ -51,13 +51,15 @@ public class IdentifierExpression extends Expression {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
+	public void dfsBuiltOperand(boolean ok) {
 		if (getLeftValue() && (symbol.getType() instanceof IntType || symbol.getType() instanceof BoolType)) {
-			HASH = symbol.HASH + "." + String.valueOf(symbol.number);
-			IRTranslator.builtOperand.put(HASH, symbol.operand);
+			HASH = symbol.HASH + "^" + String.valueOf(symbol.number);
+			IRTranslator.getBuiltExpression(HASH, this);
 		}
-		//System.out.println("Identifier: " + HASH);
+	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
 		operand = symbol.operand;
 	}
 }

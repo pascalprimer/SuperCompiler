@@ -2,16 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IR/FunctionIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/FunctionIR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IR/Operand/VirtualRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/Operand/VirtualRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NASM/NASMTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NASM/NASMTranslator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optimization/Inliner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Inliner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optimization/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/Optimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAddExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAddExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndAndExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndAndExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryDivideExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryDivideExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryEqualExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryEqualExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryModuleExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryModuleExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryMultiplyExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryMultiplyExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrOrExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrOrExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHLExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHLExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHRExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHRExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySubTractExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySubTractExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryUnequalExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryUnequalExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryXorExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryXorExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/BoolConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/BoolConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/IntConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/IntConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/NullConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/NullConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/StringConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/StringConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/VoidConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/VoidConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/Expression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/FieldExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/FieldExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/NewExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/NewExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixAddExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixAddExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixSubtractExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixSubtractExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryAddExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryAddExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNotExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNotExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryPositiveExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryPositiveExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryReverseExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryReverseExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnarySubtractExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnarySubtractExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IR/IRTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/IRTranslator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +71,8 @@
       <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1353">
-              <caret line="147" column="19" selection-end-line="2723" />
+            <state relative-caret-position="18">
+              <caret line="2" selection-end-line="4007" />
             </state>
           </provider>
         </entry>
@@ -38,44 +80,39 @@
       <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+            <state relative-caret-position="864">
+              <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Optimizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Optimization/Optimizer.java">
+      <file leaf-file-name="MoveInstruction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+            <state relative-caret-position="1548">
+              <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+              <folding>
+                <element signature="e#2724#2725#0" expanded="true" />
+                <element signature="e#2778#2779#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <file leaf-file-name="IRTranslator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+            <state relative-caret-position="1000">
+              <caret line="125" column="18" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Inliner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
+      <file leaf-file-name="FunctionIR.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-509">
-              <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VirtualRegister.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IR/Operand/VirtualRegister.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+            <state relative-caret-position="353">
+              <caret line="236" column="9" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -93,12 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new Label</find>
-      <find>main.22.Allocate2:</find>
-      <find>isGlobal</find>
-      <find>IRTranslator.who</find>
-      <find>who</find>
-      <find>@temp</find>
       <find>tmpLabel</find>
       <find>t20(rax) = func()</find>
       <find>functionIRMap</find>
@@ -111,7 +142,6 @@
       <find>Un</find>
       <find>call</find>
       <find>add(</find>
-      <find>purity</find>
       <find>__glo</find>
       <find>purityReg</find>
       <find>@@</find>
@@ -119,10 +149,17 @@
       <find>z+i</find>
       <find>@main.18.ForExit:</find>
       <find>=</find>
-      <find>find</find>
       <find>t168</find>
       <find>nowFunc</find>
       <find>&quot;allocate</find>
+      <find>all</find>
+      <find>IRTranslator.built</find>
+      <find>IRTranslator.builtOperand.put</find>
+      <find>find</find>
+      <find>purity</find>
+      <find>purityS</find>
+      <find>100</find>
+      <find>@@p</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -137,57 +174,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/FieldExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/NewExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryAddExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryPositiveExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnarySubtractExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixAddExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixSubtractExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/NullConstant.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/VoidConstant.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/StringConstant.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/IntConstant.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/ConstantExpression/BoolConstant.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/Expression.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Symbol/Symbol.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryReverseExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryXorExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryUnequalExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySubTractExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHRExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHLExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrOrExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryModuleExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryEqualExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryDivideExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndAndExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAddExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNotExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryAddExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnarySubtractExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixSubtractExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixAddExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryMultiplyExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryDivideExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryEqualExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/LiveAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" />
-        <option value="$PROJECT_DIR$/src/AST/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryModuleExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryMultiplyExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrOrExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHLExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHRExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySubTractExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryUnequalExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryXorExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNotExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryReverseExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" />
-        <option value="$PROJECT_DIR$/src/NASM/NASMTranslator.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/Inliner.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
+        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
         <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
-        <option value="$PROJECT_DIR$/src/IR/Operand/VirtualRegister.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/Optimizer.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -232,14 +269,15 @@
               <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AST" type="462c0819:PsiDirectoryNode" />
-              <item name="Statement" type="462c0819:PsiDirectoryNode" />
+              <item name="Expression" type="462c0819:PsiDirectoryNode" />
+              <item name="UnaryExpression" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Main" type="b2602c69:ProjectViewProjectNode" />
               <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AST" type="462c0819:PsiDirectoryNode" />
-              <item name="Symbol" type="462c0819:PsiDirectoryNode" />
+              <item name="Statement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Main" type="b2602c69:ProjectViewProjectNode" />
@@ -409,19 +447,19 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.8202614" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.6862745" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.2178599" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2178599" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.32026145" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.3611111" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.5261438" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.32948422" />
@@ -474,21 +512,33 @@
           <properties />
           <option name="timeStamp" value="183" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndAndExpression.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="189" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="188" />
+      <option name="time" value="191" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="AST.symbolTable" language="JAVA" />
         <watch expression="nodes" language="JAVA" />
+        <watch expression="IRTranslator.builtOperand" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>IRTranslator.builtOperand</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>nodes</expression-string>
         <language-id>JAVA</language-id>
@@ -512,31 +562,148 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        <state relative-caret-position="144">
+          <caret line="145" column="41" selection-start-line="145" selection-start-column="41" selection-end-line="145" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/NewExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="45">
+          <caret line="132" column="19" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/IterationStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryAddExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+        <state relative-caret-position="172">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryPositiveExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+          <folding>
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixAddExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixSubtractExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ConstantExpression/NullConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ConstantExpression/VoidConstant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
-          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ConstantExpression/StringConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ConstantExpression/IntConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+          <folding>
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#795#796#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ConstantExpression/BoolConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding>
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Optimization/LiveAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="91" column="20" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/FieldExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="44" column="46" lean-forward="true" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
+          <folding>
+            <element signature="e#2476#2477#0" expanded="true" />
+            <element signature="e#2499#2500#0" expanded="true" />
+            <element signature="e#2539#2540#0" expanded="true" />
+            <element signature="e#2566#2567#0" expanded="true" />
+            <element signature="e#2606#2607#0" expanded="true" />
+            <element signature="e#2633#2634#0" expanded="true" />
+            <element signature="e#2902#2903#0" expanded="true" />
+            <element signature="e#2943#2944#0" expanded="true" />
+            <element signature="e#3001#3002#0" expanded="true" />
+            <element signature="e#3042#3043#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -547,332 +714,247 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Symbol/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryReverseExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryXorExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="36" column="64" lean-forward="true" selection-start-line="36" selection-start-column="64" selection-end-line="39" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryUnequalExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySubTractExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHRExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHLExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrOrExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryModuleExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryEqualExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryDivideExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="58" column="10" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNotExpression.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/IterationStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAddExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1206">
-          <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryAddExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="31" column="64" lean-forward="true" selection-start-line="31" selection-start-column="64" selection-end-line="36" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnarySubtractExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixSubtractExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PostfixExpression/PostfixAddExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryMultiplyExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="63" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndAndExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="51" column="83" selection-start-line="51" selection-start-column="83" selection-end-line="51" selection-end-column="83" />
+          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="40" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/AssignExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        <state relative-caret-position="174">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="e#1098#1099#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/SelectionStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="120">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/LiveAnalysis.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="183" column="14" lean-forward="true" selection-start-line="183" selection-start-column="14" selection-end-line="183" selection-end-column="14" />
+        <state relative-caret-position="378">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/SymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryDivideExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryEqualExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterEqualExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAndAndExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="40" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NASM/NASMTranslator.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryGreaterExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        <state relative-caret-position="352">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessEqualExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="508">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryAddExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="71" column="64" lean-forward="true" selection-start-line="71" selection-start-column="64" selection-end-line="76" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryLessExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="36" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+        <state relative-caret-position="226">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryModuleExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
+        <state relative-caret-position="526">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/RegisterAllocator.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryMultiplyExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+        <state relative-caret-position="202">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="100" column="8" lean-forward="true" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+        <state relative-caret-position="364">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryOrOrExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHLExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySHRExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinarySubTractExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryUnequalExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryExpression/BinaryXorExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="64" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNotExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
           <folding>
-            <element signature="e#10176#10177#0" expanded="true" />
-            <element signature="e#10194#10195#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Operand/VirtualRegister.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryNegativeExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+        <state relative-caret-position="352">
+          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.asm">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnarySubtractExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1353">
-          <caret line="147" column="19" selection-end-line="2723" />
+        <state relative-caret-position="198">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/Optimizer.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        <state relative-caret-position="342">
+          <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/UnaryExpression/UnaryReverseExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        <state relative-caret-position="94">
+          <caret line="35" column="68" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Block.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/BlockStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/Inliner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509">
-          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
+        <state relative-caret-position="424">
+          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="236" column="9" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.asm">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+          <caret line="2" selection-end-line="4007" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1548">
+          <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+          <folding>
+            <element signature="e#2724#2725#0" expanded="true" />
+            <element signature="e#2778#2779#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="125" column="18" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
         </state>
       </provider>
     </entry>

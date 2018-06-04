@@ -24,6 +24,10 @@ public class ContinueStatement extends Statement {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		IRTranslator.builtOperand.clear();
 		instructionList.add(new JumpInstruction(

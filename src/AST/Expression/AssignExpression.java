@@ -34,6 +34,11 @@ public class AssignExpression extends Expression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		subscript.dfsBuiltOperand(ok);
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		variable.translateIR(instructionList);
 		subscript.translateIR(instructionList);

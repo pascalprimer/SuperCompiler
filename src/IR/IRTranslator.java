@@ -1,6 +1,7 @@
 package IR;
 
 import AST.AST;
+import AST.Expression.Expression;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
@@ -26,18 +27,40 @@ public class IRTranslator {
 	public static int VirtualRegisterCnt = 0;
 
 	public static Map<FunctionIR, VirtualRegister> purityReg = new HashMap<>();
-	public static final int puritySize = 100;
+	public static final int puritySize = 150;
 	public static final int purityTag = -1887415157;
 
-	public static Map<String, Operand> builtOperand = new HashMap<>();
+	public static Map<String, Expression> builtOperand = new HashMap<>();
 
-	public static Operand getBuiltOperand(String hash) {
-		//System.out.println(hash + " " + builtOperand.containsKey(hash));
+	public static Expression getBuiltExpression(String hash, Expression who) {
+//System.out.println("try " + hash);
+//System.out.println(builtOperand);
 		if (builtOperand.containsKey(hash)) {
 //System.out.println("find " + hash);
 			return builtOperand.get(hash);
+		} else {
+			builtOperand.put(hash, who);
 		}
 		return null;
+	}
+
+	public static void dfsBuiltOperand() {
+		for (FunctionType functionType: AST.getGlobalFunction()) {
+			if (functionType.isSystem()) {
+				continue;
+			}
+			functionType.dfsBuiltOperand(true);
+		}
+
+		for (ClassType classType: AST.getClassType()) {
+			for (FunctionType functionType: classType.getMemberFunction().getFunctionTable().values()) {
+				functionType.dfsBuiltOperand(true);
+			}
+			if (classType.getConstructionFunction() != null) {
+				classType.getConstructionFunction().dfsBuiltOperand(true);
+			}
+		}
+
 	}
 
 	public static StringMemory getStringOperand(String str) {
@@ -50,6 +73,9 @@ public class IRTranslator {
 	}
 
 	public static void translate() {
+
+		dfsBuiltOperand();
+
 		//System.err.println("----------------");
 		functionIRMap = new HashMap<>();
 		stringList = new HashMap<>();
@@ -100,7 +126,7 @@ public class IRTranslator {
 			globalDeclarationBlock.instructionList.add(new MoveInstruction(
 					new Address(entry.getValue(), new Immediate(0)), tempBase
 			));
-			for (int i = 0; i < 100; ++i) {
+			for (int i = 0; i < puritySize; ++i) {
 				globalDeclarationBlock.instructionList.add(new MoveInstruction(
 						new Address(entry.getValue(), new Immediate(i)), new Immediate(purityTag)
 				));

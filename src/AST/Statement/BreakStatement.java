@@ -24,6 +24,11 @@ public class BreakStatement extends Statement {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		//System.err.println(IRTranslator.loopExit.toString());
 		IRTranslator.builtOperand.clear();

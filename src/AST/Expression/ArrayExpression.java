@@ -36,6 +36,11 @@ public class ArrayExpression extends Expression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		baseExpression.translateIR(instructionList);
 		subscriptExpression.translateIR(instructionList);

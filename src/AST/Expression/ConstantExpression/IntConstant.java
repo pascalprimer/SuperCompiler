@@ -29,15 +29,12 @@ public class IntConstant extends Constant {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
+	public void dfsBuiltOperand(boolean ok) {
 		HASH = String.valueOf(value);
-		operand = IRTranslator.getBuiltOperand(HASH);
-		if (operand != null) {
-			return;
-		}
+	}
 
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
 		operand = new Immediate(value);
-
-		IRTranslator.builtOperand.put(HASH, operand);
 	}
 }

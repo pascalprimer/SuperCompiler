@@ -30,6 +30,11 @@ public class PostfixSubtractExpression extends Expression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (expression instanceof IdentifierExpression) {
 			Symbol symbol = ((IdentifierExpression) expression).getSymbol();

@@ -29,22 +29,27 @@ public class UnaryNotExpression extends UnaryExpression {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
-		expression.translateIR(instructionList);
-
+	public void dfsBuiltOperand(boolean ok) {
+		expression.dfsBuiltOperand(ok);
 		HASH = "!" + expression.HASH;
-		operand = IRTranslator.getBuiltOperand(HASH);
-		if (operand != null) {
+		if (ok) {
+			identical = IRTranslator.getBuiltExpression(HASH, this);
+		}
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
+		if (identical != null) {
+			operand = identical.operand;
 			return;
 		}
 
+		expression.translateIR(instructionList);
 		operand = RegisterManager.getVirtualRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(
 				UnaryInstruction.Type.NOT, operand
 		));
-
-		IRTranslator.builtOperand.put(HASH, operand);
 	}
 
 }

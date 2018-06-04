@@ -28,6 +28,11 @@ public class StringConstant extends Constant {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		operand = IRTranslator.getStringOperand(value);
 	}

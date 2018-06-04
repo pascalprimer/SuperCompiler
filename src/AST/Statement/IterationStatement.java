@@ -37,8 +37,15 @@ public class IterationStatement extends Statement implements Scope {
 	}
 
 	@Override
-	public void translateIR(List<Instruction> instructionList) {
+	public void dfsBuiltOperand(boolean ok) {
 		IRTranslator.builtOperand.clear();
+		if (statement != null) {
+			statement.dfsBuiltOperand(ok);
+		}
+	}
+
+	@Override
+	public void translateIR(List<Instruction> instructionList) {
 //System.out.println("iteration");
 		/*
 			*init

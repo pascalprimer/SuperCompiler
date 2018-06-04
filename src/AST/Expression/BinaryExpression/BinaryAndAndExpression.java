@@ -31,7 +31,23 @@ public class BinaryAndAndExpression extends BinaryExpression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		leftExpression.dfsBuiltOperand(ok);
+		rightExpression.dfsBuiltOperand(false);
+		HASH = (leftExpression.HASH + "&&" + rightExpression.HASH);
+		//System.out.println("&&");
+		if (ok) {
+			identical = IRTranslator.getBuiltExpression(HASH, this);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		if (identical != null) {
+			operand = identical.operand;
+			return;
+		}
+
 		/*
 		cmp leftExp 0
 		je cmp_and
@@ -44,6 +60,7 @@ public class BinaryAndAndExpression extends BinaryExpression {
 		Label label = new Label("cmp_and");
 		instructionList.add(new CompareInstruction(left, new Immediate(0)));
 		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+
 		rightExpression.translateIR(instructionList);
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(0)));

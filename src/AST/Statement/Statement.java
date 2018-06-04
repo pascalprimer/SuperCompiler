@@ -9,4 +9,6 @@ public abstract class Statement{
 
 	public abstract void translateIR(List<Instruction> instructionList);
 
+	public abstract void dfsBuiltOperand(boolean ok);
+
 }

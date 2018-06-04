@@ -40,8 +40,14 @@ public class VariableDeclarationStatement extends Statement {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		if (declarationExpression != null) {
+			declarationExpression.dfsBuiltOperand(ok);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		IRTranslator.builtOperand.clear();
 		if (declarationExpression == null) {
 			return;
 		}

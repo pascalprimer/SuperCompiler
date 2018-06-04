@@ -15,6 +15,13 @@ public class ExpressionStatement extends Statement {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		if (expression != null) {
+			expression.dfsBuiltOperand(ok);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (expression != null) {
 			expression.translateIR(instructionList);

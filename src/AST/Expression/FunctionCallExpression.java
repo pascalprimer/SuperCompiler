@@ -141,6 +141,13 @@ public class FunctionCallExpression extends Expression {
 	}
 
 	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		for (Expression expression: parameter) {
+			expression.dfsBuiltOperand(ok);
+		}
+	}
+
+	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		List<Operand> operandList = new ArrayList<>();
 		for (Expression exp: parameter) {
