@@ -52,7 +52,7 @@ public class Main {
 
 	public static void optimize() throws Exception {
 		Optimizer.optimizer();
-		IRTranslator.print(1);
+		//IRTranslator.print(1);
 	}
 
 	public static void buildNASM() throws Exception {
@@ -60,7 +60,7 @@ public class Main {
 		File file= new File("program.asm");
 		PrintStream fout = new PrintStream(new FileOutputStream(file));
 		fout.print(code.toString());
-		//System.out.println(code.toString());
+		System.out.println(code.toString());
 	}
 
 	public static void main(String[] args) throws Exception{
