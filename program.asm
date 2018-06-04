@@ -13,14 +13,29 @@ main:
      mov                  rbp,                  rsp
     call __global_declaration
 @main.1.enter:
-     mov                  rsi,                    5
-     mov                  rdi,                  rsi
-     add                  rsi,                    1
+     mov                  rsi,                   20
+     mov                  rdi,                    0
+     mov                   r9,                    1
+	jmp	@main.5.ForCon
+@main.4.ForBody:
      mov                  rdi,                  rdi
-     mov                   r8,                  rdi
-     add                   r8,                  rdi
-     mov                  rdi,                   r8
-     add                  rdi,                  rsi
+     add                  rdi,                   r9
+     mov                  rdi,                  rdi
+     mov                   r8,                   r9
+     add                   r8,                    1
+     mov                   r9,                   r8
+	jmp	@main.3.ForIter
+@main.3.ForIter:
+	jmp	@main.5.ForCon
+@main.5.ForCon:
+     cmp                   r9,                  rsi
+     mov                   r8,                    0
+   setle                  r8b
+     mov                   r8,                   r8
+     cmp                   r8,                    1
+	je	@main.4.ForBody
+	jmp	@main.6.ForExit
+@main.6.ForExit:
      mov                  rax,                  rdi
 	jmp	@main.2.exit
 @main.2.exit:
