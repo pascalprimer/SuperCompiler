@@ -35,6 +35,8 @@ public class NaiveOptimizer {
 				}
 			}
 		}
+
+		//System.out.println(nowFunc.toString(1));
 	}
 
 }

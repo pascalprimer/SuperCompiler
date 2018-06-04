@@ -56,6 +56,10 @@ public class LiveAnalysis {
 	public static void solveBlocks() {
 		Block last = null;
 		for (Block block: nowFunc.blockList) {
+			block.use = new HashSet<>();
+			block.def = new HashSet<>();
+			block.liveOut = new HashSet<>();
+			block.liveIn = new HashSet<>();
 			if (last != null) {
 				last.blockOut.add(block);
 				block.blockIn.add(last);
@@ -63,6 +67,8 @@ public class LiveAnalysis {
 			last = block;
 			Set<VirtualRegister> nowAssigned = new HashSet<>();
 			for (Instruction instruction: block.instructionList) {
+				instruction.liveIn = new HashSet<>();
+				instruction.liveOut = new HashSet<>();
 				for (VirtualRegister register: instruction.use) {
 					//System.out.println("use: " + register + " " + isRegister(register));
 					if (!isRegister(register)) {
