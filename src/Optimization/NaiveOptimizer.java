@@ -18,6 +18,7 @@ public class NaiveOptimizer {
 				Instruction nxt = block.instructionList.get(i + 1);
 				if (now instanceof MoveInstruction
 						&& ((MoveInstruction) now).getSource() == ((MoveInstruction) now).target) {
+//System.out.println("remove " + now.toString(1));
 					block.instructionList.remove(i);
 					--i;
 					continue;
@@ -30,6 +31,8 @@ public class NaiveOptimizer {
 						if (!nxt.liveOut.contains(register)) {
 							((MoveInstruction) now).changeTarget(((MoveInstruction) nxt).target);
 							block.instructionList.remove(i + 1);
+
+//System.out.println("replace " + now.toString(1) + nxt.toString(1));
 						}
 					}
 				}
