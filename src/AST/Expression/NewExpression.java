@@ -133,7 +133,9 @@ public class NewExpression extends Expression {
 			return;
 		}
 		for (Expression expression: list) {
-			expression.dfsBuiltOperand(ok);
+			if (expression != null) {
+				expression.dfsBuiltOperand(ok);
+			}
 		}
 	}
 

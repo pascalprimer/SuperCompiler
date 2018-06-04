@@ -3,219 +3,27 @@
 
 
  section                .text
-lol:
-    push                  rbp
-     mov                  rbp,                  rsp
-     mov        qword[rbp-16],                  rdi
-     cmp                  rdi,                    0
-      jl @lol_purity_checkin_out
-     cmp                  rdi,                  150
-     jnl @lol_purity_checkin_out
-     mov                  rdx,                @@lol
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov                  rdx,           qword[rdx]
-     cmp                  rdx,          -1887415157
-      je @lol_purity_checkin_out
-     mov                  rax,                  rdx
-     pop                  rbp
-     ret
-@lol_purity_checkin_out:
-     sub                  rsp,                   16
-@lol.1.enter:
-     mov                  rsi,                  rdi
-     add                  rsi,                    1
-     mov                  rax,                  rsi
-     add                  rsp,                   16
-     mov                  rdi,                  rax
-     cmp        qword[rbp-16],                    0
-      jl @lol_purity_addition_out
-     cmp        qword[rbp-16],                  150
-     jnl @lol_purity_addition_out
-     mov                  rdx,                @@lol
-     mov                  rcx,        qword[rbp-16]
-     shl                  rcx,                    3
-     add                  rdx,                  rcx
-     mov           qword[rdx],                  rax
-     mov                  rax,                  rdi
-     pop                  rbp
-     ret
-@lol_purity_addition_out:
-     pop                  rbp
-     ret
 __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   16
+     sub                  rsp,                    8
+     mov                  rdi,                    4
+     mov                  rsi,                    4
+     add                  rdi,                    1
+     shl                  rdi,                    3
     push                  rdi
+    push                   r8
     push                  rsi
-     mov                  rdi,                  150
     call               malloc
      pop                  rsi
+     pop                   r8
      pop                  rdi
-     mov                  rsi,                  rax
-     mov         qword[@@lol],                  rsi
-     mov         qword[@@lol],          -1887415157
-     mov       qword[@@lol+8],          -1887415157
-     mov      qword[@@lol+16],          -1887415157
-     mov      qword[@@lol+24],          -1887415157
-     mov      qword[@@lol+32],          -1887415157
-     mov      qword[@@lol+40],          -1887415157
-     mov      qword[@@lol+48],          -1887415157
-     mov      qword[@@lol+56],          -1887415157
-     mov      qword[@@lol+64],          -1887415157
-     mov      qword[@@lol+72],          -1887415157
-     mov      qword[@@lol+80],          -1887415157
-     mov      qword[@@lol+88],          -1887415157
-     mov      qword[@@lol+96],          -1887415157
-     mov     qword[@@lol+104],          -1887415157
-     mov     qword[@@lol+112],          -1887415157
-     mov     qword[@@lol+120],          -1887415157
-     mov     qword[@@lol+128],          -1887415157
-     mov     qword[@@lol+136],          -1887415157
-     mov     qword[@@lol+144],          -1887415157
-     mov     qword[@@lol+152],          -1887415157
-     mov     qword[@@lol+160],          -1887415157
-     mov     qword[@@lol+168],          -1887415157
-     mov     qword[@@lol+176],          -1887415157
-     mov     qword[@@lol+184],          -1887415157
-     mov     qword[@@lol+192],          -1887415157
-     mov     qword[@@lol+200],          -1887415157
-     mov     qword[@@lol+208],          -1887415157
-     mov     qword[@@lol+216],          -1887415157
-     mov     qword[@@lol+224],          -1887415157
-     mov     qword[@@lol+232],          -1887415157
-     mov     qword[@@lol+240],          -1887415157
-     mov     qword[@@lol+248],          -1887415157
-     mov     qword[@@lol+256],          -1887415157
-     mov     qword[@@lol+264],          -1887415157
-     mov     qword[@@lol+272],          -1887415157
-     mov     qword[@@lol+280],          -1887415157
-     mov     qword[@@lol+288],          -1887415157
-     mov     qword[@@lol+296],          -1887415157
-     mov     qword[@@lol+304],          -1887415157
-     mov     qword[@@lol+312],          -1887415157
-     mov     qword[@@lol+320],          -1887415157
-     mov     qword[@@lol+328],          -1887415157
-     mov     qword[@@lol+336],          -1887415157
-     mov     qword[@@lol+344],          -1887415157
-     mov     qword[@@lol+352],          -1887415157
-     mov     qword[@@lol+360],          -1887415157
-     mov     qword[@@lol+368],          -1887415157
-     mov     qword[@@lol+376],          -1887415157
-     mov     qword[@@lol+384],          -1887415157
-     mov     qword[@@lol+392],          -1887415157
-     mov     qword[@@lol+400],          -1887415157
-     mov     qword[@@lol+408],          -1887415157
-     mov     qword[@@lol+416],          -1887415157
-     mov     qword[@@lol+424],          -1887415157
-     mov     qword[@@lol+432],          -1887415157
-     mov     qword[@@lol+440],          -1887415157
-     mov     qword[@@lol+448],          -1887415157
-     mov     qword[@@lol+456],          -1887415157
-     mov     qword[@@lol+464],          -1887415157
-     mov     qword[@@lol+472],          -1887415157
-     mov     qword[@@lol+480],          -1887415157
-     mov     qword[@@lol+488],          -1887415157
-     mov     qword[@@lol+496],          -1887415157
-     mov     qword[@@lol+504],          -1887415157
-     mov     qword[@@lol+512],          -1887415157
-     mov     qword[@@lol+520],          -1887415157
-     mov     qword[@@lol+528],          -1887415157
-     mov     qword[@@lol+536],          -1887415157
-     mov     qword[@@lol+544],          -1887415157
-     mov     qword[@@lol+552],          -1887415157
-     mov     qword[@@lol+560],          -1887415157
-     mov     qword[@@lol+568],          -1887415157
-     mov     qword[@@lol+576],          -1887415157
-     mov     qword[@@lol+584],          -1887415157
-     mov     qword[@@lol+592],          -1887415157
-     mov     qword[@@lol+600],          -1887415157
-     mov     qword[@@lol+608],          -1887415157
-     mov     qword[@@lol+616],          -1887415157
-     mov     qword[@@lol+624],          -1887415157
-     mov     qword[@@lol+632],          -1887415157
-     mov     qword[@@lol+640],          -1887415157
-     mov     qword[@@lol+648],          -1887415157
-     mov     qword[@@lol+656],          -1887415157
-     mov     qword[@@lol+664],          -1887415157
-     mov     qword[@@lol+672],          -1887415157
-     mov     qword[@@lol+680],          -1887415157
-     mov     qword[@@lol+688],          -1887415157
-     mov     qword[@@lol+696],          -1887415157
-     mov     qword[@@lol+704],          -1887415157
-     mov     qword[@@lol+712],          -1887415157
-     mov     qword[@@lol+720],          -1887415157
-     mov     qword[@@lol+728],          -1887415157
-     mov     qword[@@lol+736],          -1887415157
-     mov     qword[@@lol+744],          -1887415157
-     mov     qword[@@lol+752],          -1887415157
-     mov     qword[@@lol+760],          -1887415157
-     mov     qword[@@lol+768],          -1887415157
-     mov     qword[@@lol+776],          -1887415157
-     mov     qword[@@lol+784],          -1887415157
-     mov     qword[@@lol+792],          -1887415157
-     mov     qword[@@lol+800],          -1887415157
-     mov     qword[@@lol+808],          -1887415157
-     mov     qword[@@lol+816],          -1887415157
-     mov     qword[@@lol+824],          -1887415157
-     mov     qword[@@lol+832],          -1887415157
-     mov     qword[@@lol+840],          -1887415157
-     mov     qword[@@lol+848],          -1887415157
-     mov     qword[@@lol+856],          -1887415157
-     mov     qword[@@lol+864],          -1887415157
-     mov     qword[@@lol+872],          -1887415157
-     mov     qword[@@lol+880],          -1887415157
-     mov     qword[@@lol+888],          -1887415157
-     mov     qword[@@lol+896],          -1887415157
-     mov     qword[@@lol+904],          -1887415157
-     mov     qword[@@lol+912],          -1887415157
-     mov     qword[@@lol+920],          -1887415157
-     mov     qword[@@lol+928],          -1887415157
-     mov     qword[@@lol+936],          -1887415157
-     mov     qword[@@lol+944],          -1887415157
-     mov     qword[@@lol+952],          -1887415157
-     mov     qword[@@lol+960],          -1887415157
-     mov     qword[@@lol+968],          -1887415157
-     mov     qword[@@lol+976],          -1887415157
-     mov     qword[@@lol+984],          -1887415157
-     mov     qword[@@lol+992],          -1887415157
-     mov    qword[@@lol+1000],          -1887415157
-     mov    qword[@@lol+1008],          -1887415157
-     mov    qword[@@lol+1016],          -1887415157
-     mov    qword[@@lol+1024],          -1887415157
-     mov    qword[@@lol+1032],          -1887415157
-     mov    qword[@@lol+1040],          -1887415157
-     mov    qword[@@lol+1048],          -1887415157
-     mov    qword[@@lol+1056],          -1887415157
-     mov    qword[@@lol+1064],          -1887415157
-     mov    qword[@@lol+1072],          -1887415157
-     mov    qword[@@lol+1080],          -1887415157
-     mov    qword[@@lol+1088],          -1887415157
-     mov    qword[@@lol+1096],          -1887415157
-     mov    qword[@@lol+1104],          -1887415157
-     mov    qword[@@lol+1112],          -1887415157
-     mov    qword[@@lol+1120],          -1887415157
-     mov    qword[@@lol+1128],          -1887415157
-     mov    qword[@@lol+1136],          -1887415157
-     mov    qword[@@lol+1144],          -1887415157
-     mov    qword[@@lol+1152],          -1887415157
-     mov    qword[@@lol+1160],          -1887415157
-     mov    qword[@@lol+1168],          -1887415157
-     mov    qword[@@lol+1176],          -1887415157
-     mov    qword[@@lol+1184],          -1887415157
-     mov    qword[@@lol+1192],          -1887415157
-     mov            qword[@c],                  123
-     mov                  rdi,            qword[@c]
-    push                  rsi
-     sub                  rsp,                    8
-call	lol
+     mov                   r8,                  rax
+     mov            qword[r8],                  rsi
+     add                   r8,                    8
+     sub                  rdi,                    8
+     mov            qword[@a],                   r8
      add                  rsp,                    8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov            qword[@x],                  rsi
-     add                  rsp,                   16
      pop                  rbp
      ret
 main:
@@ -223,8 +31,40 @@ main:
      mov                  rbp,                  rsp
     call __global_declaration
      sub                  rsp,                    8
+    push                  r12
+    push                  rbx
 @main.1.enter:
-     mov                  rdi,            qword[@x]
+     mov                  rbx,                    4
+     mov                  rsi,                    4
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                  rdi
+    push                   r8
+    push                  rsi
+     mov                  rdi,                  rbx
+    call               malloc
+     pop                  rsi
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,                  rax
+     mov           qword[rdi],                  rsi
+     add                  rdi,                    8
+     sub                  rbx,                    8
+     mov                  r12,                  rdi
+     mov                  rsi,            qword[@a]
+     mov           qword[r12],                  rsi
+     mov                  rsi,            qword[@a]
+     mov         qword[r12+8],                  rsi
+     mov                  rsi,            qword[@a]
+     mov        qword[r12+16],                  rsi
+     mov                  rsi,            qword[@a]
+     mov        qword[r12+24],                  rsi
+     mov                  rdi,                  r12
+    push                  rsi
+call	__size__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
     push                  rsi
 call	toString
      pop                  rsi
@@ -233,21 +73,159 @@ call	toString
      sub                  rsp,                    8
 call	println
      add                  rsp,                    8
+     mov                   r8,                    0
+	jmp	@main.5.ForCon
+@main.4.ForBody:
+     mov                  rbx,           qword[r12]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	getInt
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     mov           qword[rbx],                  rsi
+     mov                  rsi,                   r8
+     add                   r8,                    1
+@main.5.ForCon:
+     mov                  rdi,           qword[r12]
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     cmp                   r8,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.4.ForBody
+     mov                   r8,                    0
+	jmp	@main.9.ForCon
+@main.8.ForBody:
+     mov                  rbx,         qword[r12+8]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+call	print
+     pop                   r8
+     mov                  rsi,                   r8
+     add                   r8,                    1
+@main.9.ForCon:
+     mov                  rdi,         qword[r12+8]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     cmp                   r8,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.8.ForBody
+     mov                  rdi,         __const_str0
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     mov                   r8,                    0
+	jmp	@main.13.ForCon
+@main.12.ForBody:
+     mov                  rbx,        qword[r12+16]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov           qword[rbx],                    0
+     mov                  rsi,                   r8
+     add                   r8,                    1
+@main.13.ForCon:
+     mov                  rdi,        qword[r12+16]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     cmp                   r8,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.12.ForBody
+     mov                   r8,                    0
+	jmp	@main.17.ForCon
+@main.16.ForBody:
+     mov                  rbx,        qword[r12+24]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+call	print
+     pop                   r8
+     mov                  rsi,                   r8
+     add                   r8,                    1
+@main.17.ForCon:
+     mov                  rdi,        qword[r12+24]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     cmp                   r8,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.16.ForBody
+     mov                  rax,                    0
+     pop                  rbx
+     pop                  r12
      add                  rsp,                    8
      pop                  rbp
      ret
 
 
  section                 .bss
-@c:
-  	resq 		1
-@x:
-  	resq 		1
-@@lol:
+@a:
   	resq 		1
 
 
  section                .data
+      dq                    0
+__const_str0:
+      db "",0
 
 
 
