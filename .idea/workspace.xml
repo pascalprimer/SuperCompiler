@@ -83,26 +83,25 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>conflictEdge</find>
       <find>registerMap</find>
       <find>println</find>
       <find>---</find>
       <find>offset</find>
-      <find />
-      <find />
+      <find>jl	@main.22.Allocate2</find>
+      <find>new Label</find>
       <find>main.22.Allocate2:</find>
       <find>isGlobal</find>
       <find>IRTranslator.who</find>
       <find>who</find>
       <find>@temp</find>
       <find>tmpLabel</find>
-      <find />
+      <find>t20(rax) = func()</find>
       <find>functionIRMap</find>
       <find>getBase</find>
       <find>t39</find>
-      <find />
+      <find>new FunctionCallInstruction</find>
       <find>t32</find>
-      <find />
+      <find>new FunctionCallInstru</find>
       <find>getLabel</find>
       <find>Un</find>
       <find>call</find>
@@ -113,6 +112,7 @@
       <find>@@</find>
       <find>t4</find>
       <find>z+i</find>
+      <find>@main.18.ForExit:</find>
     </findStrings>
     <replaceStrings>
       <replace />

@@ -14,7 +14,7 @@ public class Optimizer {
 					//System.out.println(functionIR.toString(1));
 					//return;
 				}
-				NaiveOptimizer.removeUselessRegister(functionIR);
+				//NaiveOptimizer.removeUselessRegister(functionIR);
 			}
 		}
 		/*for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {

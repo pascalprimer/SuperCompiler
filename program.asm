@@ -7,13 +7,15 @@ printNum:
     push                  rbp
      mov                  rbp,                  rsp
 @printNum.1.enter:
-     mov                  rdi,                  rdi
+     mov                  rsi,                  rdi
+     mov                  rdi,                  rsi
     push                  rsi
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
      pop                  rsi
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
 call	println
 @printNum.2.exit:
@@ -198,20 +200,22 @@ main:
      mov                  rsi,        qword[rsi+24]
      mov                  rsi,        qword[rsi+72]
 @main.37.@printNum.1.enter:
-    push                   r8
-    push                   r8
-    push                   r8
+     mov                  rdi,                  rsi
     push                  rsi
+    push                   r8
+    push                   r8
+    push                   r8
     push                   r8
     push                   r8
 call	toString
      pop                   r8
      pop                   r8
+     pop                   r8
+     pop                   r8
+     pop                   r8
      pop                  rsi
-     pop                   r8
-     pop                   r8
-     pop                   r8
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
     push                   r8
     push                   r8
@@ -291,9 +295,10 @@ call	println
      add                  rbx,                  rsi
      mov                  rsi,           qword[rbx]
 @main.39.@printNum.1.enter:
-    push                   r8
-    push                   r8
+     mov                  rdi,                  rsi
     push                  rsi
+    push                   r8
+    push                   r8
     push                   r8
     push                   r8
      sub                  rsp,                    8
@@ -301,10 +306,11 @@ call	toString
      add                  rsp,                    8
      pop                   r8
      pop                   r8
+     pop                   r8
+     pop                   r8
      pop                  rsi
-     pop                   r8
-     pop                   r8
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
     push                   r8
     push                   r8
@@ -352,16 +358,18 @@ call	println
      mov                  rsi,        qword[rsi+16]
      mov                  rsi,        qword[rsi+80]
 @main.41.@printNum.1.enter:
+     mov                  rdi,                  rsi
+    push                   r8
     push                   r8
     push                   r8
     push                  rsi
-    push                   r8
 call	toString
-     pop                   r8
      pop                  rsi
      pop                   r8
      pop                   r8
+     pop                   r8
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
     push                   r8
     push                   r8
@@ -389,16 +397,18 @@ call	println
      mov                  rsi,           qword[rsi]
      mov                  rsi,           qword[rsi]
 @main.43.@printNum.1.enter:
-    push                   r8
+     mov                  rdi,                  rsi
     push                   r8
     push                  rsi
+    push                   r8
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
+     pop                   r8
      pop                  rsi
      pop                   r8
-     pop                   r8
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
     push                   r8
     push                   r8
@@ -411,12 +421,14 @@ call	println
      mov                  rsi,         qword[rsi+8]
      mov                  rsi,           qword[rsi]
 @main.45.@printNum.1.enter:
+     mov                  rdi,                  rsi
     push                  rsi
     push                   r8
 call	toString
      pop                   r8
      pop                  rsi
      mov                  rsi,                  rax
+     mov                  rsi,                  rsi
      mov                  rdi,                  rsi
     push                   r8
      sub                  rsp,                    8
