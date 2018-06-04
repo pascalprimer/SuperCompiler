@@ -13,7 +13,6 @@ import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import Utility.CompilerError;
-import com.sun.deploy.panel.ITreeNode;
 
 import java.util.List;
 
