@@ -142,6 +142,8 @@ public class FunctionCallExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		HASH = toString().substring(15);
+
 		List<Operand> operandList = new ArrayList<>();
 		for (Expression exp: parameter) {
 			exp.translateIR(instructionList);

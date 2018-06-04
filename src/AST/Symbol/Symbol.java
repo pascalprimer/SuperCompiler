@@ -1,10 +1,12 @@
 package AST.Symbol;
 
 import AST.Type.ClassType;
+import AST.Type.IntType;
 import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
 
 import java.lang.*;
+import java.util.HashSet;
 
 public class Symbol {
 	private String name;
@@ -13,6 +15,8 @@ public class Symbol {
 	private boolean isglobal;
 	private boolean built;
 	public Operand operand;
+
+	public String HASH;
 	//public boolean isUseless;
 
 	public Symbol(String name, Type type, ClassType classBelong, boolean isglobal, boolean built) {
@@ -22,6 +26,12 @@ public class Symbol {
 		this.isglobal = isglobal;
 		this.built = built;
 		operand = new VirtualRegister(name);
+
+		if (type instanceof IntType) {
+			HASH = name;
+		} else {
+			//HASH = toString();
+		}
 		//setUseless();
 		//System.out.println(this);
 	}

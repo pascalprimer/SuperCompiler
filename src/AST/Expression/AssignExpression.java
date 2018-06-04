@@ -35,6 +35,8 @@ public class AssignExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		HASH = toString().substring(15);
+
 		variable.translateIR(instructionList);
 		subscript.translateIR(instructionList);
 		Operand lvalue = variable.operand,

@@ -37,6 +37,8 @@ public class ArrayExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		HASH = toString().substring(15);
+
 		baseExpression.translateIR(instructionList);
 		subscriptExpression.translateIR(instructionList);
 		Operand base = baseExpression.operand,

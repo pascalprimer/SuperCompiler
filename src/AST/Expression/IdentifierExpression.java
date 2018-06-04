@@ -4,7 +4,10 @@ import AST.AST;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Symbol.Type;
+import AST.Type.BoolType;
 import AST.Type.FunctionType;
+import AST.Type.IntType;
+import IR.IRTranslator;
 import IR.Instruction.Instruction;
 import javafx.util.Pair;
 
@@ -49,6 +52,13 @@ public class IdentifierExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		if (getLeftValue() && (symbol.getType() instanceof IntType || symbol.getType() instanceof BoolType)) {
+			HASH = symbol.getName();
+			IRTranslator.builtOperand.put(HASH, symbol.operand);
+		} else {
+			HASH = toString().substring(15);
+		}
+
 		operand = symbol.operand;
 	}
 }

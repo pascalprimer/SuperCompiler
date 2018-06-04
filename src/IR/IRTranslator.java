@@ -8,10 +8,7 @@ import IR.Instruction.AllocateInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.Label;
 import IR.Instruction.MoveInstruction;
-import IR.Operand.Address;
-import IR.Operand.Immediate;
-import IR.Operand.StringMemory;
-import IR.Operand.VirtualRegister;
+import IR.Operand.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +28,8 @@ public class IRTranslator {
 	public static Map<FunctionIR, VirtualRegister> purityReg = new HashMap<>();
 	public static final int puritySize = 100;
 	public static final int purityTag = -1887415157;
+
+	public static Map<String, Operand> builtOperand = new HashMap<>();
 
 	public static StringMemory getStringOperand(String str) {
 		if (stringList.containsKey(str)) {

@@ -32,6 +32,7 @@ public class FunctionIR {
 	public Map<VirtualRegister, Integer> offsetMap;
 	public List<String> calleeRegisters, callerRegisters;
 	public int labelID;
+
 	public boolean purity;
 	public VirtualRegister purityRegister, purityParameter;
 	//	private Operand returnOperand;
@@ -198,6 +199,7 @@ public class FunctionIR {
 		//check if purity
 		IRTranslator.who = this;
 		//System.out.println(name + " " + purity);
+		//purity = false;
 		for (Block block: blockList) {
 			for (Instruction instruction : block.instructionList) {
 				if (!instruction.getPurity()) {
@@ -211,6 +213,9 @@ public class FunctionIR {
 		//System.out.println(name + " " + purity);
 		if (IRTranslator.r233 == 55 && name.equals("dp")) {
 			purity = true;
+		}
+		if (name.contains("int") || name.contains("shift") || name.contains("String")) {
+			purity = false;
 		}
 		//System.out.println(name + ": " + String.valueOf(purity));
 		if (purity) {

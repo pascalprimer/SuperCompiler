@@ -11,7 +11,10 @@ import NASM.PhysicalOperand.PhysicalAddress;
 import NASM.PhysicalOperand.PhysicalOperand;
 import NASM.PhysicalOperand.SystemRegister;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FunctionCallInstruction extends Instruction{
 
@@ -67,7 +70,14 @@ public class FunctionCallInstruction extends Instruction{
 	public String translateNASM() {
 		StringBuilder code = new StringBuilder();
 
-		code.append(NASMTranslator.saveCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
+		List<String> callerLive = new ArrayList<>();
+		for (VirtualRegister register: liveOut) {
+			if (register.sysRegister != null
+					&& RegisterManager.callerRegisterName.contains(register.sysRegister)) {
+				callerLive.add(register.sysRegister);
+			}
+		}
+		code.append(NASMTranslator.saveCallerRegister(callerLive));
 
 		int rsp_delta = parameterList.size();
 		if ((NASMTranslator.rspOffset + rsp_delta) % 2 == 1) {
@@ -101,7 +111,7 @@ public class FunctionCallInstruction extends Instruction{
 			NASMTranslator.rspOffset -= rsp_delta;
 		}
 
-		code.append(NASMTranslator.restoreCallerRegister(NASMTranslator.nowFunctionIR.callerRegisters));
+		code.append(NASMTranslator.restoreCallerRegister(callerLive));
 
 		if (returnValue != null) {
 			PhysicalOperand value = PhysicalOperand.get(code, returnValue);

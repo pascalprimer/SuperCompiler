@@ -13,6 +13,8 @@ public abstract class Expression {
 	public Operand operand;
 	public Type returnType;
 
+	public String HASH;
+
 	public Expression(String op, boolean leftValue, Type type) {
 		this.op = op;
 		this.leftValue = leftValue;
