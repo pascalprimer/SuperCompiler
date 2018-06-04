@@ -25,6 +25,7 @@ public class ContinueStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		IRTranslator.builtOperand.clear();
 		instructionList.add(new JumpInstruction(
 				JumpInstruction.Type.JMP,
 				iterationStatement.iterLabel

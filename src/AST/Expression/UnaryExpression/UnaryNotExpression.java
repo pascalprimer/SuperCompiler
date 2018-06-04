@@ -3,11 +3,13 @@ package AST.Expression.UnaryExpression;
 import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
+import IR.IRTranslator;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
 import IR.Instruction.UnaryInstruction;
 import IR.RegisterManager;
 import Utility.CompilerError;
+import com.sun.deploy.panel.ITreeNode;
 
 import java.util.List;
 
@@ -30,11 +32,20 @@ public class UnaryNotExpression extends UnaryExpression {
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		expression.translateIR(instructionList);
+
+		HASH = "!" + expression.HASH;
+		operand = IRTranslator.getBuiltOperand(HASH);
+		if (operand != null) {
+			return;
+		}
+
 		operand = RegisterManager.getVirtualRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(
 				UnaryInstruction.Type.NOT, operand
 		));
+
+		IRTranslator.builtOperand.put(HASH, operand);
 	}
 
 }

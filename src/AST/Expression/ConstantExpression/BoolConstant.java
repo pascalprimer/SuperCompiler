@@ -1,6 +1,7 @@
 package AST.Expression.ConstantExpression;
 
 import AST.Type.BoolType;
+import IR.IRTranslator;
 import IR.Instruction.Instruction;
 import IR.Operand.Immediate;
 
@@ -25,10 +26,18 @@ public class BoolConstant extends Constant {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		HASH = String.valueOf(value);
+		operand = IRTranslator.getBuiltOperand(HASH);
+		if (operand != null) {
+			return;
+		}
+
 		if (value) {
 			operand = new Immediate(1);
 		} else {
 			operand = new Immediate(0);
 		}
+
+		IRTranslator.builtOperand.put(HASH, operand);
 	}
 }

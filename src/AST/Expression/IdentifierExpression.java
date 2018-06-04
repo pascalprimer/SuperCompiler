@@ -53,11 +53,10 @@ public class IdentifierExpression extends Expression {
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (getLeftValue() && (symbol.getType() instanceof IntType || symbol.getType() instanceof BoolType)) {
-			HASH = symbol.getName();
+			HASH = symbol.HASH + "." + String.valueOf(symbol.number);
 			IRTranslator.builtOperand.put(HASH, symbol.operand);
-		} else {
-			HASH = toString().substring(15);
 		}
+		//System.out.println("Identifier: " + HASH);
 
 		operand = symbol.operand;
 	}

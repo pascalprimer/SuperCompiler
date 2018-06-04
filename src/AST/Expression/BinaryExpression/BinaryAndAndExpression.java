@@ -4,6 +4,7 @@ import AST.Expression.ConstantExpression.BoolConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.BoolType;
+import IR.IRTranslator;
 import IR.Instruction.*;
 import IR.Operand.Immediate;
 import IR.Operand.Operand;

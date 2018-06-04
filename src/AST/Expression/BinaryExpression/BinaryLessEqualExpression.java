@@ -10,6 +10,7 @@ import AST.Symbol.Type;
 import AST.Type.BoolType;
 import AST.Type.IntType;
 import AST.Type.StringType;
+import IR.IRTranslator;
 import IR.Instruction.CSetInstruction;
 import IR.Instruction.CompareInstruction;
 import IR.Instruction.Instruction;
@@ -55,6 +56,13 @@ public class BinaryLessEqualExpression extends BinaryExpression {
 	public void translateIR(List<Instruction> instructionList) {
 		leftExpression.translateIR(instructionList);
 		rightExpression.translateIR(instructionList);
+
+		HASH = "(" + leftExpression.HASH + "<=" + rightExpression.HASH + ")";
+		operand = IRTranslator.getBuiltOperand(HASH);
+		if (operand != null) {
+			return;
+		}
+
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
 		if (left == right) {
@@ -93,6 +101,8 @@ public class BinaryLessEqualExpression extends BinaryExpression {
 			instructionList.add(new CompareInstruction(left, right));
 			instructionList.add(new CSetInstruction(CSetInstruction.Type.LE, operand));
 		}
+
+		IRTranslator.builtOperand.put(HASH, operand);
 	}
 
 }

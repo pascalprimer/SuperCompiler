@@ -35,7 +35,9 @@ public class AssignExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		HASH = toString().substring(15);
+		if (variable instanceof IdentifierExpression) {
+			((IdentifierExpression) variable).getSymbol().number++;
+		}
 
 		variable.translateIR(instructionList);
 		subscript.translateIR(instructionList);

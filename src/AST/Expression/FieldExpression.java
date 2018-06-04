@@ -68,8 +68,6 @@ public class FieldExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		HASH = toString().substring(15);
-
 		if (returnType instanceof  FunctionType) {
 			return;
 		}

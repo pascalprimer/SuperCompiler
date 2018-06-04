@@ -3,6 +3,7 @@ package AST.Statement;
 import AST.Expression.Expression;
 import AST.Symbol.Scope;
 import AST.Type.BoolType;
+import IR.IRTranslator;
 import IR.Instruction.*;
 import IR.Operand.Immediate;
 import IR.Operand.VirtualRegister;
@@ -35,6 +36,7 @@ public class SelectionStatement extends Statement implements Scope {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		IRTranslator.builtOperand.clear();
 		/*
 			condition
 			mov condition.operand tmp

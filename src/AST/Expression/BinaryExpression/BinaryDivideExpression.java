@@ -4,6 +4,7 @@ import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.Expression;
 import AST.Symbol.Type;
 import AST.Type.IntType;
+import IR.IRTranslator;
 import IR.Instruction.BinaryInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
@@ -38,6 +39,13 @@ public class BinaryDivideExpression extends BinaryExpression {
 	public void translateIR(List<Instruction> instructionList) {
 		leftExpression.translateIR(instructionList);
 		rightExpression.translateIR(instructionList);
+
+		HASH = "(" + leftExpression.HASH + "/" + rightExpression.HASH + ")";
+		operand = IRTranslator.getBuiltOperand(HASH);
+		if (operand != null) {
+			return;
+		}
+
 		operand = RegisterManager.getVirtualRegister();
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
@@ -45,6 +53,8 @@ public class BinaryDivideExpression extends BinaryExpression {
 		instructionList.add(new BinaryInstruction(
 				BinaryInstruction.Operation.DIV, operand, right
 		));
+
+		IRTranslator.builtOperand.put(HASH, operand);
 	}
 
 }

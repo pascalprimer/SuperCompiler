@@ -31,6 +31,13 @@ public class IRTranslator {
 
 	public static Map<String, Operand> builtOperand = new HashMap<>();
 
+	public static Operand getBuiltOperand(String hash) {
+		if (builtOperand.containsKey(hash)) {
+			return builtOperand.get(hash);
+		}
+		return null;
+	}
+
 	public static StringMemory getStringOperand(String str) {
 		if (stringList.containsKey(str)) {
 			return stringList.get(str);

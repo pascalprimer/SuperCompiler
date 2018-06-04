@@ -3,6 +3,7 @@ package AST.Expression.UnaryExpression;
 import AST.Expression.ConstantExpression.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.IntType;
+import IR.IRTranslator;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
 import IR.Instruction.UnaryInstruction;
@@ -30,11 +31,20 @@ public class UnaryNegativeExpression extends UnaryExpression {
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		expression.translateIR(instructionList);
+
+		HASH = "-" + expression.HASH;
+		operand = IRTranslator.getBuiltOperand(HASH);
+		if (operand != null) {
+			return;
+		}
+
 		operand = RegisterManager.getVirtualRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(
 				UnaryInstruction.Type.NEG, operand
 		));
+
+		IRTranslator.builtOperand.put(HASH, operand);
 	}
 
 

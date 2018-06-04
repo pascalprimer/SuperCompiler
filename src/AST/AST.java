@@ -17,6 +17,8 @@ import java.util.Stack;
 
 public class AST {
 
+	public static int allocateNumber = 0;
+
 	public static int loopCnt = 0;
 
 	public static ClassTable classTable;

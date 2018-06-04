@@ -38,6 +38,7 @@ public class IterationStatement extends Statement implements Scope {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		IRTranslator.builtOperand.clear();
 //System.out.println("iteration");
 		/*
 			*init

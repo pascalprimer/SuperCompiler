@@ -41,6 +41,7 @@ public class ReturnStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		IRTranslator.builtOperand.clear();
 		if (returnValue != null &&
 				!(returnValue instanceof VoidConstant) &&
 				!(returnValue instanceof NullConstant)) {

@@ -20,6 +20,7 @@ public abstract class Expression {
 		this.leftValue = leftValue;
 		this.returnType = type;
 		this.operand = null;
+		HASH = String.valueOf(hashCode());
 	}
 
 	public boolean getLeftValue() {

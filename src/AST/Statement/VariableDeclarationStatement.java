@@ -41,6 +41,7 @@ public class VariableDeclarationStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		IRTranslator.builtOperand.clear();
 		if (declarationExpression == null) {
 			return;
 		}

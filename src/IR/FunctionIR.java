@@ -86,6 +86,7 @@ public class FunctionIR {
 		if (functionType.getBody() != null) {
 			functionType.getBody().translateIR(instructionList);
 		}
+
 		instructionList.add(exitLabel);
 		checkPurity();
 		getBlocks(instructionList);

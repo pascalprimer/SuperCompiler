@@ -1,5 +1,7 @@
 package AST.Symbol;
 
+import AST.AST;
+import AST.Type.BoolType;
 import AST.Type.ClassType;
 import AST.Type.IntType;
 import IR.Operand.Operand;
@@ -17,6 +19,7 @@ public class Symbol {
 	public Operand operand;
 
 	public String HASH;
+	public int number;
 	//public boolean isUseless;
 
 	public Symbol(String name, Type type, ClassType classBelong, boolean isglobal, boolean built) {
@@ -27,11 +30,13 @@ public class Symbol {
 		this.built = built;
 		operand = new VirtualRegister(name);
 
-		if (type instanceof IntType) {
+		number = 0;
+		if (type instanceof IntType || type instanceof BoolType) {
 			HASH = name;
 		} else {
-			//HASH = toString();
+			HASH = String.valueOf(AST.allocateNumber);
 		}
+		//System.out.println(name + " " + HASH);
 		//setUseless();
 		//System.out.println(this);
 	}

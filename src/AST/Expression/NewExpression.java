@@ -129,9 +129,7 @@ public class NewExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		HASH = toString().substring(15);
-
-		System.out.println(HASH);
+		//System.out.println(HASH);
 		List<Operand> operandList = new ArrayList<>();
 		for (Expression expression: list) {
 			if (expression != null) {

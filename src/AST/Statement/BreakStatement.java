@@ -25,7 +25,8 @@ public class BreakStatement extends Statement {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		System.err.println(IRTranslator.loopExit.toString());
+		//System.err.println(IRTranslator.loopExit.toString());
+		IRTranslator.builtOperand.clear();
 		instructionList.add(new JumpInstruction(
 				JumpInstruction.Type.JMP,
 				iterationStatement.exitLabel
