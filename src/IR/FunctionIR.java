@@ -120,12 +120,15 @@ public class FunctionIR {
 			}
 		}
 
+		instructionList.add(0, enterLabel);
 		blockList.clear();
 		Label tmpLabel = new Label("tmp_label");
 		instructionList.add(tmpLabel);
 
 		int cnt = 0;
+		//System.out.println(">>>begin");
 		for (int i = 0, j = i; i + 1 < instructionList.size(); i = j) {
+			//System.out.println(">>> " + i);
 			Block nowBlock = new Block(
 					((Label) instructionList.get(i)).getName(),
 					this
