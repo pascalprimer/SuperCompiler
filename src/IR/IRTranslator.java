@@ -107,10 +107,23 @@ public class IRTranslator {
 		//System.err.println("----------------");
 		functionIRMap = new HashMap<>();
 		stringList = new HashMap<>();
-//for heap
+
+		FunctionType mainFunc = null;
+		for (FunctionType functionType: AST.getGlobalFunction()) {
+			if (functionType.getFullName().equals("main")) {
+				mainFunc = functionType;
+			}
+		}
+
+		//for heap
+		int cnt = 0;
 		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
 //System.err.println(variable.getName());
 			VirtualRegister tmp = (VirtualRegister) variable.getSymbol().operand;
+			if (variable.getSymbol().getType() instanceof IntType) {
+				mainFunc.getBody().addStatement(cnt++, variable);
+				continue;
+			}
 			tmp.isGlobal = true;
 			tmp.sysRegister = "@" + variable.getName();
 //System.out.println("gg: " + tmp.getName());
@@ -152,6 +165,9 @@ public class IRTranslator {
 			}
 		}
 		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
+			if (variable.getSymbol().operand instanceof VirtualRegister) {
+				continue;
+			}
 			variable.translateIR(globalDeclarationBlock.instructionList);
 		}
 		globalDeclarationBlock.id = 0;

@@ -23,6 +23,10 @@ public class BlockStatement extends Statement implements Scope {
 		statements.add(statement);
 	}
 
+	public void addStatement(int idx, Statement statement) {
+		statements.add(idx, statement);
+	}
+
 	@Override
 	public void dfsUseful() {
 		for (Statement statement: statements) {

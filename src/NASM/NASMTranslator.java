@@ -129,6 +129,9 @@ public class NASMTranslator {
 		code.append("\n\n");
 		code.append(getInstruction("section", ".bss"));
 		for (VariableDeclarationStatement vds: AST.getGlobalVariable()) {
+			if (vds.getSymbol().operand instanceof VirtualRegister) {
+				continue;
+			}
 			code.append(((Address) (vds.getSymbol().operand)).getBase().sysRegister + ":\n  \tresq \t\t1\n");
 		}
 		for (VirtualRegister register: IRTranslator.purityReg.values()) {

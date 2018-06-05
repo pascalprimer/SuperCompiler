@@ -15,9 +15,42 @@ import java.util.Map;
 
 public class NaiveOptimizer {
 
+	public static void forceBlockUseless(Block block) {
+		for (int i = 1; i < block.instructionList.size(); ++i) {
+			Instruction now = block.instructionList.get(i);
+			if (now instanceof MoveInstruction
+					&& ((MoveInstruction) now).getSource() == ((MoveInstruction) now).target) {
+				//System.out.println("remove " + now.toString(1));
+				block.instructionList.remove(i);
+				--i;
+				continue;
+			}
+			for (int j = i + 1; j < block.instructionList.size(); ++j) {
+				Instruction nxt = block.instructionList.get(j);
+				if (now instanceof MoveInstruction && nxt instanceof MoveInstruction) {
+					if (((MoveInstruction) now).target == ((MoveInstruction) nxt).getSource()
+							&& ((MoveInstruction) now).target instanceof VirtualRegister
+							&& ((MoveInstruction) nxt).target instanceof VirtualRegister) {
+						VirtualRegister register = (VirtualRegister) ((MoveInstruction) now).target;
+						if (!nxt.liveOut.contains(register)) {
+							//System.out.println("replace " + now.toString(1) + nxt.toString(1));
+							((MoveInstruction) now).changeTarget(((MoveInstruction) nxt).target);
+							block.instructionList.remove(i + 1);
+
+						}
+					}
+				}
+			}
+		}
+	}
+
 	public static void removeUselessRegister(FunctionIR nowFunc) {
 		LiveAnalysis.FunctionAnalysis(nowFunc);
 		for (Block block: nowFunc.blockList) {
+//			if (block.instructionList.size() < 40) {
+//				forceBlockUseless(block);
+//				continue;
+//			}
 			for (int i = 0; i + 1 < block.instructionList.size(); ++i) {
 				Instruction now = block.instructionList.get(i);
 				Instruction nxt = block.instructionList.get(i + 1);
