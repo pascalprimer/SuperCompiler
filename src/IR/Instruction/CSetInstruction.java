@@ -53,6 +53,7 @@ public class CSetInstruction extends Instruction {
 		}
 		if (target instanceof Address) {
 			use.add(((Address) target).getBase());
+			((Address) target).getBase().addMem();
 			((Address) target).getBase().addLoop(loopNumber);
 		}
 	}

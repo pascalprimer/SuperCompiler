@@ -44,6 +44,7 @@ public class FunctionCallInstruction extends Instruction{
 		}
 		if (returnValue instanceof Address) {
 			use.add(((Address) returnValue).getBase());
+			((Address) returnValue).getBase().addMem();
 			((Address) returnValue).getBase().addLoop(loopNumber);
 		}
 		for (Operand source: parameterList) {
@@ -53,6 +54,7 @@ public class FunctionCallInstruction extends Instruction{
 			}
 			if (source instanceof Address) {
 				use.add(((Address) source).getBase());
+				((Address) source).getBase().addMem();
 				((Address) source).getBase().addLoop(loopNumber);
 			}
 		}

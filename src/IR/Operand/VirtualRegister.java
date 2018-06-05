@@ -16,14 +16,23 @@ public class VirtualRegister extends Operand {
 	public Map<Integer, Integer> loopRefNumber;
 	public int defOrder;
 	private long loopWeight;
+	private long memWeight;
 
 	public VirtualRegister(String name) {
 		this.name = name;
 		isGlobal = false;
 		sysRegister = null;
 		loopRefNumber = new HashMap<>();
-		loopWeight = 0;
+		loopWeight = memWeight = 0;
 		defOrder = ++IRTranslator.VirtualRegisterCnt;
+	}
+
+	public void addMem() {
+		++memWeight;
+	}
+
+	public void delMem() {
+		--memWeight;
 	}
 
 	public void addLoop(int cnt) {
@@ -55,7 +64,7 @@ public class VirtualRegister extends Operand {
 
 	public long getWeight() {
 		//return loopWeight + defOrder;
-		return loopWeight + 2000 - defOrder;
+		return loopWeight * 100 + 2000 - defOrder + memWeight * 40;
 	}
 
 	@Override

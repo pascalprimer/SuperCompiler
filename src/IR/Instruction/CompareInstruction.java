@@ -31,6 +31,7 @@ public class CompareInstruction extends Instruction {
 		}
 		if (leftOper instanceof Address) {
 			use.add(((Address) leftOper).getBase());
+			((Address) leftOper).getBase().addMem();
 			((Address) leftOper).getBase().addLoop(loopNumber);
 		}
 		if (rightOper instanceof VirtualRegister) {
@@ -39,6 +40,7 @@ public class CompareInstruction extends Instruction {
 		}
 		if (rightOper instanceof Address) {
 			use.add(((Address) rightOper).getBase());
+			((Address) rightOper).getBase().addMem();
 			((Address) rightOper).getBase().addLoop(loopNumber);
 		}
 	}

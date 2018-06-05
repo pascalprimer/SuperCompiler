@@ -43,6 +43,7 @@ public class BinaryInstruction extends Instruction {
 		}
 		if (target instanceof Address) {
 			use.add(((Address) target).getBase());
+			((Address) target).getBase().addMem();
 			(((Address) target).getBase()).addLoop(loopNumber);
 		}
 		if (source instanceof VirtualRegister) {
@@ -51,6 +52,7 @@ public class BinaryInstruction extends Instruction {
 		}
 		if (source instanceof Address) {
 			use.add(((Address) source).getBase());
+			((Address) source).getBase().addMem();
 			(((Address) source).getBase()).addLoop(loopNumber);
 		}
 	}

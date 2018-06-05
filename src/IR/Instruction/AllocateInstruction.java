@@ -37,6 +37,7 @@ public class AllocateInstruction extends Instruction {
 		}
 		if (allocateSize instanceof Address) {
 			use.add(((Address) allocateSize).getBase());
+			((Address) allocateSize).getBase().addMem();
 			((Address) allocateSize).getBase().addLoop(loopNumber);
 		}
 	}

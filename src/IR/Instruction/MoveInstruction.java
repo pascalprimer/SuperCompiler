@@ -32,6 +32,7 @@ public class MoveInstruction extends Instruction {
 		}
 		if (target instanceof Address) {
 			use.remove(((Address) target).getBase());
+			((Address) target).getBase().delMem();
 			((Address) target).getBase().delLoop(loopNumber);
 		}
 		target = newTarget;
@@ -41,6 +42,7 @@ public class MoveInstruction extends Instruction {
 		}
 		if (target instanceof Address) {
 			use.add(((Address) target).getBase());
+			((Address) target).getBase().addMem();
 			((Address) target).getBase().addLoop(loopNumber);
 		}
 	}
@@ -53,6 +55,7 @@ public class MoveInstruction extends Instruction {
 		}
 		if (target instanceof Address) {
 			use.add(((Address) target).getBase());
+			((Address) target).getBase().addMem();
 			((Address) target).getBase().addLoop(loopNumber);
 		}
 		if (source instanceof VirtualRegister) {
@@ -61,6 +64,7 @@ public class MoveInstruction extends Instruction {
 		}
 		if (source instanceof Address) {
 			use.add(((Address) source).getBase());
+			((Address) source).getBase().addMem();
 			((Address) source).getBase().addLoop(loopNumber);
 		}
 	}
