@@ -55,18 +55,33 @@ public class BinaryAndAndExpression extends BinaryExpression {
 		cmp_and:
 		cset operand NE
 		 */
-		leftExpression.translateIR(instructionList);
-		Operand left = leftExpression.operand;
-		Label label = new Label("cmp_and");
-		instructionList.add(new CompareInstruction(left, new Immediate(0)));
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		Label fatherAndLabel = IRTranslator.fatherAndLabel;
+		Label label = fatherAndLabel == null ? new Label("cmp_and") : fatherAndLabel;
+
+		if (leftExpression instanceof BinaryAndAndExpression) {
+			IRTranslator.fatherAndLabel = label;
+			leftExpression.translateIR(instructionList);
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+			//Operand left = leftExpression.operand;
+			//instructionList.add(new CompareInstruction(left, new Immediate(0)));
+			//instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		} else {
+			leftExpression.translateIR(instructionList);
+			Operand left = leftExpression.operand;
+			instructionList.add(new CompareInstruction(left, new Immediate(0)));
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		}
 
 		rightExpression.translateIR(instructionList);
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(0)));
-		instructionList.add(label);
 		operand = RegisterManager.getVirtualRegister();
-		instructionList.add(new CSetInstruction(CSetInstruction.Type.NE, operand));
+		//System.err.println(label.toString(1) + " " + (fatherAndLabel == label));
+		if (label != fatherAndLabel) {
+			instructionList.add(label);
+			instructionList.add(new CSetInstruction(CSetInstruction.Type.NE, operand));
+		}
+		IRTranslator.fatherAndLabel = fatherAndLabel;
 	}
 
 }

@@ -33,6 +33,10 @@ public class IRTranslator {
 	public static final int purityTag = -1887415157;
 
 	public static Map<String, Expression> builtOperand = new HashMap<>();
+
+	public static Label fatherAndLabel = null;
+	public static Label fatherOrLabel = null;
+
 	//public static Hash<Symbol>
 
 	public static Expression getBuiltExpression(String hash, Expression who) {
