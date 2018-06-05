@@ -40,8 +40,17 @@ public class ReturnStatement extends Statement {
 	}
 
 	@Override
+	public void dfsUseful() {
+		if (returnValue != null) {
+			returnValue.dfsUseful(false);
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
-		returnValue.dfsBuiltOperand(ok);
+		if (returnValue != null) {
+			returnValue.dfsBuiltOperand(ok);
+		}
 	}
 
 	@Override

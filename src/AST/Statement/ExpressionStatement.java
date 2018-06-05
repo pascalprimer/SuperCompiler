@@ -15,6 +15,11 @@ public class ExpressionStatement extends Statement {
 	}
 
 	@Override
+	public void dfsUseful() {
+		expression.dfsUseful(false);
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		if (expression != null) {
 			expression.dfsBuiltOperand(ok);

@@ -67,6 +67,15 @@ public class FieldExpression extends Expression {
 	}
 
 	@Override
+	public boolean getUseful() {
+		return true;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 	}
 

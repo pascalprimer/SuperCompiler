@@ -20,6 +20,8 @@ public class Symbol {
 
 	public String HASH;
 	public int number;
+
+	public boolean useful;
 	//public boolean isUseless;
 
 	public Symbol(String name, Type type, ClassType classBelong, boolean isglobal, boolean built) {
@@ -36,6 +38,7 @@ public class Symbol {
 		} else {
 			HASH = String.valueOf(AST.allocateNumber);
 		}
+		useful = false;
 		//System.out.println(name + " " + HASH);
 		//setUseless();
 		//System.out.println(this);

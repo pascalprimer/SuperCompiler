@@ -150,6 +150,12 @@ public class FunctionType extends Type implements Scope {
 		return str;*/
 	}
 
+	public void dfsUseful() {
+		if (body != null) {
+			body.dfsUseful();
+		}
+	}
+
 	public void dfsBuiltOperand(boolean ok) {
 		//System.out.println("\ndfs " + getFullName() + "\n");
 		if (body != null) {

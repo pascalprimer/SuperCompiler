@@ -24,6 +24,13 @@ public class BlockStatement extends Statement implements Scope {
 	}
 
 	@Override
+	public void dfsUseful() {
+		for (Statement statement: statements) {
+			statement.dfsUseful();
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		for (Statement statement: statements) {
 			statement.dfsBuiltOperand(ok);

@@ -12,4 +12,13 @@ public abstract class UnaryExpression extends Expression {
 		expression = exp;
 	}
 
+	@Override
+	public boolean getUseful() {
+		return true;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		expression.dfsUseful(true);
+	}
 }

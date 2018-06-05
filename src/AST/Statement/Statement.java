@@ -7,6 +7,8 @@ import java.util.List;
 
 public abstract class Statement{
 
+	public abstract void dfsUseful();
+
 	public abstract void translateIR(List<Instruction> instructionList);
 
 	public abstract void dfsBuiltOperand(boolean ok);

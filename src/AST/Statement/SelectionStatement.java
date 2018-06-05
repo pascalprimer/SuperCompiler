@@ -35,6 +35,17 @@ public class SelectionStatement extends Statement implements Scope {
 	}
 
 	@Override
+	public void dfsUseful() {
+		condition.dfsUseful(false);
+		if (thenStatement != null) {
+			thenStatement.dfsUseful();
+		}
+		if (elseStatement != null) {
+			elseStatement.dfsUseful();
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		condition.dfsBuiltOperand(ok);
 		if (thenStatement != null) {

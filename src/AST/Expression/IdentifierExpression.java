@@ -51,6 +51,17 @@ public class IdentifierExpression extends Expression {
 	}
 
 	@Override
+	public boolean getUseful() {
+System.out.println("identifier useful? " + symbol.getName() + " " + symbol.useful);
+		return symbol.useful;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		symbol.useful |= useful;
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		if (getLeftValue() && (symbol.getType() instanceof IntType || symbol.getType() instanceof BoolType)) {
 			HASH = symbol.HASH + "^" + String.valueOf(symbol.number);

@@ -141,6 +141,18 @@ public class FunctionCallExpression extends Expression {
 	}
 
 	@Override
+	public boolean getUseful() {
+		return true;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		for (Expression expression: parameter) {
+			expression.dfsUseful(true);
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		for (Expression expression: parameter) {
 			expression.dfsBuiltOperand(ok);

@@ -32,6 +32,7 @@ public class IRTranslator {
 	public static final int purityTag = -1887415157;
 
 	public static Map<String, Expression> builtOperand = new HashMap<>();
+	//public static Hash<Symbol>
 
 	public static Expression getBuiltExpression(String hash, Expression who) {
 //System.out.println("try " + hash);
@@ -58,17 +59,23 @@ public class IRTranslator {
 		}
 
 		for (ClassType classType: AST.getClassType()) {
-			for (FunctionType functionType: classType.getMemberFunction().getFunctionTable().values()) {
+			for (FunctionType functionType : classType.getMemberFunction().getFunctionTable().values()) {
 				functionType.dfsBuiltOperand(true);
 			}
 			if (classType.getConstructionFunction() != null) {
 				classType.getConstructionFunction().dfsBuiltOperand(true);
 			}
 		}
-
 	}
 
-	//public
+	public static void dfsUseful() {
+		for (FunctionType functionType: AST.getGlobalFunction()) {
+			if (functionType.isSystem()) {
+				continue;
+			}
+			functionType.dfsUseful();
+		}
+	}
 
 	public static StringMemory getStringOperand(String str) {
 		if (stringList.containsKey(str)) {
@@ -82,8 +89,7 @@ public class IRTranslator {
 	public static void translate() {
 
 		dfsBuiltOperand();
-
-
+		dfsUseful();
 
 		//System.err.println("----------------");
 		functionIRMap = new HashMap<>();

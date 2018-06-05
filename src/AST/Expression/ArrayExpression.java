@@ -36,6 +36,25 @@ public class ArrayExpression extends Expression {
 	}
 
 	@Override
+	public boolean getUseful() {
+		if (baseExpression instanceof ArrayExpression) {
+			return baseExpression.getUseful();
+		}
+		if (baseExpression instanceof IdentifierExpression) {
+			return ((IdentifierExpression) baseExpression).getSymbol().useful;
+		}
+		return true;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		if (useful) {
+			baseExpression.dfsUseful(true);
+		}
+		subscriptExpression.dfsUseful(true);
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 
 	}

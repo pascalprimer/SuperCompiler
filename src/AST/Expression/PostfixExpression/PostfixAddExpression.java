@@ -10,6 +10,7 @@ import IR.Instruction.UnaryInstruction;
 import IR.Operand.VirtualRegister;
 import IR.RegisterManager;
 import Utility.CompilerError;
+import Utility.RuntimeError;
 
 import java.util.List;
 
@@ -29,6 +30,16 @@ public class PostfixAddExpression extends Expression {
 			return new PostfixAddExpression(exp);
 		}
 		throw new CompilerError("Not left value or integer");
+	}
+
+	@Override
+	public boolean getUseful() {
+		throw new RuntimeError("postfix Expression getUseful");
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		expression.dfsUseful(true);
 	}
 
 	@Override

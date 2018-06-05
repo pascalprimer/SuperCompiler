@@ -43,6 +43,7 @@ public class NaiveOptimizer {
 	}
 
 	public static void removeUselessInstruction(FunctionIR nowFunc) {
+//System.out.println("begin\n" + nowFunc.toString(1) + "\n");
 		LiveAnalysis.FunctionAnalysis(nowFunc);
 		for (Block block: nowFunc.blockList) {
 			for (int i = 0; i < block.instructionList.size(); ++i) {
@@ -68,6 +69,7 @@ public class NaiveOptimizer {
 				}
 			}
 		}
+//System.out.println("end\n" + nowFunc.toString(1) + "\n");
 	}
 
 }

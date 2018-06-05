@@ -1,5 +1,6 @@
 package AST.Expression;
 
+import AST.Type.ArrayType;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
 import IR.Operand.Address;
@@ -34,6 +35,19 @@ public class AssignExpression extends Expression {
 	}
 
 	@Override
+	public boolean getUseful() {
+		return false;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		subscript.dfsUseful(true);
+		if (subscript.returnType instanceof ArrayType) {
+			variable.dfsUseful(true);
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		subscript.dfsBuiltOperand(ok);
 		if (variable instanceof IdentifierExpression) {
@@ -43,6 +57,10 @@ public class AssignExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
+		if (!variable.getUseful()) {
+			return;
+		}
+
 		variable.translateIR(instructionList);
 		subscript.translateIR(instructionList);
 		Operand lvalue = variable.operand,

@@ -37,6 +37,22 @@ public class IterationStatement extends Statement implements Scope {
 	}
 
 	@Override
+	public void dfsUseful() {
+		if (initialization != null) {
+			initialization.dfsUseful(false);
+		}
+		if (termination != null ) {
+			termination.dfsUseful(false);
+		}
+		if (operation != null) {
+			operation.dfsUseful(false);
+		}
+		if (statement != null) {
+			statement.dfsUseful();
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		IRTranslator.builtOperand.clear();
 		if (statement != null) {

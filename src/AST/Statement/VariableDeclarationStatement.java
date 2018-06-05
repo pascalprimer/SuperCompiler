@@ -40,6 +40,13 @@ public class VariableDeclarationStatement extends Statement {
 	}
 
 	@Override
+	public void dfsUseful() {
+		if (declarationExpression != null) {
+			declarationExpression.dfsUseful(false);
+		}
+	}
+
+	@Override
 	public void dfsBuiltOperand(boolean ok) {
 		if (declarationExpression != null) {
 			declarationExpression.dfsBuiltOperand(ok);

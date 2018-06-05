@@ -33,7 +33,11 @@ public abstract class Expression {
 		return op;
 	}
 
+	public abstract void dfsUseful(boolean useful);
+
 	public abstract void dfsBuiltOperand(boolean ok);
+
+	public abstract boolean getUseful();
 
 	public abstract void translateIR(List<Instruction> instructionList);
 

@@ -52,6 +52,32 @@ public class NewExpression extends Expression {
 		}
 	}
 
+	@Override
+	public boolean getUseful() {
+		return false;
+	}
+
+	@Override
+	public void dfsUseful(boolean useful) {
+		for (Expression expression: list) {
+			if (expression != null) {
+				expression.dfsUseful(true);
+			}
+		}
+	}
+
+	@Override
+	public void dfsBuiltOperand(boolean ok) {
+		if (!ok) {
+			return;
+		}
+		for (Expression expression: list) {
+			if (expression != null) {
+				expression.dfsBuiltOperand(ok);
+			}
+		}
+	}
+
 	private void allocate(VirtualRegister base, Type newType, List<Operand> operandList, List<Instruction> instructionList) {
 		//System.err.println(base.getName());
 		if (newType instanceof ClassType) {
@@ -124,18 +150,6 @@ public class NewExpression extends Expression {
 			));
 			instructionList.add(new CompareInstruction(idx, endIDX));
 			instructionList.add(new JumpInstruction(JumpInstruction.Type.JL, allocateLabel));
-		}
-	}
-
-	@Override
-	public void dfsBuiltOperand(boolean ok) {
-		if (!ok) {
-			return;
-		}
-		for (Expression expression: list) {
-			if (expression != null) {
-				expression.dfsBuiltOperand(ok);
-			}
 		}
 	}
 
