@@ -33,6 +33,7 @@ public class Optimizer {
 //				continue;
 //			}
 			//System.out.println(functionIR.toString(1));
+			NaiveOptimizer.removeUselessInstruction(functionIR);
 			LiveAnalysis.FunctionAnalysis(functionIR);
 			RegisterAllocator.LinearAllocator();
 			//System.out.println("allocater\n" + functionIR.toString(1));

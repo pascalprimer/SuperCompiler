@@ -3,10 +3,10 @@ package Optimization;
 import AST.Type.IntType;
 import IR.Block;
 import IR.FunctionIR;
-import IR.Instruction.Instruction;
-import IR.Instruction.MoveInstruction;
+import IR.Instruction.*;
 import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
+import jdk.nashorn.internal.ir.FunctionCall;
 
 public class NaiveOptimizer {
 
@@ -40,6 +40,34 @@ public class NaiveOptimizer {
 		}
 
 		//System.out.println(nowFunc.toString(1));
+	}
+
+	public static void removeUselessInstruction(FunctionIR nowFunc) {
+		LiveAnalysis.FunctionAnalysis(nowFunc);
+		for (Block block: nowFunc.blockList) {
+			for (int i = 0; i < block.instructionList.size(); ++i) {
+				Instruction instruction = block.instructionList.get(i);
+				Operand register = null;
+				if (instruction instanceof AllocateInstruction) {
+					register = ((AllocateInstruction) instruction).getMyBase();
+				} else if (instruction instanceof BinaryInstruction) {
+					register = ((BinaryInstruction) instruction).getTarget();
+				} else if (instruction instanceof CSetInstruction) {
+					register = ((CSetInstruction) instruction).getTarget();
+				} else if (instruction instanceof FunctionCallInstruction) {
+					register = ((FunctionCallInstruction) instruction).getReturnValue();
+				} else if (instruction instanceof MoveInstruction) {
+					register = ((MoveInstruction) instruction).target;
+				}
+				if (register instanceof VirtualRegister
+						&& (((VirtualRegister) register).sysRegister == null
+						|| ((VirtualRegister) register).sysRegister.charAt(0) != 'r')
+						&& !instruction.liveOut.contains(register)) {
+					block.instructionList.remove(i);
+					--i;
+				}
+			}
+		}
 	}
 
 }

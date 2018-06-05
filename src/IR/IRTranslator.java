@@ -68,6 +68,8 @@ public class IRTranslator {
 
 	}
 
+	//public
+
 	public static StringMemory getStringOperand(String str) {
 		if (stringList.containsKey(str)) {
 			return stringList.get(str);
@@ -80,6 +82,8 @@ public class IRTranslator {
 	public static void translate() {
 
 		dfsBuiltOperand();
+
+
 
 		//System.err.println("----------------");
 		functionIRMap = new HashMap<>();

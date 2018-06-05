@@ -73,7 +73,7 @@ public class Inliner {
 //System.out.println("print now call: " + whichFunc);
 					if (whichFunc.isSystem()
 							|| whichFunc.getFullName().charAt(0) == '_'
-							//|| /*!inlineTimes.contains(nowfunc) && */nowfunc.functionType == whichFunc
+							|| /*!inlineTimes.contains(nowfunc) && */nowfunc.functionType == whichFunc
 							|| newList.size() > 1500) { //sys or global dec
 						newList.add(instruction);
 						continue;
