@@ -120,7 +120,7 @@ public class FunctionIR {
 			}
 		}
 
-		if (instructionList.get(0) instanceof Label) {
+		if (instructionList.size() > 0 && instructionList.get(0) instanceof Label) {
 
 		} else {
 			instructionList.add(0, enterLabel);
