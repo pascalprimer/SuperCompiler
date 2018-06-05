@@ -24,7 +24,6 @@ lol:
 @lol_purity_checkin_out:
      sub                  rsp,                   16
 @lol.1.enter:
-@lol.1.enter:
      mov                  rsi,                  rdi
      add                  rsi,                    1
      mov                  rax,                  rsi
@@ -225,7 +224,6 @@ main:
      mov                  rbp,                  rsp
     call __global_declaration
      sub                  rsp,                    8
-@main.1.enter:
 @main.1.enter:
      mov                  rax,            qword[@x]
      add                  rsp,                    8

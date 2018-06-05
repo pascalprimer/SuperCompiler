@@ -120,7 +120,11 @@ public class FunctionIR {
 			}
 		}
 
-		instructionList.add(0, enterLabel);
+		if (instructionList.get(0) instanceof Label) {
+
+		} else {
+			instructionList.add(0, enterLabel);
+		}
 		blockList.clear();
 		Label tmpLabel = new Label("tmp_label");
 		instructionList.add(tmpLabel);
