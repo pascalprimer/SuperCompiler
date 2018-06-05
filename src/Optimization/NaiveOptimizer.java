@@ -117,13 +117,13 @@ public class NaiveOptimizer {
 				for (int j = l; j < r; ++j) {
 					Instruction now = instructionList.get(j);
 					if (!now.noMem()) {
-						System.out.println("fx a");
+						//System.out.println("fx a");
 						useless = false;
 						break;
 					}
 					for (VirtualRegister register: now.def) {
 						if (instruction.liveOut.contains(register)) {
-							System.out.println("fx b");
+							//System.out.println("fx b");
 							useless = false;
 							break;
 						}
