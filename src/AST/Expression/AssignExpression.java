@@ -60,7 +60,7 @@ public class AssignExpression extends Expression {
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (!variable.getUseful() && !subscript.modifyTag) {
-//System.out.println("eliminate: " + variable.toString());
+System.out.println("eliminate: " + variable.toString());
 			return;
 		}
 

@@ -43,11 +43,19 @@ public class NaiveOptimizer {
 	}
 
 	public static void removeUselessInstruction(FunctionIR nowFunc) {
+//if (nowFunc.getName().charAt(0) != '_') {
+//	return;
+//}
 //System.out.println("begin\n" + nowFunc.toString(1) + "\n");
 		LiveAnalysis.FunctionAnalysis(nowFunc);
 		for (Block block: nowFunc.blockList) {
 			for (int i = 0; i < block.instructionList.size(); ++i) {
 				Instruction instruction = block.instructionList.get(i);
+//				System.out.print("\n>>> now ins: " + instruction.toString(1));
+//				System.out.println("liveout: " + " " + instruction.liveOut);
+//				System.out.println("livein: " + " " + instruction.liveIn);
+//				System.out.println("def: " + " " + instruction.def);
+//				System.out.println("use: " + " " + instruction.use);
 				Operand register = null;
 				if (instruction instanceof AllocateInstruction) {
 					register = ((AllocateInstruction) instruction).getMyBase();
@@ -64,6 +72,7 @@ public class NaiveOptimizer {
 						&& (((VirtualRegister) register).sysRegister == null
 						|| ((VirtualRegister) register).sysRegister.charAt(0) != 'r')
 						&& !instruction.liveOut.contains(register)) {
+//System.out.println("delete " + register + " " + instruction.liveOut);
 					block.instructionList.remove(i);
 					--i;
 				}

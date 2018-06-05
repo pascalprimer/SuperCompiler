@@ -23,8 +23,10 @@ public class AllocateInstruction extends Instruction {
 	}
 
 	public AllocateInstruction(VirtualRegister base, Operand allocateSize) {
+		super();
 		this.base = base;
 		this.allocateSize = allocateSize;
+		claimSet();
 	}
 
 	@Override
