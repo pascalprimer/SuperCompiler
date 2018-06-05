@@ -411,6 +411,10 @@ call	print
      add                  rbx,           qword[r12]
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+call	search
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@search.40.IfExit
 @search.38.IfFalse:
      mov                  r12,                   r9
@@ -428,6 +432,10 @@ call	print
      mov                  rdi,                  r14
      mov                  rsi,                  r12
      mov                  rdx,                  rbx
+    push                   r9
+call	search
+     pop                   r9
+     mov                  rsi,                  rax
 @search.40.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r14
@@ -489,6 +497,10 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+call	search
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@search.50.IfExit
 @search.48.IfFalse:
      mov                  rsi,                   r9
@@ -497,6 +509,10 @@ call	print
      add                  rbx,                  r12
      mov                  rdi,                  r14
      mov                  rdx,                  rbx
+    push                   r9
+call	search
+     pop                   r9
+     mov                  rsi,                  rax
 @search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r14
@@ -2326,6 +2342,16 @@ call	print
      add                  rbx,           qword[r12]
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                  r11
+    push                   r9
+    push                  r10
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r9
+     pop                  r11
+     mov                  rsi,                  rax
 	jmp	@main.306.@search.40.IfExit
 @main.305.@search.38.IfFalse:
      mov                  r12,                  r10
@@ -2343,6 +2369,16 @@ call	print
      mov                  rdi,                  r11
      mov                  rsi,                  r12
      mov                  rdx,                  rbx
+    push                  r11
+    push                   r9
+    push                  r10
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r9
+     pop                  r11
+     mov                  rsi,                  rax
 @main.306.@search.40.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r11
@@ -2404,6 +2440,16 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r8
+    push                  r10
+    push                  r11
+    push                   r9
+call	search
+     pop                   r9
+     pop                  r11
+     pop                  r10
+     pop                   r8
+     mov                  rsi,                  rax
 	jmp	@main.315.@search.50.IfExit
 @main.314.@search.48.IfFalse:
      mov                  rsi,                  r10
@@ -2412,6 +2458,16 @@ call	print
      add                  rbx,                   r8
      mov                  rdi,                  r11
      mov                  rdx,                  rbx
+    push                   r8
+    push                  r10
+    push                  r11
+    push                   r9
+call	search
+     pop                   r9
+     pop                  r11
+     pop                  r10
+     pop                   r8
+     mov                  rsi,                  rax
 @main.315.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r11
@@ -2459,6 +2515,12 @@ call	print
      mov                  rdi,        qword[rbp-80]
      mov                  rsi,                  r12
      mov                  rdx,                  rbx
+    push                   r9
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                   r9
+     mov                  rsi,                  rax
 @main.218.@search.40.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,        qword[rbp-80]
@@ -2520,6 +2582,12 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r8
+    push                   r9
+call	search
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
 	jmp	@main.227.@search.50.IfExit
 @main.226.@search.48.IfFalse:
      mov                  rsi,        qword[rbp-88]
@@ -2528,6 +2596,12 @@ call	print
      add                  rbx,                   r8
      mov                  rdi,        qword[rbp-80]
      mov                  rdx,                  rbx
+    push                   r8
+    push                   r9
+call	search
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
 @main.227.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,        qword[rbp-80]
@@ -2985,6 +3059,12 @@ call	print
      add                  rbx,           qword[r12]
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+    push                  r10
+call	search
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@main.262.@search.40.IfExit
 @main.261.@search.38.IfFalse:
      mov                  r12,                   r9
@@ -3002,6 +3082,12 @@ call	print
      mov                  rdi,                  r10
      mov                  rsi,                  r12
      mov                  rdx,                  rbx
+    push                   r9
+    push                  r10
+call	search
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
 @main.262.@search.40.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r10
@@ -3063,6 +3149,16 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+    push                   r8
+    push                  r10
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@main.271.@search.50.IfExit
 @main.270.@search.48.IfFalse:
      mov                  rsi,                   r9
@@ -3071,6 +3167,16 @@ call	print
      add                  rbx,                   r8
      mov                  rdi,                  r10
      mov                  rdx,                  rbx
+    push                   r9
+    push                   r8
+    push                  r10
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
 @main.271.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r10
@@ -3162,6 +3268,12 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r8
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                   r8
+     mov                  rsi,                  rax
 	jmp	@main.95.@search.50.IfExit
 @main.94.@search.48.IfFalse:
      mov                  rsi,        qword[rbp-72]
@@ -3170,6 +3282,12 @@ call	print
      add                  rbx,                   r8
      mov                  rdi,        qword[rbp-64]
      mov                  rdx,                  rbx
+    push                   r8
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                   r8
+     mov                  rsi,                  rax
 @main.95.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,        qword[rbp-64]
@@ -3615,6 +3733,12 @@ call	print
      add                  rbx,           qword[r12]
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@main.130.@search.40.IfExit
 @main.129.@search.38.IfFalse:
      mov                  r12,                   r9
@@ -3632,6 +3756,12 @@ call	print
      mov                  rdi,                  r14
      mov                  rsi,                  r12
      mov                  rdx,                  rbx
+    push                   r9
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                   r9
+     mov                  rsi,                  rax
 @main.130.@search.40.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r14
@@ -3693,6 +3823,12 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+    push                   r8
+call	search
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@main.139.@search.50.IfExit
 @main.138.@search.48.IfFalse:
      mov                  rsi,                   r9
@@ -3701,6 +3837,12 @@ call	print
      add                  rbx,                   r8
      mov                  rdi,                  r14
      mov                  rdx,                  rbx
+    push                   r9
+    push                   r8
+call	search
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
 @main.139.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r14
@@ -4202,6 +4344,12 @@ call	print
      add                  rbx,           qword[r12]
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+    push                  r10
+call	search
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@main.174.@search.40.IfExit
 @main.173.@search.38.IfFalse:
      mov                  r12,                   r9
@@ -4219,6 +4367,12 @@ call	print
      mov                  rdi,                  r10
      mov                  rsi,                  r12
      mov                  rdx,                  rbx
+    push                   r9
+    push                  r10
+call	search
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
 @main.174.@search.40.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r10
@@ -4280,6 +4434,16 @@ call	print
      mov                  rdi,                  rsi
      mov                  rsi,                    0
      mov                  rdx,                  rbx
+    push                   r9
+    push                   r8
+    push                  r10
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
 	jmp	@main.183.@search.50.IfExit
 @main.182.@search.48.IfFalse:
      mov                  rsi,                   r9
@@ -4288,6 +4452,16 @@ call	print
      add                  rbx,                   r8
      mov                  rdi,                  r10
      mov                  rdx,                  rbx
+    push                   r9
+    push                   r8
+    push                  r10
+     sub                  rsp,                    8
+call	search
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
 @main.183.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,                  r10
@@ -4326,6 +4500,8 @@ call	print
      add                  rbx,                  r14
      mov                  rdi,        qword[rbp-32]
      mov                  rdx,                  rbx
+call	search
+     mov                  rsi,                  rax
 @main.51.@search.50.IfExit:
      mov                  rbx,         qword[@make]
      mov                  rsi,        qword[rbp-32]

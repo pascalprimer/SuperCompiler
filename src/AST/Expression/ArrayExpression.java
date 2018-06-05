@@ -49,7 +49,7 @@ public class ArrayExpression extends Expression {
 	@Override
 	public void dfsUseful(boolean useful) {
 		if (useful || baseExpression.returnType instanceof ArrayType) {
-			baseExpression.dfsUseful(true);
+			baseExpression.dfsUseful(useful);
 		}
 		subscriptExpression.dfsUseful(true);
 		modifyTag = subscriptExpression.modifyTag;

@@ -1,6 +1,7 @@
 package AST.Expression;
 
 import AST.Type.ArrayType;
+import AST.Type.ClassType;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
 import IR.Operand.Address;
@@ -47,6 +48,16 @@ public class AssignExpression extends Expression {
 			modifyTag = true;
 		}
 		variable.dfsUseful(subscript.returnType instanceof ArrayType);
+		if (variable instanceof IdentifierExpression
+				&& ((IdentifierExpression) variable).getSymbol().getClassBelong() != null) {
+			modifyTag = true;
+		}
+		if (variable instanceof FieldExpression) {
+			modifyTag = true;
+		}
+		if (variable.returnType instanceof ClassType) {
+			modifyTag = true;
+		}
 	}
 
 	@Override
@@ -59,8 +70,10 @@ public class AssignExpression extends Expression {
 
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
-		if (!variable.getUseful() && !subscript.modifyTag) {
-//System.out.println("eliminate: " + variable.toString());
+		//int tmtttp = 123;
+		//boolean tmtttttp = variable.getUseful();
+		if (!variable.getUseful() && !this.modifyTag) {
+System.err.println("eliminate: " + variable.toString());
 			return;
 		}
 
