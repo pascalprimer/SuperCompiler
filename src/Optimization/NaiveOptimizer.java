@@ -90,7 +90,7 @@ public class NaiveOptimizer {
 	}
 
 	public static void removeUselessIteration(FunctionIR nowFunc) {
-		System.out.println(nowFunc.toString(1));
+//		System.out.println(nowFunc.toString(1));
 		LiveAnalysis.FunctionAnalysis(nowFunc);
 		List<Instruction> instructionList = new ArrayList<>();
 		for (Block block: nowFunc.blockList) {
