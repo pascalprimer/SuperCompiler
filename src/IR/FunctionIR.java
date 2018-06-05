@@ -243,12 +243,12 @@ public class FunctionIR {
 			}
 		}
 		//System.out.println(name + " " + purity);
-		if (IRTranslator.r233 == 55 && name.equals("dp")) {
-			purity = true;
-		}
-		if (name.contains("int") || name.contains("shift") || name.contains("String")) {
-			purity = false;
-		}
+//		if (IRTranslator.r233 == 55 && name.equals("dp")) {
+//			purity = true;
+//		}
+//		if (name.contains("int") || name.contains("shift") || name.contains("String")) {
+//			purity = false;
+//		}
 		//System.out.println(name + ": " + String.valueOf(purity));
 		if (purity) {
 			purityRegister = RegisterManager.getVirtualRegister();

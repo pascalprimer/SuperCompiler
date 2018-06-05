@@ -6,6 +6,7 @@ import AST.Expression.IdentifierExpression;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
+import AST.Type.IntType;
 import IR.Instruction.AllocateInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.Label;

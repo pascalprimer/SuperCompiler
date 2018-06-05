@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4f82711-e504-4f80-964e-ecae9e491fca" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/program.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IR/FunctionIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/FunctionIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IR/IRTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IR/IRTranslator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,20 +23,20 @@
       <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="427">
+              <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FunctionIR.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+      <file leaf-file-name="BinaryInstruction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="121" selection-start-line="121" selection-end-line="121" />
+            <state relative-caret-position="-990">
+              <caret line="38" column="66" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
               <folding>
-                <element signature="e#10658#10659#0" expanded="true" />
-                <element signature="e#10676#10677#0" expanded="true" />
+                <element signature="e#1037#1038#0" expanded="true" />
+                <element signature="e#1101#1102#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,8 +45,35 @@
       <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="18" column="33" lean-forward="true" selection-end-line="930" />
+            <state relative-caret-position="177">
+              <caret line="5092" column="27" lean-forward="true" selection-start-line="5092" selection-start-column="27" selection-end-line="5092" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IRTranslator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2">
+              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+              <folding>
+                <element signature="method#getBuiltExpression#0;class#IRTranslator#0" />
+                <element signature="method#dfsBuiltOperand#0;class#IRTranslator#0" />
+                <element signature="method#getStringOperand#0;class#IRTranslator#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FunctionIR.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="247" column="9" lean-forward="true" selection-start-line="245" selection-start-column="8" selection-end-line="247" selection-end-column="9" />
+              <folding>
+                <element signature="e#10658#10659#0" expanded="true" />
+                <element signature="e#10676#10677#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>@@</find>
-      <find>t4</find>
       <find>z+i</find>
       <find>@main.18.ForExit:</find>
       <find>=</find>
@@ -108,9 +136,9 @@
       <find>purityS</find>
       <find>100</find>
       <find>@@p</find>
-      <find>= p(</find>
+      <find />
       <find>i%4</find>
-      <find>identifier</find>
+      <find />
       <find>alloc</find>
       <find>eliminate</find>
       <find>modifyTag</find>
@@ -119,9 +147,11 @@
       <find>getBlocks</find>
       <find>forBegin</find>
       <find>func</find>
-      <find>fx a</find>
+      <find />
       <find>@lol.1.enter</find>
-      <find>i = 0</find>
+      <find>Mod</find>
+      <find />
+      <find>Calculate_G:</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -163,7 +193,6 @@
         <option value="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/AssignExpression.java" />
-        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/IterationStatement.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" />
         <option value="$PROJECT_DIR$/program.asm" />
@@ -185,15 +214,16 @@
         <option value="$PROJECT_DIR$/src/Optimization/Optimizer.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Optimization/NaiveOptimizer.java" />
-        <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/IR/IRTranslator.java" />
         <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
+        <option value="$PROJECT_DIR$/program.txt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="444" />
-    <option name="y" value="62" />
-    <option name="width" value="922" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="220" />
+    <option name="y" value="70" />
+    <option name="width" value="1130" />
     <option name="height" value="719" />
   </component>
   <component name="ProjectView">
@@ -233,6 +263,14 @@
               <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AST" type="462c0819:PsiDirectoryNode" />
+              <item name="Expression" type="462c0819:PsiDirectoryNode" />
+              <item name="BinaryExpression" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Main" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AST" type="462c0819:PsiDirectoryNode" />
               <item name="Statement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -254,6 +292,13 @@
               <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="IR" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Main" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SuperCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="IR" type="462c0819:PsiDirectoryNode" />
+              <item name="Instruction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Main" type="b2602c69:ProjectViewProjectNode" />
@@ -383,7 +428,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="146" y="80" width="1130" height="719" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
@@ -395,12 +440,12 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.3970588" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.39542484" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.22863741" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26283187" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32843137" />
       <window_info anchor="bottom" id="ANTLR Preview" order="4" weight="0.32026145" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -710,18 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="82" column="62" selection-start-line="82" selection-start-column="62" selection-end-line="82" selection-end-column="62" />
-          <folding>
-            <element signature="method#getBuiltExpression#0;class#IRTranslator#0" />
-            <element signature="method#dfsBuiltOperand#0;class#IRTranslator#0" />
-            <element signature="method#getStringOperand#0;class#IRTranslator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
@@ -794,17 +827,6 @@
           <folding>
             <element signature="e#656#657#0" expanded="true" />
             <element signature="e#675#676#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="38" column="66" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
-          <folding>
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1078#1079#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -918,17 +940,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/IRTranslator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+          <folding>
+            <element signature="method#getBuiltExpression#0;class#IRTranslator#0" />
+            <element signature="method#dfsBuiltOperand#0;class#IRTranslator#0" />
+            <element signature="method#getStringOperand#0;class#IRTranslator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/program.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="18" column="33" lean-forward="true" selection-end-line="930" />
+        <state relative-caret-position="177">
+          <caret line="5092" column="27" lean-forward="true" selection-start-line="5092" selection-start-column="27" selection-end-line="5092" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-990">
+          <caret line="38" column="66" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
+          <folding>
+            <element signature="e#1037#1038#0" expanded="true" />
+            <element signature="e#1101#1102#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        <state relative-caret-position="250">
+          <caret line="247" column="9" lean-forward="true" selection-start-line="245" selection-start-column="8" selection-end-line="247" selection-end-column="9" />
           <folding>
             <element signature="e#10658#10659#0" expanded="true" />
             <element signature="e#10676#10677#0" expanded="true" />
@@ -938,8 +983,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="427">
+          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
         </state>
       </provider>
     </entry>

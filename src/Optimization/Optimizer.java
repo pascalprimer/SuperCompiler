@@ -8,10 +8,11 @@ public class Optimizer {
 	public static void optimizer() {
 
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
-			NaiveOptimizer.removeUselessIteration(functionIR);
+			NaiveOptimizer.removeUselessInstruction(functionIR);
+			NaiveOptimizer.removeUselessInstruction(functionIR);
 		}
 
-		for (int times = 5; times > 0; --times) {
+		for (int times = 8; times > 0; --times) {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
 //System.out.println("origin" + times + "\n" + functionIR.toString(1));
 				if (functionIR.getName().charAt(0) != '_') {
@@ -37,6 +38,7 @@ public class Optimizer {
 //				continue;
 //			}
 			//System.out.println(functionIR.toString(1));
+			NaiveOptimizer.removeUselessInstruction(functionIR);
 			NaiveOptimizer.removeUselessInstruction(functionIR);
 			NaiveOptimizer.removeUselessInstruction(functionIR);
 			LiveAnalysis.FunctionAnalysis(functionIR);
