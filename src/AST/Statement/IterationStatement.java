@@ -42,7 +42,7 @@ public class IterationStatement extends Statement implements Scope {
 			initialization.dfsUseful(false);
 		}
 		if (termination != null ) {
-			termination.dfsUseful(false);
+			termination.dfsUseful(true);
 		}
 		if (operation != null) {
 			operation.dfsUseful(false);
