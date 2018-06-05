@@ -40,6 +40,7 @@ public class BinaryOrOrExpression extends BinaryExpression {
 		}
 	}
 
+
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (identical != null) {
@@ -54,18 +55,58 @@ public class BinaryOrOrExpression extends BinaryExpression {
 		cmp_or:
 		cset operand E
 		 */
-		leftExpression.translateIR(instructionList);
-		Operand left = leftExpression.operand;
-		Label label = new Label("cmp_or");
-		instructionList.add(new CompareInstruction(left, new Immediate(1)));
-		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		Label fatherOrLabel = IRTranslator.fatherOrLabel;
+		Label label = fatherOrLabel == null ? new Label("cmp_or") : fatherOrLabel;
+
+		if (leftExpression instanceof BinaryOrOrExpression) {
+			IRTranslator.fatherAndLabel = label;
+			leftExpression.translateIR(instructionList);
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+			//Operand left = leftExpression.operand;
+			//instructionList.add(new CompareInstruction(left, new Immediate(0)));
+			//instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		} else {
+			leftExpression.translateIR(instructionList);
+			Operand left = leftExpression.operand;
+			instructionList.add(new CompareInstruction(left, new Immediate(1)));
+			instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+		}
 
 		rightExpression.translateIR(instructionList);
 		Operand right = rightExpression.operand;
 		instructionList.add(new CompareInstruction(right, new Immediate(1)));
-		instructionList.add(label);
 		operand = RegisterManager.getVirtualRegister();
-		instructionList.add(new CSetInstruction(CSetInstruction.Type.E, operand));
+		//System.err.println(label.toString(1) + " " + (fatherAndLabel == label));
+		if (label != fatherOrLabel) {
+			instructionList.add(label);
+			instructionList.add(new CSetInstruction(CSetInstruction.Type.E, operand));
+		}
+		IRTranslator.fatherOrLabel = fatherOrLabel;
+
+//		if (identical != null) {
+//			operand = identical.operand;
+//			return;
+//		}
+//
+//		/*
+//		cmp leftExp 1
+//		je cmp_or
+//		cmp rightExp 1
+//		cmp_or:
+//		cset operand E
+//		 */
+//		leftExpression.translateIR(instructionList);
+//		Operand left = leftExpression.operand;
+//		Label label = new Label("cmp_or");
+//		instructionList.add(new CompareInstruction(left, new Immediate(1)));
+//		instructionList.add(new JumpInstruction(JumpInstruction.Type.JE, label));
+//
+//		rightExpression.translateIR(instructionList);
+//		Operand right = rightExpression.operand;
+//		instructionList.add(new CompareInstruction(right, new Immediate(1)));
+//		instructionList.add(label);
+//		operand = RegisterManager.getVirtualRegister();
+//		instructionList.add(new CSetInstruction(CSetInstruction.Type.E, operand));
 	}
 
 }

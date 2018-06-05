@@ -22,12 +22,12 @@ int main() {
 	for ( d=1; d<=N; d++ )
 	for ( e=1; e<=N; e++ )
 	for ( f=1; f<=N; f++ )
-		if (a!=b && a!=c && a!=d && a!=e && a!=f && a!=h && a!=i && a!=j && a!=k
-              && b!=c && b!=d && b!=e && b!=f && b!=h && b!=i && b!=j && b!=k
-              && c!=d && c!=e && c!=f && c!=h && c!=i && c!=j && c!=k
-              && d!=e && d!=f && d!=h && d!=i && d!=j && d!=k
-              && e!=f && e!=h && e!=i && e!=j && e!=k
-              && f!=h && f!=i && f!=j && f!=k && i!=j && h!=k)
+		if (a!=b || a!=c || a!=d || a!=e || a!=f || a!=h || a!=i || a!=j || a!=k
+              || b!=c || b!=d || b!=e || b!=f || b!=h || b!=i || b!=j || b!=k
+              || c!=d || c!=e || c!=f || c!=h || c!=i || c!=j || c!=k
+              || d!=e || d!=f || d!=h || d!=i || d!=j || d!=k
+              || e!=f || e!=h || e!=i || e!=j || e!=k
+              || f!=h || f!=i || f!=j || f!=k || i!=j || h!=k)
 		{
 			total++;
 		}

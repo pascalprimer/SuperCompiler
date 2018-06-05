@@ -50,212 +50,251 @@ call	getInt
      cmp                  rbx,                  rdi
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+	je	@main.75.cmp_or
      cmp                  rbx,                  r12
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.75.cmp_or:
+	je	@main.74.cmp_or
      cmp                  rbx,                   r8
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.74.cmp_or:
+	je	@main.73.cmp_or
      cmp                  rbx,                  r13
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.73.cmp_or:
+	je	@main.72.cmp_or
      cmp                  rbx,                   r9
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.72.cmp_or:
+	je	@main.71.cmp_or
      cmp                  rbx,            qword[@h]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.71.cmp_or:
+	je	@main.70.cmp_or
      cmp                  rbx,            qword[@i]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.70.cmp_or:
+	je	@main.69.cmp_or
      cmp                  rbx,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.69.cmp_or:
+	je	@main.68.cmp_or
      cmp                  rbx,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.68.cmp_or:
+	je	@main.67.cmp_or
      cmp                  rdi,                  r12
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.67.cmp_or:
+	je	@main.66.cmp_or
      cmp                  rdi,                   r8
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.66.cmp_or:
+	je	@main.65.cmp_or
      cmp                  rdi,                  r13
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.65.cmp_or:
+	je	@main.64.cmp_or
      cmp                  rdi,                   r9
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.64.cmp_or:
+	je	@main.63.cmp_or
      cmp                  rdi,            qword[@h]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.63.cmp_or:
+	je	@main.62.cmp_or
      cmp                  rdi,            qword[@i]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.62.cmp_or:
+	je	@main.61.cmp_or
      cmp                  rdi,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.61.cmp_or:
+	je	@main.60.cmp_or
      cmp                  rdi,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.60.cmp_or:
+	je	@main.59.cmp_or
      cmp                  r12,                   r8
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.59.cmp_or:
+	je	@main.58.cmp_or
      cmp                  r12,                  r13
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.58.cmp_or:
+	je	@main.57.cmp_or
      cmp                  r12,                   r9
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.57.cmp_or:
+	je	@main.56.cmp_or
      cmp                  r12,            qword[@h]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.56.cmp_or:
+	je	@main.55.cmp_or
      cmp                  r12,            qword[@i]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.55.cmp_or:
+	je	@main.54.cmp_or
      cmp                  r12,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.54.cmp_or:
+	je	@main.53.cmp_or
      cmp                  r12,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.53.cmp_or:
+	je	@main.52.cmp_or
      cmp                   r8,                  r13
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.52.cmp_or:
+	je	@main.51.cmp_or
      cmp                   r8,                   r9
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.51.cmp_or:
+	je	@main.50.cmp_or
      cmp                   r8,            qword[@h]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.50.cmp_or:
+	je	@main.49.cmp_or
      cmp                   r8,            qword[@i]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.49.cmp_or:
+	je	@main.48.cmp_or
      cmp                   r8,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.48.cmp_or:
+	je	@main.47.cmp_or
      cmp                   r8,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.47.cmp_or:
+	je	@main.46.cmp_or
      cmp                  r13,                   r9
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.46.cmp_or:
+	je	@main.45.cmp_or
      cmp                  r13,            qword[@h]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.45.cmp_or:
+	je	@main.44.cmp_or
      cmp                  r13,            qword[@i]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.44.cmp_or:
+	je	@main.43.cmp_or
      cmp                  r13,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.43.cmp_or:
+	je	@main.42.cmp_or
      cmp                  r13,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.42.cmp_or:
+	je	@main.41.cmp_or
      cmp                   r9,            qword[@h]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.41.cmp_or:
+	je	@main.40.cmp_or
      cmp                   r9,            qword[@i]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.40.cmp_or:
+	je	@main.39.cmp_or
      cmp                   r9,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.39.cmp_or:
+	je	@main.38.cmp_or
      cmp                   r9,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.38.cmp_or:
+	je	@main.37.cmp_or
      mov                  rsi,            qword[@i]
      cmp                  rsi,            qword[@j]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-	je	@main.36.cmp_and
+     cmp                  rsi,                    1
+@main.37.cmp_or:
+	je	@main.36.cmp_or
      mov                  rsi,            qword[@h]
      cmp                  rsi,            qword[@k]
      mov                  rsi,                    0
    setne                  sil
-     cmp                  rsi,                    0
-@main.36.cmp_and:
+     cmp                  rsi,                    1
+@main.36.cmp_or:
      mov                  rsi,                    0
-   setne                  sil
+    sete                  sil
      cmp                  rsi,                    1
 	je	@main.34.IfTrue
 	jmp	@main.33.IfFalse
