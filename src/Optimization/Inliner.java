@@ -79,7 +79,9 @@ public class Inliner {
 						continue;
 					}
 //System.out.println("print now call: " + whichFunc);
-					if (whichFunc.getParameterList().size() > 6) {
+					FunctionIR whichIR = IRTranslator.functionIRMap.get(whichFunc.getFullName());
+
+					if (whichFunc.getParameterList().size() > 6 || whichIR.purity) {
 						newList.add(instruction);
 						continue;
 					}
@@ -109,7 +111,6 @@ public class Inliner {
 						tempOperands.add(0, newOperand);
 					}
 
-					FunctionIR whichIR = IRTranslator.functionIRMap.get(whichFunc.getFullName());
 					returnValue = (VirtualRegister) ((FunctionCallInstruction) instruction).getReturnValue();
 					getLabel(nowfunc, whichIR.exitLabel);
 					int useless = whichFunc.getParameterList().size(), count = 0;
