@@ -12,112 +12,73 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-    push                  r12
-    push                  rbx
 @main.1.enter:
-     mov                  r12,                    3
-     mov                  r10,                  r12
-     mov                  rsi,                  r12
-     add                  r10,                    1
-     shl                  r10,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r10
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rdi,                  rax
-     mov           qword[rdi],                  rsi
-     add                  rdi,                    8
-     sub                  r10,                    8
-     mov                  r11,                  rdi
-     add                  rdi,                  r10
-@main.3.Allocate2:
-     mov                  r10,                  r12
-     mov                  rsi,                  r12
-     add                  r10,                    1
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r10
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                   r9,                  rax
-     mov            qword[r9],                  rsi
-     add                   r9,                    8
-     mov           qword[r11],                   r9
-     add                  r11,                    8
-     cmp                  r11,                  rdi
-	jl	@main.3.Allocate2
-     mov                   r9,                  r12
-     mov                  rsi,                  r12
-     add                   r9,                    1
-     shl                   r9,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                   r9
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     sub                   r9,                    8
-     mov                  r10,                  rbx
-     mov                  rdi,                  rbx
-     add                  rdi,                   r9
-@main.4.Allocate2:
-     mov                   r9,                  r12
-     mov                  rsi,                  r12
-     add                   r9,                    1
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                   r9
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                   r8,                  rax
-     mov            qword[r8],                  rsi
-     add                   r8,                    8
-     mov           qword[r10],                   r8
-     add                  r10,                    8
-     cmp                  r10,                  rdi
-	jl	@main.4.Allocate2
-     mov                  rsi,                  rbx
-     pop                  rbx
-     pop                  r12
+     mov                   r8,                    5
+     mov                  rdi,                    0
+     cmp                  rdi,                    0
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rsi,                    0
+	je	@main.6.cmp_and
+     mov                  rsi,                   r8
+     mov                  rax,                  rsi
+     mov                  rcx,                  rdi
+     cdq
+    idiv                  ecx
+     mov                  rsi,                  rax
+     cmp                  rsi,                    1
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rsi,                    0
+@main.6.cmp_and:
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rsi,                    1
+	je	@main.4.IfTrue
+	jmp	@main.3.IfFalse
+@main.4.IfTrue:
+     mov                   r9,                   10
+	jmp	@main.5.IfExit
+@main.3.IfFalse:
+     mov                   r9,                   20
+@main.5.IfExit:
+     cmp                   r9,                   10
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    0
+	je	@main.10.cmp_and
+     mov                  rsi,                   r8
+     mov                  rax,                  rsi
+     mov                  rcx,                  rdi
+     cdq
+    idiv                  ecx
+     mov                  rsi,                  rax
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    0
+@main.10.cmp_and:
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rsi,                    0
+	je	@main.11.cmp_and
+     cmp                   r8,                    5
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    0
+@main.11.cmp_and:
+     mov                  rsi,                    0
+   setne                  sil
+     xor                  rsi,                    1
+     cmp                  rsi,                    1
+	je	@main.8.IfTrue
+	jmp	@main.7.IfFalse
+@main.8.IfTrue:
+     mov                   r9,                   30
+	jmp	@main.9.IfExit
+@main.7.IfFalse:
+@main.9.IfExit:
+     mov                  rax,                   r9
      pop                  rbp
      ret
 

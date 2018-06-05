@@ -12,6 +12,7 @@ public abstract class BinaryExpression extends Expression {
 		super(oper, false, type);
 		leftExpression = leftExp;
 		rightExpression = rightExp;
+		modifyTag = false;
 	}
 
 	@Override

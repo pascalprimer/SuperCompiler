@@ -52,7 +52,7 @@ public class IdentifierExpression extends Expression {
 
 	@Override
 	public boolean getUseful() {
-System.out.println("identifier useful? " + symbol.getName() + " " + symbol.useful);
+//System.out.println("identifier if useful? " + symbol.getName() + " " + symbol.useful);
 		return symbol.useful;
 	}
 
@@ -63,6 +63,7 @@ System.out.println("identifier useful? " + symbol.getName() + " " + symbol.usefu
 
 	@Override
 	public void dfsBuiltOperand(boolean ok) {
+		modifyTag = false;
 		if (getLeftValue() && (symbol.getType() instanceof IntType || symbol.getType() instanceof BoolType)) {
 			HASH = symbol.HASH + "^" + String.valueOf(symbol.number);
 			IRTranslator.getBuiltExpression(HASH, this);

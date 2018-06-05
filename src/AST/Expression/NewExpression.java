@@ -59,6 +59,7 @@ public class NewExpression extends Expression {
 
 	@Override
 	public void dfsUseful(boolean useful) {
+		modifyTag = true;
 		for (Expression expression: list) {
 			if (expression != null) {
 				expression.dfsUseful(true);

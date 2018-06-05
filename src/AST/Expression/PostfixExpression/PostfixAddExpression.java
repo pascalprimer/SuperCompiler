@@ -23,6 +23,7 @@ public class PostfixAddExpression extends Expression {
 	private PostfixAddExpression(Expression exp) {
 		super("++", false, IntType.getInstance());
 		expression = exp;
+		modifyTag = true;
 	}
 
 	public static Expression getExpression(Expression exp) {

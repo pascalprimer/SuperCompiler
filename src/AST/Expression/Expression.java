@@ -15,6 +15,7 @@ public abstract class Expression {
 
 	public String HASH;
 	public Expression identical;
+	public boolean modifyTag;//not only identifier or binary op
 
 	public Expression(String op, boolean leftValue, Type type) {
 		this.op = op;

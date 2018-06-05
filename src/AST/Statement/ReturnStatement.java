@@ -42,7 +42,7 @@ public class ReturnStatement extends Statement {
 	@Override
 	public void dfsUseful() {
 		if (returnValue != null) {
-			returnValue.dfsUseful(false);
+			returnValue.dfsUseful(true);
 		}
 	}
 

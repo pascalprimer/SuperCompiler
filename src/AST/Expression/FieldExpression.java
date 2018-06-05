@@ -68,6 +68,7 @@ public class FieldExpression extends Expression {
 
 	@Override
 	public boolean getUseful() {
+		modifyTag = true;
 		return true;
 	}
 

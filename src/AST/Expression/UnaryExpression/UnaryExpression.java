@@ -19,6 +19,7 @@ public abstract class UnaryExpression extends Expression {
 
 	@Override
 	public void dfsUseful(boolean useful) {
+		modifyTag = false;
 		expression.dfsUseful(true);
 	}
 }

@@ -52,6 +52,7 @@ public class ArrayExpression extends Expression {
 			baseExpression.dfsUseful(true);
 		}
 		subscriptExpression.dfsUseful(true);
+		modifyTag = subscriptExpression.modifyTag;
 	}
 
 	@Override

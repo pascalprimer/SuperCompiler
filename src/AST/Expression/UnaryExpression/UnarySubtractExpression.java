@@ -16,6 +16,7 @@ public class UnarySubtractExpression extends UnaryExpression {
 
 	private UnarySubtractExpression(Expression exp) {
 		super("--", true, IntType.getInstance(), exp);
+		modifyTag = true;
 	}
 
 	public static Expression getExpression(Expression exp) {

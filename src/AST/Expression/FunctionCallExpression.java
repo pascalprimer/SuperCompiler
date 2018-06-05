@@ -147,6 +147,7 @@ public class FunctionCallExpression extends Expression {
 
 	@Override
 	public void dfsUseful(boolean useful) {
+		modifyTag = true;
 		for (Expression expression: parameter) {
 			expression.dfsUseful(true);
 		}

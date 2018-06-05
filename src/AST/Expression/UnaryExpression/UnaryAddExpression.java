@@ -19,6 +19,7 @@ public class UnaryAddExpression extends UnaryExpression {
 
 	private UnaryAddExpression(Expression exp) {
 		super("++", true, IntType.getInstance(), exp);
+		modifyTag = true;
 	}
 
 	static public Expression getExpression(Expression exp) {

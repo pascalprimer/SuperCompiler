@@ -21,6 +21,7 @@ public class PostfixSubtractExpression extends Expression {
 	private PostfixSubtractExpression(Expression exp) {
 		super("--", false, IntType.getInstance());
 		expression = exp;
+		modifyTag = true;
 	}
 
 	public static Expression getExpression(Expression exp) {
