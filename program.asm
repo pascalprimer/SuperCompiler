@@ -3,4576 +3,2247 @@
 
 
  section                .text
-search:
+vector.getDim:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   24
+    push                  rbx
+@vector.getDim.1.enter:
+     mov                  rbx,                  rdi
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.getDim.4.IfTrue
+	jmp	@vector.getDim.3.IfFalse
+@vector.getDim.4.IfTrue:
+     mov                  rax,                    0
+	jmp	@vector.getDim.2.exit
+	jmp	@vector.getDim.5.IfExit
+@vector.getDim.3.IfFalse:
+@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+call	__size__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rax,                  rsi
+@vector.getDim.2.exit:
+     pop                  rbx
+     pop                  rbp
+     ret
+vector.add:
+    push                  rbp
+     mov                  rbp,                  rsp
     push                  r12
     push                  r14
     push                  r13
     push                  rbx
-@search.1.enter:
-     mov                  r14,                  rdi
-     mov                   r9,                  rsi
-     mov                  r13,                  rdx
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@search.6.cmp_or
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@search.6.cmp_or:
+@vector.add.1.enter:
+     mov                   r9,                  rdi
+     mov                  r12,                  rsi
+     mov                  rbx,                   r9
+     cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@search.7.cmp_or
-     cmp                  r14,                    0
+	je	@vector.add.14.@vector.getDim.4.IfTrue
+	jmp	@vector.add.15.@vector.getDim.3.IfFalse
+@vector.add.14.@vector.getDim.4.IfTrue:
      mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@search.8.cmp_or
-     mov                  rsi,                  r14
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r14
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,                  r14
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@search.4.IfTrue
-	jmp	@search.3.IfFalse
-@search.4.IfTrue:
-     cmp                  r14,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@search.12.cmp_and
-     cmp                   r9,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@search.10.IfTrue
-	jmp	@search.9.IfFalse
-@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r13
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@search.14.IfTrue
-	jmp	@search.13.IfFalse
-@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                  r12,                    0
-	jmp	@search.24.ForCon
-@search.23.ForBody:
-     mov                   r8,                    0
-	jmp	@search.28.ForCon
-@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+	jmp	@vector.add.12.@vector.getDim.2.exit
+	jmp	@vector.add.16.@vector.getDim.5.IfExit
+@vector.add.15.@vector.getDim.3.IfFalse:
+@vector.add.16.@vector.getDim.5.IfExit:
      mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r9
+call	__size__
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.add.12.@vector.getDim.2.exit:
+     mov                  rbx,                  rsi
+     mov                  rdi,                  r12
+     cmp           qword[rdi],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.add.19.@vector.getDim.4.IfTrue
+	jmp	@vector.add.20.@vector.getDim.3.IfFalse
+@vector.add.19.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.add.17.@vector.getDim.2.exit
+	jmp	@vector.add.21.@vector.getDim.5.IfExit
+@vector.add.20.@vector.getDim.3.IfFalse:
+@vector.add.21.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rdi]
+    push                  rsi
+    push                   r9
+call	__size__
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.add.17.@vector.getDim.2.exit:
+     cmp                  rbx,                  rsi
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rsi,                    1
+	je	@vector.add.6.cmp_or
+     mov                  rbx,                   r9
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.add.24.@vector.getDim.4.IfTrue
+	jmp	@vector.add.25.@vector.getDim.3.IfFalse
+@vector.add.24.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.add.22.@vector.getDim.2.exit
+	jmp	@vector.add.26.@vector.getDim.5.IfExit
+@vector.add.25.@vector.getDim.3.IfFalse:
+@vector.add.26.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r9
+call	__size__
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.add.22.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+@vector.add.6.cmp_or:
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.add.4.IfTrue
+	jmp	@vector.add.3.IfFalse
+@vector.add.4.IfTrue:
+	jmp	@vector.add.2.exit
+	jmp	@vector.add.5.IfExit
+@vector.add.3.IfFalse:
+@vector.add.5.IfExit:
+    push                  rdi
+    push                   r8
     push                   r9
     push                  rsi
-    push                   r8
-call	toString
-     pop                   r8
+     mov                  rdi,                    8
+    call               malloc
      pop                  rsi
      pop                   r9
+     pop                   r8
+     pop                  rdi
      mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     mov                  rdi,         __const_str0
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-@search.28.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-call	print
-     pop                   r9
-     add                  r12,                    1
-@search.24.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@search.23.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-call	print
-     pop                   r9
-	jmp	@search.15.IfExit
-@search.13.IfFalse:
-@search.15.IfExit:
-	jmp	@search.11.IfExit
-@search.9.IfFalse:
-     cmp                   r9,                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@search.31.IfTrue
-	jmp	@search.30.IfFalse
-@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+     mov                   r8,                  rsi
+     mov                  rbx,                   r9
      cmp           qword[rbx],                    0
      mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@search.36.cmp_and
-     mov                  rbx,         qword[@make]
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.add.29.@vector.getDim.4.IfTrue
+	jmp	@vector.add.30.@vector.getDim.3.IfFalse
+@vector.add.29.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.add.27.@vector.getDim.2.exit
+	jmp	@vector.add.31.@vector.getDim.5.IfExit
+@vector.add.30.@vector.getDim.3.IfFalse:
+@vector.add.31.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r8
+    push                   r9
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r9
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.add.27.@vector.getDim.2.exit:
+     mov                  rbx,                  rsi
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     mov                  rdi,                  rbx
+    call               malloc
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     add                  rbx,                    8
+     mov            qword[r8],                  rbx
+     mov                  r14,                    0
+	jmp	@vector.add.9.ForCon
+@vector.add.8.ForBody:
+     mov                  r13,            qword[r8]
+     mov                  rsi,                  r14
+     shl                  rsi,                    3
+     add                  r13,                  rsi
+     mov                  rdi,            qword[r9]
+     mov                  rsi,                  r14
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rbx,           qword[r12]
      mov                  rsi,                  r14
      shl                  rsi,                    3
      add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
+     mov                  rsi,           qword[rdi]
+     add                  rsi,           qword[rbx]
+     mov           qword[r13],                  rsi
+     add                  r14,                    1
+@vector.add.9.ForCon:
+     mov                  rbx,                   r9
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.add.34.@vector.getDim.4.IfTrue
+	jmp	@vector.add.35.@vector.getDim.3.IfFalse
+@vector.add.34.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.add.32.@vector.getDim.2.exit
+	jmp	@vector.add.36.@vector.getDim.5.IfExit
+@vector.add.35.@vector.getDim.3.IfFalse:
+@vector.add.36.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+@vector.add.32.@vector.getDim.2.exit:
+     cmp                  r14,                  rsi
      mov                  rsi,                    0
     setl                  sil
-     cmp                  rsi,                    0
-@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
      cmp                  rsi,                    1
-	je	@search.34.IfTrue
-	jmp	@search.33.IfFalse
-@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@search.39.IfTrue
-	jmp	@search.38.IfFalse
-@search.39.IfTrue:
-     mov                  rdi,                  r14
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[r12]
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r9
-call	search
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@search.40.IfExit
-@search.38.IfFalse:
-     mov                  r12,                   r9
-     add                  r12,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[rdi]
-     mov                  rdi,                  r14
-     mov                  rsi,                  r12
-     mov                  rdx,                  rbx
-    push                   r9
-call	search
-     pop                   r9
-     mov                  rsi,                  rax
-@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@search.35.IfExit
-@search.33.IfFalse:
-@search.35.IfExit:
-	jmp	@search.32.IfExit
-@search.30.IfFalse:
-     mov                  r12,                    1
-	jmp	@search.43.ForCon
-@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@search.46.IfTrue
-	jmp	@search.45.IfFalse
-@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                  r12
-     cmp                   r9,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@search.49.IfTrue
-	jmp	@search.48.IfFalse
-@search.49.IfTrue:
-     mov                  rsi,                  r14
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                  r12
-     mov                  rdi,                  rsi
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r9
-call	search
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@search.50.IfExit
-@search.48.IfFalse:
-     mov                  rsi,                   r9
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                  r12
-     mov                  rdi,                  r14
-     mov                  rdx,                  rbx
-    push                   r9
-call	search
-     pop                   r9
-     mov                  rsi,                  rax
-@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@search.47.IfExit
-@search.45.IfFalse:
-@search.47.IfExit:
-     add                  r12,                    1
-@search.43.ForCon:
-     cmp                  r12,                    9
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@search.42.ForBody
-@search.32.IfExit:
-@search.11.IfExit:
-	jmp	@search.5.IfExit
-@search.3.IfFalse:
-@search.5.IfExit:
+	je	@vector.add.8.ForBody
+     mov                  rax,                   r8
+@vector.add.2.exit:
      pop                  rbx
      pop                  r13
      pop                  r14
      pop                  r12
-     add                  rsp,                   24
      pop                  rbp
      ret
-origin:
+vector.init:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   24
-@origin.1.enter:
-     mov                   r9,                  rdi
-     mov                  rdi,                   r9
-     mov                  rsi,                   r9
-     add                  rdi,                    1
-     shl                  rdi,                    3
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     mov                  rdi,                  rax
-     mov           qword[rdi],                  rsi
-     add                  rdi,                    8
-     mov         qword[@make],                  rdi
-     mov            qword[@i],                    0
-	jmp	@origin.5.ForCon
-@origin.4.ForBody:
-     mov                  rdi,         qword[@make]
-     mov                  rsi,            qword[@i]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                   r8,                   r9
-     mov                  rsi,                   r9
-     add                   r8,                    1
-     shl                   r8,                    3
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
+    push                  r12
+    push                  r13
+    push                  rbx
+@vector.init.1.enter:
+     mov                  r12,                  rdi
+     mov                   r8,                  rsi
+     cmp                   r8,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.init.4.IfTrue
+	jmp	@vector.init.3.IfFalse
+@vector.init.4.IfTrue:
+	jmp	@vector.init.2.exit
+	jmp	@vector.init.5.IfExit
+@vector.init.3.IfFalse:
+@vector.init.5.IfExit:
      mov                  rdi,                   r8
-    call               malloc
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
      add                  rsp,                    8
      pop                  rsi
-     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                  rdi
+    push                   r8
+    push                  rsi
+     mov                  rdi,                  rbx
+    call               malloc
+     pop                  rsi
      pop                   r8
      pop                  rdi
-     mov                   r8,                  rax
-     mov            qword[r8],                  rsi
-     add                   r8,                    8
-     mov           qword[rdi],                   r8
-     mov            qword[@j],                    0
-	jmp	@origin.9.ForCon
-@origin.8.ForBody:
-     mov                  rdi,         qword[@make]
-     mov                  rsi,            qword[@i]
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     add                  rbx,                    8
+     mov           qword[r12],                  rbx
+     mov                  r13,                    0
+	jmp	@vector.init.8.ForCon
+@vector.init.7.ForBody:
+     mov                  rdi,           qword[r12]
+     mov                  rsi,                  r13
      shl                  rsi,                    3
      add                  rdi,                  rsi
-     mov                  rdi,           qword[rdi]
-     mov                  rsi,            qword[@j]
+     mov                  rbx,                   r8
+     mov                  rsi,                  r13
      shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov           qword[rdi],                    0
-     add            qword[@j],                    1
-@origin.9.ForCon:
-     cmp            qword[@j],                   r9
+     add                  rbx,                  rsi
+     mov                  rsi,           qword[rbx]
+     mov           qword[rdi],                  rsi
+     add                  r13,                    1
+@vector.init.8.ForCon:
+     mov                  rdi,                   r8
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     cmp                  r13,                  rsi
      mov                  rsi,                    0
     setl                  sil
      cmp                  rsi,                    1
-	je	@origin.8.ForBody
-     add            qword[@i],                    1
-@origin.5.ForCon:
-     cmp            qword[@i],                   r9
+	je	@vector.init.7.ForBody
+@vector.init.2.exit:
+     pop                  rbx
+     pop                  r13
+     pop                  r12
+     pop                  rbp
+     ret
+vector.scalarInPlaceMultiply:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  r12
+    push                  r13
+    push                  rbx
+@vector.scalarInPlaceMultiply.1.enter:
+     mov                   r8,                  rdi
+     mov                  r12,                  rsi
+     cmp            qword[r8],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.scalarInPlaceMultiply.4.IfTrue
+	jmp	@vector.scalarInPlaceMultiply.3.IfFalse
+@vector.scalarInPlaceMultiply.4.IfTrue:
+	jmp	@vector.scalarInPlaceMultiply.2.exit
+	jmp	@vector.scalarInPlaceMultiply.5.IfExit
+@vector.scalarInPlaceMultiply.3.IfFalse:
+@vector.scalarInPlaceMultiply.5.IfExit:
+     mov                  r13,                    0
+	jmp	@vector.scalarInPlaceMultiply.8.ForCon
+@vector.scalarInPlaceMultiply.7.ForBody:
+     mov                  rdi,            qword[r8]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rbx,            qword[r8]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov                  rsi,                  r12
+    imul                  rsi,           qword[rbx]
+     mov           qword[rdi],                  rsi
+     add                  r13,                    1
+@vector.scalarInPlaceMultiply.8.ForCon:
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue
+	jmp	@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse
+@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit
+	jmp	@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit
+@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse:
+@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit:
+     cmp                  r13,                  rsi
      mov                  rsi,                    0
     setl                  sil
      cmp                  rsi,                    1
-	je	@origin.4.ForBody
-     add                  rsp,                   24
+	je	@vector.scalarInPlaceMultiply.7.ForBody
+     mov                  rax,                   r8
+@vector.scalarInPlaceMultiply.2.exit:
+     pop                  rbx
+     pop                  r13
+     pop                  r12
+     pop                  rbp
+     ret
+vector.copy:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  r12
+    push                  r13
+    push                  rbx
+@vector.copy.1.enter:
+     mov                   r8,                  rdi
+     mov                  r12,                  rsi
+     cmp                  r12,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.copy.4.IfTrue
+	jmp	@vector.copy.3.IfFalse
+@vector.copy.4.IfTrue:
+     mov                  rax,                    0
+	jmp	@vector.copy.2.exit
+	jmp	@vector.copy.5.IfExit
+@vector.copy.3.IfFalse:
+@vector.copy.5.IfExit:
+     mov                  rbx,                  r12
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.copy.16.@vector.getDim.4.IfTrue
+	jmp	@vector.copy.17.@vector.getDim.3.IfFalse
+@vector.copy.16.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.copy.14.@vector.getDim.2.exit
+	jmp	@vector.copy.18.@vector.getDim.5.IfExit
+@vector.copy.17.@vector.getDim.3.IfFalse:
+@vector.copy.18.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@vector.copy.14.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.copy.7.IfTrue
+	jmp	@vector.copy.6.IfFalse
+@vector.copy.7.IfTrue:
+     mov            qword[r8],                    0
+	jmp	@vector.copy.8.IfExit
+@vector.copy.6.IfFalse:
+     mov                  rbx,                  r12
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.copy.21.@vector.getDim.4.IfTrue
+	jmp	@vector.copy.22.@vector.getDim.3.IfFalse
+@vector.copy.21.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.copy.19.@vector.getDim.2.exit
+	jmp	@vector.copy.23.@vector.getDim.5.IfExit
+@vector.copy.22.@vector.getDim.3.IfFalse:
+@vector.copy.23.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@vector.copy.19.@vector.getDim.2.exit:
+     mov                  rbx,                  rsi
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                   r8
+    push                  rdi
+    push                  rsi
+     mov                  rdi,                  rbx
+    call               malloc
+     pop                  rsi
+     pop                  rdi
+     pop                   r8
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     add                  rbx,                    8
+     mov            qword[r8],                  rbx
+     mov                  r13,                    0
+	jmp	@vector.copy.11.ForCon
+@vector.copy.10.ForBody:
+     mov                  rdi,            qword[r8]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rbx,           qword[r12]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov                  rsi,           qword[rbx]
+     mov           qword[rdi],                  rsi
+     add                  r13,                    1
+@vector.copy.11.ForCon:
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.copy.26.@vector.getDim.4.IfTrue
+	jmp	@vector.copy.27.@vector.getDim.3.IfFalse
+@vector.copy.26.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.copy.24.@vector.getDim.2.exit
+	jmp	@vector.copy.28.@vector.getDim.5.IfExit
+@vector.copy.27.@vector.getDim.3.IfFalse:
+@vector.copy.28.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.copy.24.@vector.getDim.2.exit:
+     cmp                  r13,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@vector.copy.10.ForBody
+@vector.copy.8.IfExit:
+     mov                  rax,                    1
+@vector.copy.2.exit:
+     pop                  rbx
+     pop                  r13
+     pop                  r12
      pop                  rbp
      ret
 __global_declaration:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   16
-     mov                  rdi,                   10
-     mov                  rsi,                   10
-     add                  rdi,                    1
-     shl                  rdi,                    3
-    push                  rdi
+     pop                  rbp
+     ret
+vector.dot:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  r12
+    push                  r13
+    push                  rbx
+@vector.dot.1.enter:
+     mov                  r13,                  rdi
+     mov                  r12,                  rsi
+     mov                   r9,                    0
+     mov                   r8,                    0
+	jmp	@vector.dot.5.ForCon
+@vector.dot.4.ForBody:
+     mov                  rdi,           qword[r13]
+     mov                  rsi,                   r9
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rbx,           qword[r12]
+     mov                  rsi,                   r9
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov                  rsi,           qword[rdi]
+    imul                  rsi,           qword[rbx]
+     mov                   r8,                  rsi
+     add                   r9,                    1
+@vector.dot.5.ForCon:
+     mov                  rbx,                  r13
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.dot.10.@vector.getDim.4.IfTrue
+	jmp	@vector.dot.11.@vector.getDim.3.IfFalse
+@vector.dot.10.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.dot.8.@vector.getDim.2.exit
+	jmp	@vector.dot.12.@vector.getDim.5.IfExit
+@vector.dot.11.@vector.getDim.3.IfFalse:
+@vector.dot.12.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r9
+    push                   r8
     push                  rsi
-    call               malloc
+call	__size__
      pop                  rsi
-     pop                  rdi
-     mov                  rdi,                  rax
-     mov           qword[rdi],                  rsi
-     add                  rdi,                    8
-     mov        qword[@color],                  rdi
-     mov                  rdi,                    1
-     mov                  rsi,                    1
-     add                  rdi,                    1
-     shl                  rdi,                    3
-    push                  rdi
-    push                  rsi
-    call               malloc
-     pop                  rsi
-     pop                  rdi
-     mov                  rdi,                  rax
-     mov           qword[rdi],                  rsi
-     add                  rdi,                    8
-     mov        qword[@count],                  rdi
-     add                  rsp,                   16
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
+@vector.dot.8.@vector.getDim.2.exit:
+     cmp                   r9,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@vector.dot.4.ForBody
+     mov                  rax,                   r8
+     pop                  rbx
+     pop                  r13
+     pop                  r12
      pop                  rbp
      ret
 main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
-     sub                  rsp,                   88
-    push                  rbx
     push                  r12
     push                  r14
     push                  r13
     push                  r15
+    push                  rbx
 @main.1.enter:
-     mov                  r12,                    3
-     mov                  rbx,                  r12
-     mov                  rsi,                  r12
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                   r8
-    push                   r9
-    push                  rsi
     push                  r10
     push                  r11
     push                  rdi
-     mov                  rdi,                  rbx
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                    8
     call               malloc
-     pop                  rdi
-     pop                  r11
-     pop                  r10
+     add                  rsp,                    8
      pop                  rsi
      pop                   r9
      pop                   r8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     mov                  rsi,                  rax
+     mov                  r15,                  rsi
+     mov                  rbx,                   10
+     mov                  rsi,                   10
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                  r10
+    push                  r11
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                  rbx
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
      mov                  rbx,                  rax
      mov           qword[rbx],                  rsi
      add                  rbx,                    8
-     mov         qword[@make],                  rbx
-     mov            qword[@i],                    0
-	jmp	@main.6.@origin.5.ForCon
-@main.7.@origin.4.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,            qword[@i]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,                  r12
-     mov                  rsi,                  r12
-     add                  rdi,                    1
-     shl                  rdi,                    3
-    push                   r8
+     mov                  rsi,                  rbx
+     mov                  r12,                    0
+	jmp	@main.5.ForCon
+@main.4.ForBody:
+     mov                  rdi,                  rsi
+     mov                  rbx,                  r12
+     shl                  rbx,                    3
+     add                  rdi,                  rbx
+     mov                  rbx,                    9
+     sub                  rbx,                  r12
+     mov           qword[rdi],                  rbx
+     add                  r12,                    1
+@main.5.ForCon:
+     cmp                  r12,                   10
+     mov                  rbx,                    0
+    setl                   bl
+     cmp                  rbx,                    1
+	je	@main.4.ForBody
+     mov                  r12,                  r15
+     mov                   r8,                  rsi
+     cmp                   r8,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.13.@vector.init.4.IfTrue
+	jmp	@main.14.@vector.init.3.IfFalse
+@main.13.@vector.init.4.IfTrue:
+	jmp	@main.11.@vector.init.2.exit
+	jmp	@main.15.@vector.init.5.IfExit
+@main.14.@vector.init.3.IfFalse:
+@main.15.@vector.init.5.IfExit:
+     mov                  rdi,                   r8
     push                   r9
     push                  rsi
+    push                   r8
+    push                  r10
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r8
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     add                  rbx,                    1
+     shl                  rbx,                    3
     push                  r10
     push                  r11
     push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                  rbx
     call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
      pop                  rdi
      pop                  r11
      pop                  r10
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rdi,                  rax
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     add                  rbx,                    8
+     mov           qword[r12],                  rbx
+     mov                  r13,                    0
+	jmp	@main.16.@vector.init.8.ForCon
+@main.17.@vector.init.7.ForBody:
+     mov                  rdi,           qword[r12]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rbx,                   r8
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov                  rsi,           qword[rbx]
      mov           qword[rdi],                  rsi
-     add                  rdi,                    8
-     mov           qword[rbx],                  rdi
-     mov            qword[@j],                    0
-	jmp	@main.8.@origin.9.ForCon
-@main.9.@origin.8.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,            qword[@i]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,            qword[@j]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     add            qword[@j],                    1
-@main.8.@origin.9.ForCon:
-     cmp            qword[@j],                  r12
+     add                  r13,                    1
+@main.16.@vector.init.8.ForCon:
+     mov                  rdi,                   r8
+    push                  rsi
+    push                   r9
+    push                   r8
+    push                  r10
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+     cmp                  r13,                  rsi
      mov                  rsi,                    0
     setl                  sil
      cmp                  rsi,                    1
-	je	@main.9.@origin.8.ForBody
-     add            qword[@i],                    1
-@main.6.@origin.5.ForCon:
-     cmp            qword[@i],                  r12
+	je	@main.17.@vector.init.7.ForBody
+@main.11.@vector.init.2.exit:
+     mov                  rdi,         __const_str0
+    push                   r9
+    push                  r10
+     sub                  rsp,                    8
+call	print
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r9
+     mov                   r8,                  r15
+     mov                  r13,         __const_str6
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
      mov                  rsi,                    0
-    setl                  sil
+    sete                  sil
      cmp                  rsi,                    1
-	je	@main.7.@origin.4.ForBody
-     mov        qword[rbp-32],                    0
-     mov        qword[rbp-40],                    0
-     mov                  r15,                    0
-     cmp        qword[rbp-40],                    0
+	je	@main.122.@vector.getDim.4.IfTrue
+	jmp	@main.123.@vector.getDim.3.IfFalse
+@main.122.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.120.@vector.getDim.2.exit
+	jmp	@main.124.@vector.getDim.5.IfExit
+@main.123.@vector.getDim.3.IfFalse:
+@main.124.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r9
+    push                  r10
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
+@main.120.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
      mov                  rsi,                    0
     setg                  sil
      cmp                  rsi,                    1
-	je	@main.12.@search.6.cmp_or
-     cmp        qword[rbp-40],                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.12.@search.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.13.@search.7.cmp_or
-     cmp        qword[rbp-32],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.13.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.14.@search.8.cmp_or
-     mov                  rsi,        qword[rbp-32]
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-32]
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,        qword[rbp-32]
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.14.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.15.@search.4.IfTrue
-	jmp	@main.16.@search.3.IfFalse
-@main.15.@search.4.IfTrue:
-     cmp        qword[rbp-32],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.17.@search.12.cmp_and
-     cmp        qword[rbp-40],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.17.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.18.@search.10.IfTrue
-	jmp	@main.19.@search.9.IfFalse
-@main.18.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r15
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.20.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.20.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.21.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.21.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.22.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.22.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.23.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.23.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.24.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.24.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.25.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.25.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.26.@search.14.IfTrue
-	jmp	@main.27.@search.13.IfFalse
-@main.26.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                  r14,                    0
-	jmp	@main.28.@search.24.ForCon
-@main.29.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.30.@search.28.ForCon
-@main.31.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
+	je	@main.20.@vector.tostring.4.IfTrue
+	jmp	@main.21.@vector.tostring.3.IfFalse
+@main.20.@vector.tostring.4.IfTrue:
+     mov                  rsi,            qword[r8]
+     mov                  rdi,           qword[rsi]
+    push                   r9
+    push                  r10
+    push                   r8
     push                  rsi
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
      pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                   r9
      mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-call	print
-     mov                  rdi,         __const_str0
-call	print
-     add                  r12,                    1
-@main.30.@search.28.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.31.@search.27.ForBody
-     mov                  rdi,         __const_str1
-call	print
-     add                  r14,                    1
-@main.28.@search.24.ForCon:
-     cmp                  r14,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.29.@search.23.ForBody
-     mov                  rdi,         __const_str1
-call	print
-	jmp	@main.32.@search.15.IfExit
-@main.27.@search.13.IfFalse:
-@main.32.@search.15.IfExit:
-	jmp	@main.33.@search.11.IfExit
-@main.19.@search.9.IfFalse:
-     cmp        qword[rbp-40],                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.34.@search.31.IfTrue
-	jmp	@main.35.@search.30.IfFalse
-@main.34.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.36.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    0
-@main.36.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.37.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.37.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.38.@search.34.IfTrue
-	jmp	@main.39.@search.33.IfFalse
-@main.38.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.40.@search.39.IfTrue
-	jmp	@main.41.@search.38.IfFalse
-@main.40.@search.39.IfTrue:
-     mov                  rdi,        qword[rbp-32]
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,                  r15
-     add                  rsi,           qword[rbx]
-     mov        qword[rbp-64],                  rdi
-     mov        qword[rbp-72],                    0
-     mov                  r14,                  rsi
-     cmp        qword[rbp-72],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.56.@search.6.cmp_or
-     cmp        qword[rbp-72],                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.56.@search.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.57.@search.7.cmp_or
-     cmp        qword[rbp-64],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.57.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.58.@search.8.cmp_or
-     mov                  rsi,        qword[rbp-64]
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-64]
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,        qword[rbp-64]
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.58.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.59.@search.4.IfTrue
-	jmp	@main.60.@search.3.IfFalse
-@main.59.@search.4.IfTrue:
-     cmp        qword[rbp-64],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.61.@search.12.cmp_and
-     cmp        qword[rbp-72],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.61.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.62.@search.10.IfTrue
-	jmp	@main.63.@search.9.IfFalse
-@main.62.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r14
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.64.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.64.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.65.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.65.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.66.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.66.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.67.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.67.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.68.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.68.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.69.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.69.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.70.@search.14.IfTrue
-	jmp	@main.71.@search.13.IfFalse
-@main.70.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                   r8,                    0
-	jmp	@main.72.@search.24.ForCon
-@main.73.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.74.@search.28.ForCon
-@main.75.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-    push                   r8
+     mov                  rdi,                  r13
+    push                   r9
+    push                  r10
     push                  rsi
-call	toString
+    push                   r8
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                   r8
      pop                  rsi
-     pop                   r8
+     pop                  r10
+     pop                   r9
      mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r8
-     mov                  rdi,         __const_str0
-    push                   r8
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r8
-     add                  r12,                    1
-@main.74.@search.28.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.75.@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r8
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r8
-     add                   r8,                    1
-@main.72.@search.24.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.73.@search.23.ForBody
-     mov                  rdi,         __const_str1
-call	print
-	jmp	@main.76.@search.15.IfExit
-@main.71.@search.13.IfFalse:
-@main.76.@search.15.IfExit:
-	jmp	@main.77.@search.11.IfExit
-@main.63.@search.9.IfFalse:
-     cmp        qword[rbp-72],                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.78.@search.31.IfTrue
-	jmp	@main.79.@search.30.IfFalse
-@main.78.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.80.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    0
-@main.80.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.81.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.81.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.82.@search.34.IfTrue
-	jmp	@main.83.@search.33.IfFalse
-@main.82.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.84.@search.39.IfTrue
-	jmp	@main.85.@search.38.IfFalse
-@main.84.@search.39.IfTrue:
-     mov                  rdi,        qword[rbp-64]
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,                  r14
-     add                  rsi,           qword[rbx]
-     mov        qword[rbp-80],                  rdi
-     mov        qword[rbp-88],                    0
-     mov                   r9,                  rsi
-     cmp        qword[rbp-88],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.188.@search.6.cmp_or
-     cmp        qword[rbp-88],                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.188.@search.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.189.@search.7.cmp_or
-     cmp        qword[rbp-80],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.189.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.190.@search.8.cmp_or
-     mov                  rsi,        qword[rbp-80]
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-80]
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,        qword[rbp-80]
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.190.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.191.@search.4.IfTrue
-	jmp	@main.192.@search.3.IfFalse
-@main.191.@search.4.IfTrue:
-     cmp        qword[rbp-80],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.193.@search.12.cmp_and
-     cmp        qword[rbp-88],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.193.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.194.@search.10.IfTrue
-	jmp	@main.195.@search.9.IfFalse
-@main.194.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                   r9
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.196.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.196.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.197.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.197.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.198.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.198.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.199.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.199.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.200.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.200.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.201.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.201.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.202.@search.14.IfTrue
-	jmp	@main.203.@search.13.IfFalse
-@main.202.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                   r8,                    0
-	jmp	@main.204.@search.24.ForCon
-@main.205.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.206.@search.28.ForCon
-@main.207.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-call	print
-     pop                   r9
-     pop                   r8
-     mov                  rdi,         __const_str0
-    push                   r8
-    push                   r9
-call	print
-     pop                   r9
-     pop                   r8
-     add                  r12,                    1
-@main.206.@search.28.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.207.@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r8
-    push                   r9
-call	print
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-@main.204.@search.24.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.205.@search.23.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r9
-	jmp	@main.208.@search.15.IfExit
-@main.203.@search.13.IfFalse:
-@main.208.@search.15.IfExit:
-	jmp	@main.209.@search.11.IfExit
-@main.195.@search.9.IfFalse:
-     cmp        qword[rbp-88],                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.210.@search.31.IfTrue
-	jmp	@main.211.@search.30.IfFalse
-@main.210.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.212.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    0
-@main.212.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.213.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.213.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.214.@search.34.IfTrue
-	jmp	@main.215.@search.33.IfFalse
-@main.214.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.216.@search.39.IfTrue
-	jmp	@main.217.@search.38.IfFalse
-@main.216.@search.39.IfTrue:
-     mov                  rdi,        qword[rbp-80]
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,                   r9
-     add                  rsi,           qword[rbx]
-     mov                  r11,                  rdi
-     mov                  r10,                    0
      mov                  r13,                  rsi
-     cmp                  r10,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.276.@search.6.cmp_or
-     cmp                  r10,                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.276.@search.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.277.@search.7.cmp_or
-     cmp                  r11,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.277.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.278.@search.8.cmp_or
-     mov                  rsi,                  r11
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r11
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,                  r11
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.278.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.279.@search.4.IfTrue
-	jmp	@main.280.@search.3.IfFalse
-@main.279.@search.4.IfTrue:
-     cmp                  r11,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.281.@search.12.cmp_and
-     cmp                  r10,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.281.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.282.@search.10.IfTrue
-	jmp	@main.283.@search.9.IfFalse
-@main.282.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r13
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.284.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.284.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.285.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.285.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.286.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.286.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.287.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.287.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.288.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.288.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.289.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.289.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.290.@search.14.IfTrue
-	jmp	@main.291.@search.13.IfFalse
-@main.290.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                   r8,                    0
-	jmp	@main.292.@search.24.ForCon
-@main.293.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.294.@search.28.ForCon
-@main.295.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
+	jmp	@main.22.@vector.tostring.5.IfExit
+@main.21.@vector.tostring.3.IfFalse:
+@main.22.@vector.tostring.5.IfExit:
+     mov                  r12,                    1
+	jmp	@main.23.@vector.tostring.8.ForCon
+@main.24.@vector.tostring.7.ForBody:
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str7
+    push                   r9
+    push                  r10
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,            qword[r8]
      mov                  rsi,                  r12
      shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                  r10
-    push                  r11
-    push                  rsi
+     add                  rdi,                  rsi
+     mov                  rdi,           qword[rdi]
     push                   r9
+    push                  r10
+    push                   r8
+    push                  rsi
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rsi
+    push                   r9
+    push                  r10
+    push                   r8
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  r10
      pop                   r9
      pop                  rsi
-     pop                  r11
-     pop                  r10
-     pop                   r8
      mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-    push                   r9
-call	print
-     pop                   r9
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rdi,         __const_str0
-    push                   r8
-    push                  r10
-    push                  r11
-    push                   r9
-call	print
-     pop                   r9
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     add                  r12,                    1
-@main.294.@search.28.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.295.@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r8
-    push                  r10
-    push                  r11
-    push                   r9
-call	print
-     pop                   r9
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     add                   r8,                    1
-@main.292.@search.24.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.293.@search.23.ForBody
-     mov                  rdi,         __const_str1
-    push                  r11
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                  r11
-	jmp	@main.296.@search.15.IfExit
-@main.291.@search.13.IfFalse:
-@main.296.@search.15.IfExit:
-	jmp	@main.297.@search.11.IfExit
-@main.283.@search.9.IfFalse:
-     cmp                  r10,                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.298.@search.31.IfTrue
-	jmp	@main.299.@search.30.IfFalse
-@main.298.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.300.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    0
-@main.300.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.301.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.301.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.302.@search.34.IfTrue
-	jmp	@main.303.@search.33.IfFalse
-@main.302.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.304.@search.39.IfTrue
-	jmp	@main.305.@search.38.IfFalse
-@main.304.@search.39.IfTrue:
-     mov                  rdi,                  r11
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[r12]
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                  r11
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     mov                  rsi,                  rax
-	jmp	@main.306.@search.40.IfExit
-@main.305.@search.38.IfFalse:
-     mov                  r12,                  r10
-     add                  r12,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[rdi]
-     mov                  rdi,                  r11
-     mov                  rsi,                  r12
-     mov                  rdx,                  rbx
-    push                  r11
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     mov                  rsi,                  rax
-@main.306.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.307.@search.35.IfExit
-@main.303.@search.33.IfFalse:
-@main.307.@search.35.IfExit:
-	jmp	@main.308.@search.32.IfExit
-@main.299.@search.30.IfFalse:
-     mov                   r8,                    1
-	jmp	@main.309.@search.43.ForCon
-@main.310.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.311.@search.46.IfTrue
-	jmp	@main.312.@search.45.IfFalse
-@main.311.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                   r8
-     cmp                  r10,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.313.@search.49.IfTrue
-	jmp	@main.314.@search.48.IfFalse
-@main.313.@search.49.IfTrue:
-     mov                  rsi,                  r11
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  rsi
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r8
-    push                  r10
-    push                  r11
-    push                   r9
-call	search
-     pop                   r9
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rsi,                  rax
-	jmp	@main.315.@search.50.IfExit
-@main.314.@search.48.IfFalse:
-     mov                  rsi,                  r10
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  r11
-     mov                  rdx,                  rbx
-    push                   r8
-    push                  r10
-    push                  r11
-    push                   r9
-call	search
-     pop                   r9
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rsi,                  rax
-@main.315.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r11
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.316.@search.47.IfExit
-@main.312.@search.45.IfFalse:
-@main.316.@search.47.IfExit:
-     add                   r8,                    1
-@main.309.@search.43.ForCon:
-     cmp                   r8,                    9
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.310.@search.42.ForBody
-@main.308.@search.32.IfExit:
-@main.297.@search.11.IfExit:
-	jmp	@main.317.@search.5.IfExit
-@main.280.@search.3.IfFalse:
-@main.317.@search.5.IfExit:
-	jmp	@main.218.@search.40.IfExit
-@main.217.@search.38.IfFalse:
-     mov                  r12,        qword[rbp-88]
-     add                  r12,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                   r9
-     add                  rbx,           qword[rdi]
-     mov                  rdi,        qword[rbp-80]
-     mov                  rsi,                  r12
-     mov                  rdx,                  rbx
-    push                   r9
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                   r9
-     mov                  rsi,                  rax
-@main.218.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.219.@search.35.IfExit
-@main.215.@search.33.IfFalse:
-@main.219.@search.35.IfExit:
-	jmp	@main.220.@search.32.IfExit
-@main.211.@search.30.IfFalse:
-     mov                   r8,                    1
-	jmp	@main.221.@search.43.ForCon
-@main.222.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.223.@search.46.IfTrue
-	jmp	@main.224.@search.45.IfFalse
-@main.223.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                   r8
-     cmp        qword[rbp-88],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.225.@search.49.IfTrue
-	jmp	@main.226.@search.48.IfFalse
-@main.225.@search.49.IfTrue:
-     mov                  rsi,        qword[rbp-80]
-     add                  rsi,                    1
-     mov                  rbx,                   r9
-     add                  rbx,                   r8
-     mov                  rdi,                  rsi
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r8
-    push                   r9
-call	search
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-	jmp	@main.227.@search.50.IfExit
-@main.226.@search.48.IfFalse:
-     mov                  rsi,        qword[rbp-88]
-     add                  rsi,                    1
-     mov                  rbx,                   r9
-     add                  rbx,                   r8
-     mov                  rdi,        qword[rbp-80]
-     mov                  rdx,                  rbx
-    push                   r8
-    push                   r9
-call	search
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-@main.227.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-80]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-88]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.228.@search.47.IfExit
-@main.224.@search.45.IfFalse:
-@main.228.@search.47.IfExit:
-     add                   r8,                    1
-@main.221.@search.43.ForCon:
-     cmp                   r8,                    9
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.222.@search.42.ForBody
-@main.220.@search.32.IfExit:
-@main.209.@search.11.IfExit:
-	jmp	@main.229.@search.5.IfExit
-@main.192.@search.3.IfFalse:
-@main.229.@search.5.IfExit:
-	jmp	@main.86.@search.40.IfExit
-@main.85.@search.38.IfFalse:
-     mov                  rdi,        qword[rbp-72]
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,                  r14
-     add                  rsi,           qword[rbx]
-     mov                  r10,        qword[rbp-64]
-     mov                   r9,                  rdi
      mov                  r13,                  rsi
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.232.@search.6.cmp_or
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.232.@search.6.cmp_or:
+     add                  r12,                    1
+@main.23.@vector.tostring.8.ForCon:
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@main.233.@search.7.cmp_or
-     cmp                  r10,                    0
+	je	@main.127.@vector.getDim.4.IfTrue
+	jmp	@main.128.@vector.getDim.3.IfFalse
+@main.127.@vector.getDim.4.IfTrue:
      mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.233.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.234.@search.8.cmp_or
-     mov                  rsi,                  r10
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r10
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,                  r10
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.234.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.235.@search.4.IfTrue
-	jmp	@main.236.@search.3.IfFalse
-@main.235.@search.4.IfTrue:
-     cmp                  r10,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.237.@search.12.cmp_and
-     cmp                   r9,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.237.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.238.@search.10.IfTrue
-	jmp	@main.239.@search.9.IfFalse
-@main.238.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r13
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.240.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.240.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.241.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.241.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.242.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.242.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.243.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.243.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.244.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.244.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.245.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.245.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.246.@search.14.IfTrue
-	jmp	@main.247.@search.13.IfFalse
-@main.246.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                   r8,                    0
-	jmp	@main.248.@search.24.ForCon
-@main.249.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.250.@search.28.ForCon
-@main.251.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+	jmp	@main.125.@vector.getDim.2.exit
+	jmp	@main.129.@vector.getDim.5.IfExit
+@main.128.@vector.getDim.3.IfFalse:
+@main.129.@vector.getDim.5.IfExit:
      mov                  rdi,           qword[rbx]
     push                   r9
-    push                   r8
     push                  r10
+    push                   r8
     push                  rsi
-call	toString
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
      pop                  rsi
-     pop                  r10
      pop                   r8
+     pop                  r10
      pop                   r9
      mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rdi,         __const_str0
-    push                   r9
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     add                  r12,                    1
-@main.250.@search.28.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.251.@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-@main.248.@search.24.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.249.@search.23.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-    push                  r10
-call	print
-     pop                  r10
-     pop                   r9
-	jmp	@main.252.@search.15.IfExit
-@main.247.@search.13.IfFalse:
-@main.252.@search.15.IfExit:
-	jmp	@main.253.@search.11.IfExit
-@main.239.@search.9.IfFalse:
-     cmp                   r9,                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.254.@search.31.IfTrue
-	jmp	@main.255.@search.30.IfFalse
-@main.254.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.256.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
+@main.125.@vector.getDim.2.exit:
+     cmp                  r12,                  rsi
      mov                  rsi,                    0
     setl                  sil
-     cmp                  rsi,                    0
-@main.256.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.257.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.257.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
      cmp                  rsi,                    1
-	je	@main.258.@search.34.IfTrue
-	jmp	@main.259.@search.33.IfFalse
-@main.258.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.260.@search.39.IfTrue
-	jmp	@main.261.@search.38.IfFalse
-@main.260.@search.39.IfTrue:
-     mov                  rdi,                  r10
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[r12]
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
+	je	@main.24.@vector.tostring.7.ForBody
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str8
     push                   r9
+    push                  rsi
     push                  r10
-call	search
+call	__string_connect__
      pop                  r10
+     pop                  rsi
      pop                   r9
      mov                  rsi,                  rax
-	jmp	@main.262.@search.40.IfExit
-@main.261.@search.38.IfFalse:
-     mov                  r12,                   r9
-     add                  r12,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[rdi]
-     mov                  rdi,                  r10
-     mov                  rsi,                  r12
-     mov                  rdx,                  rbx
-    push                   r9
-    push                  r10
-call	search
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-@main.262.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.263.@search.35.IfExit
-@main.259.@search.33.IfFalse:
-@main.263.@search.35.IfExit:
-	jmp	@main.264.@search.32.IfExit
-@main.255.@search.30.IfFalse:
-     mov                   r8,                    1
-	jmp	@main.265.@search.43.ForCon
-@main.266.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.267.@search.46.IfTrue
-	jmp	@main.268.@search.45.IfFalse
-@main.267.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                   r8
-     cmp                   r9,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.269.@search.49.IfTrue
-	jmp	@main.270.@search.48.IfFalse
-@main.269.@search.49.IfTrue:
-     mov                  rsi,                  r10
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  rsi
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r9
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@main.271.@search.50.IfExit
-@main.270.@search.48.IfFalse:
-     mov                  rsi,                   r9
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  r10
-     mov                  rdx,                  rbx
-    push                   r9
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-@main.271.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.272.@search.47.IfExit
-@main.268.@search.45.IfFalse:
-@main.272.@search.47.IfExit:
-     add                   r8,                    1
-@main.265.@search.43.ForCon:
-     cmp                   r8,                    9
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.266.@search.42.ForBody
-@main.264.@search.32.IfExit:
-@main.253.@search.11.IfExit:
-	jmp	@main.273.@search.5.IfExit
-@main.236.@search.3.IfFalse:
-@main.273.@search.5.IfExit:
-@main.86.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.87.@search.35.IfExit
-@main.83.@search.33.IfFalse:
-@main.87.@search.35.IfExit:
-	jmp	@main.88.@search.32.IfExit
-@main.79.@search.30.IfFalse:
-     mov                   r8,                    1
-	jmp	@main.89.@search.43.ForCon
-@main.90.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.91.@search.46.IfTrue
-	jmp	@main.92.@search.45.IfFalse
-@main.91.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                   r8
-     cmp        qword[rbp-72],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.93.@search.49.IfTrue
-	jmp	@main.94.@search.48.IfFalse
-@main.93.@search.49.IfTrue:
-     mov                  rsi,        qword[rbp-64]
-     add                  rsi,                    1
-     mov                  rbx,                  r14
-     add                  rbx,                   r8
-     mov                  rdi,                  rsi
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r8
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                   r8
-     mov                  rsi,                  rax
-	jmp	@main.95.@search.50.IfExit
-@main.94.@search.48.IfFalse:
-     mov                  rsi,        qword[rbp-72]
-     add                  rsi,                    1
-     mov                  rbx,                  r14
-     add                  rbx,                   r8
-     mov                  rdi,        qword[rbp-64]
-     mov                  rdx,                  rbx
-    push                   r8
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                   r8
-     mov                  rsi,                  rax
-@main.95.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-64]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-72]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.96.@search.47.IfExit
-@main.92.@search.45.IfFalse:
-@main.96.@search.47.IfExit:
-     add                   r8,                    1
-@main.89.@search.43.ForCon:
-     cmp                   r8,                    9
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.90.@search.42.ForBody
-@main.88.@search.32.IfExit:
-@main.77.@search.11.IfExit:
-	jmp	@main.97.@search.5.IfExit
-@main.60.@search.3.IfFalse:
-@main.97.@search.5.IfExit:
-	jmp	@main.42.@search.40.IfExit
-@main.41.@search.38.IfFalse:
-     mov                  rdi,        qword[rbp-40]
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,                  r15
-     add                  rsi,           qword[rbx]
-     mov                  r14,        qword[rbp-32]
-     mov                   r9,                  rdi
      mov                  r13,                  rsi
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.100.@search.6.cmp_or
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.100.@search.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.101.@search.7.cmp_or
-     cmp                  r14,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.101.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.102.@search.8.cmp_or
-     mov                  rsi,                  r14
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r14
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,                  r14
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.102.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.103.@search.4.IfTrue
-	jmp	@main.104.@search.3.IfFalse
-@main.103.@search.4.IfTrue:
-     cmp                  r14,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.105.@search.12.cmp_and
-     cmp                   r9,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.105.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.106.@search.10.IfTrue
-	jmp	@main.107.@search.9.IfFalse
-@main.106.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r13
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.108.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.108.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.109.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.109.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.110.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.110.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.111.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.111.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.112.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.112.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.113.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.113.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.114.@search.14.IfTrue
-	jmp	@main.115.@search.13.IfFalse
-@main.114.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
-     mov           qword[rbx],                  rsi
-     mov                   r8,                    0
-	jmp	@main.116.@search.24.ForCon
-@main.117.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.118.@search.28.ForCon
-@main.119.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
+     mov                  rsi,                  r13
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  r10
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  r10
+     pop                   r9
+    push                  r10
+    push                  r11
+    push                  rdi
+    push                   r8
     push                   r9
     push                  rsi
-    push                   r8
      sub                  rsp,                    8
-call	toString
+     mov                  rdi,                    8
+    call               malloc
      add                  rsp,                    8
-     pop                   r8
      pop                  rsi
      pop                   r9
+     pop                   r8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
      mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-call	print
-     pop                   r8
-     pop                   r9
-     mov                  rdi,         __const_str0
-    push                   r9
-    push                   r8
-call	print
-     pop                   r8
-     pop                   r9
-     add                  r12,                    1
-@main.118.@search.28.ForCon:
-     cmp                  r12,                    2
+     mov                  r11,                  rsi
+     mov                  r13,                  r11
+     mov                  r12,                  r15
+     cmp                  r12,                    0
      mov                  rsi,                    0
-   setle                  sil
+    sete                  sil
      cmp                  rsi,                    1
-	je	@main.119.@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-    push                   r8
-call	print
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-@main.116.@search.24.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.117.@search.23.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                   r9
-	jmp	@main.120.@search.15.IfExit
-@main.115.@search.13.IfFalse:
-@main.120.@search.15.IfExit:
-	jmp	@main.121.@search.11.IfExit
-@main.107.@search.9.IfFalse:
-     cmp                   r9,                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.122.@search.31.IfTrue
-	jmp	@main.123.@search.30.IfFalse
-@main.122.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.124.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    0
-@main.124.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.125.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+	je	@main.27.@vector.copy.4.IfTrue
+	jmp	@main.28.@vector.copy.3.IfFalse
+@main.27.@vector.copy.4.IfTrue:
+	jmp	@main.25.@vector.copy.2.exit
+	jmp	@main.29.@vector.copy.5.IfExit
+@main.28.@vector.copy.3.IfFalse:
+@main.29.@vector.copy.5.IfExit:
+     mov                  rbx,                  r12
      cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
-     cmp                  rsi,                    0
-@main.125.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
      cmp                  rsi,                    1
-	je	@main.126.@search.34.IfTrue
-	jmp	@main.127.@search.33.IfFalse
-@main.126.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.128.@search.39.IfTrue
-	jmp	@main.129.@search.38.IfFalse
-@main.128.@search.39.IfTrue:
-     mov                  rdi,                  r14
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[r12]
+	je	@main.30.@vector.copy.16.@vector.getDim.4.IfTrue
+	jmp	@main.31.@vector.copy.17.@vector.getDim.3.IfFalse
+@main.30.@vector.copy.16.@vector.getDim.4.IfTrue:
      mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r9
-     sub                  rsp,                    8
-call	search
-     add                  rsp,                    8
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@main.130.@search.40.IfExit
-@main.129.@search.38.IfFalse:
-     mov                  r12,                   r9
-     add                  r12,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+	jmp	@main.32.@vector.copy.14.@vector.getDim.2.exit
+	jmp	@main.33.@vector.copy.18.@vector.getDim.5.IfExit
+@main.31.@vector.copy.17.@vector.getDim.3.IfFalse:
+@main.33.@vector.copy.18.@vector.getDim.5.IfExit:
      mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[rdi]
-     mov                  rdi,                  r14
-     mov                  rsi,                  r12
-     mov                  rdx,                  rbx
     push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
      sub                  rsp,                    8
-call	search
+call	__size__
      add                  rsp,                    8
+     pop                  rsi
+     pop                  r10
+     pop                  r11
      pop                   r9
      mov                  rsi,                  rax
-@main.130.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.131.@search.35.IfExit
-@main.127.@search.33.IfFalse:
-@main.131.@search.35.IfExit:
-	jmp	@main.132.@search.32.IfExit
-@main.123.@search.30.IfFalse:
-     mov                   r8,                    1
-	jmp	@main.133.@search.43.ForCon
-@main.134.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+@main.32.@vector.copy.14.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.34.@vector.copy.7.IfTrue
+	jmp	@main.35.@vector.copy.6.IfFalse
+@main.34.@vector.copy.7.IfTrue:
+     mov           qword[r13],                    0
+	jmp	@main.36.@vector.copy.8.IfExit
+@main.35.@vector.copy.6.IfFalse:
+     mov                  rbx,                  r12
      cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@main.135.@search.46.IfTrue
-	jmp	@main.136.@search.45.IfFalse
-@main.135.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                   r8
-     cmp                   r9,                    2
+	je	@main.37.@vector.copy.21.@vector.getDim.4.IfTrue
+	jmp	@main.38.@vector.copy.22.@vector.getDim.3.IfFalse
+@main.37.@vector.copy.21.@vector.getDim.4.IfTrue:
      mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.137.@search.49.IfTrue
-	jmp	@main.138.@search.48.IfFalse
-@main.137.@search.49.IfTrue:
-     mov                  rsi,                  r14
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  rsi
-     mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r9
-    push                   r8
-call	search
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-	jmp	@main.139.@search.50.IfExit
-@main.138.@search.48.IfFalse:
-     mov                  rsi,                   r9
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  r14
-     mov                  rdx,                  rbx
-    push                   r9
-    push                   r8
-call	search
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-@main.139.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.140.@search.47.IfExit
-@main.136.@search.45.IfFalse:
-@main.140.@search.47.IfExit:
-     add                   r8,                    1
-@main.133.@search.43.ForCon:
-     cmp                   r8,                    9
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.134.@search.42.ForBody
-@main.132.@search.32.IfExit:
-@main.121.@search.11.IfExit:
-	jmp	@main.141.@search.5.IfExit
-@main.104.@search.3.IfFalse:
-@main.141.@search.5.IfExit:
-@main.42.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+	jmp	@main.39.@vector.copy.19.@vector.getDim.2.exit
+	jmp	@main.40.@vector.copy.23.@vector.getDim.5.IfExit
+@main.38.@vector.copy.22.@vector.getDim.3.IfFalse:
+@main.40.@vector.copy.23.@vector.getDim.5.IfExit:
      mov                  rdi,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.43.@search.35.IfExit
-@main.39.@search.33.IfFalse:
-@main.43.@search.35.IfExit:
-	jmp	@main.44.@search.32.IfExit
-@main.35.@search.30.IfFalse:
-     mov                  r14,                    1
-	jmp	@main.45.@search.43.ForCon
-@main.46.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.47.@search.46.IfTrue
-	jmp	@main.48.@search.45.IfFalse
-@main.47.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                  r14
-     cmp        qword[rbp-40],                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.49.@search.49.IfTrue
-	jmp	@main.50.@search.48.IfFalse
-@main.49.@search.49.IfTrue:
-     mov                  rbx,        qword[rbp-32]
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rsi,                  rax
+@main.39.@vector.copy.19.@vector.getDim.2.exit:
+     mov                  rbx,                  rsi
      add                  rbx,                    1
-     mov                  rsi,                  r15
-     add                  rsi,                  r14
-     mov                  r10,                  rbx
-     mov                   r9,                    0
-     mov                  r13,                  rsi
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.144.@search.6.cmp_or
-     cmp                   r9,                    0
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-@main.144.@search.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.145.@search.7.cmp_or
-     cmp                  r10,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.145.@search.7.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.146.@search.8.cmp_or
-     mov                  rsi,                  r10
-     sub                  rsi,                    1
-     mov                  rbx,         qword[@make]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r10
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,                  r10
-     sub                  rsi,                    1
-     mov                  rdi,         qword[@make]
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                   15
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.146.@search.8.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.147.@search.4.IfTrue
-	jmp	@main.148.@search.3.IfFalse
-@main.147.@search.4.IfTrue:
-     cmp                  r10,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.149.@search.12.cmp_and
-     cmp                   r9,                    2
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.149.@search.12.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.150.@search.10.IfTrue
-	jmp	@main.151.@search.9.IfFalse
-@main.150.@search.10.IfTrue:
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,                   45
-     sub                  rbx,                  r13
-     mov        qword[rsi+16],                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
+     shl                  rbx,                    3
+    push                  r10
+    push                  r11
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
      mov                  rdi,                  rbx
-     mov                  rsi,         qword[@make]
-     mov                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-	je	@main.152.@search.16.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.152.@search.16.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.153.@search.17.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,           qword[rsi]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.153.@search.17.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.154.@search.18.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,         qword[rbx+8]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,         qword[rsi+8]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.154.@search.18.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.155.@search.19.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,        qword[rbx+16]
-     add                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.155.@search.19.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.156.@search.20.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,           qword[rsi]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,        qword[rsi+16]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.156.@search.20.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.157.@search.21.cmp_and
-     mov                  rsi,         qword[@make]
-     mov                  rbx,        qword[rsi+16]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,         qword[rsi+8]
-     mov                  rbx,           qword[rbx]
-     add                  rbx,         qword[rsi+8]
-     mov                  rsi,         qword[@make]
-     mov                  rsi,           qword[rsi]
-     add                  rbx,        qword[rsi+16]
-     cmp                  rbx,                  rdi
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    0
-@main.157.@search.21.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.158.@search.14.IfTrue
-	jmp	@main.159.@search.13.IfFalse
-@main.158.@search.14.IfTrue:
-     mov                  rbx,        qword[@count]
-     mov                  rsi,        qword[@count]
-     mov                  rsi,           qword[rsi]
-     add                  rsi,                    1
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     mov                  rbx,                  rax
      mov           qword[rbx],                  rsi
+     add                  rbx,                    8
+     mov           qword[r13],                  rbx
      mov                   r8,                    0
-	jmp	@main.160.@search.24.ForCon
-@main.161.@search.23.ForBody:
-     mov                  r12,                    0
-	jmp	@main.162.@search.28.ForCon
-@main.163.@search.27.ForBody:
-     mov                  rbx,         qword[@make]
+	jmp	@main.41.@vector.copy.11.ForCon
+@main.42.@vector.copy.10.ForBody:
+     mov                  rdi,           qword[r13]
      mov                  rsi,                   r8
      shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r8
-    push                   r9
-    push                  r10
-call	toString
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     mov                  rdi,         __const_str0
-    push                   r8
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     add                  r12,                    1
-@main.162.@search.28.ForCon:
-     cmp                  r12,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.163.@search.27.ForBody
-     mov                  rdi,         __const_str1
-    push                   r8
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-@main.160.@search.24.ForCon:
-     cmp                   r8,                    2
-     mov                  rsi,                    0
-   setle                  sil
-     cmp                  rsi,                    1
-	je	@main.161.@search.23.ForBody
-     mov                  rdi,         __const_str1
-    push                   r9
-    push                  r10
-call	print
-     pop                  r10
-     pop                   r9
-	jmp	@main.164.@search.15.IfExit
-@main.159.@search.13.IfFalse:
-@main.164.@search.15.IfExit:
-	jmp	@main.165.@search.11.IfExit
-@main.151.@search.9.IfFalse:
-     cmp                   r9,                    2
-     mov                  rdi,                    0
-    sete                  dil
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.166.@search.31.IfTrue
-	jmp	@main.167.@search.30.IfFalse
-@main.166.@search.31.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                   r8,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                   r8,                  rsi
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
+     add                  rdi,                  rsi
+     mov                  rbx,           qword[r12]
+     mov                  rsi,                   r8
      shl                  rsi,                    3
      add                  rbx,                  rsi
      mov                  rsi,           qword[rbx]
-     mov                  rbx,                   15
-     sub                  rbx,           qword[rsi]
-     mov                  r12,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rsi,           qword[r12]
-     sub                  rbx,         qword[rsi+8]
-     mov            qword[r8],                  rbx
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+     mov           qword[rdi],                  rsi
+     add                   r8,                    1
+@main.41.@vector.copy.11.ForCon:
+     mov                  rbx,                  r13
      cmp           qword[rbx],                    0
      mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    0
-	je	@main.168.@search.36.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     cmp           qword[rbx],                   10
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.43.@vector.copy.26.@vector.getDim.4.IfTrue
+	jmp	@main.44.@vector.copy.27.@vector.getDim.3.IfFalse
+@main.43.@vector.copy.26.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.45.@vector.copy.24.@vector.getDim.2.exit
+	jmp	@main.46.@vector.copy.28.@vector.getDim.5.IfExit
+@main.44.@vector.copy.27.@vector.getDim.3.IfFalse:
+@main.46.@vector.copy.28.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r9
+    push                  rsi
+    push                   r8
+    push                  r11
+    push                  r10
+call	__size__
+     pop                  r10
+     pop                  r11
+     pop                   r8
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+@main.45.@vector.copy.24.@vector.getDim.2.exit:
+     cmp                   r8,                  rsi
      mov                  rsi,                    0
     setl                  sil
-     cmp                  rsi,                    0
-@main.168.@search.36.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    0
-	je	@main.169.@search.37.cmp_and
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+     cmp                  rsi,                    1
+	je	@main.42.@vector.copy.10.ForBody
+@main.36.@vector.copy.8.IfExit:
+@main.25.@vector.copy.2.exit:
+     mov                  r13,                  r11
+     mov                   r8,                    3
+     mov                  r12,                  817
+     mov                  rbx,                  r13
      cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
-     cmp                  rsi,                    0
-@main.169.@search.37.cmp_and:
-     mov                  rsi,                    0
-   setne                  sil
      cmp                  rsi,                    1
-	je	@main.170.@search.34.IfTrue
-	jmp	@main.171.@search.33.IfFalse
-@main.170.@search.34.IfTrue:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[r12]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rsi,                  rdi
-     cmp                  rsi,                    1
-	je	@main.172.@search.39.IfTrue
-	jmp	@main.173.@search.38.IfFalse
-@main.172.@search.39.IfTrue:
-     mov                  rdi,                  r10
-     add                  rdi,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  r12,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[r12]
+	je	@main.132.@vector.getDim.4.IfTrue
+	jmp	@main.133.@vector.getDim.3.IfFalse
+@main.132.@vector.getDim.4.IfTrue:
      mov                  rsi,                    0
-     mov                  rdx,                  rbx
+	jmp	@main.130.@vector.getDim.2.exit
+	jmp	@main.134.@vector.getDim.5.IfExit
+@main.133.@vector.getDim.3.IfFalse:
+@main.134.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
     push                   r9
+    push                  rsi
+    push                  r11
     push                  r10
-call	search
+    push                   r8
+call	__size__
+     pop                   r8
      pop                  r10
+     pop                  r11
+     pop                  rsi
      pop                   r9
      mov                  rsi,                  rax
-	jmp	@main.174.@search.40.IfExit
-@main.173.@search.38.IfFalse:
-     mov                  r12,                   r9
-     add                  r12,                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
+@main.130.@vector.getDim.2.exit:
+     cmp                  rsi,                   r8
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.49.@vector.set.4.IfTrue
+	jmp	@main.50.@vector.set.3.IfFalse
+@main.49.@vector.set.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.47.@vector.set.2.exit
+	jmp	@main.51.@vector.set.5.IfExit
+@main.50.@vector.set.3.IfFalse:
+@main.51.@vector.set.5.IfExit:
+     mov                  rbx,           qword[r13]
+     mov                  rsi,                   r8
      shl                  rsi,                    3
      add                  rbx,                  rsi
+     mov           qword[rbx],                  r12
+     mov                  rsi,                    1
+@main.47.@vector.set.2.exit:
+     cmp                  rsi,                    1
+	je	@main.8.IfTrue
+	jmp	@main.7.IfFalse
+@main.8.IfTrue:
+     mov                  rdi,         __const_str1
+    push                   r9
+    push                  r11
+    push                  r10
+call	println
+     pop                  r10
+     pop                  r11
+     pop                   r9
+	jmp	@main.9.IfExit
+@main.7.IfFalse:
+@main.9.IfExit:
+     mov                  rdi,         __const_str2
+    push                   r9
+    push                  r11
+    push                  r10
+call	print
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                   r8,                  r11
+     mov                  r13,         __const_str6
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.137.@vector.getDim.4.IfTrue
+	jmp	@main.138.@vector.getDim.3.IfFalse
+@main.137.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.135.@vector.getDim.2.exit
+	jmp	@main.139.@vector.getDim.5.IfExit
+@main.138.@vector.getDim.3.IfFalse:
+@main.139.@vector.getDim.5.IfExit:
      mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                  r13
-     add                  rbx,           qword[rdi]
-     mov                  rdi,                  r10
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+    push                   r8
+call	__size__
+     pop                   r8
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rsi,                  rax
+@main.135.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@main.54.@vector.tostring.4.IfTrue
+	jmp	@main.55.@vector.tostring.3.IfFalse
+@main.54.@vector.tostring.4.IfTrue:
+     mov                  rsi,            qword[r8]
+     mov                  rdi,           qword[rsi]
+    push                   r9
+    push                  rsi
+    push                  r11
+    push                  r10
+    push                   r8
+call	toString
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  r13
+    push                  rsi
+    push                   r9
+    push                  r11
+    push                  r10
+    push                   r8
+call	__string_connect__
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+	jmp	@main.56.@vector.tostring.5.IfExit
+@main.55.@vector.tostring.3.IfFalse:
+@main.56.@vector.tostring.5.IfExit:
+     mov                  r12,                    1
+	jmp	@main.57.@vector.tostring.8.ForCon
+@main.58.@vector.tostring.7.ForBody:
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str7
+    push                   r9
+    push                  r11
+    push                  r10
+    push                   r8
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,            qword[r8]
      mov                  rsi,                  r12
-     mov                  rdx,                  rbx
-    push                   r9
-    push                  r10
-call	search
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-@main.174.@search.40.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                   r9
      shl                  rsi,                    3
      add                  rdi,                  rsi
-     mov                  rbx,        qword[@color]
-     mov                  rsi,           qword[rdi]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.175.@search.35.IfExit
-@main.171.@search.33.IfFalse:
-@main.175.@search.35.IfExit:
-	jmp	@main.176.@search.32.IfExit
-@main.167.@search.30.IfFalse:
-     mov                   r8,                    1
-	jmp	@main.177.@search.43.ForCon
-@main.178.@search.42.ForBody:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+     mov                  rdi,           qword[rdi]
+    push                   r9
+    push                  r11
+    push                  r10
+    push                   r8
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+    push                   r8
+call	__string_connect__
+     pop                   r8
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     add                  r12,                    1
+@main.57.@vector.tostring.8.ForCon:
+     mov                  rbx,                   r8
      cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@main.179.@search.46.IfTrue
-	jmp	@main.180.@search.45.IfFalse
-@main.179.@search.46.IfTrue:
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    1
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                   r8
-     cmp                   r9,                    2
+	je	@main.142.@vector.getDim.4.IfTrue
+	jmp	@main.143.@vector.getDim.3.IfFalse
+@main.142.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.140.@vector.getDim.2.exit
+	jmp	@main.144.@vector.getDim.5.IfExit
+@main.143.@vector.getDim.3.IfFalse:
+@main.144.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r9
+    push                  r11
+    push                  r10
+    push                   r8
+call	__size__
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+@main.140.@vector.getDim.2.exit:
+     cmp                  r12,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.58.@vector.tostring.7.ForBody
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str8
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     mov                  rsi,                  r13
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  r11
+    push                  r10
+call	println
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  rdi,         __const_str3
+    push                   r9
+    push                  r11
+    push                  r10
+call	print
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     mov                  r14,                  r15
+     mov                   r8,                  r11
+     mov                  rbx,                  r14
+     cmp           qword[rbx],                    0
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@main.181.@search.49.IfTrue
-	jmp	@main.182.@search.48.IfFalse
-@main.181.@search.49.IfTrue:
-     mov                  rsi,                  r10
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  rsi
+	je	@main.61.@vector.add.14.@vector.getDim.4.IfTrue
+	jmp	@main.62.@vector.add.15.@vector.getDim.3.IfFalse
+@main.61.@vector.add.14.@vector.getDim.4.IfTrue:
      mov                  rsi,                    0
-     mov                  rdx,                  rbx
-    push                   r9
+	jmp	@main.63.@vector.add.12.@vector.getDim.2.exit
+	jmp	@main.64.@vector.add.16.@vector.getDim.5.IfExit
+@main.62.@vector.add.15.@vector.getDim.3.IfFalse:
+@main.64.@vector.add.16.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
     push                   r8
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+call	__size__
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+@main.63.@vector.add.12.@vector.getDim.2.exit:
+     mov                  rbx,                  rsi
+     mov                  rdi,                   r8
+     cmp           qword[rdi],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.65.@vector.add.19.@vector.getDim.4.IfTrue
+	jmp	@main.66.@vector.add.20.@vector.getDim.3.IfFalse
+@main.65.@vector.add.19.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.67.@vector.add.17.@vector.getDim.2.exit
+	jmp	@main.68.@vector.add.21.@vector.getDim.5.IfExit
+@main.66.@vector.add.20.@vector.getDim.3.IfFalse:
+@main.68.@vector.add.21.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rdi]
+    push                   r8
+    push                  rsi
+    push                   r9
+    push                  r11
+    push                  r10
+call	__size__
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@main.67.@vector.add.17.@vector.getDim.2.exit:
+     cmp                  rbx,                  rsi
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rsi,                    1
+	je	@main.69.@vector.add.6.cmp_or
+     mov                  rbx,                  r14
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.70.@vector.add.24.@vector.getDim.4.IfTrue
+	jmp	@main.71.@vector.add.25.@vector.getDim.3.IfFalse
+@main.70.@vector.add.24.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.72.@vector.add.22.@vector.getDim.2.exit
+	jmp	@main.73.@vector.add.26.@vector.getDim.5.IfExit
+@main.71.@vector.add.25.@vector.getDim.3.IfFalse:
+@main.73.@vector.add.26.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+call	__size__
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+@main.72.@vector.add.22.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+@main.69.@vector.add.6.cmp_or:
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.74.@vector.add.4.IfTrue
+	jmp	@main.75.@vector.add.3.IfFalse
+@main.74.@vector.add.4.IfTrue:
+	jmp	@main.59.@vector.add.2.exit
+	jmp	@main.76.@vector.add.5.IfExit
+@main.75.@vector.add.3.IfFalse:
+@main.76.@vector.add.5.IfExit:
+    push                  r10
+    push                  r11
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+     sub                  rsp,                    8
+     mov                  rdi,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     mov                  rbx,                  r14
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.77.@vector.add.29.@vector.getDim.4.IfTrue
+	jmp	@main.78.@vector.add.30.@vector.getDim.3.IfFalse
+@main.77.@vector.add.29.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.79.@vector.add.27.@vector.getDim.2.exit
+	jmp	@main.80.@vector.add.31.@vector.getDim.5.IfExit
+@main.78.@vector.add.30.@vector.getDim.3.IfFalse:
+@main.80.@vector.add.31.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r8
+    push                  r11
     push                  r10
      sub                  rsp,                    8
-call	search
+call	__size__
      add                  rsp,                    8
      pop                  r10
+     pop                  r11
      pop                   r8
-     pop                   r9
+     pop                  rsi
      mov                  rsi,                  rax
-	jmp	@main.183.@search.50.IfExit
-@main.182.@search.48.IfFalse:
-     mov                  rsi,                   r9
-     add                  rsi,                    1
-     mov                  rbx,                  r13
-     add                  rbx,                   r8
-     mov                  rdi,                  r10
-     mov                  rdx,                  rbx
-    push                   r9
-    push                   r8
+@main.79.@vector.add.27.@vector.getDim.2.exit:
+     mov                  rbx,                  rsi
+     add                  rbx,                    1
+     shl                  rbx,                    3
     push                  r10
+    push                  r11
+    push                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
      sub                  rsp,                    8
-call	search
+     mov                  rdi,                  rbx
+    call               malloc
      add                  rsp,                    8
-     pop                  r10
-     pop                   r8
+     pop                  rsi
      pop                   r9
-     mov                  rsi,                  rax
-@main.183.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,                  r10
+     pop                   r8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     add                  rbx,                    8
+     mov           qword[r13],                  rbx
+     mov                   r9,                    0
+	jmp	@main.81.@vector.add.9.ForCon
+@main.82.@vector.add.8.ForBody:
+     mov                  r12,           qword[r13]
+     mov                  rsi,                   r9
      shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
+     add                  r12,                  rsi
+     mov                  rdi,           qword[r14]
+     mov                  rsi,                   r9
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rbx,            qword[r8]
      mov                  rsi,                   r9
      shl                  rsi,                    3
      add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.184.@search.47.IfExit
-@main.180.@search.45.IfFalse:
-@main.184.@search.47.IfExit:
-     add                   r8,                    1
-@main.177.@search.43.ForCon:
-     cmp                   r8,                    9
+     mov                  rsi,           qword[rdi]
+     add                  rsi,           qword[rbx]
+     mov           qword[r12],                  rsi
+     add                   r9,                    1
+@main.81.@vector.add.9.ForCon:
+     mov                  rbx,                  r14
+     cmp           qword[rbx],                    0
      mov                  rsi,                    0
-   setle                  sil
+    sete                  sil
      cmp                  rsi,                    1
-	je	@main.178.@search.42.ForBody
-@main.176.@search.32.IfExit:
-@main.165.@search.11.IfExit:
-	jmp	@main.185.@search.5.IfExit
-@main.148.@search.3.IfFalse:
-@main.185.@search.5.IfExit:
-	jmp	@main.51.@search.50.IfExit
-@main.50.@search.48.IfFalse:
-     mov                  rsi,        qword[rbp-40]
-     add                  rsi,                    1
-     mov                  rbx,                  r15
-     add                  rbx,                  r14
-     mov                  rdi,        qword[rbp-32]
-     mov                  rdx,                  rbx
-call	search
+	je	@main.83.@vector.add.34.@vector.getDim.4.IfTrue
+	jmp	@main.84.@vector.add.35.@vector.getDim.3.IfFalse
+@main.83.@vector.add.34.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.85.@vector.add.32.@vector.getDim.2.exit
+	jmp	@main.86.@vector.add.36.@vector.getDim.5.IfExit
+@main.84.@vector.add.35.@vector.getDim.3.IfFalse:
+@main.86.@vector.add.36.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                   r9
+    push                  r11
+    push                  r10
+    push                  rsi
+call	__size__
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     pop                   r9
+     pop                   r8
      mov                  rsi,                  rax
-@main.51.@search.50.IfExit:
-     mov                  rbx,         qword[@make]
-     mov                  rsi,        qword[rbp-32]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rbx,           qword[rbx]
-     mov                  rsi,        qword[rbp-40]
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-     mov                  rbx,        qword[@color]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                    0
-	jmp	@main.52.@search.47.IfExit
-@main.48.@search.45.IfFalse:
-@main.52.@search.47.IfExit:
-     add                  r14,                    1
-@main.45.@search.43.ForCon:
-     cmp                  r14,                    9
+@main.85.@vector.add.32.@vector.getDim.2.exit:
+     cmp                   r9,                  rsi
      mov                  rsi,                    0
-   setle                  sil
+    setl                  sil
      cmp                  rsi,                    1
-	je	@main.46.@search.42.ForBody
-@main.44.@search.32.IfExit:
-@main.33.@search.11.IfExit:
-	jmp	@main.53.@search.5.IfExit
-@main.16.@search.3.IfFalse:
-@main.53.@search.5.IfExit:
-     mov                  rsi,        qword[@count]
+	je	@main.82.@vector.add.8.ForBody
+     mov                   r9,                  r13
+@main.59.@vector.add.2.exit:
+     mov                   r8,                   r9
+     mov                  r13,         __const_str6
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.147.@vector.getDim.4.IfTrue
+	jmp	@main.148.@vector.getDim.3.IfFalse
+@main.147.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.145.@vector.getDim.2.exit
+	jmp	@main.149.@vector.getDim.5.IfExit
+@main.148.@vector.getDim.3.IfFalse:
+@main.149.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  r11
+    push                  r10
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     mov                  rsi,                  rax
+@main.145.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@main.89.@vector.tostring.4.IfTrue
+	jmp	@main.90.@vector.tostring.3.IfFalse
+@main.89.@vector.tostring.4.IfTrue:
+     mov                  rsi,            qword[r8]
      mov                  rdi,           qword[rsi]
     push                  rsi
+    push                  r11
+    push                  r10
+    push                   r8
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  r13
+    push                  rsi
+    push                  r11
+    push                  r10
+    push                   r8
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+	jmp	@main.91.@vector.tostring.5.IfExit
+@main.90.@vector.tostring.3.IfFalse:
+@main.91.@vector.tostring.5.IfExit:
+     mov                  r12,                    1
+	jmp	@main.92.@vector.tostring.8.ForCon
+@main.93.@vector.tostring.7.ForBody:
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str7
+    push                  r11
+    push                  r10
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,            qword[r8]
+     mov                  rsi,                  r12
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rdi,           qword[rdi]
+    push                  r11
+    push                  r10
+    push                   r8
+    push                  rsi
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
      pop                  rsi
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rsi
+    push                  r11
+    push                  r10
+    push                   r8
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     add                  r12,                    1
+@main.92.@vector.tostring.8.ForCon:
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.152.@vector.getDim.4.IfTrue
+	jmp	@main.153.@vector.getDim.3.IfFalse
+@main.152.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.150.@vector.getDim.2.exit
+	jmp	@main.154.@vector.getDim.5.IfExit
+@main.153.@vector.getDim.3.IfFalse:
+@main.154.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                  r11
+    push                  r10
+    push                   r8
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  r10
+     pop                  r11
+     pop                  rsi
+     mov                  rsi,                  rax
+@main.150.@vector.getDim.2.exit:
+     cmp                  r12,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.93.@vector.tostring.7.ForBody
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str8
+    push                  r11
+    push                  r10
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     pop                  r10
+     pop                  r11
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     mov                  rsi,                  r13
+     mov                  rdi,                  rsi
+    push                  r11
+    push                  r10
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  r10
+     pop                  r11
+     mov                  rdi,         __const_str4
+    push                  r11
+    push                  r10
+     sub                  rsp,                    8
+call	print
+     add                  rsp,                    8
+     pop                  r10
+     pop                  r11
+     mov                   r8,                  r15
+     mov                  rbx,                  r11
+     mov                  r13,                    0
+     mov                  r12,                    0
+	jmp	@main.96.@vector.dot.5.ForCon
+@main.97.@vector.dot.4.ForBody:
+     mov                  r12,            qword[r8]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  r12,                  rsi
+     mov                  rdi,           qword[rbx]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rsi,           qword[r12]
+    imul                  rsi,           qword[rdi]
+     mov                  r12,                  rsi
+     add                  r13,                    1
+@main.96.@vector.dot.5.ForCon:
+     mov                  rdi,                   r8
+     cmp           qword[rdi],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.98.@vector.dot.10.@vector.getDim.4.IfTrue
+	jmp	@main.99.@vector.dot.11.@vector.getDim.3.IfFalse
+@main.98.@vector.dot.10.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.100.@vector.dot.8.@vector.getDim.2.exit
+	jmp	@main.101.@vector.dot.12.@vector.getDim.5.IfExit
+@main.99.@vector.dot.11.@vector.getDim.3.IfFalse:
+@main.101.@vector.dot.12.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rdi]
+    push                  r11
+    push                   r8
+    push                  r10
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  r10
+     pop                   r8
+     pop                  r11
+     mov                  rsi,                  rax
+@main.100.@vector.dot.8.@vector.getDim.2.exit:
+     cmp                  r13,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.97.@vector.dot.4.ForBody
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+    push                  r11
+    push                  r10
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                  r10
+     pop                  r11
      mov                  rsi,                  rax
      mov                  rdi,                  rsi
+    push                  r11
+    push                  r10
+     sub                  rsp,                    8
 call	println
+     add                  rsp,                    8
+     pop                  r10
+     pop                  r11
+     mov                  rdi,         __const_str5
+    push                  r11
+    push                  r10
+     sub                  rsp,                    8
+call	print
+     add                  rsp,                    8
+     pop                  r10
+     pop                  r11
+     mov                  r13,                  r11
+     mov                  rbx,                    8
+     cmp           qword[r13],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.104.@vector.scalarInPlaceMultiply.4.IfTrue
+	jmp	@main.105.@vector.scalarInPlaceMultiply.3.IfFalse
+@main.104.@vector.scalarInPlaceMultiply.4.IfTrue:
+	jmp	@main.102.@vector.scalarInPlaceMultiply.2.exit
+	jmp	@main.106.@vector.scalarInPlaceMultiply.5.IfExit
+@main.105.@vector.scalarInPlaceMultiply.3.IfFalse:
+@main.106.@vector.scalarInPlaceMultiply.5.IfExit:
+     mov                   r8,                    0
+	jmp	@main.107.@vector.scalarInPlaceMultiply.8.ForCon
+@main.108.@vector.scalarInPlaceMultiply.7.ForBody:
+     mov                  r12,           qword[r13]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  r12,                  rsi
+     mov                  rdi,           qword[r13]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rsi,                  rbx
+    imul                  rsi,           qword[rdi]
+     mov           qword[r12],                  rsi
+     add                   r8,                    1
+@main.107.@vector.scalarInPlaceMultiply.8.ForCon:
+     mov                  rdi,                  r13
+     cmp           qword[rdi],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.109.@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue
+	jmp	@main.110.@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse
+@main.109.@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.111.@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit
+	jmp	@main.112.@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit
+@main.110.@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse:
+@main.112.@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rdi]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@main.111.@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit:
+     cmp                   r8,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.108.@vector.scalarInPlaceMultiply.7.ForBody
+     mov                  r10,                  r13
+@main.102.@vector.scalarInPlaceMultiply.2.exit:
+     mov                   r8,                  r10
+     mov                  r13,         __const_str6
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.157.@vector.getDim.4.IfTrue
+	jmp	@main.158.@vector.getDim.3.IfFalse
+@main.157.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.155.@vector.getDim.2.exit
+	jmp	@main.159.@vector.getDim.5.IfExit
+@main.158.@vector.getDim.3.IfFalse:
+@main.159.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@main.155.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@main.115.@vector.tostring.4.IfTrue
+	jmp	@main.116.@vector.tostring.3.IfFalse
+@main.115.@vector.tostring.4.IfTrue:
+     mov                  rsi,            qword[r8]
+     mov                  rdi,           qword[rsi]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  r13
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+	jmp	@main.117.@vector.tostring.5.IfExit
+@main.116.@vector.tostring.3.IfFalse:
+@main.117.@vector.tostring.5.IfExit:
+     mov                  r12,                    1
+	jmp	@main.118.@vector.tostring.8.ForCon
+@main.119.@vector.tostring.7.ForBody:
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str7
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,            qword[r8]
+     mov                  rsi,                  r12
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rdi,           qword[rdi]
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__string_connect__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     add                  r12,                    1
+@main.118.@vector.tostring.8.ForCon:
+     mov                  rbx,                   r8
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.162.@vector.getDim.4.IfTrue
+	jmp	@main.163.@vector.getDim.3.IfFalse
+@main.162.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@main.160.@vector.getDim.2.exit
+	jmp	@main.164.@vector.getDim.5.IfExit
+@main.163.@vector.getDim.3.IfFalse:
+@main.164.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@main.160.@vector.getDim.2.exit:
+     cmp                  r12,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@main.119.@vector.tostring.7.ForBody
+     mov                  rdi,                  r13
+     mov                  rsi,         __const_str8
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  r13,                  rsi
+     mov                  rsi,                  r13
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
      mov                  rax,                    0
+     pop                  rbx
      pop                  r15
      pop                  r13
      pop                  r14
      pop                  r12
+     pop                  rbp
+     ret
+vector.tostring:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  r12
+    push                  r13
+    push                  rbx
+@vector.tostring.1.enter:
+     mov                  r12,                  rdi
+     mov                   r8,         __const_str6
+     mov                  rbx,                  r12
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.tostring.13.@vector.getDim.4.IfTrue
+	jmp	@vector.tostring.14.@vector.getDim.3.IfFalse
+@vector.tostring.13.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.tostring.11.@vector.getDim.2.exit
+	jmp	@vector.tostring.15.@vector.getDim.5.IfExit
+@vector.tostring.14.@vector.getDim.3.IfFalse:
+@vector.tostring.15.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.tostring.11.@vector.getDim.2.exit:
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    setg                  sil
+     cmp                  rsi,                    1
+	je	@vector.tostring.4.IfTrue
+	jmp	@vector.tostring.3.IfFalse
+@vector.tostring.4.IfTrue:
+     mov                  rsi,           qword[r12]
+     mov                  rdi,           qword[rsi]
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                   r8
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                   r8,                  rsi
+	jmp	@vector.tostring.5.IfExit
+@vector.tostring.3.IfFalse:
+@vector.tostring.5.IfExit:
+     mov                  r13,                    1
+	jmp	@vector.tostring.8.ForCon
+@vector.tostring.7.ForBody:
+     mov                  rdi,                   r8
+     mov                  rsi,         __const_str7
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rbx,                  rsi
+     mov                  rdi,           qword[r12]
+     mov                  rsi,                  r13
+     shl                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rdi,           qword[rdi]
+    push                  rsi
+call	toString
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                   r8,                  rsi
+     add                  r13,                    1
+@vector.tostring.8.ForCon:
+     mov                  rbx,                  r12
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.tostring.18.@vector.getDim.4.IfTrue
+	jmp	@vector.tostring.19.@vector.getDim.3.IfFalse
+@vector.tostring.18.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.tostring.16.@vector.getDim.2.exit
+	jmp	@vector.tostring.20.@vector.getDim.5.IfExit
+@vector.tostring.19.@vector.getDim.3.IfFalse:
+@vector.tostring.20.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+@vector.tostring.16.@vector.getDim.2.exit:
+     cmp                  r13,                  rsi
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@vector.tostring.7.ForBody
+     mov                  rdi,                   r8
+     mov                  rsi,         __const_str8
+    push                  rsi
+call	__string_connect__
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                   r8,                  rsi
+     mov                  rax,                   r8
      pop                  rbx
-     add                  rsp,                   88
+     pop                  r13
+     pop                  r12
+     pop                  rbp
+     ret
+vector.set:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  r12
+    push                  r13
+    push                  rbx
+@vector.set.1.enter:
+     mov                  r13,                  rdi
+     mov                   r8,                  rsi
+     mov                  r12,                  rdx
+     mov                  rbx,                  r13
+     cmp           qword[rbx],                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@vector.set.9.@vector.getDim.4.IfTrue
+	jmp	@vector.set.10.@vector.getDim.3.IfFalse
+@vector.set.9.@vector.getDim.4.IfTrue:
+     mov                  rsi,                    0
+	jmp	@vector.set.7.@vector.getDim.2.exit
+	jmp	@vector.set.11.@vector.getDim.5.IfExit
+@vector.set.10.@vector.getDim.3.IfFalse:
+@vector.set.11.@vector.getDim.5.IfExit:
+     mov                  rdi,           qword[rbx]
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+call	__size__
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  rsi,                  rax
+@vector.set.7.@vector.getDim.2.exit:
+     cmp                  rsi,                   r8
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+	je	@vector.set.4.IfTrue
+	jmp	@vector.set.3.IfFalse
+@vector.set.4.IfTrue:
+     mov                  rax,                    0
+	jmp	@vector.set.2.exit
+	jmp	@vector.set.5.IfExit
+@vector.set.3.IfFalse:
+@vector.set.5.IfExit:
+     mov                  rbx,           qword[r13]
+     mov                  rsi,                   r8
+     shl                  rsi,                    3
+     add                  rbx,                  rsi
+     mov           qword[rbx],                  r12
+     mov                  rax,                    1
+@vector.set.2.exit:
+     pop                  rbx
+     pop                  r13
+     pop                  r12
      pop                  rbp
      ret
 
 
  section                 .bss
-@make:
-  	resq 		1
-@color:
-  	resq 		1
-@count:
-  	resq 		1
-@i:
-  	resq 		1
-@j:
-  	resq 		1
 
 
  section                .data
-      dq                    1
+      dq                   10
 __const_str0:
-      db " ",0
-      dq                    1
+      db "vector x: ",0
+      dq                   10
+__const_str2:
+      db "vector y: ",0
+      dq                    2
+__const_str7:
+      db ", ",0
+      dq                    7
+__const_str4:
+      db "x * y: ",0
+      dq                    8
 __const_str1:
-      db "",10,"",0
+      db "excited!",0
+      dq                    7
+__const_str3:
+      db "x + y: ",0
+      dq                    2
+__const_str6:
+      db "( ",0
+      dq                    2
+__const_str8:
+      db " )",0
+      dq                   14
+__const_str5:
+      db "(1 << 3) * y: ",0
 
 
 

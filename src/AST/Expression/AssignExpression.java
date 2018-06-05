@@ -73,7 +73,7 @@ public class AssignExpression extends Expression {
 		//int tmtttp = 123;
 		//boolean tmtttttp = variable.getUseful();
 		if (!variable.getUseful() && !this.modifyTag) {
-System.err.println("eliminate: " + variable.toString());
+//System.err.println("eliminate: " + variable.toString());
 			return;
 		}
 

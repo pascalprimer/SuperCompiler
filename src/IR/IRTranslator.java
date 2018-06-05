@@ -75,6 +75,14 @@ public class IRTranslator {
 			}
 			functionType.dfsUseful();
 		}
+		for (ClassType classType: AST.getClassType()) {
+			for (FunctionType functionType : classType.getMemberFunction().getFunctionTable().values()) {
+				functionType.dfsUseful();
+			}
+			if (classType.getConstructionFunction() != null) {
+				classType.getConstructionFunction().dfsUseful();
+			}
+		}
 	}
 
 	public static StringMemory getStringOperand(String str) {
