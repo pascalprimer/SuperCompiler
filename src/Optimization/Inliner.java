@@ -113,7 +113,7 @@ public class Inliner {
 					returnValue = (VirtualRegister) ((FunctionCallInstruction) instruction).getReturnValue();
 					getLabel(nowfunc, whichIR.exitLabel);
 					int useless = whichFunc.getParameterList().size(), count = 0;
-
+//System.err.println("---------begin--------\n" + whichIR.toString(1));
 					for (Block whichBlock: whichIR.blockList) {
 						for (Instruction whichInstruction: whichBlock.instructionList) {
 							if (whichInstruction instanceof AllocateInstruction) {

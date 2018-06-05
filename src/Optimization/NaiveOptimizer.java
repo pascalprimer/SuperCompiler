@@ -65,6 +65,7 @@ public class NaiveOptimizer {
 //				System.out.println("def: " + " " + instruction.def);
 //				System.out.println("use: " + " " + instruction.use);
 				Operand register = null;
+				Operand source = null;
 				if (instruction instanceof AllocateInstruction) {
 					register = ((AllocateInstruction) instruction).getMyBase();
 				} else if (instruction instanceof BinaryInstruction) {
@@ -75,6 +76,12 @@ public class NaiveOptimizer {
 					register = ((FunctionCallInstruction) instruction).getReturnValue();
 				} else if (instruction instanceof MoveInstruction) {
 					register = ((MoveInstruction) instruction).target;
+					source = ((MoveInstruction) instruction).getSource();
+				}
+				if (source instanceof VirtualRegister
+						&& ((VirtualRegister) source).sysRegister != null
+						&& ((VirtualRegister) source).sysRegister.charAt(0) == 'r') {
+					continue;
 				}
 				if (register instanceof VirtualRegister
 						&& (((VirtualRegister) register).sysRegister == null
