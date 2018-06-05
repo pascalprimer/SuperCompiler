@@ -24,6 +24,11 @@ public class CompareInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean noMem() {
+		return !leftOper.memoryRelated() && !rightOper.memoryRelated();
+	}
+
+	@Override
 	public void claimSet() {
 		if (leftOper instanceof VirtualRegister) {
 			use.add((VirtualRegister) leftOper);

@@ -19,6 +19,11 @@ public class JumpInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean noMem() {
+		return true;
+	}
+
+	@Override
 	public void claimSet() {
 
 	}

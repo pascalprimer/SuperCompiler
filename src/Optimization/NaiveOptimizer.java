@@ -8,6 +8,11 @@ import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
 import jdk.nashorn.internal.ir.FunctionCall;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class NaiveOptimizer {
 
 	public static void removeUselessRegister(FunctionIR nowFunc) {
@@ -82,6 +87,59 @@ public class NaiveOptimizer {
 			}
 		}
 //System.out.println("end\n" + nowFunc.toString(1) + "\n");
+	}
+
+	public static void removeUselessIteration(FunctionIR nowFunc) {
+//		System.out.println(nowFunc.toString(1));
+		LiveAnalysis.FunctionAnalysis(nowFunc);
+		List<Instruction> instructionList = new ArrayList<>();
+		for (Block block: nowFunc.blockList) {
+			instructionList.addAll(block.instructionList);
+		}
+
+		Map<Label, Integer> labelMap = new HashMap<>();
+		for (int i = 0; i < instructionList.size(); ++i) {
+			Instruction instruction = instructionList.get(i);
+			if (instruction instanceof Label
+					&& ((Label) instruction).forLink != null) {
+				labelMap.put(((Label) instruction).forLink, i);
+			}
+		}
+//System.err.println("" + labelMap);
+		for (int i = instructionList.size() - 1; i > 0; --i) {
+//System.out.println("fffff" + " " + i);
+			Instruction instruction = instructionList.get(i);
+//System.out.println(">>>fffff<<<" + " " + i);
+			if (instruction instanceof Label
+					&& labelMap.containsKey(instruction)) {
+				int l = labelMap.get(instruction), r = i;
+				boolean useless = true;
+				for (int j = l; j < r; ++j) {
+					Instruction now = instructionList.get(j);
+					if (!now.noMem()) {
+						System.out.println("fx a");
+						useless = false;
+						break;
+					}
+					for (VirtualRegister register: now.def) {
+						if (instruction.liveOut.contains(register)) {
+							System.out.println("fx b");
+							useless = false;
+							break;
+						}
+					}
+				}
+				if (useless) {
+					for (int k = r - l + 1; k > 0; --k) {
+						instructionList.remove(l);
+					}
+					break;
+				}
+			}
+		}
+
+		nowFunc.getBlocks(instructionList, true);
+//		System.out.println(nowFunc.toString(1));
 	}
 
 }

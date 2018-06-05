@@ -29,6 +29,8 @@ public abstract class Instruction {
 
 	public abstract boolean getPurity();
 
+	public abstract boolean noMem();
+
 	public abstract String toString(int indents);
 
 }

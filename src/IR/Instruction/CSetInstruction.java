@@ -46,6 +46,11 @@ public class CSetInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean noMem() {
+		return !target.memoryRelated();
+	}
+
+	@Override
 	public void claimSet() {
 		if (target instanceof VirtualRegister) {
 			def.add((VirtualRegister) target);

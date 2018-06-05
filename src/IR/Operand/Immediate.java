@@ -12,6 +12,11 @@ public class Immediate extends Operand {
 		return (obj instanceof Immediate) && value == ((Immediate) obj).getValue();
 	}
 
+	@Override
+	public boolean memoryRelated() {
+		return false;
+	}
+
 	public void setValue(int value) {
 		this.value = value;
 	}

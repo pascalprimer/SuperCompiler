@@ -37,6 +37,11 @@ public class FunctionCallInstruction extends Instruction{
 	}
 
 	@Override
+	public boolean noMem() {
+		return false;
+	}
+
+	@Override
 	public void claimSet() {
 		if (returnValue instanceof VirtualRegister) {
 			def.add((VirtualRegister) returnValue);

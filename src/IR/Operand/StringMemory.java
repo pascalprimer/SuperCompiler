@@ -15,6 +15,11 @@ public class StringMemory extends Operand {
 	}
 
 	@Override
+	public boolean memoryRelated() {
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return tag;
 	}

@@ -30,6 +30,11 @@ public class AllocateInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean noMem() {
+		return !(allocateSize instanceof Address);
+	}
+
+	@Override
 	public void claimSet() {
 		def.add(base);
 		base.addLoop(loopNumber);

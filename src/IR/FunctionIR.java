@@ -81,35 +81,42 @@ public class FunctionIR {
 
 		instructionList.add(exitLabel);
 		checkPurity();
-		getBlocks(instructionList);
+//		for (Instruction instruction: instructionList) {
+//			System.out.println("first " + instruction.toString(1));
+//		}
+		getBlocks(instructionList, false);
+//		for (Instruction instruction: instructionList) {
+//			System.out.println("first " + instruction.toString(1));
+//		}
 		//System.err.println("---------------------");
 	}
 
-	public void getBlocks(List<Instruction> instructionList) {
-
-		for (int i = 0; i + 1 < instructionList.size(); ++i) {
-			Instruction now = instructionList.get(i),
-					nxt = instructionList.get(i + 1);
-			if (now instanceof JumpInstruction
-					&& nxt instanceof Label
-					&& ((JumpInstruction) now).getLabel() == nxt) {
-				instructionList.remove(i);
-				--i;
+	public void getBlocks(List<Instruction> instructionList, boolean delLabel) {
+		if (delLabel) {
+			for (int i = 0; i + 1 < instructionList.size(); ++i) {
+				Instruction now = instructionList.get(i),
+						nxt = instructionList.get(i + 1);
+				if (now instanceof JumpInstruction
+						&& nxt instanceof Label
+						&& ((JumpInstruction) now).getLabel() == nxt) {
+					instructionList.remove(i);
+					--i;
+				}
 			}
-		}
 
-		Set<Label> usedLabel = new HashSet<>();
-		for (int i = 1; i < instructionList.size(); ++i) {
-			Instruction now = instructionList.get(i);
-			if (now instanceof JumpInstruction) {
-				usedLabel.add(((JumpInstruction) now).getLabel());
+			Set<Label> usedLabel = new HashSet<>();
+			for (int i = 1; i < instructionList.size(); ++i) {
+				Instruction now = instructionList.get(i);
+				if (now instanceof JumpInstruction) {
+					usedLabel.add(((JumpInstruction) now).getLabel());
+				}
 			}
-		}
-		for (int i = 1; i < instructionList.size(); ++i) {
-			Instruction now = instructionList.get(i);
-			if (now instanceof Label && !usedLabel.contains(now)) {
-				instructionList.remove(i);
-				--i;
+			for (int i = 1; i < instructionList.size(); ++i) {
+				Instruction now = instructionList.get(i);
+				if (now instanceof Label && !usedLabel.contains(now)) {
+					instructionList.remove(i);
+					--i;
+				}
 			}
 		}
 

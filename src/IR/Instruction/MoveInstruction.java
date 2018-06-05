@@ -25,6 +25,11 @@ public class MoveInstruction extends Instruction {
 		claimSet();
 	}
 
+	@Override
+	public boolean noMem() {
+		return !target.memoryRelated() && !source.memoryRelated();
+	}
+
 	public void changeTarget(Operand newTarget) {
 		if (target instanceof VirtualRegister) {
 			def.remove((VirtualRegister) target);

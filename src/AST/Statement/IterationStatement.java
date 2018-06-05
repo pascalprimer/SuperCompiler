@@ -19,7 +19,7 @@ public class IterationStatement extends Statement implements Scope {
 
 	private Expression initialization, termination, operation;
 	private Statement statement;
-	Label iterLabel, bodyLabel, conLabel, exitLabel;
+	Label iterLabel, bodyLabel, conLabel, exitLabel, forBegin;
 
 	public IterationStatement() {
 		initialization = termination = operation = null;
@@ -83,12 +83,17 @@ public class IterationStatement extends Statement implements Scope {
 		*/
 		++AST.loopCnt;
 
+		forBegin = new Label("forBegin");
 		iterLabel = new Label("ForIter");
 		bodyLabel = new Label("ForBody");
 		conLabel = new Label("ForCon");
 		exitLabel = new Label("ForExit");
+
 		IRTranslator.loopContinue = iterLabel;
 		IRTranslator.loopExit = exitLabel;
+
+		instructionList.add(forBegin);
+		forBegin.forLink = exitLabel;
 
 		//JMP
 		if (initialization != null) {

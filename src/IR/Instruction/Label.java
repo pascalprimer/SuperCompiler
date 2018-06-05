@@ -10,12 +10,19 @@ public class Label extends Instruction {
 	private String name;
 	private String smallName;
 	public Block blockBelong;
+	public Label forLink;
 
 	public Label(FunctionIR who, String labelName) {
 		super();
 		this.smallName = labelName;
 		this.name = "@" + who.getName() + "." + ++who.labelID + "." + labelName;
+		forLink = null;
 		claimSet();
+	}
+
+	@Override
+	public boolean noMem() {
+		return true;
 	}
 
 	public Label(String labelName) {

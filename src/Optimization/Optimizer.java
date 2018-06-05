@@ -6,6 +6,11 @@ import IR.IRTranslator;
 public class Optimizer {
 
 	public static void optimizer() {
+
+		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
+			NaiveOptimizer.removeUselessIteration(functionIR);
+		}
+
 		for (int times = 5; times > 0; --times) {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
 //System.out.println("origin" + times + "\n" + functionIR.toString(1));

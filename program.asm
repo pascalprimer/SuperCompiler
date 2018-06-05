@@ -3,528 +3,71 @@
 
 
  section                .text
-vector.getDim:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  rbx
-@vector.getDim.1.enter:
-     mov                  rbx,                  rdi
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.getDim.4.IfTrue
-	jmp	@vector.getDim.3.IfFalse
-@vector.getDim.4.IfTrue:
-     mov                  rax,                    0
-	jmp	@vector.getDim.2.exit
-	jmp	@vector.getDim.5.IfExit
-@vector.getDim.3.IfFalse:
-@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-call	__size__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rax,                  rsi
-@vector.getDim.2.exit:
-     pop                  rbx
-     pop                  rbp
-     ret
-vector.add:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r12
-    push                  r14
-    push                  r13
-    push                  rbx
-@vector.add.1.enter:
-     mov                   r9,                  rdi
-     mov                  r12,                  rsi
-     mov                  rbx,                   r9
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.14.@vector.getDim.4.IfTrue
-	jmp	@vector.add.15.@vector.getDim.3.IfFalse
-@vector.add.14.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.add.12.@vector.getDim.2.exit
-	jmp	@vector.add.16.@vector.getDim.5.IfExit
-@vector.add.15.@vector.getDim.3.IfFalse:
-@vector.add.16.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r9
-call	__size__
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-@vector.add.12.@vector.getDim.2.exit:
-     mov                  rbx,                  rsi
-     mov                  rdi,                  r12
-     cmp           qword[rdi],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.19.@vector.getDim.4.IfTrue
-	jmp	@vector.add.20.@vector.getDim.3.IfFalse
-@vector.add.19.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.add.17.@vector.getDim.2.exit
-	jmp	@vector.add.21.@vector.getDim.5.IfExit
-@vector.add.20.@vector.getDim.3.IfFalse:
-@vector.add.21.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rdi]
-    push                  rsi
-    push                   r9
-call	__size__
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-@vector.add.17.@vector.getDim.2.exit:
-     cmp                  rbx,                  rsi
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.6.cmp_or
-     mov                  rbx,                   r9
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.24.@vector.getDim.4.IfTrue
-	jmp	@vector.add.25.@vector.getDim.3.IfFalse
-@vector.add.24.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.add.22.@vector.getDim.2.exit
-	jmp	@vector.add.26.@vector.getDim.5.IfExit
-@vector.add.25.@vector.getDim.3.IfFalse:
-@vector.add.26.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r9
-call	__size__
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-@vector.add.22.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@vector.add.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.4.IfTrue
-	jmp	@vector.add.3.IfFalse
-@vector.add.4.IfTrue:
-	jmp	@vector.add.2.exit
-	jmp	@vector.add.5.IfExit
-@vector.add.3.IfFalse:
-@vector.add.5.IfExit:
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                    8
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rbx,                   r9
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.29.@vector.getDim.4.IfTrue
-	jmp	@vector.add.30.@vector.getDim.3.IfFalse
-@vector.add.29.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.add.27.@vector.getDim.2.exit
-	jmp	@vector.add.31.@vector.getDim.5.IfExit
-@vector.add.30.@vector.getDim.3.IfFalse:
-@vector.add.31.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-@vector.add.27.@vector.getDim.2.exit:
-     mov                  rbx,                  rsi
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  rbx
-    call               malloc
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov            qword[r8],                  rbx
-     mov                  r14,                    0
-	jmp	@vector.add.9.ForCon
-@vector.add.8.ForBody:
-     mov                  r13,            qword[r8]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  r13,                  rsi
-     mov                  rdi,            qword[r9]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,           qword[r12]
-     mov                  rsi,                  r14
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rsi,           qword[rbx]
-     mov           qword[r13],                  rsi
-     add                  r14,                    1
-@vector.add.9.ForCon:
-     mov                  rbx,                   r9
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.34.@vector.getDim.4.IfTrue
-	jmp	@vector.add.35.@vector.getDim.3.IfFalse
-@vector.add.34.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.add.32.@vector.getDim.2.exit
-	jmp	@vector.add.36.@vector.getDim.5.IfExit
-@vector.add.35.@vector.getDim.3.IfFalse:
-@vector.add.36.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-@vector.add.32.@vector.getDim.2.exit:
-     cmp                  r14,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.add.8.ForBody
-     mov                  rax,                   r8
-@vector.add.2.exit:
-     pop                  rbx
-     pop                  r13
-     pop                  r14
-     pop                  r12
-     pop                  rbp
-     ret
-vector.init:
+foo:
     push                  rbp
      mov                  rbp,                  rsp
     push                  r12
     push                  r13
     push                  rbx
-@vector.init.1.enter:
+@foo.1.enter:
      mov                  r12,                  rdi
-     mov                   r8,                  rsi
-     cmp                   r8,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.init.4.IfTrue
-	jmp	@vector.init.3.IfFalse
-@vector.init.4.IfTrue:
-	jmp	@vector.init.2.exit
-	jmp	@vector.init.5.IfExit
-@vector.init.3.IfFalse:
-@vector.init.5.IfExit:
-     mov                  rdi,                   r8
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  rdi
-    push                   r8
-    push                  rsi
-     mov                  rdi,                  rbx
-    call               malloc
-     pop                  rsi
-     pop                   r8
-     pop                  rdi
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov           qword[r12],                  rbx
-     mov                  r13,                    0
-	jmp	@vector.init.8.ForCon
-@vector.init.7.ForBody:
-     mov                  rdi,           qword[r12]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                   r8
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov           qword[rdi],                  rsi
-     add                  r13,                    1
-@vector.init.8.ForCon:
-     mov                  rdi,                   r8
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.init.7.ForBody
-@vector.init.2.exit:
-     pop                  rbx
-     pop                  r13
-     pop                  r12
-     pop                  rbp
-     ret
-vector.scalarInPlaceMultiply:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r12
-    push                  r13
-    push                  rbx
-@vector.scalarInPlaceMultiply.1.enter:
-     mov                   r8,                  rdi
-     mov                  r12,                  rsi
-     cmp            qword[r8],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.scalarInPlaceMultiply.4.IfTrue
-	jmp	@vector.scalarInPlaceMultiply.3.IfFalse
-@vector.scalarInPlaceMultiply.4.IfTrue:
-	jmp	@vector.scalarInPlaceMultiply.2.exit
-	jmp	@vector.scalarInPlaceMultiply.5.IfExit
-@vector.scalarInPlaceMultiply.3.IfFalse:
-@vector.scalarInPlaceMultiply.5.IfExit:
-     mov                  r13,                    0
-	jmp	@vector.scalarInPlaceMultiply.8.ForCon
-@vector.scalarInPlaceMultiply.7.ForBody:
-     mov                  rdi,            qword[r8]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,            qword[r8]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
+     mov                  r13,                  rsi
+     mov                   r8,                  rdx
      mov                  rsi,                  r12
-    imul                  rsi,           qword[rbx]
-     mov           qword[rdi],                  rsi
-     add                  r13,                    1
-@vector.scalarInPlaceMultiply.8.ForCon:
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue
-	jmp	@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse
-@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit
-	jmp	@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit
-@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse:
-@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
+    imul                  rsi,                 1000
+     mov                  rbx,                  r13
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                   r8
+     mov                  rdi,                  rsi
     push                  rsi
+    push                   r8
      sub                  rsp,                    8
-call	__size__
+call	toString
      add                  rsp,                    8
-     pop                  rsi
      pop                   r8
+     pop                  rsi
      mov                  rsi,                  rax
-@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit:
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.scalarInPlaceMultiply.7.ForBody
-     mov                  rax,                   r8
-@vector.scalarInPlaceMultiply.2.exit:
-     pop                  rbx
-     pop                  r13
-     pop                  r12
-     pop                  rbp
-     ret
-vector.copy:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r12
-    push                  r13
-    push                  rbx
-@vector.copy.1.enter:
-     mov                   r8,                  rdi
-     mov                  r12,                  rsi
-     cmp                  r12,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.copy.4.IfTrue
-	jmp	@vector.copy.3.IfFalse
-@vector.copy.4.IfTrue:
-     mov                  rax,                    0
-	jmp	@vector.copy.2.exit
-	jmp	@vector.copy.5.IfExit
-@vector.copy.3.IfFalse:
-@vector.copy.5.IfExit:
-     mov                  rbx,                  r12
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.copy.16.@vector.getDim.4.IfTrue
-	jmp	@vector.copy.17.@vector.getDim.3.IfFalse
-@vector.copy.16.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.copy.14.@vector.getDim.2.exit
-	jmp	@vector.copy.18.@vector.getDim.5.IfExit
-@vector.copy.17.@vector.getDim.3.IfFalse:
-@vector.copy.18.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
+     mov                  rdi,                  rsi
     push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
+call	println
      pop                   r8
-     mov                  rsi,                  rax
-@vector.copy.14.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
+     cmp                  r12,                    1
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@vector.copy.7.IfTrue
-	jmp	@vector.copy.6.IfFalse
-@vector.copy.7.IfTrue:
-     mov            qword[r8],                    0
-	jmp	@vector.copy.8.IfExit
-@vector.copy.6.IfFalse:
-     mov                  rbx,                  r12
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.copy.21.@vector.getDim.4.IfTrue
-	jmp	@vector.copy.22.@vector.getDim.3.IfFalse
-@vector.copy.21.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.copy.19.@vector.getDim.2.exit
-	jmp	@vector.copy.23.@vector.getDim.5.IfExit
-@vector.copy.22.@vector.getDim.3.IfFalse:
-@vector.copy.23.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-@vector.copy.19.@vector.getDim.2.exit:
-     mov                  rbx,                  rsi
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  rbx
-    call               malloc
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov            qword[r8],                  rbx
-     mov                  r13,                    0
-	jmp	@vector.copy.11.ForCon
-@vector.copy.10.ForBody:
-     mov                  rdi,            qword[r8]
+	je	@foo.4.IfTrue
+	jmp	@foo.3.IfFalse
+@foo.4.IfTrue:
+	jmp	@foo.2.exit
+	jmp	@foo.5.IfExit
+@foo.3.IfFalse:
+@foo.5.IfExit:
      mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,           qword[r12]
+     mov                  r13,                   r8
+     mov                   r8,                  rsi
+     mov                  rdi,                    1
      mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov           qword[rdi],                  rsi
-     add                  r13,                    1
-@vector.copy.11.ForCon:
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.copy.26.@vector.getDim.4.IfTrue
-	jmp	@vector.copy.27.@vector.getDim.3.IfFalse
-@vector.copy.26.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.copy.24.@vector.getDim.2.exit
-	jmp	@vector.copy.28.@vector.getDim.5.IfExit
-@vector.copy.27.@vector.getDim.3.IfFalse:
-@vector.copy.28.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
+     mov                  rdx,                   r8
     push                   r8
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
+call	foo
      pop                   r8
+     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r13
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                   r8
+     mov                  rdi,                  rsi
+    push                  rsi
+call	toString
      pop                  rsi
      mov                  rsi,                  rax
-@vector.copy.24.@vector.getDim.2.exit:
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.copy.10.ForBody
-@vector.copy.8.IfExit:
-     mov                  rax,                    1
-@vector.copy.2.exit:
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+@foo.2.exit:
      pop                  rbx
      pop                  r13
      pop                  r12
@@ -535,1680 +78,416 @@ __global_declaration:
      mov                  rbp,                  rsp
      pop                  rbp
      ret
-vector.dot:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r12
-    push                  r13
-    push                  rbx
-@vector.dot.1.enter:
-     mov                  r13,                  rdi
-     mov                  r12,                  rsi
-     mov                   r9,                    0
-     mov                   r8,                    0
-	jmp	@vector.dot.5.ForCon
-@vector.dot.4.ForBody:
-     mov                  rdi,           qword[r13]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,           qword[r12]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rdi]
-    imul                  rsi,           qword[rbx]
-     mov                   r8,                  rsi
-     add                   r9,                    1
-@vector.dot.5.ForCon:
-     mov                  rbx,                  r13
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.dot.10.@vector.getDim.4.IfTrue
-	jmp	@vector.dot.11.@vector.getDim.3.IfFalse
-@vector.dot.10.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.dot.8.@vector.getDim.2.exit
-	jmp	@vector.dot.12.@vector.getDim.5.IfExit
-@vector.dot.11.@vector.getDim.3.IfFalse:
-@vector.dot.12.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__size__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-@vector.dot.8.@vector.getDim.2.exit:
-     cmp                   r9,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.dot.4.ForBody
-     mov                  rax,                   r8
-     pop                  rbx
-     pop                  r13
-     pop                  r12
-     pop                  rbp
-     ret
 main:
     push                  rbp
      mov                  rbp,                  rsp
     call __global_declaration
+     sub                  rsp,                   56
+    push                  rbx
     push                  r12
     push                  r14
     push                  r13
     push                  r15
-    push                  rbx
 @main.1.enter:
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
+     mov                  rsi,                 3100
+     mov                  rdi,                  rsi
     push                  rsi
      sub                  rsp,                    8
-     mov                  rdi,                    8
-    call               malloc
+call	toString
      add                  rsp,                    8
      pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+     mov                  rsi,                 3100
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+     mov                  r14,                    7
+     mov         qword[rbp-8],                    5
+     mov        qword[rbp-16],                    3
+     mov                  rsi,                  r14
+    imul                  rsi,                 1000
+     mov                  rbx,         qword[rbp-8]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-16]
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+     cmp                  r14,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.13.@foo.4.IfTrue
+	jmp	@main.14.@foo.3.IfFalse
+@main.13.@foo.4.IfTrue:
+	jmp	@main.11.@foo.2.exit
+	jmp	@main.15.@foo.5.IfExit
+@main.14.@foo.3.IfFalse:
+@main.15.@foo.5.IfExit:
+     mov                  rsi,         qword[rbp-8]
+     mov                  rcx,        qword[rbp-16]
+     mov         qword[rbp-8],                  rcx
+     mov        qword[rbp-16],                  rsi
+     mov                   r9,                    1
+     mov                  rcx,         qword[rbp-8]
+     mov        qword[rbp-24],                  rcx
+     mov                  rcx,        qword[rbp-16]
+     mov        qword[rbp-32],                  rcx
+     mov                  rsi,                   r9
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-24]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-32]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+     cmp                   r9,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.18.@foo.4.IfTrue
+	jmp	@main.19.@foo.3.IfFalse
+@main.18.@foo.4.IfTrue:
+	jmp	@main.16.@foo.2.exit
+	jmp	@main.20.@foo.5.IfExit
+@main.19.@foo.3.IfFalse:
+@main.20.@foo.5.IfExit:
+     mov                  rsi,        qword[rbp-24]
+     mov                  rcx,        qword[rbp-32]
+     mov        qword[rbp-24],                  rcx
+     mov        qword[rbp-32],                  rsi
+     mov                  r13,                    1
+     mov                  rcx,        qword[rbp-24]
+     mov        qword[rbp-40],                  rcx
+     mov                  rcx,        qword[rbp-32]
+     mov        qword[rbp-48],                  rcx
+     mov                  rsi,                  r13
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-40]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-48]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+     cmp                  r13,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.23.@foo.4.IfTrue
+	jmp	@main.24.@foo.3.IfFalse
+@main.23.@foo.4.IfTrue:
+	jmp	@main.21.@foo.2.exit
+	jmp	@main.25.@foo.5.IfExit
+@main.24.@foo.3.IfFalse:
+@main.25.@foo.5.IfExit:
+     mov                  rsi,        qword[rbp-40]
+     mov                  rcx,        qword[rbp-48]
+     mov        qword[rbp-40],                  rcx
+     mov        qword[rbp-48],                  rsi
+     mov                   r8,                    1
+     mov                  r11,        qword[rbp-40]
+     mov                  rcx,        qword[rbp-48]
+     mov        qword[rbp-56],                  rcx
+     mov                  rsi,                   r8
+    imul                  rsi,                 1000
+     mov                  rbx,                  r11
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-56]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                   r8
+    push                  rsi
+    push                  r11
+call	toString
+     pop                  r11
+     pop                  rsi
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  r11
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  r11
      pop                   r9
      pop                   r8
-     pop                  rdi
+     cmp                   r8,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.28.@foo.4.IfTrue
+	jmp	@main.29.@foo.3.IfFalse
+@main.28.@foo.4.IfTrue:
+	jmp	@main.26.@foo.2.exit
+	jmp	@main.30.@foo.5.IfExit
+@main.29.@foo.3.IfFalse:
+@main.30.@foo.5.IfExit:
+     mov                  rsi,                  r11
+     mov                  r11,        qword[rbp-56]
+     mov        qword[rbp-56],                  rsi
+     mov                  r12,                    1
+     mov                  r10,                  r11
+     mov                  r15,        qword[rbp-56]
+     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r10
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                  r15
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+    push                   r8
+    push                  r10
+    push                  r11
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
      pop                  r11
      pop                  r10
+     pop                   r8
+     pop                  rsi
+     pop                   r9
      mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+    push                   r8
+    push                  r10
+    push                  r11
+call	println
+     pop                  r11
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     cmp                  r12,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.33.@foo.4.IfTrue
+	jmp	@main.34.@foo.3.IfFalse
+@main.33.@foo.4.IfTrue:
+	jmp	@main.31.@foo.2.exit
+	jmp	@main.35.@foo.5.IfExit
+@main.34.@foo.3.IfFalse:
+@main.35.@foo.5.IfExit:
+     mov                  rsi,                  r10
+     mov                  r10,                  r15
      mov                  r15,                  rsi
+     mov                  rdi,                    1
+     mov                  rsi,                  r10
+     mov                  rdx,                  r15
+    push                   r9
+    push                  r10
+    push                   r8
+    push                  r11
+call	foo
+     pop                  r11
+     pop                   r8
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r10
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                  r15
+     mov                  rdi,                  rsi
+    push                   r9
+    push                   r8
+    push                  rsi
+    push                  r11
+call	toString
+     pop                  r11
+     pop                  rsi
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  r11
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  r11
+     pop                   r9
+     pop                   r8
+@main.31.@foo.2.exit:
+     mov                  rsi,                   r8
+    imul                  rsi,                 1000
+     mov                  rbx,                  r11
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-56]
+     mov                  rdi,                  rsi
+    push                  rsi
+    push                   r9
+call	toString
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+@main.26.@foo.2.exit:
+     mov                  rsi,                  r13
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-40]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-48]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+@main.21.@foo.2.exit:
+     mov                  rsi,                   r9
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-24]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-32]
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+@main.16.@foo.2.exit:
+     mov                  rsi,                  r14
+    imul                  rsi,                 1000
+     mov                  rbx,         qword[rbp-8]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-16]
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+@main.11.@foo.2.exit:
      mov                  rbx,                   10
      mov                  rsi,                   10
      add                  rbx,                    1
      shl                  rbx,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
     push                  r10
     push                  r11
     push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
      mov                  rdi,                  rbx
     call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
      pop                  rdi
      pop                  r11
      pop                  r10
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov                  rsi,                  rbx
-     mov                  r12,                    0
-	jmp	@main.5.ForCon
-@main.4.ForBody:
-     mov                  rdi,                  rsi
-     mov                  rbx,                  r12
-     shl                  rbx,                    3
-     add                  rdi,                  rbx
-     mov                  rbx,                    9
-     sub                  rbx,                  r12
-     mov           qword[rdi],                  rbx
-     add                  r12,                    1
-@main.5.ForCon:
-     cmp                  r12,                   10
-     mov                  rbx,                    0
-    setl                   bl
-     cmp                  rbx,                    1
-	je	@main.4.ForBody
-     mov                  r12,                  r15
-     mov                   r8,                  rsi
-     cmp                   r8,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.13.@vector.init.4.IfTrue
-	jmp	@main.14.@vector.init.3.IfFalse
-@main.13.@vector.init.4.IfTrue:
-	jmp	@main.11.@vector.init.2.exit
-	jmp	@main.15.@vector.init.5.IfExit
-@main.14.@vector.init.3.IfFalse:
-@main.15.@vector.init.5.IfExit:
-     mov                  rdi,                   r8
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
      pop                  rsi
      pop                   r9
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
+     pop                   r8
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     mov                  rbx,                    2
+     mov                  rsi,                    2
      add                  rbx,                    1
      shl                  rbx,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
     push                   r8
     push                   r9
     push                  rsi
-     sub                  rsp,                    8
+    push                  r10
+    push                  r11
+    push                  rdi
      mov                  rdi,                  rbx
     call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
      pop                  rdi
      pop                  r11
      pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
      mov                  rbx,                  rax
      mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov           qword[r12],                  rbx
-     mov                  r13,                    0
-	jmp	@main.16.@vector.init.8.ForCon
-@main.17.@vector.init.7.ForBody:
-     mov                  rdi,           qword[r12]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,                   r8
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov           qword[rdi],                  rsi
-     add                  r13,                    1
-@main.16.@vector.init.8.ForCon:
-     mov                  rdi,                   r8
-    push                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.17.@vector.init.7.ForBody
-@main.11.@vector.init.2.exit:
-     mov                  rdi,         __const_str0
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     mov                   r8,                  r15
-     mov                  r13,         __const_str6
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.122.@vector.getDim.4.IfTrue
-	jmp	@main.123.@vector.getDim.3.IfFalse
-@main.122.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.120.@vector.getDim.2.exit
-	jmp	@main.124.@vector.getDim.5.IfExit
-@main.123.@vector.getDim.3.IfFalse:
-@main.124.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-@main.120.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.20.@vector.tostring.4.IfTrue
-	jmp	@main.21.@vector.tostring.3.IfFalse
-@main.20.@vector.tostring.4.IfTrue:
-     mov                  rsi,            qword[r8]
-     mov                  rdi,           qword[rsi]
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                   r9
-    push                  r10
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.22.@vector.tostring.5.IfExit
-@main.21.@vector.tostring.3.IfFalse:
-@main.22.@vector.tostring.5.IfExit:
-     mov                  r12,                    1
-	jmp	@main.23.@vector.tostring.8.ForCon
-@main.24.@vector.tostring.7.ForBody:
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str7
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     mov                  rdi,            qword[r8]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rdi,           qword[rdi]
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rbx
-    push                  rsi
-    push                   r9
-    push                  r10
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     add                  r12,                    1
-@main.23.@vector.tostring.8.ForCon:
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.127.@vector.getDim.4.IfTrue
-	jmp	@main.128.@vector.getDim.3.IfFalse
-@main.127.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.125.@vector.getDim.2.exit
-	jmp	@main.129.@vector.getDim.5.IfExit
-@main.128.@vector.getDim.3.IfFalse:
-@main.129.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-@main.125.@vector.getDim.2.exit:
-     cmp                  r12,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.24.@vector.tostring.7.ForBody
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str8
-    push                   r9
-    push                  rsi
-    push                  r10
-call	__string_connect__
-     pop                  r10
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  r11,                  rsi
-     mov                  r13,                  r11
-     mov                  r12,                  r15
-     cmp                  r12,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.27.@vector.copy.4.IfTrue
-	jmp	@main.28.@vector.copy.3.IfFalse
-@main.27.@vector.copy.4.IfTrue:
-	jmp	@main.25.@vector.copy.2.exit
-	jmp	@main.29.@vector.copy.5.IfExit
-@main.28.@vector.copy.3.IfFalse:
-@main.29.@vector.copy.5.IfExit:
-     mov                  rbx,                  r12
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.30.@vector.copy.16.@vector.getDim.4.IfTrue
-	jmp	@main.31.@vector.copy.17.@vector.getDim.3.IfFalse
-@main.30.@vector.copy.16.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.32.@vector.copy.14.@vector.getDim.2.exit
-	jmp	@main.33.@vector.copy.18.@vector.getDim.5.IfExit
-@main.31.@vector.copy.17.@vector.getDim.3.IfFalse:
-@main.33.@vector.copy.18.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-@main.32.@vector.copy.14.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.34.@vector.copy.7.IfTrue
-	jmp	@main.35.@vector.copy.6.IfFalse
-@main.34.@vector.copy.7.IfTrue:
-     mov           qword[r13],                    0
-	jmp	@main.36.@vector.copy.8.IfExit
-@main.35.@vector.copy.6.IfFalse:
-     mov                  rbx,                  r12
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.37.@vector.copy.21.@vector.getDim.4.IfTrue
-	jmp	@main.38.@vector.copy.22.@vector.getDim.3.IfFalse
-@main.37.@vector.copy.21.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.39.@vector.copy.19.@vector.getDim.2.exit
-	jmp	@main.40.@vector.copy.23.@vector.getDim.5.IfExit
-@main.38.@vector.copy.22.@vector.getDim.3.IfFalse:
-@main.40.@vector.copy.23.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-@main.39.@vector.copy.19.@vector.getDim.2.exit:
-     mov                  rbx,                  rsi
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                  rbx
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov           qword[r13],                  rbx
-     mov                   r8,                    0
-	jmp	@main.41.@vector.copy.11.ForCon
-@main.42.@vector.copy.10.ForBody:
-     mov                  rdi,           qword[r13]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,           qword[r12]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rbx]
-     mov           qword[rdi],                  rsi
-     add                   r8,                    1
-@main.41.@vector.copy.11.ForCon:
-     mov                  rbx,                  r13
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.43.@vector.copy.26.@vector.getDim.4.IfTrue
-	jmp	@main.44.@vector.copy.27.@vector.getDim.3.IfFalse
-@main.43.@vector.copy.26.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.45.@vector.copy.24.@vector.getDim.2.exit
-	jmp	@main.46.@vector.copy.28.@vector.getDim.5.IfExit
-@main.44.@vector.copy.27.@vector.getDim.3.IfFalse:
-@main.46.@vector.copy.28.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r11
-    push                  r10
-call	__size__
-     pop                  r10
-     pop                  r11
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-@main.45.@vector.copy.24.@vector.getDim.2.exit:
-     cmp                   r8,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.42.@vector.copy.10.ForBody
-@main.36.@vector.copy.8.IfExit:
-@main.25.@vector.copy.2.exit:
-     mov                  r13,                  r11
-     mov                   r8,                    3
-     mov                  r12,                  817
-     mov                  rbx,                  r13
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.132.@vector.getDim.4.IfTrue
-	jmp	@main.133.@vector.getDim.3.IfFalse
-@main.132.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.130.@vector.getDim.2.exit
-	jmp	@main.134.@vector.getDim.5.IfExit
-@main.133.@vector.getDim.3.IfFalse:
-@main.134.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-call	__size__
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-@main.130.@vector.getDim.2.exit:
-     cmp                  rsi,                   r8
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.49.@vector.set.4.IfTrue
-	jmp	@main.50.@vector.set.3.IfFalse
-@main.49.@vector.set.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.47.@vector.set.2.exit
-	jmp	@main.51.@vector.set.5.IfExit
-@main.50.@vector.set.3.IfFalse:
-@main.51.@vector.set.5.IfExit:
-     mov                  rbx,           qword[r13]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                  r12
-     mov                  rsi,                    1
-@main.47.@vector.set.2.exit:
-     cmp                  rsi,                    1
-	je	@main.8.IfTrue
-	jmp	@main.7.IfFalse
-@main.8.IfTrue:
-     mov                  rdi,         __const_str1
-    push                   r9
-    push                  r11
-    push                  r10
-call	println
-     pop                  r10
-     pop                  r11
-     pop                   r9
-	jmp	@main.9.IfExit
-@main.7.IfFalse:
-@main.9.IfExit:
-     mov                  rdi,         __const_str2
-    push                   r9
-    push                  r11
-    push                  r10
-call	print
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                   r8,                  r11
-     mov                  r13,         __const_str6
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.137.@vector.getDim.4.IfTrue
-	jmp	@main.138.@vector.getDim.3.IfFalse
-@main.137.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.135.@vector.getDim.2.exit
-	jmp	@main.139.@vector.getDim.5.IfExit
-@main.138.@vector.getDim.3.IfFalse:
-@main.139.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-    push                   r8
-call	__size__
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-@main.135.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.54.@vector.tostring.4.IfTrue
-	jmp	@main.55.@vector.tostring.3.IfFalse
-@main.54.@vector.tostring.4.IfTrue:
-     mov                  rsi,            qword[r8]
-     mov                  rdi,           qword[rsi]
-    push                   r9
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-call	toString
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                  rsi
-    push                   r9
-    push                  r11
-    push                  r10
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.56.@vector.tostring.5.IfExit
-@main.55.@vector.tostring.3.IfFalse:
-@main.56.@vector.tostring.5.IfExit:
-     mov                  r12,                    1
-	jmp	@main.57.@vector.tostring.8.ForCon
-@main.58.@vector.tostring.7.ForBody:
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str7
-    push                   r9
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     mov                  rdi,            qword[r8]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rdi,           qword[rdi]
-    push                   r9
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-call	toString
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rbx
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     add                  r12,                    1
-@main.57.@vector.tostring.8.ForCon:
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.142.@vector.getDim.4.IfTrue
-	jmp	@main.143.@vector.getDim.3.IfFalse
-@main.142.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.140.@vector.getDim.2.exit
-	jmp	@main.144.@vector.getDim.5.IfExit
-@main.143.@vector.getDim.3.IfFalse:
-@main.144.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r9
-    push                  r11
-    push                  r10
-    push                   r8
-call	__size__
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-@main.140.@vector.getDim.2.exit:
-     cmp                  r12,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.58.@vector.tostring.7.ForBody
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str8
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-    push                   r9
-    push                  r11
-    push                  r10
-call	println
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  rdi,         __const_str3
-    push                   r9
-    push                  r11
-    push                  r10
-call	print
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     mov                  r14,                  r15
-     mov                   r8,                  r11
-     mov                  rbx,                  r14
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.61.@vector.add.14.@vector.getDim.4.IfTrue
-	jmp	@main.62.@vector.add.15.@vector.getDim.3.IfFalse
-@main.61.@vector.add.14.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.63.@vector.add.12.@vector.getDim.2.exit
-	jmp	@main.64.@vector.add.16.@vector.getDim.5.IfExit
-@main.62.@vector.add.15.@vector.getDim.3.IfFalse:
-@main.64.@vector.add.16.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-call	__size__
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-@main.63.@vector.add.12.@vector.getDim.2.exit:
-     mov                  rbx,                  rsi
-     mov                  rdi,                   r8
-     cmp           qword[rdi],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.65.@vector.add.19.@vector.getDim.4.IfTrue
-	jmp	@main.66.@vector.add.20.@vector.getDim.3.IfFalse
-@main.65.@vector.add.19.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.67.@vector.add.17.@vector.getDim.2.exit
-	jmp	@main.68.@vector.add.21.@vector.getDim.5.IfExit
-@main.66.@vector.add.20.@vector.getDim.3.IfFalse:
-@main.68.@vector.add.21.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rdi]
-    push                   r8
-    push                  rsi
-    push                   r9
-    push                  r11
-    push                  r10
-call	__size__
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-@main.67.@vector.add.17.@vector.getDim.2.exit:
-     cmp                  rbx,                  rsi
-     mov                  rsi,                    0
-   setne                  sil
-     cmp                  rsi,                    1
-	je	@main.69.@vector.add.6.cmp_or
-     mov                  rbx,                  r14
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.70.@vector.add.24.@vector.getDim.4.IfTrue
-	jmp	@main.71.@vector.add.25.@vector.getDim.3.IfFalse
-@main.70.@vector.add.24.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.72.@vector.add.22.@vector.getDim.2.exit
-	jmp	@main.73.@vector.add.26.@vector.getDim.5.IfExit
-@main.71.@vector.add.25.@vector.getDim.3.IfFalse:
-@main.73.@vector.add.26.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-call	__size__
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-@main.72.@vector.add.22.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-@main.69.@vector.add.6.cmp_or:
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.74.@vector.add.4.IfTrue
-	jmp	@main.75.@vector.add.3.IfFalse
-@main.74.@vector.add.4.IfTrue:
-	jmp	@main.59.@vector.add.2.exit
-	jmp	@main.76.@vector.add.5.IfExit
-@main.75.@vector.add.3.IfFalse:
-@main.76.@vector.add.5.IfExit:
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     mov                  rbx,                  r14
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.77.@vector.add.29.@vector.getDim.4.IfTrue
-	jmp	@main.78.@vector.add.30.@vector.getDim.3.IfFalse
-@main.77.@vector.add.29.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.79.@vector.add.27.@vector.getDim.2.exit
-	jmp	@main.80.@vector.add.31.@vector.getDim.5.IfExit
-@main.78.@vector.add.30.@vector.getDim.3.IfFalse:
-@main.80.@vector.add.31.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r8
-    push                  r11
-    push                  r10
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  r10
-     pop                  r11
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-@main.79.@vector.add.27.@vector.getDim.2.exit:
-     mov                  rbx,                  rsi
-     add                  rbx,                    1
-     shl                  rbx,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
-     mov                  rdi,                  rbx
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rbx,                  rax
-     mov           qword[rbx],                  rsi
-     add                  rbx,                    8
-     mov           qword[r13],                  rbx
-     mov                   r9,                    0
-	jmp	@main.81.@vector.add.9.ForCon
-@main.82.@vector.add.8.ForBody:
-     mov                  r12,           qword[r13]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rdi,           qword[r14]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rbx,            qword[r8]
-     mov                  rsi,                   r9
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov                  rsi,           qword[rdi]
-     add                  rsi,           qword[rbx]
-     mov           qword[r12],                  rsi
-     add                   r9,                    1
-@main.81.@vector.add.9.ForCon:
-     mov                  rbx,                  r14
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.83.@vector.add.34.@vector.getDim.4.IfTrue
-	jmp	@main.84.@vector.add.35.@vector.getDim.3.IfFalse
-@main.83.@vector.add.34.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.85.@vector.add.32.@vector.getDim.2.exit
-	jmp	@main.86.@vector.add.36.@vector.getDim.5.IfExit
-@main.84.@vector.add.35.@vector.getDim.3.IfFalse:
-@main.86.@vector.add.36.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
-call	__size__
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-@main.85.@vector.add.32.@vector.getDim.2.exit:
-     cmp                   r9,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.82.@vector.add.8.ForBody
-     mov                   r9,                  r13
-@main.59.@vector.add.2.exit:
-     mov                   r8,                   r9
-     mov                  r13,         __const_str6
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.147.@vector.getDim.4.IfTrue
-	jmp	@main.148.@vector.getDim.3.IfFalse
-@main.147.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.145.@vector.getDim.2.exit
-	jmp	@main.149.@vector.getDim.5.IfExit
-@main.148.@vector.getDim.3.IfFalse:
-@main.149.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-@main.145.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.89.@vector.tostring.4.IfTrue
-	jmp	@main.90.@vector.tostring.3.IfFalse
-@main.89.@vector.tostring.4.IfTrue:
-     mov                  rsi,            qword[r8]
-     mov                  rdi,           qword[rsi]
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.91.@vector.tostring.5.IfExit
-@main.90.@vector.tostring.3.IfFalse:
-@main.91.@vector.tostring.5.IfExit:
-     mov                  r12,                    1
-	jmp	@main.92.@vector.tostring.8.ForCon
-@main.93.@vector.tostring.7.ForBody:
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str7
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     mov                  rdi,            qword[r8]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rdi,           qword[rdi]
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rbx
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     add                  r12,                    1
-@main.92.@vector.tostring.8.ForCon:
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.152.@vector.getDim.4.IfTrue
-	jmp	@main.153.@vector.getDim.3.IfFalse
-@main.152.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.150.@vector.getDim.2.exit
-	jmp	@main.154.@vector.getDim.5.IfExit
-@main.153.@vector.getDim.3.IfFalse:
-@main.154.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     mov                  rsi,                  rax
-@main.150.@vector.getDim.2.exit:
-     cmp                  r12,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.93.@vector.tostring.7.ForBody
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str8
-    push                  r11
-    push                  r10
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-    push                  r11
-    push                  r10
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r10
-     pop                  r11
-     mov                  rdi,         __const_str4
-    push                  r11
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                  r11
-     mov                   r8,                  r15
-     mov                  rbx,                  r11
-     mov                  r13,                    0
-     mov                  r12,                    0
-	jmp	@main.96.@vector.dot.5.ForCon
-@main.97.@vector.dot.4.ForBody:
-     mov                  r12,            qword[r8]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rdi,           qword[rbx]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,           qword[r12]
-    imul                  rsi,           qword[rdi]
-     mov                  r12,                  rsi
-     add                  r13,                    1
-@main.96.@vector.dot.5.ForCon:
-     mov                  rdi,                   r8
-     cmp           qword[rdi],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.98.@vector.dot.10.@vector.getDim.4.IfTrue
-	jmp	@main.99.@vector.dot.11.@vector.getDim.3.IfFalse
-@main.98.@vector.dot.10.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.100.@vector.dot.8.@vector.getDim.2.exit
-	jmp	@main.101.@vector.dot.12.@vector.getDim.5.IfExit
-@main.99.@vector.dot.11.@vector.getDim.3.IfFalse:
-@main.101.@vector.dot.12.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rdi]
-    push                  r11
-    push                   r8
-    push                  r10
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-@main.100.@vector.dot.8.@vector.getDim.2.exit:
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.97.@vector.dot.4.ForBody
-     mov                  rsi,                  r12
-     mov                  rdi,                  rsi
-    push                  r11
-    push                  r10
-    push                  rsi
-call	toString
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                  r10
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r10
-     pop                  r11
-     mov                  rdi,         __const_str5
-    push                  r11
-    push                  r10
-     sub                  rsp,                    8
-call	print
-     add                  rsp,                    8
-     pop                  r10
-     pop                  r11
-     mov                  r13,                  r11
-     mov                  rbx,                    8
-     cmp           qword[r13],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.104.@vector.scalarInPlaceMultiply.4.IfTrue
-	jmp	@main.105.@vector.scalarInPlaceMultiply.3.IfFalse
-@main.104.@vector.scalarInPlaceMultiply.4.IfTrue:
-	jmp	@main.102.@vector.scalarInPlaceMultiply.2.exit
-	jmp	@main.106.@vector.scalarInPlaceMultiply.5.IfExit
-@main.105.@vector.scalarInPlaceMultiply.3.IfFalse:
-@main.106.@vector.scalarInPlaceMultiply.5.IfExit:
-     mov                   r8,                    0
-	jmp	@main.107.@vector.scalarInPlaceMultiply.8.ForCon
-@main.108.@vector.scalarInPlaceMultiply.7.ForBody:
-     mov                  r12,           qword[r13]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  r12,                  rsi
-     mov                  rdi,           qword[r13]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rsi,                  rbx
-    imul                  rsi,           qword[rdi]
-     mov           qword[r12],                  rsi
-     add                   r8,                    1
-@main.107.@vector.scalarInPlaceMultiply.8.ForCon:
-     mov                  rdi,                  r13
-     cmp           qword[rdi],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.109.@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue
-	jmp	@main.110.@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse
-@main.109.@vector.scalarInPlaceMultiply.13.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.111.@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit
-	jmp	@main.112.@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit
-@main.110.@vector.scalarInPlaceMultiply.14.@vector.getDim.3.IfFalse:
-@main.112.@vector.scalarInPlaceMultiply.15.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rdi]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-@main.111.@vector.scalarInPlaceMultiply.11.@vector.getDim.2.exit:
-     cmp                   r8,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.108.@vector.scalarInPlaceMultiply.7.ForBody
-     mov                  r10,                  r13
-@main.102.@vector.scalarInPlaceMultiply.2.exit:
-     mov                   r8,                  r10
-     mov                  r13,         __const_str6
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.157.@vector.getDim.4.IfTrue
-	jmp	@main.158.@vector.getDim.3.IfFalse
-@main.157.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.155.@vector.getDim.2.exit
-	jmp	@main.159.@vector.getDim.5.IfExit
-@main.158.@vector.getDim.3.IfFalse:
-@main.159.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-@main.155.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@main.115.@vector.tostring.4.IfTrue
-	jmp	@main.116.@vector.tostring.3.IfFalse
-@main.115.@vector.tostring.4.IfTrue:
-     mov                  rsi,            qword[r8]
-     mov                  rdi,           qword[rsi]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  r13
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-	jmp	@main.117.@vector.tostring.5.IfExit
-@main.116.@vector.tostring.3.IfFalse:
-@main.117.@vector.tostring.5.IfExit:
-     mov                  r12,                    1
-	jmp	@main.118.@vector.tostring.8.ForCon
-@main.119.@vector.tostring.7.ForBody:
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str7
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     mov                  rdi,            qword[r8]
-     mov                  rsi,                  r12
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rdi,           qword[rdi]
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	toString
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rbx
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     add                  r12,                    1
-@main.118.@vector.tostring.8.ForCon:
-     mov                  rbx,                   r8
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.162.@vector.getDim.4.IfTrue
-	jmp	@main.163.@vector.getDim.3.IfFalse
-@main.162.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@main.160.@vector.getDim.2.exit
-	jmp	@main.164.@vector.getDim.5.IfExit
-@main.163.@vector.getDim.3.IfFalse:
-@main.164.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-@main.160.@vector.getDim.2.exit:
-     cmp                  r12,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@main.119.@vector.tostring.7.ForBody
-     mov                  rdi,                  r13
-     mov                  rsi,         __const_str8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  r13,                  rsi
-     mov                  rsi,                  r13
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
      mov                  rax,                    0
-     pop                  rbx
      pop                  r15
      pop                  r13
      pop                  r14
      pop                  r12
+     pop                  rbx
+     add                  rsp,                   56
      pop                  rbp
      ret
-vector.tostring:
+cost_a_lot_of_time:
     push                  rbp
      mov                  rbp,                  rsp
-    push                  r12
-    push                  r13
-    push                  rbx
-@vector.tostring.1.enter:
-     mov                  r12,                  rdi
-     mov                   r8,         __const_str6
-     mov                  rbx,                  r12
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.tostring.13.@vector.getDim.4.IfTrue
-	jmp	@vector.tostring.14.@vector.getDim.3.IfFalse
-@vector.tostring.13.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.tostring.11.@vector.getDim.2.exit
-	jmp	@vector.tostring.15.@vector.getDim.5.IfExit
-@vector.tostring.14.@vector.getDim.3.IfFalse:
-@vector.tostring.15.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
+@cost_a_lot_of_time.1.enter:
+     mov                  rsi,                 3100
+     mov                  rdi,                  rsi
     push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-@vector.tostring.11.@vector.getDim.2.exit:
-     cmp                  rsi,                    0
-     mov                  rsi,                    0
-    setg                  sil
-     cmp                  rsi,                    1
-	je	@vector.tostring.4.IfTrue
-	jmp	@vector.tostring.3.IfFalse
-@vector.tostring.4.IfTrue:
-     mov                  rsi,           qword[r12]
-     mov                  rdi,           qword[rsi]
-    push                  rsi
-    push                   r8
      sub                  rsp,                    8
 call	toString
      add                  rsp,                    8
-     pop                   r8
      pop                  rsi
      mov                  rsi,                  rax
-     mov                  rdi,                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-	jmp	@vector.tostring.5.IfExit
-@vector.tostring.3.IfFalse:
-@vector.tostring.5.IfExit:
-     mov                  r13,                    1
-	jmp	@vector.tostring.8.ForCon
-@vector.tostring.7.ForBody:
-     mov                  rdi,                   r8
-     mov                  rsi,         __const_str7
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     mov                  rdi,           qword[r12]
-     mov                  rsi,                  r13
-     shl                  rsi,                    3
-     add                  rdi,                  rsi
-     mov                  rdi,           qword[rdi]
-    push                  rsi
-call	toString
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rbx
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                  r13,                    1
-@vector.tostring.8.ForCon:
-     mov                  rbx,                  r12
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.tostring.18.@vector.getDim.4.IfTrue
-	jmp	@vector.tostring.19.@vector.getDim.3.IfFalse
-@vector.tostring.18.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.tostring.16.@vector.getDim.2.exit
-	jmp	@vector.tostring.20.@vector.getDim.5.IfExit
-@vector.tostring.19.@vector.getDim.3.IfFalse:
-@vector.tostring.20.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-@vector.tostring.16.@vector.getDim.2.exit:
-     cmp                  r13,                  rsi
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.tostring.7.ForBody
-     mov                  rdi,                   r8
-     mov                  rsi,         __const_str8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rax,                   r8
-     pop                  rbx
-     pop                  r13
-     pop                  r12
-     pop                  rbp
-     ret
-vector.set:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r12
-    push                  r13
-    push                  rbx
-@vector.set.1.enter:
-     mov                  r13,                  rdi
-     mov                   r8,                  rsi
-     mov                  r12,                  rdx
-     mov                  rbx,                  r13
-     cmp           qword[rbx],                    0
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@vector.set.9.@vector.getDim.4.IfTrue
-	jmp	@vector.set.10.@vector.getDim.3.IfFalse
-@vector.set.9.@vector.getDim.4.IfTrue:
-     mov                  rsi,                    0
-	jmp	@vector.set.7.@vector.getDim.2.exit
-	jmp	@vector.set.11.@vector.getDim.5.IfExit
-@vector.set.10.@vector.getDim.3.IfFalse:
-@vector.set.11.@vector.getDim.5.IfExit:
-     mov                  rdi,           qword[rbx]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__size__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-@vector.set.7.@vector.getDim.2.exit:
-     cmp                  rsi,                   r8
-     mov                  rsi,                    0
-    setl                  sil
-     cmp                  rsi,                    1
-	je	@vector.set.4.IfTrue
-	jmp	@vector.set.3.IfFalse
-@vector.set.4.IfTrue:
-     mov                  rax,                    0
-	jmp	@vector.set.2.exit
-	jmp	@vector.set.5.IfExit
-@vector.set.3.IfFalse:
-@vector.set.5.IfExit:
-     mov                  rbx,           qword[r13]
-     mov                  rsi,                   r8
-     shl                  rsi,                    3
-     add                  rbx,                  rsi
-     mov           qword[rbx],                  r12
-     mov                  rax,                    1
-@vector.set.2.exit:
-     pop                  rbx
-     pop                  r13
-     pop                  r12
+     mov                  rdi,                  rsi
+call	println
      pop                  rbp
      ret
 
@@ -2217,33 +496,6 @@ call	__size__
 
 
  section                .data
-      dq                   10
-__const_str0:
-      db "vector x: ",0
-      dq                   10
-__const_str2:
-      db "vector y: ",0
-      dq                    2
-__const_str7:
-      db ", ",0
-      dq                    7
-__const_str4:
-      db "x * y: ",0
-      dq                    8
-__const_str1:
-      db "excited!",0
-      dq                    7
-__const_str3:
-      db "x + y: ",0
-      dq                    2
-__const_str6:
-      db "( ",0
-      dq                    2
-__const_str8:
-      db " )",0
-      dq                   14
-__const_str5:
-      db "(1 << 3) * y: ",0
 
 
 

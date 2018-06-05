@@ -15,6 +15,11 @@ public class Address extends Operand {
 		this.offset = offset;
 	}
 
+	@Override
+	public boolean memoryRelated() {
+		return true;
+	}
+
 	public VirtualRegister getBase() {
 		return base;
 	}

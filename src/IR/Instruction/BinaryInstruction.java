@@ -35,6 +35,11 @@ public class BinaryInstruction extends Instruction {
 	}
 
 	@Override
+	public boolean noMem() {
+		return !target.memoryRelated() && !source.memoryRelated();
+	}
+
+	@Override
 	public void claimSet() {
 		if (target instanceof VirtualRegister) {
 			def.add((VirtualRegister) target);

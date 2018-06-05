@@ -16,7 +16,9 @@ public class ExpressionStatement extends Statement {
 
 	@Override
 	public void dfsUseful() {
-		expression.dfsUseful(false);
+		if (expression != null) {
+			expression.dfsUseful(false);
+		}
 	}
 
 	@Override

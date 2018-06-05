@@ -27,6 +27,11 @@ public class VirtualRegister extends Operand {
 		defOrder = ++IRTranslator.VirtualRegisterCnt;
 	}
 
+	@Override
+	public boolean memoryRelated() {
+		return false;
+	}
+
 	public void addMem() {
 		++memWeight;
 	}
@@ -64,7 +69,7 @@ public class VirtualRegister extends Operand {
 
 	public long getWeight() {
 		//return loopWeight + defOrder;
-		return loopWeight * 100 + 2000 - defOrder + memWeight * 60;
+		return loopWeight * 100 + 2000 - defOrder + memWeight * 90;
 	}
 
 	@Override

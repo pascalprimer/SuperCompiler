@@ -182,7 +182,7 @@ public class Inliner {
 		}
 
 		inlineTimes.add(nowfunc);
-		nowfunc.getBlocks(newList);
+		nowfunc.getBlocks(newList, true);
 	}
 
 	public static void inliner(FunctionIR nowfunc) {
