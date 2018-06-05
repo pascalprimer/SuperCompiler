@@ -48,7 +48,7 @@ public class ArrayExpression extends Expression {
 
 	@Override
 	public void dfsUseful(boolean useful) {
-		if (useful) {
+		if (useful || baseExpression.returnType instanceof ArrayType) {
 			baseExpression.dfsUseful(true);
 		}
 		subscriptExpression.dfsUseful(true);

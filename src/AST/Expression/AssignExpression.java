@@ -45,8 +45,8 @@ public class AssignExpression extends Expression {
 		modifyTag = subscript.modifyTag;
 		if (subscript.returnType instanceof ArrayType) {
 			modifyTag = true;
-			variable.dfsUseful(true);
 		}
+		variable.dfsUseful(subscript.returnType instanceof ArrayType);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class AssignExpression extends Expression {
 	@Override
 	public void translateIR(List<Instruction> instructionList) {
 		if (!variable.getUseful() && !subscript.modifyTag) {
-System.out.println("eliminate: " + variable.toString());
+//System.out.println("eliminate: " + variable.toString());
 			return;
 		}
 
