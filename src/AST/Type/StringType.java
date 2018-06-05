@@ -1,11 +1,13 @@
 package AST.Type;
 
 import AST.Symbol.Type;
+import IR.IRTranslator;
 
 public class StringType extends Type {
 	private static final StringType instance = new StringType();
 
 	public StringType() {
+		++IRTranslator.memNumber;
 	}
 
 	@Override

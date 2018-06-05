@@ -2,6 +2,7 @@ package AST.Type;
 
 import AST.Expression.Expression;
 import AST.Symbol.Type;
+import IR.IRTranslator;
 import Utility.CompilerError;
 
 public class ArrayType extends Type {
@@ -15,6 +16,7 @@ public class ArrayType extends Type {
 		}
 		this.arrayType = arrayType;
 		this.dimension = dimension;
+		++IRTranslator.memNumber;
 	}
 
 	public int getDimension() {

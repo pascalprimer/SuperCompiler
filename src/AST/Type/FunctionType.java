@@ -35,6 +35,7 @@ public class FunctionType extends Type implements Scope {
 		this.classScope = classScope;
 		this.body = null;
 		this.isSystem = false;
+		++IRTranslator.functionNumber;
 	}
 
 	public void setSystem() {

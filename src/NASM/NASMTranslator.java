@@ -2,6 +2,7 @@ package NASM;
 
 import AST.AST;
 import AST.Statement.VariableDeclarationStatement;
+import AST.Type.IntType;
 import IR.FunctionIR;
 import IR.IRTranslator;
 import IR.Operand.Address;
@@ -129,7 +130,8 @@ public class NASMTranslator {
 		code.append("\n\n");
 		code.append(getInstruction("section", ".bss"));
 		for (VariableDeclarationStatement vds: AST.getGlobalVariable()) {
-			if (vds.getSymbol().operand instanceof VirtualRegister) {
+			if (vds.getSymbol().getType() instanceof IntType
+					&& IRTranslator.memNumber + IRTranslator.functionNumber == 1) {
 				continue;
 			}
 			code.append(((Address) (vds.getSymbol().operand)).getBase().sysRegister + ":\n  \tresq \t\t1\n");

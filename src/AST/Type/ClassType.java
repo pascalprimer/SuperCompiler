@@ -3,6 +3,7 @@ package AST.Type;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.Scope;
 import AST.Symbol.Type;
+import IR.IRTranslator;
 import Utility.CompilerError;
 
 import java.lang.*;
@@ -24,6 +25,7 @@ public class ClassType extends Type implements Scope {
 		allocateSize = 0;
 		constructionFunction = null;
 		offsetMap = new HashMap<>();
+		++IRTranslator.memNumber;
 	}
 
 	public String getName() {

@@ -20,6 +20,9 @@ import java.util.function.Function;
 
 public class IRTranslator {
 
+	public static int functionNumber = 0;
+	public static int memNumber = 0;
+
 	public static int r233 = 0;
 	public static Map<String, FunctionIR> functionIRMap;
 	public static Map<String, StringMemory> stringList;
@@ -120,7 +123,9 @@ public class IRTranslator {
 		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
 //System.err.println(variable.getName());
 			VirtualRegister tmp = (VirtualRegister) variable.getSymbol().operand;
-			if (variable.getSymbol().getType() instanceof IntType) {
+			if (variable.getSymbol().getType() instanceof IntType
+					&& memNumber + functionNumber == 1) {
+				System.out.println("global: " + variable.getSymbol());
 				mainFunc.getBody().addStatement(cnt++, variable);
 				continue;
 			}
@@ -165,7 +170,8 @@ public class IRTranslator {
 			}
 		}
 		for (VariableDeclarationStatement variable: AST.getGlobalVariable()) {
-			if (variable.getSymbol().operand instanceof VirtualRegister) {
+			if (variable.getSymbol().getType() instanceof IntType
+					&& memNumber + functionNumber == 1) {
 				continue;
 			}
 			variable.translateIR(globalDeclarationBlock.instructionList);

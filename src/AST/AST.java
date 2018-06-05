@@ -4,6 +4,7 @@ import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.GlobalScope;
 import AST.Symbol.Symbol;
 import AST.Type.*;
+import IR.IRTranslator;
 
 import java.util.Collection;
 import java.util.Map;
@@ -60,6 +61,7 @@ public class AST {
 		loadStringGreater();
 		loadStringGreaterEqual();
 		loadStringConnect();
+		++IRTranslator.functionNumber;
 		//loadGlobalFunction();
 	}
 
