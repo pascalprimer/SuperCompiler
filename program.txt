@@ -1,31 +1,29 @@
-
-int N = 15000;
-bool[] b = new bool[15001];
-int resultCount = 0;
-
-int main()
-{
-  int i;
-
-  for (i = 1; i <= N; i++) b[i] = true;
-
-  for (i = 2; i <= N; i++) if (b[i])
-  {
-    int count = 2;
-    
-    if (i>3 && b[i-2])
-    {
-      resultCount++;
-      println(toString(i-2) + " " + toString(i));
-    }
-    
-    while (i*count <= N)
-    {
-      b[i*count] = false;
-      count++;
-    }
-  }
-
-  println("Total: " + toString(resultCount));
-  return 0;
+int lol (int x) {
+return x + 1;
 }
+
+int c = 123;
+int x = lol(c);
+int main () {
+return x;
+}
+
+/*!! metadata:
+=== comment ===
+周子寒 全局变量用函数初始化
+=== is_public ===
+True
+=== assert ===
+exitcode
+=== timeout ===
+0.1
+=== input ===
+
+=== phase ===
+codegen pretest
+=== output ===
+
+=== exitcode ===
+124
+
+!!*/
