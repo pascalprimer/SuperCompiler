@@ -134,7 +134,9 @@ public class FunctionCallInstruction extends Instruction{
 
 	@Override
 	public boolean getPurity() {
-		return functionType == IRTranslator.who.functionType;
+		return functionType == IRTranslator.who.functionType ||
+				IRTranslator.functionIRMap.containsKey(functionName)
+				&& IRTranslator.functionIRMap.get(functionName).purity;
 	}
 
 	@Override

@@ -41,14 +41,6 @@ public class FunctionIR {
 		this.functionType = functionType;
 		this.parameterList = new ArrayList<>();
 		this.blockList = new ArrayList<>();
-		this.purity = true;
-		if (functionType.getParameterList().size() != 1
-				|| functionType.getReturnType() instanceof VoidType
-				|| functionType.getReturnType() instanceof NullType
-				|| functionType.getReturnType() instanceof StringType
-				|| !(functionType.getParameterList().get(0).getType() instanceof IntType)) {
-			this.purity = false;
-		}
 		//this.functionBase = new VirtualRegister(name + "Base");
 		int cnt = 0;
 		for (Symbol symbol: functionType.getParameterList()) {
@@ -85,7 +77,6 @@ public class FunctionIR {
 //			System.out.println("first " + instruction.toString(1));
 //		}
 		getBlocks(instructionList, false);
-		checkPurity();
 //		for (Instruction instruction: instructionList) {
 //			System.out.println("first " + instruction.toString(1));
 //		}
@@ -93,6 +84,7 @@ public class FunctionIR {
 	}
 
 	public void getBlocks(List<Instruction> instructionList, boolean delLabel) {
+		checkPurity();
 		if (delLabel) {
 			for (int i = 0; i + 1 < instructionList.size(); ++i) {
 				Instruction now = instructionList.get(i),
@@ -231,6 +223,14 @@ public class FunctionIR {
 	private void checkPurity() {
 		//check if purity
 		IRTranslator.who = this;
+		this.purity = true;
+		if (functionType.getParameterList().size() != 1
+				|| functionType.getReturnType() instanceof VoidType
+				|| functionType.getReturnType() instanceof NullType
+				|| functionType.getReturnType() instanceof StringType
+				|| !(functionType.getParameterList().get(0).getType() instanceof IntType)) {
+			this.purity = false;
+		}
 		//System.out.println(name + " " + purity);
 		//purity = false;
 		for (Block block: blockList) {
