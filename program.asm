@@ -3,3353 +3,61 @@
 
 
  section                .text
-cd:
+foo:
     push                  rbp
      mov                  rbp,                  rsp
     push                  r12
     push                  r13
     push                  rbx
-@cd.1.enter:
+@foo.1.enter:
      mov                  r12,                  rdi
-     mov                   r9,                  rsi
-     mov                  rbx,                  rdx
-     mov                  r13,                  rcx
+     mov                  r13,                  rsi
+     mov                   r8,                  rdx
+     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r13
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                   r8
+     mov                  rdi,                  rsi
+    push                  rsi
+    push                   r8
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                   r8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+call	println
+     pop                   r8
      cmp                  r12,                    1
      mov                  rsi,                    0
     sete                  sil
      cmp                  rsi,                    1
-	je	@cd.4.IfTrue
-	jmp	@cd.3.IfFalse
-@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
+	je	@foo.4.IfTrue
+	jmp	@foo.3.IfFalse
+@foo.4.IfTrue:
+	jmp	@foo.2.exit
+	jmp	@foo.5.IfExit
+@foo.3.IfFalse:
+@foo.5.IfExit:
      mov                  rsi,                  r13
-    push                  rsi
-    push                   r9
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-	jmp	@cd.5.IfExit
-@cd.3.IfFalse:
-     sub                  r12,                    1
-     mov                  rdi,                  r12
-     mov                  rsi,                   r9
-     mov                  rdx,                  r13
-     mov                  rcx,                  rbx
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
+     mov                  r13,                   r8
      mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                   r9
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
+     mov                  rdi,                    1
      mov                  rsi,                  r13
-    push                   r9
-    push                  rsi
+     mov                  rdx,                   r8
     push                   r8
-call	__string_connect__
+call	foo
      pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     mov                  rdi,                  r12
-     mov                  rsi,                  rbx
-     mov                  rdx,                   r9
-     mov                  rcx,                  r13
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@cd.5.IfExit:
-     mov                  rax,                   r8
-     pop                  rbx
-     pop                  r13
-     pop                  r12
-     pop                  rbp
-     ret
-__global_declaration:
-    push                  rbp
-     mov                  rbp,                  rsp
-     pop                  rbp
-     ret
-main:
-    push                  rbp
-     mov                  rbp,                  rsp
-    call __global_declaration
-     sub                  rsp,                  224
-    push                  rbx
-    push                  r12
-    push                  r14
-    push                  r13
-    push                  r15
-@main.1.enter:
-     mov                   r8,         __const_str2
-     mov                  r12,         __const_str3
-     mov                  rdi,         __const_str4
-    push                   r8
-    push                  rsi
-    push                  rdi
-call	getInt
-     pop                  rdi
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rbx,                  rsi
-     mov         qword[rbp-8],                   r8
-     mov        qword[rbp-16],                  r12
-     mov        qword[rbp-24],                  rdi
-     mov                  r12,                    0
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.6.@cd.4.IfTrue
-	jmp	@main.7.@cd.3.IfFalse
-@main.6.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,         qword[rbp-8]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-24]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     add                  r12,                    1
-	jmp	@main.8.@cd.5.IfExit
-@main.7.@cd.3.IfFalse:
-     mov        qword[rbp-32],                  rbx
-     mov                  rax,        qword[rbp-32]
-     sub                  rax,                    1
-     mov        qword[rbp-32],                  rax
-     mov                  rbx,        qword[rbp-32]
-     mov                  rcx,         qword[rbp-8]
-     mov        qword[rbp-40],                  rcx
-     mov                  rcx,        qword[rbp-24]
-     mov        qword[rbp-48],                  rcx
-     mov                  rcx,        qword[rbp-16]
-     mov        qword[rbp-56],                  rcx
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.11.@cd.4.IfTrue
-	jmp	@main.12.@cd.3.IfFalse
-@main.11.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,        qword[rbp-40]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-56]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     add                  r12,                    1
-	jmp	@main.13.@cd.5.IfExit
-@main.12.@cd.3.IfFalse:
-     mov        qword[rbp-64],                  rbx
-     mov                  rax,        qword[rbp-64]
-     sub                  rax,                    1
-     mov        qword[rbp-64],                  rax
-     mov                  rbx,        qword[rbp-64]
-     mov                  rcx,        qword[rbp-40]
-     mov        qword[rbp-72],                  rcx
-     mov                  r15,        qword[rbp-56]
-     mov                  rcx,        qword[rbp-48]
-     mov        qword[rbp-80],                  rcx
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.21.@cd.4.IfTrue
-	jmp	@main.22.@cd.3.IfFalse
-@main.21.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,        qword[rbp-72]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-80]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     add                  r12,                    1
-	jmp	@main.23.@cd.5.IfExit
-@main.22.@cd.3.IfFalse:
-     mov        qword[rbp-88],                  rbx
-     mov                  rax,        qword[rbp-88]
-     sub                  rax,                    1
-     mov        qword[rbp-88],                  rax
-     mov                  rbx,        qword[rbp-88]
-     mov                  r11,        qword[rbp-72]
-     mov                  r14,        qword[rbp-80]
-     mov        qword[rbp-96],                  r15
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.41.@cd.4.IfTrue
-	jmp	@main.42.@cd.3.IfFalse
-@main.41.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r11
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r8
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-96]
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.43.@cd.5.IfExit
-@main.42.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r11
-     mov                  r12,        qword[rbp-96]
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.81.@cd.4.IfTrue
-	jmp	@main.82.@cd.3.IfFalse
-@main.81.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                  r10
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     add                   r8,                    1
-	jmp	@main.83.@cd.5.IfExit
-@main.82.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  r10
-    push                  r11
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                  r10
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     mov                  rdi,                  rbx
      mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
- call	cd
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.83.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r11
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-96]
-    push                   r8
-    push                  rsi
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	println
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rbx,                  r10
-     mov                  r13,                  r14
-     mov                  r12,                  r11
-     mov                   r9,        qword[rbp-96]
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.86.@cd.4.IfTrue
-	jmp	@main.87.@cd.3.IfFalse
-@main.86.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.88.@cd.5.IfExit
-@main.87.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                  rsi
-    push                   r9
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.88.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.43.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,        qword[rbp-72]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-80]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                  rbx,        qword[rbp-88]
-     mov                  r14,        qword[rbp-72]
-     mov                  r11,        qword[rbp-80]
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.46.@cd.4.IfTrue
-	jmp	@main.47.@cd.3.IfFalse
-@main.46.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  rsi
-    push                   r8
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.48.@cd.5.IfExit
-@main.47.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r15
-     mov                  r12,                  r11
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.91.@cd.4.IfTrue
-	jmp	@main.92.@cd.3.IfFalse
-@main.91.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-	jmp	@main.93.@cd.5.IfExit
-@main.92.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
-    push                  r10
-    push                  r11
- call	cd
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.93.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	println
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rbx,                  r10
-     mov                  r13,                  r14
-     mov                  r12,                  r15
-     mov                   r9,                  r11
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.96.@cd.4.IfTrue
-	jmp	@main.97.@cd.3.IfFalse
-@main.96.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  rsi
-    push                   r9
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-	jmp	@main.98.@cd.5.IfExit
-@main.97.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.98.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.48.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     add                  r12,                    1
-@main.23.@cd.5.IfExit:
-     mov                  rsi,                  r12
-     mov                  r12,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,        qword[rbp-40]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-56]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                  rbx,        qword[rbp-64]
-     mov                  rcx,        qword[rbp-48]
-     mov       qword[rbp-104],                  rcx
-     mov                  rcx,        qword[rbp-40]
-     mov       qword[rbp-112],                  rcx
-     mov                  rcx,        qword[rbp-56]
-     mov       qword[rbp-120],                  rcx
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.26.@cd.4.IfTrue
-	jmp	@main.27.@cd.3.IfFalse
-@main.26.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-104]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-120]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     add                  r12,                    1
-	jmp	@main.28.@cd.5.IfExit
-@main.27.@cd.3.IfFalse:
-     mov       qword[rbp-128],                  rbx
-     mov                  rax,       qword[rbp-128]
-     sub                  rax,                    1
-     mov       qword[rbp-128],                  rax
-     mov                  rbx,       qword[rbp-128]
-     mov                  r15,       qword[rbp-104]
-     mov                  r14,       qword[rbp-120]
-     mov                  r11,       qword[rbp-112]
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.51.@cd.4.IfTrue
-	jmp	@main.52.@cd.3.IfFalse
-@main.51.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  r11
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r11
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  r11
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     add                   r8,                    1
-	jmp	@main.53.@cd.5.IfExit
-@main.52.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r15
-     mov                  r12,                  r11
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.101.@cd.4.IfTrue
-	jmp	@main.102.@cd.3.IfFalse
-@main.101.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  r11
-    push                   r8
-    push                  r10
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r11
-    push                   r8
-    push                  r10
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  r11
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                   r8
-    push                  r10
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  r11
-     add                   r8,                    1
-	jmp	@main.103.@cd.5.IfExit
-@main.102.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                  r11
-    push                  rsi
-    push                  r10
-    push                   r9
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                   r9
-     pop                  r10
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  r11
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r11
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  r11
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                   r8
-    push                  r10
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                  r10
-     pop                   r8
-     pop                  r11
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
- call	cd
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.103.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r11
-    push                  r10
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-call	println
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rbx,                  r10
-     mov                  r13,                  r14
-     mov                  r12,                  r15
-     mov                   r9,                  r11
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.106.@cd.4.IfTrue
-	jmp	@main.107.@cd.3.IfFalse
-@main.106.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r9
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-	jmp	@main.108.@cd.5.IfExit
-@main.107.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r9
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                   r9
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.108.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.53.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-104]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-120]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                  rbx,       qword[rbp-128]
-     mov                  r15,       qword[rbp-112]
-     mov                  r14,       qword[rbp-104]
-     mov                  r11,       qword[rbp-120]
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.56.@cd.4.IfTrue
-	jmp	@main.57.@cd.3.IfFalse
-@main.56.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.58.@cd.5.IfExit
-@main.57.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r15
-     mov                  r12,                  r11
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.111.@cd.4.IfTrue
-	jmp	@main.112.@cd.3.IfFalse
-@main.111.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     add                   r8,                    1
-	jmp	@main.113.@cd.5.IfExit
-@main.112.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  r10
-    push                  rsi
-    push                  r11
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  rsi
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                  r10
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     pop                  r10
-     pop                   r9
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  r10
-    push                  rsi
-    push                  r11
- call	cd
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.113.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	println
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rbx,                  r10
-     mov                  r13,                  r14
-     mov                  r12,                  r15
-     mov                   r9,                  r11
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.116.@cd.4.IfTrue
-	jmp	@main.117.@cd.3.IfFalse
-@main.116.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.118.@cd.5.IfExit
-@main.117.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                  rsi
-    push                   r9
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.118.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.58.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     add                  r12,                    1
-@main.28.@cd.5.IfExit:
-     mov                  rsi,                  r12
-     mov                  r12,                  rsi
-     add                  r12,                    1
-@main.13.@cd.5.IfExit:
-     mov                  rsi,                  r12
-     mov                  r12,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,         qword[rbp-8]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,        qword[rbp-24]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                  rbx,        qword[rbp-32]
-     mov                  rcx,        qword[rbp-16]
-     mov       qword[rbp-136],                  rcx
-     mov                  rcx,         qword[rbp-8]
-     mov       qword[rbp-144],                  rcx
-     mov                  rcx,        qword[rbp-24]
-     mov       qword[rbp-152],                  rcx
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.16.@cd.4.IfTrue
-	jmp	@main.17.@cd.3.IfFalse
-@main.16.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-136]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-152]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     add                  r12,                    1
-	jmp	@main.18.@cd.5.IfExit
-@main.17.@cd.3.IfFalse:
-     mov       qword[rbp-160],                  rbx
-     mov                  rax,       qword[rbp-160]
-     sub                  rax,                    1
-     mov       qword[rbp-160],                  rax
-     mov                  rbx,       qword[rbp-160]
-     mov                  rcx,       qword[rbp-136]
-     mov       qword[rbp-168],                  rcx
-     mov                  rcx,       qword[rbp-152]
-     mov       qword[rbp-176],                  rcx
-     mov                  rcx,       qword[rbp-144]
-     mov       qword[rbp-184],                  rcx
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.31.@cd.4.IfTrue
-	jmp	@main.32.@cd.3.IfFalse
-@main.31.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-168]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-184]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     add                  r12,                    1
-	jmp	@main.33.@cd.5.IfExit
-@main.32.@cd.3.IfFalse:
-     mov       qword[rbp-192],                  rbx
-     mov                  rax,       qword[rbp-192]
-     sub                  rax,                    1
-     mov       qword[rbp-192],                  rax
-     mov                  rbx,       qword[rbp-192]
-     mov                  r15,       qword[rbp-168]
-     mov                  r14,       qword[rbp-184]
-     mov                  r11,       qword[rbp-176]
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.61.@cd.4.IfTrue
-	jmp	@main.62.@cd.3.IfFalse
-@main.61.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  r11
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                  r11
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  r11
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                   r8
-    push                  r11
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.63.@cd.5.IfExit
-@main.62.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r15
-     mov                  r12,                  r11
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.121.@cd.4.IfTrue
-	jmp	@main.122.@cd.3.IfFalse
-@main.121.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                   r9
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r10
-    push                  rsi
-    push                   r8
-    push                   r9
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  r10
-    push                  rsi
-    push                   r8
-    push                   r9
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r10
-    push                   r8
-    push                   r9
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     pop                  r10
-     add                   r8,                    1
-	jmp	@main.123.@cd.5.IfExit
-@main.122.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                  r10
-    push                   r9
-    push                  r11
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r11
-     pop                   r9
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  r10
-    push                  rsi
-    push                   r8
-    push                   r9
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r10
-    push                   r8
-    push                  rsi
-    push                   r9
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  r10
-    push                  rsi
-    push                   r8
-    push                   r9
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r10
-    push                   r8
-    push                   r9
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r9
-     pop                   r8
-     pop                  r10
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  r10
-    push                  r11
-    push                  rsi
- call	cd
-     pop                  rsi
-     pop                  r11
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.123.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  r10
-    push                  rsi
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r10
-    push                  rsi
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  r10
-    push                  rsi
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r10
-    push                  r11
-    push                   r8
-call	println
-     pop                   r8
-     pop                  r11
-     pop                  r10
-     mov                  rbx,                  r10
-     mov                  r13,                  r14
-     mov                  r12,                  r15
-     mov                   r9,                  r11
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.126.@cd.4.IfTrue
-	jmp	@main.127.@cd.3.IfFalse
-@main.126.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.128.@cd.5.IfExit
-@main.127.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                  rsi
-    push                   r9
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.128.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.63.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-168]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-184]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                  rbx,       qword[rbp-192]
-     mov                  r15,       qword[rbp-176]
-     mov                  r14,       qword[rbp-168]
-     mov                  r11,       qword[rbp-184]
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.66.@cd.4.IfTrue
-	jmp	@main.67.@cd.3.IfFalse
-@main.66.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                   r8
-    push                  r11
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  r11
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                   r8
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.68.@cd.5.IfExit
-@main.67.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r15
-     mov                  r12,                  r11
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.131.@cd.4.IfTrue
-	jmp	@main.132.@cd.3.IfFalse
-@main.131.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                   r8
-    push                  rsi
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     add                   r8,                    1
-	jmp	@main.133.@cd.5.IfExit
-@main.132.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  r10
-    push                  rsi
-    push                  r11
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-call	__string_connect__
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r9
-    push                   r8
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     pop                   r9
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  r10
-    push                  rsi
-    push                  r11
- call	cd
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.133.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                   r8
-    push                  r10
-    push                  rsi
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  rsi
-     pop                  r10
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                  r10
-    push                  r11
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  r11
-     pop                  r10
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                   r8
-    push                  r10
-    push                  r11
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r10
-    push                  r11
-call	println
-     pop                  r11
-     pop                  r10
-     pop                   r8
-     mov                  rbx,                  r10
-     mov                  r13,                  r14
-     mov                  r12,                  r15
-     mov                   r9,                  r11
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.136.@cd.4.IfTrue
-	jmp	@main.137.@cd.3.IfFalse
-@main.136.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.138.@cd.5.IfExit
-@main.137.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-    push                   r8
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.138.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.68.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     add                  r12,                    1
-@main.33.@cd.5.IfExit:
-     mov                  rsi,                  r12
-     mov                  r12,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-136]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-152]
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     mov                  rbx,       qword[rbp-160]
-     mov                  rcx,       qword[rbp-144]
-     mov       qword[rbp-200],                  rcx
-     mov                  rcx,       qword[rbp-136]
-     mov       qword[rbp-208],                  rcx
-     mov                  rcx,       qword[rbp-152]
-     mov       qword[rbp-216],                  rcx
-     mov                   r8,                  r12
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.36.@cd.4.IfTrue
-	jmp	@main.37.@cd.3.IfFalse
-@main.36.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-200]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-216]
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-call	println
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.38.@cd.5.IfExit
-@main.37.@cd.3.IfFalse:
-     mov       qword[rbp-224],                  rbx
-     mov                  rax,       qword[rbp-224]
-     sub                  rax,                    1
-     mov       qword[rbp-224],                  rax
-     mov                  rbx,       qword[rbp-224]
-     mov                  r15,       qword[rbp-200]
-     mov                  r14,       qword[rbp-216]
-     mov                  r11,       qword[rbp-208]
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.71.@cd.4.IfTrue
-	jmp	@main.72.@cd.3.IfFalse
-@main.71.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  r11
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r11
-    push                   r8
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r8
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  r11
-    push                  rsi
-    push                   r8
-call	__string_connect__
-     pop                   r8
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                   r8
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r8
-     pop                  r11
-     add                   r8,                    1
-	jmp	@main.73.@cd.5.IfExit
-@main.72.@cd.3.IfFalse:
-     mov                  r10,                  rbx
-     sub                  r10,                    1
-     mov                  rbx,                  r10
-     mov                  r13,                  r15
-     mov                  r12,                  r11
-     mov                   r9,                  r14
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.141.@cd.4.IfTrue
-	jmp	@main.142.@cd.3.IfFalse
-@main.141.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  r11
-    push                  rsi
-    push                   r9
-    push                  r10
-call	__string_connect__
-     pop                  r10
-     pop                   r9
-     pop                  rsi
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.143.@cd.5.IfExit
-@main.142.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                  r11
-    push                  rsi
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                  rsi
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                  r11
-    push                   r9
-    push                  r10
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                  r10
-     pop                   r9
-     pop                  r11
-     pop                   r8
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  r11
-    push                  r10
-    push                  rsi
- call	cd
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.143.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r15
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                  r11
-    push                  r10
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r11
-    push                  r11
-    push                  r10
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     pop                  r10
-     pop                  r11
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  r11
-    push                  r10
-    push                   r8
-call	println
-     pop                   r8
-     pop                  r10
-     pop                  r11
-     mov                  rdi,                  r10
-     mov                  rsi,                  r14
-     mov                  rdx,                  r15
-     mov                  rcx,                  r11
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.73.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,       qword[rbp-200]
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,       qword[rbp-216]
-    push                  rsi
-    push                   r8
-     sub                  rsp,                    8
-call	__string_connect__
-     add                  rsp,                    8
-     pop                   r8
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-call	println
-     pop                   r8
-     mov                  rbx,       qword[rbp-224]
-     mov                  r13,       qword[rbp-208]
-     mov                  r12,       qword[rbp-200]
-     mov                   r9,       qword[rbp-216]
-     cmp                  rbx,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-	je	@main.76.@cd.4.IfTrue
-	jmp	@main.77.@cd.3.IfFalse
-@main.76.@cd.4.IfTrue:
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     add                   r8,                    1
-	jmp	@main.78.@cd.5.IfExit
-@main.77.@cd.3.IfFalse:
-     sub                  rbx,                    1
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r13
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-    push                   r9
-    push                  rsi
-     sub                  rsp,                    8
- call	cd
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     mov                  rdi,         __const_str0
-     mov                  rsi,                  r13
-    push                   r8
-    push                   r9
-    push                  rsi
-call	__string_connect__
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,         __const_str1
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                   r8
-    push                  rsi
-    push                   r9
-call	__string_connect__
-     pop                   r9
-     pop                  rsi
-     pop                   r8
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                   r8
-    push                   r9
-     sub                  rsp,                    8
-call	println
-     add                  rsp,                    8
-     pop                   r9
-     pop                   r8
-     mov                  rdi,                  rbx
-     mov                  rsi,                  r12
-     mov                  rdx,                  r13
-     mov                  rcx,                   r9
-    push                  rsi
- call	cd
-     pop                  rsi
-     mov                  rsi,                  rax
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.78.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                   r8,                  rsi
-     add                   r8,                    1
-@main.38.@cd.5.IfExit:
-     mov                  rsi,                   r8
-     mov                  r12,                  rsi
-     add                  r12,                    1
-@main.18.@cd.5.IfExit:
-     mov                  rsi,                  r12
-     mov                  r12,                  rsi
-     add                  r12,                    1
-@main.8.@cd.5.IfExit:
-     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r13
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                   r8
      mov                  rdi,                  rsi
     push                  rsi
 call	toString
@@ -3359,13 +67,428 @@ call	toString
      sub                  rsp,                    8
 call	println
      add                  rsp,                    8
+@foo.2.exit:
+     pop                  rbx
+     pop                  r13
+     pop                  r12
+     pop                  rbp
+     ret
+__global_declaration:
+    push                  rbp
+     mov                  rbp,                  rsp
+@__global_declaration.1.enter:
+     pop                  rbp
+     ret
+main:
+    push                  rbp
+     mov                  rbp,                  rsp
+    call __global_declaration
+     sub                  rsp,                   56
+    push                  rbx
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
+@main.1.enter:
+     mov                  rsi,                 3100
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+     mov                  rsi,                 3100
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+     mov                  r14,                    7
+     mov         qword[rbp-8],                    5
+     mov        qword[rbp-16],                    3
+     mov                  rsi,                  r14
+    imul                  rsi,                 1000
+     mov                  rbx,         qword[rbp-8]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-16]
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+     cmp                  r14,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.13.@foo.4.IfTrue
+	jmp	@main.14.@foo.3.IfFalse
+@main.13.@foo.4.IfTrue:
+	jmp	@main.11.@foo.2.exit
+	jmp	@main.15.@foo.5.IfExit
+@main.14.@foo.3.IfFalse:
+@main.15.@foo.5.IfExit:
+     mov                  rsi,         qword[rbp-8]
+     mov                  rcx,        qword[rbp-16]
+     mov         qword[rbp-8],                  rcx
+     mov        qword[rbp-16],                  rsi
+     mov                   r9,                    1
+     mov                  rcx,         qword[rbp-8]
+     mov        qword[rbp-24],                  rcx
+     mov                  rcx,        qword[rbp-16]
+     mov        qword[rbp-32],                  rcx
+     mov                  rsi,                   r9
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-24]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-32]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+     cmp                   r9,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.18.@foo.4.IfTrue
+	jmp	@main.19.@foo.3.IfFalse
+@main.18.@foo.4.IfTrue:
+	jmp	@main.16.@foo.2.exit
+	jmp	@main.20.@foo.5.IfExit
+@main.19.@foo.3.IfFalse:
+@main.20.@foo.5.IfExit:
+     mov                  rsi,        qword[rbp-24]
+     mov                  rcx,        qword[rbp-32]
+     mov        qword[rbp-24],                  rcx
+     mov        qword[rbp-32],                  rsi
+     mov                  r13,                    1
+     mov                  rcx,        qword[rbp-24]
+     mov        qword[rbp-40],                  rcx
+     mov                  rcx,        qword[rbp-32]
+     mov        qword[rbp-48],                  rcx
+     mov                  rsi,                  r13
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-40]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-48]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+     cmp                  r13,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.23.@foo.4.IfTrue
+	jmp	@main.24.@foo.3.IfFalse
+@main.23.@foo.4.IfTrue:
+	jmp	@main.21.@foo.2.exit
+	jmp	@main.25.@foo.5.IfExit
+@main.24.@foo.3.IfFalse:
+@main.25.@foo.5.IfExit:
+     mov                  rsi,        qword[rbp-40]
+     mov                  rcx,        qword[rbp-48]
+     mov        qword[rbp-40],                  rcx
+     mov        qword[rbp-48],                  rsi
+     mov                   r8,                    1
+     mov                  r11,        qword[rbp-40]
+     mov                  rcx,        qword[rbp-48]
+     mov        qword[rbp-56],                  rcx
+     mov                  rsi,                   r8
+    imul                  rsi,                 1000
+     mov                  rbx,                  r11
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-56]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                   r8
+    push                  rsi
+    push                  r11
+call	toString
+     pop                  r11
+     pop                  rsi
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  r11
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  r11
+     pop                   r9
+     pop                   r8
+     cmp                   r8,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.28.@foo.4.IfTrue
+	jmp	@main.29.@foo.3.IfFalse
+@main.28.@foo.4.IfTrue:
+	jmp	@main.26.@foo.2.exit
+	jmp	@main.30.@foo.5.IfExit
+@main.29.@foo.3.IfFalse:
+@main.30.@foo.5.IfExit:
+     mov                  rsi,                  r11
+     mov                  r11,        qword[rbp-56]
+     mov        qword[rbp-56],                  rsi
+     mov                  r12,                    1
+     mov                  r10,                  r11
+     mov                  r15,        qword[rbp-56]
+     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r10
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                  r15
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+    push                   r8
+    push                  r10
+    push                  r11
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  r11
+     pop                  r10
+     pop                   r8
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+    push                   r8
+    push                  r10
+    push                  r11
+call	println
+     pop                  r11
+     pop                  r10
+     pop                   r8
+     pop                   r9
+     cmp                  r12,                    1
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+	je	@main.33.@foo.4.IfTrue
+	jmp	@main.34.@foo.3.IfFalse
+@main.33.@foo.4.IfTrue:
+	jmp	@main.31.@foo.2.exit
+	jmp	@main.35.@foo.5.IfExit
+@main.34.@foo.3.IfFalse:
+@main.35.@foo.5.IfExit:
+     mov                  rsi,                  r10
+     mov                  r10,                  r15
+     mov                  r15,                  rsi
+     mov                  rdi,                    1
+     mov                  rsi,                  r10
+     mov                  rdx,                  r15
+    push                   r9
+    push                  r10
+    push                   r8
+    push                  r11
+call	foo
+     pop                  r11
+     pop                   r8
+     pop                  r10
+     pop                   r9
+     mov                  rsi,                  r12
+    imul                  rsi,                 1000
+     mov                  rbx,                  r10
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,                  r15
+     mov                  rdi,                  rsi
+    push                   r9
+    push                   r8
+    push                  rsi
+    push                  r11
+call	toString
+     pop                  r11
+     pop                  rsi
+     pop                   r8
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  r11
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                  r11
+     pop                   r9
+     pop                   r8
+@main.31.@foo.2.exit:
+     mov                  rsi,                   r8
+    imul                  rsi,                 1000
+     mov                  rbx,                  r11
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-56]
+     mov                  rdi,                  rsi
+    push                  rsi
+    push                   r9
+call	toString
+     pop                   r9
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+@main.26.@foo.2.exit:
+     mov                  rsi,                  r13
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-40]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-48]
+     mov                  rdi,                  rsi
+    push                   r9
+    push                  rsi
+call	toString
+     pop                  rsi
+     pop                   r9
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r9
+     sub                  rsp,                    8
+call	println
+     add                  rsp,                    8
+     pop                   r9
+@main.21.@foo.2.exit:
+     mov                  rsi,                   r9
+    imul                  rsi,                 1000
+     mov                  rbx,        qword[rbp-24]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-32]
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+@main.16.@foo.2.exit:
+     mov                  rsi,                  r14
+    imul                  rsi,                 1000
+     mov                  rbx,         qword[rbp-8]
+    imul                  rbx,                   10
+     add                  rsi,                  rbx
+     add                  rsi,        qword[rbp-16]
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
+@main.11.@foo.2.exit:
+     mov                  rbx,                   10
+     mov                  rsi,                   10
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  rbx
+    call               malloc
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
+     mov                  rbx,                    2
+     mov                  rsi,                    2
+     add                  rbx,                    1
+     shl                  rbx,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  rbx
+    call               malloc
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+     mov           qword[rbx],                  rsi
      mov                  rax,                    0
      pop                  r15
      pop                  r13
      pop                  r14
      pop                  r12
      pop                  rbx
-     add                  rsp,                  224
+     add                  rsp,                   56
+     pop                  rbp
+     ret
+cost_a_lot_of_time:
+    push                  rbp
+     mov                  rbp,                  rsp
+@cost_a_lot_of_time.1.enter:
+     mov                  rsi,                 3100
+     mov                  rdi,                  rsi
+    push                  rsi
+     sub                  rsp,                    8
+call	toString
+     add                  rsp,                    8
+     pop                  rsi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+call	println
      pop                  rbp
      ret
 
@@ -3374,21 +497,6 @@ call	println
 
 
  section                .data
-      dq                    1
-__const_str2:
-      db "A",0
-      dq                    1
-__const_str3:
-      db "B",0
-      dq                    1
-__const_str4:
-      db "C",0
-      dq                    5
-__const_str1:
-      db " --> ",0
-      dq                    5
-__const_str0:
-      db "move ",0
 
 
 

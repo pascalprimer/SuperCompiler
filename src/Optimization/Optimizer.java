@@ -8,7 +8,7 @@ public class Optimizer {
 	public static void optimizer() {
 
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
-			NaiveOptimizer.removeUselessInstruction(functionIR);
+			NaiveOptimizer.removeUselessIteration(functionIR);
 			//NaiveOptimizer.removeUselessInstruction(functionIR);
 		}
 
