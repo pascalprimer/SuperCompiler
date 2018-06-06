@@ -9,7 +9,7 @@ public class Optimizer {
 
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
 			NaiveOptimizer.removeUselessIteration(functionIR);
-			//NaiveOptimizer.removeUselessInstruction(functionIR);
+			NaiveOptimizer.removeUselessInstruction(functionIR);
 		}
 
 		for (int times = 8; times > 0; --times) {
@@ -24,6 +24,7 @@ public class Optimizer {
 		}
 
 		for (FunctionIR functionIR: IRTranslator.functionIRMap.values()) {
+			NaiveOptimizer.removeUselessRegister(functionIR);
 			NaiveOptimizer.removeUselessRegister(functionIR);
 		}
 
