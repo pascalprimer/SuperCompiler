@@ -12,7 +12,7 @@ public class Optimizer {
 			//NaiveOptimizer.removeUselessInstruction(functionIR);
 		}
 
-		for (int times = 5; times > 0; --times) {
+		for (int times = 8; times > 0; --times) {
 			for (FunctionIR functionIR : IRTranslator.functionIRMap.values()) {
 //System.out.println("origin" + times + "\n" + functionIR.toString(1));
 				if (functionIR.getName().charAt(0) != '_') {
