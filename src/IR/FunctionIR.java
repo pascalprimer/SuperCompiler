@@ -9,6 +9,7 @@ import IR.Operand.Operand;
 import IR.Operand.VirtualRegister;
 import NASM.NASMTranslator;
 import NASM.PhysicalOperand.PhysicalOperand;
+import jdk.nashorn.internal.ir.FunctionCall;
 
 import java.util.*;
 
@@ -80,11 +81,11 @@ public class FunctionIR {
 		}
 
 		instructionList.add(exitLabel);
-		checkPurity();
 //		for (Instruction instruction: instructionList) {
 //			System.out.println("first " + instruction.toString(1));
 //		}
 		getBlocks(instructionList, false);
+		checkPurity();
 //		for (Instruction instruction: instructionList) {
 //			System.out.println("first " + instruction.toString(1));
 //		}
@@ -234,6 +235,10 @@ public class FunctionIR {
 		//purity = false;
 		for (Block block: blockList) {
 			for (Instruction instruction : block.instructionList) {
+//System.out.println("get purity: " + instruction.toString(1));
+//				if (instruction instanceof FunctionCallInstruction) {
+//System.out.println("get purity: " + instruction.toString(1));
+//				}
 				if (!instruction.getPurity()) {
 					//System.out.println(instruction.toString(1));
 					instruction.getPurity();
@@ -249,7 +254,7 @@ public class FunctionIR {
 //		if (name.contains("int") || name.contains("shift") || name.contains("String")) {
 //			purity = false;
 //		}
-		//System.out.println(name + ": " + String.valueOf(purity));
+//System.out.println(name + ": " + String.valueOf(purity));
 		if (purity) {
 			purityRegister = RegisterManager.getVirtualRegister();
 			purityRegister.sysRegister = "@@" + name;
